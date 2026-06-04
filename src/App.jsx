@@ -1,14 +1,16 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 /* ── THEME ──────────────────────────────────────────────────────────────── */
 const T={
-  bg:"#FAF6EF",bgCard:"#FFFDF7",bgAlt:"#F3EDD8",bgDeep:"#EDE3C8",
-  border:"#E2D5B5",borderDk:"#C9B98A",
-  text:"#2C1A0E",textMid:"#6B4F2A",textSoft:"#A08850",
-  gold:"#B8860B",goldLt:"#D4A843",saffron:"#C8503A",green:"#4A7C59",
-  blue:"#3B6B9A",teal:"#2A7F7F",purple:"#7B4F8A",orange:"#C8703A",
-  pink:"#9B4A6A",olive:"#6B7A3A",slate:"#5A6E8A",
-  shadow:"0 2px 12px rgba(44,26,14,0.10)",
+  bg:"#F5F1E8",bgCard:"#FFFDFC",bgAlt:"#EEE5D6",bgDeep:"#E5D8C3",
+  border:"#D8C9B0",borderDk:"#BFAE8E",
+  text:"#1F1A14",textMid:"#604A32",textSoft:"#8A7A64",
+  gold:"#A4762B",goldLt:"#D9BA72",saffron:"#D85C3A",green:"#4E8160",
+  blue:"#356E9D",teal:"#2B8A88",purple:"#7A568D",orange:"#D08A3A",
+  pink:"#A85F7A",olive:"#687A45",slate:"#62778E",
+  shadow:"0 12px 30px rgba(32,23,14,0.08)",
+  shadowLg:"0 24px 60px rgba(32,23,14,0.14)",
+  glass:"rgba(255,255,252,0.82)",
 };
 
 /* ── SOUNDS DATA ─────────────────────────────────────────────────────────── */
@@ -702,6 +704,85 @@ function Pill({text,active,color,onClick}){return(
   <button onClick={onClick} style={{padding:"5px 12px",borderRadius:99,border:`1.5px solid ${active?color:T.border}`,background:active?color:T.bgCard,color:active?"#fff":T.textMid,fontSize:12,cursor:"pointer",fontWeight:active?700:500,transition:"all 0.15s"}}>{text}</button>
 );}
 
+function Surface({children,style={}}){
+  return(
+    <div style={{
+      background:T.glass,
+      border:`1px solid ${T.border}AA`,
+      boxShadow:T.shadow,
+      backdropFilter:"blur(18px)",
+      WebkitBackdropFilter:"blur(18px)",
+      borderRadius:24,
+      ...style,
+    }}>
+      {children}
+    </div>
+  );
+}
+
+function SectionHeader({eyebrow,title,subtitle,action}){
+  return(
+    <div style={{display:"flex",justifyContent:"space-between",gap:14,alignItems:"flex-end",marginBottom:14,flexWrap:"wrap"}}>
+      <div>
+        {eyebrow&&<div style={{fontSize:11,letterSpacing:1.8,textTransform:"uppercase",color:T.textSoft,fontWeight:800,marginBottom:6}}>{eyebrow}</div>}
+        <h2 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:"clamp(20px,3vw,28px)",lineHeight:1.05,color:T.text,margin:0}}>{title}</h2>
+        {subtitle&&<p style={{fontSize:13,color:T.textMid,margin:"8px 0 0",maxWidth:640,lineHeight:1.6}}>{subtitle}</p>}
+      </div>
+      {action}
+    </div>
+  );
+}
+
+function MetricCard({value,label,accent,hint}){
+  return(
+    <div style={{padding:"14px 16px",borderRadius:18,border:`1px solid ${T.border}AA`,background:`linear-gradient(180deg,${T.bgCard},${T.bgAlt}80)`,boxShadow:"0 10px 28px rgba(32,23,14,0.05)"}}>
+      <div style={{fontSize:12,color:T.textSoft,marginBottom:6,fontWeight:700,letterSpacing:0.3}}>{label}</div>
+      <div style={{fontSize:24,fontWeight:900,color:accent||T.text,lineHeight:1.1,marginBottom:4}}>{value}</div>
+      {hint&&<div style={{fontSize:11,color:T.textSoft,lineHeight:1.4}}>{hint}</div>}
+    </div>
+  );
+}
+
+function ChapterCard({ch,locked,done,progress,compact=false,onOpen}){
+  return(
+    <button onClick={onOpen} style={{
+      position:"relative",
+      overflow:"hidden",
+      textAlign:"left",
+      borderRadius:compact?18:24,
+      border:`1px solid ${done?ch.color:T.border}`,
+      background:done?`linear-gradient(180deg,${ch.accent},${T.bgCard})`:T.bgCard,
+      boxShadow:done?`0 16px 34px ${ch.color}18`:T.shadow,
+      padding:compact?14:18,
+      cursor:locked?"not-allowed":"pointer",
+      opacity:locked?0.72:1,
+      transition:"transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease",
+    }}>
+      <div style={{position:"absolute",inset:"auto -36px -36px auto",width:110,height:110,borderRadius:"50%",background:`radial-gradient(circle,${ch.color}18,transparent 68%)`}}/>
+      <div style={{position:"relative"}}>
+        <div style={{display:"flex",justifyContent:"space-between",gap:10,alignItems:"flex-start",marginBottom:10}}>
+          <div style={{display:"flex",alignItems:"center",gap:10}}>
+            <div style={{width:compact?42:50,height:compact?42:50,borderRadius:14,display:"flex",alignItems:"center",justifyContent:"center",background:`linear-gradient(135deg,${ch.color}18,${ch.color}08)`,border:`1px solid ${ch.color}22`,fontSize:compact?20:24,flexShrink:0}}>
+              {locked?"🔒":ch.icon}
+            </div>
+            <div>
+              <div style={{fontSize:10,color:ch.color,fontWeight:800,letterSpacing:1.5,textTransform:"uppercase",marginBottom:4}}>{ch.num}</div>
+              <div style={{fontSize:compact?14:16,fontWeight:800,color:T.text,lineHeight:1.2}}>{ch.title}</div>
+            </div>
+          </div>
+          {done&&<span style={{fontSize:16}}>✅</span>}
+        </div>
+        <div style={{fontSize:compact?11:12,color:T.textMid,lineHeight:1.6,marginBottom:12}}>{ch.subtitle}</div>
+        <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:12}}>
+          <span style={{fontSize:10,padding:"5px 8px",borderRadius:99,background:`${ch.color}14`,color:ch.color,fontWeight:700}}>{ch.concepts.length} concepts</span>
+          <span style={{fontSize:10,padding:"5px 8px",borderRadius:99,background:T.bgDeep,color:T.textMid,fontWeight:700}}>{ch.quiz.length} questions</span>
+        </div>
+        <PBar value={progress} max={ch.quiz.length} color={ch.color} h={compact?4:6}/>
+      </div>
+    </button>
+  );
+}
+
 /* ── FLIP CARD ───────────────────────────────────────────────────────────── */
 function FlipCard({concept}){
   const[f,setF]=useState(false);const cc=CAT_C[concept.cat]||T.textMid;
@@ -1246,6 +1327,215 @@ function HomeScreen({scores,completed,totalXP,streak,onOpen}){
   </div>);
 }
 
+function PremiumHomeScreen({scores,completed,totalXP,streak,onOpen}){
+  const next=CHAPTERS.find(ch=>!completed.has(ch.id));
+  const inProg=CHAPTERS.filter(ch=>scores[ch.id]&&!completed.has(ch.id)).slice(0,3);
+  const completion=Math.round((completed.size/CHAPTERS.length)*100);
+  const focus=next||CHAPTERS[0];
+
+  return(
+    <div style={{display:"grid",gap:20}}>
+      <div style={{display:"grid",gridTemplateColumns:"minmax(0,1.45fr) minmax(300px,0.85fr)",gap:18,alignItems:"stretch"}}>
+        <Surface style={{padding:24,position:"relative",overflow:"hidden"}}>
+          <div style={{position:"absolute",inset:"auto -60px -90px auto",width:240,height:240,borderRadius:"50%",background:`radial-gradient(circle,${T.gold}18,transparent 68%)`}}/>
+          <div style={{position:"absolute",top:-80,left:-80,width:180,height:180,borderRadius:"50%",background:`radial-gradient(circle,${T.blue}12,transparent 70%)`}}/>
+          <div style={{position:"relative",zIndex:1,display:"grid",gap:18}}>
+            <div style={{display:"inline-flex",alignItems:"center",gap:8,width:"fit-content",padding:"6px 12px",borderRadius:99,background:T.bgDeep,color:T.textMid,fontSize:11,fontWeight:800,letterSpacing:1.2,textTransform:"uppercase"}}>
+              Premium Sanskrit Studio
+            </div>
+            <div>
+              <h1 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:"clamp(30px,5vw,48px)",lineHeight:1.02,fontWeight:900,color:T.text,margin:"0 0 10px"}}>Aṣṭādhyāyī Sahajabodha</h1>
+              <p style={{fontSize:15,lineHeight:1.8,color:T.textMid,maxWidth:720,margin:0}}>
+                A premium learning workspace for Sanskrit grammar, designed like a modern product dashboard.
+                Move through chapters, pronunciation maps, guided quizzes, and Vedic references in one flow.
+              </p>
+            </div>
+            <div style={{display:"flex",gap:12,flexWrap:"wrap"}}>
+              <button onClick={()=>onOpen(focus)} style={{padding:"12px 18px",borderRadius:14,border:"none",background:`linear-gradient(135deg,${T.gold},${T.goldLt})`,color:"#fff",fontWeight:800,fontSize:13,cursor:"pointer",boxShadow:`0 14px 28px ${T.gold}30`}}>
+                Continue learning
+              </button>
+              <button onClick={()=>onOpen(CHAPTERS[0])} style={{padding:"12px 18px",borderRadius:14,border:`1.5px solid ${T.border}`,background:T.bgCard,color:T.textMid,fontWeight:700,fontSize:13,cursor:"pointer"}}>
+                Browse chapters
+              </button>
+            </div>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(170px,1fr))",gap:12}}>
+              <MetricCard value={`${completed.size}/${CHAPTERS.length}`} label="Completed chapters" accent={T.gold} hint="Track your learning path at a glance."/>
+              <MetricCard value={`${totalXP} XP`} label="Earned points" accent={T.green} hint="Every quiz and test contributes to momentum."/>
+              <MetricCard value={`🔥 ${streak}`} label="Current streak" accent={T.saffron} hint="Build consistency through daily study."/>
+            </div>
+          </div>
+        </Surface>
+
+        <div style={{display:"grid",gap:18}}>
+          <Surface style={{padding:20}}>
+            <SectionHeader eyebrow="Next up" title={focus.title} subtitle={focus.subtitle}/>
+            <div style={{display:"flex",justifyContent:"space-between",gap:14,alignItems:"center",marginBottom:12}}>
+              <div>
+                <div style={{fontSize:11,color:T.textSoft,textTransform:"uppercase",letterSpacing:1.4,fontWeight:800,marginBottom:4}}>Module {focus.num}</div>
+                <div style={{fontSize:15,fontWeight:800,color:T.text}}>Continue from your current momentum</div>
+              </div>
+              <div style={{fontSize:28}}>{focus.icon}</div>
+            </div>
+            <PBar value={scores[focus.id]||0} max={focus.quiz.length} color={focus.color} h={8}/>
+            <div style={{display:"flex",justifyContent:"space-between",marginTop:10,fontSize:12,color:T.textSoft}}>
+              <span>{scores[focus.id]||0} / {focus.quiz.length} quiz items</span>
+              <span>{Math.round(((scores[focus.id]||0)/focus.quiz.length)*100)||0}% complete</span>
+            </div>
+            <button onClick={()=>onOpen(focus)} style={{marginTop:14,width:"100%",padding:"12px 16px",borderRadius:14,border:"none",background:T.text,color:"#fff",fontWeight:800,fontSize:13,cursor:"pointer"}}>
+              Open module
+            </button>
+          </Surface>
+
+          <Surface style={{padding:20}}>
+            <SectionHeader eyebrow="Momentum" title="Your learning dashboard" subtitle="The progress snapshot is designed for quick scanning, just like a product analytics board."/>
+            <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:12}}>
+              <MetricCard value={`${completion}%`} label="Path complete" accent={T.blue}/>
+              <MetricCard value={`${inProg.length}`} label="Active modules" accent={T.purple}/>
+              <MetricCard value={`${CHAPTERS.length-completed.size}`} label="Modules left" accent={T.orange}/>
+              <MetricCard value={`${Math.max(...Object.values(scores),0)}`} label="Best chapter score" accent={T.teal}/>
+            </div>
+          </Surface>
+        </div>
+      </div>
+
+      {inProg.length>0&&(
+        <Surface style={{padding:20}}>
+          <SectionHeader eyebrow="In progress" title="Resume where you left off" subtitle="Your partially completed chapters stay at the top for quick continuation."/>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:14}}>
+            {inProg.map(ch=>(
+              <ChapterCard key={ch.id} ch={ch} locked={false} done={false} progress={scores[ch.id]||0} compact onOpen={()=>onOpen(ch)}/>
+            ))}
+          </div>
+        </Surface>
+      )}
+
+      <Surface style={{padding:20}}>
+        <SectionHeader eyebrow="Module catalog" title="All chapters" subtitle="A clean, market-style grid makes each module easy to scan and act on."/>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:16}}>
+          {CHAPTERS.map((ch,i)=>{
+            const done=completed.has(ch.id);
+            const locked=i>0&&!completed.has(CHAPTERS[i-1].id)&&!scores[ch.id];
+            return(
+              <ChapterCard
+                key={ch.id}
+                ch={ch}
+                locked={locked}
+                done={done}
+                progress={scores[ch.id]||0}
+                onOpen={()=>!locked&&onOpen(ch)}
+              />
+            );
+          })}
+        </div>
+      </Surface>
+
+      <Surface style={{padding:"16px 18px",display:"flex",justifyContent:"space-between",gap:12,alignItems:"center",flexWrap:"wrap"}}>
+        <div style={{fontSize:13,color:T.textMid,lineHeight:1.7}}>
+          Built on <strong style={{color:T.text}}>Pushpa Dikshit</strong>'s Aṣṭādhyāyī Sahajabodha teaching method.
+        </div>
+        <a href="https://youtube.com/playlist?list=PLi40Uu5ziQ7YnTssjlmllhSyP63LC1FXs" target="_blank" rel="noopener noreferrer" style={{fontSize:13,color:T.saffron,textDecoration:"none",fontWeight:800}}>
+          Open YouTube playlist →
+        </a>
+      </Surface>
+    </div>
+  );
+}
+
+function PremiumChapterCatalog({scores,completed,onOpen}){
+  return(
+    <Surface style={{padding:20}}>
+      <SectionHeader eyebrow="Module catalog" title="All chapters" subtitle="A full inventory of the learning path, organized as premium cards for easy scanning."/>
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(260px,1fr))",gap:16}}>
+        {CHAPTERS.map((ch,i)=>{
+          const done=completed.has(ch.id);
+          const locked=i>0&&!completed.has(CHAPTERS[i-1].id)&&!scores[ch.id];
+          return(
+            <ChapterCard
+              key={ch.id}
+              ch={ch}
+              locked={locked}
+              done={done}
+              progress={scores[ch.id]||0}
+              onOpen={()=>!locked&&onOpen(ch)}
+            />
+          );
+        })}
+      </div>
+    </Surface>
+  );
+}
+
+function PremiumAppShell({nav,setNav,activeChap,setActiveChap,scores,completed,totalXP,streak,openChapter,handleScore,addXP}){
+  const navItems=[
+    {id:"home",icon:"🏠",label:"Home"},
+    {id:"chapters",icon:"📚",label:"Chapters"},
+    {id:"sounds",icon:"🔊",label:"Sounds"},
+    {id:"mindmap",icon:"🗺️",label:"Maps"},
+    {id:"progress",icon:"📈",label:"Progress"},
+    {id:"glossary",icon:"📖",label:"Glossary"},
+  ];
+  const activeScreenLabel=nav==="home"?"Home":nav==="chapter"&&activeChap?activeChap.title:navItems.find(item=>item.id===nav)?.label||"Home";
+
+  return(
+    <div style={{
+      minHeight:"100vh",
+      background:`radial-gradient(circle at top left, rgba(164,118,43,0.12), transparent 28%), radial-gradient(circle at top right, rgba(53,110,157,0.08), transparent 30%), linear-gradient(180deg,#F8F5EE 0%,#F2EBDD 100%)`,
+      color:T.text,
+      position:"relative",
+      overflow:"hidden",
+    }}>
+      <div style={{position:"fixed",inset:0,pointerEvents:"none",background:"linear-gradient(135deg, rgba(255,255,255,0.35), rgba(255,255,255,0.08))"}}/>
+      <div style={{position:"fixed",top:-120,left:-120,width:260,height:260,borderRadius:"50%",background:"radial-gradient(circle, rgba(164,118,43,0.14), transparent 70%)",pointerEvents:"none"}}/>
+      <div style={{position:"fixed",bottom:-140,right:-100,width:260,height:260,borderRadius:"50%",background:"radial-gradient(circle, rgba(53,110,157,0.12), transparent 70%)",pointerEvents:"none"}}/>
+
+      <div style={{position:"relative",zIndex:1}}>
+        <div style={{maxWidth:1240,margin:"0 auto",padding:"18px 16px 0"}}>
+          <Surface style={{padding:"14px 18px",display:"flex",justifyContent:"space-between",gap:14,alignItems:"center",flexWrap:"wrap"}}>
+            <button onClick={()=>setNav("home")} style={{display:"flex",alignItems:"center",gap:10,background:"none",border:"none",cursor:"pointer",padding:0}}>
+              <span style={{width:38,height:38,borderRadius:14,background:`linear-gradient(135deg,${T.gold},${T.goldLt})`,display:"flex",alignItems:"center",justifyContent:"center",fontSize:18,flexShrink:0,boxShadow:`0 12px 24px ${T.gold}30`}}>🕉️</span>
+              <div style={{textAlign:"left"}}>
+                <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:900,color:T.text,lineHeight:1.1}}>Aṣṭādhyāyī Sahajabodha</div>
+                <div style={{fontSize:11,color:T.textSoft}}>Premium Sanskrit learning workspace</div>
+              </div>
+            </button>
+            <div style={{display:"flex",gap:10,flexWrap:"wrap"}}>
+              <span style={{padding:"8px 12px",borderRadius:99,background:T.bgAlt,border:`1px solid ${T.border}`,fontSize:11,fontWeight:700,color:T.textMid}}>Section: {activeScreenLabel}</span>
+              <span style={{padding:"8px 12px",borderRadius:99,background:T.bgAlt,border:`1px solid ${T.border}`,fontSize:11,fontWeight:700,color:T.textMid}}>⭐ {totalXP} XP</span>
+            </div>
+          </Surface>
+        </div>
+
+        <main style={{maxWidth:1240,margin:"0 auto",padding:"18px 16px 118px"}}>
+          {nav==="home"&&<PremiumHomeScreen scores={scores} completed={completed} totalXP={totalXP} streak={streak} onOpen={openChapter}/>}
+          {nav==="chapters"&&!activeChap&&<PremiumChapterCatalog scores={scores} completed={completed} onOpen={openChapter}/>}
+          {nav==="chapter"&&activeChap&&(
+            <Surface style={{padding:0,overflow:"hidden"}}>
+              <ChapterDetail ch={activeChap} scores={scores} completed={completed} onScore={handleScore} onXP={addXP} onBack={()=>{setNav("chapters");setActiveChap(null);}}/>
+            </Surface>
+          )}
+          {nav==="sounds"&&<SoundsScreen/>}
+          {nav==="mindmap"&&<MindMapScreen/>}
+          {nav==="progress"&&<ProgressScreen scores={scores} completed={completed} totalXP={totalXP} streak={streak}/>}
+          {nav==="glossary"&&<GlossaryScreen/>}
+        </main>
+      </div>
+
+      <div style={{position:"fixed",left:0,right:0,bottom:14,pointerEvents:"none",zIndex:120}}>
+        <div style={{maxWidth:820,margin:"0 auto",padding:"0 16px"}}>
+          <Surface style={{padding:10,borderRadius:24,display:"flex",gap:8,justifyContent:"space-between",pointerEvents:"auto"}}>
+            {navItems.map(n=>(
+              <button key={n.id} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{flex:1,minWidth:0,padding:"10px 8px",border:"none",borderRadius:16,background:nav===n.id?`linear-gradient(135deg,${T.gold},${T.goldLt})`:"transparent",color:nav===n.id?"#fff":T.textSoft,fontSize:11,fontWeight:nav===n.id?800:600,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:2,transition:"all 0.18s"}}>
+                <span style={{fontSize:15}}>{n.icon}</span>
+                <span style={{fontSize:9}}>{n.label}</span>
+              </button>
+            ))}
+          </Surface>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 /* ── ROOT APP ────────────────────────────────────────────────────────────── */
 export default function App(){
   const[nav,setNav]=useState("home");
@@ -1271,6 +1561,8 @@ export default function App(){
     {id:"progress",icon:"📈", label:"Progress"},
     {id:"glossary",icon:"📖", label:"Glossary"},
   ];
+
+  return <PremiumAppShell nav={nav} setNav={setNav} activeChap={activeChap} setActiveChap={setActiveChap} scores={scores} completed={completed} totalXP={totalXP} streak={streak} openChapter={openChapter} handleScore={handleScore} addXP={addXP} />;
 
   return(<div style={{minHeight:"100vh",background:T.bg,fontFamily:"'Trebuchet MS',Verdana,sans-serif",display:"flex",flexDirection:"column"}}>
     {/* TOP NAV */}
