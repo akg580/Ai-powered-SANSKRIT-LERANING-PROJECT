@@ -1,30 +1,36 @@
-# 🕉️ Aṣṭādhyāyī Sahajabodha
-### Interactive Sanskrit Grammar Learning Platform
+# 🕉️ Aṣṭādhyāyī Sahajabodha v2
+### Interactive Sanskrit Grammar Platform with Auth & Cloud Progress Sync
 
-> Based on Pushpa Dikshit's lecture series | Pauspi Prakriyā Method  
-> 📺 Source: https://youtube.com/playlist?list=PLi40Uu5ziQ7YnTssjlmllhSyP63LC1FXs
+> Based on **Pushpa Dikshit's** lecture series | Pauspi Prakriyā Method  
+> 📺 https://youtube.com/playlist?list=PLi40Uu5ziQ7YnTssjlmllhSyP63LC1FXs
 
 ---
 
-## 🚀 Quick Start (VS Code)
-
-### Prerequisites
-- **Node.js** v18+ → https://nodejs.org
-- **VS Code** → https://code.visualstudio.com
-
-### Steps
+## 🚀 Quick Start (VS Code — 3 steps)
 
 ```bash
-# 1. Open this folder in VS Code terminal (Ctrl+` to open terminal)
+# 1. Open this folder in VS Code and open terminal (Ctrl+` / Cmd+`)
 
 # 2. Install dependencies
 npm install
 
-# 3. Start the dev server (opens browser automatically)
+# 3. Start dev server (opens http://localhost:3000 automatically)
 npm run dev
 ```
 
-The app opens at **http://localhost:3000**
+**Requires:** Node.js 18+ from https://nodejs.org
+
+---
+
+## 🔥 Firebase Setup (for Auth + Progress Sync)
+
+1. Go to https://console.firebase.google.com → **Add project**
+2. Left sidebar → **Build → Authentication → Get started → Email/Password → Enable**
+3. Left sidebar → **Build → Firestore Database → Create database → Start in test mode**
+4. Click `</>` (Web) → Register app → copy the `firebaseConfig` object
+5. Paste your config into **`src/firebase/config.js`** replacing the placeholder values
+
+Without Firebase setup the app shows an error on load. The app works fully once Firebase is configured.
 
 ---
 
@@ -32,87 +38,101 @@ The app opens at **http://localhost:3000**
 
 ```
 ashtadhyayi-sahajabodha/
-├── public/
-│   └── favicon.svg          # 🕉️ Om icon
 ├── src/
-│   ├── main.jsx             # React entry point
-│   └── App.jsx              # 🏛️ Full platform (1344 lines)
-├── index.html               # HTML shell
-├── package.json             # Dependencies
-├── vite.config.js           # Vite config
-└── README.md                # This file
+│   ├── App.jsx                        ← 🏛️ Main platform (877 lines)
+│   ├── main.jsx                       ← React entry + Provider wrappers
+│   ├── firebase/
+│   │   └── config.js                  ← ⚠️ ADD YOUR FIREBASE CONFIG HERE
+│   ├── contexts/
+│   │   ├── AuthContext.jsx            ← Signup · Login · Logout · onAuthStateChanged
+│   │   └── ProgressContext.jsx        ← Firestore sync · XP · Streak · Badges
+│   └── components/
+│       ├── AuthScreen.jsx             ← Login / Signup / Password Reset UI
+│       ├── UserAvatar.jsx             ← Top-nav user menu + stats dropdown
+│       └── LoadingScreen.jsx          ← Spinning Om loading screen
+├── public/
+│   └── favicon.svg                    ← 🕉️ Om icon
+├── index.html
+├── package.json                       ← React 18 + Firebase 10 + Vite 5
+├── vite.config.js
+├── firestore.rules                    ← Paste into Firebase Console → Firestore → Rules
+└── README.md
 ```
 
 ---
 
-## 🎓 Platform Features
+## 🎓 What's Inside
 
-### 12 Chapters covering:
+### 7 Chapters
 | # | Section | Topics |
 |---|---------|--------|
-| 1 | §1-2 | Dhātu & Pratipadika |
-| 2 | §3-8 | Varṇamātrikā — The Alphabet |
-| 3 | §12-18 | Āyogavāha & Anupūrvī |
-| 4 | §19-21 | Māheśvara Sūtras & Pratyāhāras |
-| 5 | §22-23 | Sthāna & Karaṇa |
-| 6 | §24 | Prayatna — Articulation Effort |
-| 7 | §25-33 | Savarṇa & 18 Vowel Forms |
-| 8 | §34-39 | Guṇa · Vṛddhi · Tapara · Laghu-Guru |
-| 9 | §40-58 | Morphological Saṃjñās |
-| 10 | §56-71 | Upasarga & Saṃhitā |
-| 11 | §72-85 | Lopa · Luk-Ślu-Lup · Bahulam |
-| 12 | §86-96 | Architecture of Aṣṭādhyāyī |
+| 1 | §1-2 | Dhātu & Pratipadika — Verbal Roots & Nominal Stems |
+| 2 | §3-8 | Varṇamātrikā — 9 Vowels · 33 Consonants · 5 Vargas |
+| 3 | §19-21 | Māheśvara Sūtras & Pratyāhāras — 14 Drum-Formulas · 42 Abbreviations |
+| 4 | §22-24 | Sthāna · Karaṇa · Prayatna — 8 Places · Articulation Effort |
+| 5 | §25-39 | Vowel System — 18 Forms · Guṇa · Vṛddhi · Laghu-Guru |
+| 6 | §40-71 | Morphological Operations — Sthānī · Ādeśa · Āgama · Upasarga |
+| 7 | §72-96 | Architecture — Lopa · Bahulam · 7 Sūtra Types · Laghava |
 
-### Each chapter has 6 tabs:
-- 📚 **Concepts** — All terms with sūtra references
-- 🃏 **Flashcards** — Flip cards (tap to reveal)
-- ❓ **Quiz** — 4 standard questions
-- 📋 **Test** — 3 levelled tests (Easy/Medium/Hard, 5 Qs each)
-- 📜 **Vedic** — Ṛgveda, Upaniṣad & śāstra verses with grammar connections
-- 📺 **Watch** — Link to source YouTube lectures
+### Each Chapter has 6 tabs:
+| Tab | Content |
+|-----|---------|
+| 📚 Concepts | All terms with sūtra references and examples |
+| 🃏 Flashcards | 3D flip cards (tap to reveal) |
+| ❓ Quiz | 4 standard questions with explanations |
+| 📋 Test | **3 levelled tests** — Easy 🟢 / Medium 🟡 / Hard 🔴 (5 Qs each, badges at ≥80%) |
+| 📜 Vedic | Ṛgveda · Upaniṣads · Prātiśākhya verses with IAST, translation, source links & grammar connection notes |
+| 📺 Watch | Link to source YouTube playlist |
 
-### 6 Navigation Screens:
-- 🏠 Home — Dashboard & quick access
-- 📚 Chapters — All 12 modules
-- 🔊 Pronunciation Studio — IPA, IAST, articulation guide
-- 🗺️ Mind Maps — Visual concept clusters
-- 📈 Progress — XP, streaks, per-chapter stats
-- 📖 Glossary — Searchable dictionary of all terms
-
----
-
-## 🏗️ Build for Production
-
-```bash
-npm run build
-# Output goes to /dist folder
-# Deploy to Netlify, Vercel, GitHub Pages etc.
-```
-
----
-
-## 📚 Source References
-
-| Text | Usage |
-|------|-------|
-| Pāṇini's Aṣṭādhyāyī | Primary sūtras referenced throughout |
-| Patañjali's Mahābhāṣya | Meta-commentary & philosophical notes |
-| Pāṇinīya Śikṣā | Articulation / Sthāna rules |
-| Taittirīya Upaniṣad (Śīkṣāvallī) | Phonetics foundation |
-| Ṛgveda Prātiśākhya | Duration & accent system |
-| Taittirīya Prātiśākhya | Āyogavāha treatment |
-| Ṛgveda (1.1.1, 1.164.45, 10.71.3) | Vedic grammar examples |
-| Chāndogya Upaniṣad | Sound philosophy |
+### Auth & Progress System:
+- ✅ Email/Password signup & login
+- ✅ Password strength meter + validation
+- ✅ Forgot password (email reset)
+- ✅ Progress synced to Firestore in real-time
+- ✅ XP points (15/correct quiz, 10-40/correct level test)
+- ✅ Daily streak tracking (localStorage + Firestore)
+- ✅ Level badges (Easy/Medium/Hard per chapter)
+- ✅ Debounced auto-save (1.2s after last change)
+- ✅ Cross-device sync via Firestore onSnapshot listener
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **React 18** — UI framework
-- **Vite 5** — Build tool (fast HMR)
-- **Pure CSS-in-JS** — No external CSS libraries needed
-- **Zero external dependencies** beyond React
+| Technology | Purpose |
+|-----------|---------|
+| **React 18** | UI framework |
+| **Vite 5** | Build tool (fast HMR) |
+| **Firebase Auth 10** | Email/password authentication |
+| **Firestore** | Real-time progress database |
+| **Pure CSS-in-JS** | Zero external CSS libraries |
 
 ---
 
-*ॐ पाणिनये नमः — Ohm Pannini namah*
+## 🚢 Deploy Free
+
+```bash
+npm run build      # creates /dist folder
+# → drag /dist to netlify.com/drop
+# → or deploy to Vercel, GitHub Pages, Firebase Hosting
+```
+
+---
+
+## 📚 Vedic Sources Referenced
+
+| Text | Used For |
+|------|---------|
+| Ṛgveda (1.1.1, 1.164.45, 10.71.3) | Grammar examples in Vedic context |
+| Taittirīya Upaniṣad 1.2.1 (Śīkṣāvallī) | Phonetics foundation |
+| Chāndogya Upaniṣad (2.23.4, 4.10.4) | Sound philosophy / 'अ' as Brahman |
+| Kaṭha Upaniṣad | OM / the primal syllable |
+| Pāṇinīya Śikṣā | Sthāna (place of articulation) rules |
+| Taittirīya Prātiśākhya | Āyogavāha treatment |
+| Ṛgveda Prātiśākhya | Duration system (mātrā) |
+| Mahābhāṣya — Patañjali | Lopa philosophy, grammar's purpose |
+| Aṣṭādhyāyī sūtras | Direct sūtra references throughout |
+
+---
+
+*ॐ पाणिनये नमः — May Pāṇini illuminate our path*

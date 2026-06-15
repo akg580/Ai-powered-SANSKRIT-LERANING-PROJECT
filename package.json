@@ -1,17 +1,29 @@
 {
   "name": "ashtadhyayi-sahajabodha",
+  "version": "2.0.0",
   "private": true,
-  "version": "1.0.0",
-  "description": "Ashtadhyayi Sahajabodha — Interactive Sanskrit Grammar Learning Platform",
+  "description": "Ashtadhyayi Sahajabodha — Interactive Sanskrit Grammar with Auth & Progress Sync",
+  "homepage": "https://github.com/akg580/Ai-powered-SANSKRIT-LERANING-PROJECT#readme",
+  "bugs": {
+    "url": "https://github.com/akg580/Ai-powered-SANSKRIT-LERANING-PROJECT/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akg580/Ai-powered-SANSKRIT-LERANING-PROJECT.git"
+  },
+  "license": "ISC",
+  "author": "",
   "type": "module",
+  "main": "vite.config.js",
   "scripts": {
-    "dev": "npm run build && node server.js",
+    "dev": "vite",
     "build": "vite build",
-    "preview": "node server.js"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "firebase": "^10.7.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
