@@ -55,7 +55,9 @@ export function ProgressProvider({ children }) {
     }
 
     // Real-time listener — updates UI instantly if changed from another device
-    const unsub = onSnapshot(progressRef(user.uid), (snap) => {
+    const unsub = onSnapshot(
+      progressRef(user.uid),
+      (snap) => {
       if (snap.exists()) {
         const d = snap.data();
         setScores(d.scores      || {});
@@ -69,8 +71,12 @@ export function ProgressProvider({ children }) {
           ...DEFAULT,
           createdAt: serverTimestamp(),
           updatedAt: serverTimestamp(),
-        });
+        }).catch((err) => console.error("Progress init failed:", err));
       }
+      setLoaded(true);
+    },
+    (err) => {
+      console.error("Progress load failed:", err);
       setLoaded(true);
     });
 

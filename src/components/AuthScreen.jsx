@@ -52,22 +52,34 @@ function Input({ label, type="text", value, onChange, placeholder, icon, error }
   );
 }
 
-function Btn({ children, onClick, loading, variant = "primary", style: sx = {} }) {
+function Btn({ children, onClick, loading, disabled = false, variant = "primary", style: sx = {} }) {
   const isPrimary = variant === "primary";
+  const isDisabled = loading || disabled;
   return (
-    <button onClick={onClick} disabled={loading}
+    <button onClick={onClick} disabled={isDisabled} type={onClick ? "button" : "submit"}
       style={{
         width: "100%", padding: "13px", borderRadius: 12,
         background: isPrimary ? `linear-gradient(135deg,${T.gold},${T.goldLt})` : "transparent",
         border: isPrimary ? "none" : `1.5px solid ${T.border}`,
         color: isPrimary ? "#fff" : T.textMid,
-        fontWeight: 700, fontSize: 15, cursor: loading ? "not-allowed" : "pointer",
-        opacity: loading ? 0.7 : 1,
+        fontWeight: 700, fontSize: 15, cursor: isDisabled ? "not-allowed" : "pointer",
+        opacity: isDisabled ? 0.7 : 1,
         boxShadow: isPrimary ? `0 4px 16px ${T.gold}40` : "none",
         transition: "all 0.2s", ...sx,
       }}>
       {loading ? "⏳ Please wait…" : children}
     </button>
+  );
+}
+
+function GoogleIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+      <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z" />
+      <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.1 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z" />
+      <path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z" />
+      <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.2 5.2C36.9 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z" />
+    </svg>
   );
 }
 
@@ -122,7 +134,7 @@ function SanskritQuote() {
 
 // ── MAIN AUTH SCREEN ───────────────────────────────────────────────────────
 export default function AuthScreen() {
-  const { login, signup, resetPassword, error, setError } = useAuth();
+  const { login, signup, loginWithGoogle, resetPassword, error, setError, isFirebaseConfigured } = useAuth();
   const [mode,     setMode]     = useState("login");   // login | signup | reset
   const [loading,  setLoading]  = useState(false);
   const [success,  setSuccess]  = useState("");
@@ -180,6 +192,14 @@ export default function AuthScreen() {
     }
   }
 
+  async function handleGoogleLogin() {
+    clearAll();
+    setLoading(true);
+    try { await loginWithGoogle(); }
+    catch (err) { setError(friendlyError(err.code)); }
+    finally { setLoading(false); }
+  }
+
   // ── Render ─────────────────────────────────────────────────────────────
   return (
     <div style={{ minHeight: "100vh", background: `linear-gradient(160deg, #FDF6E3, #F0E6C8 50%, #FDF6E3)`,
@@ -228,6 +248,11 @@ export default function AuthScreen() {
           )}
 
           {/* Global error / success */}
+          {!isFirebaseConfigured && (
+            <div style={{ background: "#FFF4D8", border: "1px solid #E8C97A", borderRadius: 10, padding: "10px 14px", marginBottom: 16, fontSize: 13, color: T.textMid, lineHeight: 1.5 }}>
+              Firebase config is still using placeholder values. Add your Firebase web app keys in src/firebase/config.js or Vite env vars, then restart the dev server.
+            </div>
+          )}
           {error && (
             <div style={{ background: "#FDE8E8", border: "1px solid #f5c2c2", borderRadius: 10, padding: "10px 14px", marginBottom: 16, fontSize: 13, color: T.red }}>
               ⚠ {error}
@@ -259,12 +284,41 @@ export default function AuthScreen() {
                 placeholder="Re-enter password" icon="🔒" error={errs.confirm}/>
             )}
 
-            <Btn loading={loading}>
+            <Btn loading={loading} disabled={!isFirebaseConfigured}>
               {mode === "login"  ? "🚀 Sign In & Continue Learning" :
                mode === "signup" ? "✨ Create My Account" :
                                    "📧 Send Reset Link"}
             </Btn>
           </form>
+
+          {mode !== "reset" && (
+            <>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, margin: "18px 0" }}>
+                <div style={{ flex: 1, height: 1, background: T.border }} />
+                <span style={{ fontSize: 11, color: T.textSoft, fontWeight: 700 }}>OR</span>
+                <div style={{ flex: 1, height: 1, background: T.border }} />
+              </div>
+              <Btn
+                loading={loading}
+                disabled={!isFirebaseConfigured}
+                variant="secondary"
+                onClick={handleGoogleLogin}
+                style={{
+                  background: "#fff",
+                  border: "1.5px solid #DADCE0",
+                  color: "#3C4043",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: 10,
+                  boxShadow: "0 1px 3px rgba(60,64,67,0.16)",
+                }}
+              >
+                <GoogleIcon />
+                Continue with Google
+              </Btn>
+            </>
+          )}
 
           {/* Forgot password */}
           {mode === "login" && (
@@ -307,6 +361,16 @@ function friendlyError(code) {
     "auth/invalid-email":        "Invalid email address.",
     "auth/too-many-requests":    "Too many attempts. Please wait a few minutes.",
     "auth/network-request-failed": "Network error. Check your connection.",
+    "auth/invalid-api-key":      "Your Firebase API key is missing or invalid.",
+    "auth/app-not-authorized":   "This app is not authorized for your Firebase project.",
+    "auth/operation-not-allowed": "Enable Google sign-in in Firebase Authentication providers.",
+    "auth/account-exists-with-different-credential": "This email already uses another sign-in method.",
+    "auth/popup-closed-by-user":  "Google sign-in was closed before it finished.",
+    "auth/cancelled-popup-request": "Another Google sign-in popup is already open.",
+    "auth/popup-blocked":         "Your browser blocked the Google sign-in popup.",
+    "auth/unauthorized-domain":   "Add this app domain in Firebase Authentication settings.",
+    "auth/redirect-failed":       "Google redirect sign-in failed. Please try again.",
+    "app/firebase-not-configured": "Firebase config is missing. Add your project config before signing in.",
   };
   return map[code] || "Something went wrong. Please try again.";
 }

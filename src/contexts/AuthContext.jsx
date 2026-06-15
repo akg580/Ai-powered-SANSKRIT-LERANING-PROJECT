@@ -1,85 +1,154 @@
-// src/contexts/AuthContext.jsx
-import { createContext, useContext, useState, useEffect } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signOut,
+  getRedirectResult,
+  GoogleAuthProvider,
   onAuthStateChanged,
-  updateProfile,
   sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signInWithRedirect,
+  signOut,
+  updateProfile,
 } from "firebase/auth";
-import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
-import { auth, db } from "../firebase/config";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import { auth, db, isFirebaseConfigured } from "../firebase/config";
 
 const AuthContext = createContext(null);
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
 export function useAuth() {
   return useContext(AuthContext);
 }
 
-export function AuthProvider({ children }) {
-  const [user,        setUser]        = useState(null);   // Firebase user object
-  const [userProfile, setUserProfile] = useState(null);   // Firestore profile doc
-  const [loading,     setLoading]     = useState(true);   // initial auth check
-  const [error,       setError]       = useState("");
+function pickColor(uid) {
+  const colors = [
+    "#B8860B", "#4A7C59", "#C8503A", "#3B6B9A",
+    "#7B4F8A", "#2A7F7F", "#C8703A", "#9B4A6A",
+  ];
+  return colors[uid.charCodeAt(0) % colors.length];
+}
 
-  // ── Sign Up ────────────────────────────────────────────────────────────────
+function assertFirebaseConfigured() {
+  if (isFirebaseConfigured) return;
+  const err = new Error("Firebase is not configured.");
+  err.code = "app/firebase-not-configured";
+  throw err;
+}
+
+function googleShouldUseRedirect(err) {
+  return [
+    "auth/popup-blocked",
+    "auth/cancelled-popup-request",
+    "auth/operation-not-supported-in-this-environment",
+  ].includes(err?.code);
+}
+
+export function AuthProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [userProfile, setUserProfile] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  async function syncUserProfile(firebaseUser) {
+    const fallbackProfile = {
+      uid: firebaseUser.uid,
+      email: firebaseUser.email?.toLowerCase() || "",
+      displayName: firebaseUser.displayName || "Sanskrit Learner",
+      avatarColor: pickColor(firebaseUser.uid),
+    };
+
+    setUserProfile(fallbackProfile);
+
+    try {
+      const profileRef = doc(db, "users", firebaseUser.uid);
+      const profileSnap = await getDoc(profileRef);
+      const profileData = {
+        ...fallbackProfile,
+        lastLoginAt: serverTimestamp(),
+      };
+
+      if (profileSnap.exists()) {
+        await setDoc(profileRef, { lastLoginAt: serverTimestamp() }, { merge: true });
+        setUserProfile({ ...fallbackProfile, ...profileSnap.data() });
+      } else {
+        await setDoc(profileRef, { ...profileData, createdAt: serverTimestamp() });
+        setUserProfile(profileData);
+      }
+    } catch (err) {
+      console.error("Profile sync failed:", err);
+    }
+
+    return firebaseUser;
+  }
+
   async function signup(email, password, displayName) {
+    assertFirebaseConfigured();
     setError("");
     const cred = await createUserWithEmailAndPassword(auth, email, password);
-    // Set display name on the Firebase Auth user
     await updateProfile(cred.user, { displayName });
-    // Create Firestore profile document
-    const profileData = {
-      uid:         cred.user.uid,
-      email:       email.toLowerCase(),
-      displayName,
-      createdAt:   serverTimestamp(),
-      lastLoginAt: serverTimestamp(),
-      avatarColor: pickColor(cred.user.uid),
-    };
-    await setDoc(doc(db, "users", cred.user.uid), profileData);
-    setUserProfile(profileData);
+    await syncUserProfile(cred.user);
     return cred.user;
   }
 
-  // ── Login ──────────────────────────────────────────────────────────────────
   async function login(email, password) {
+    assertFirebaseConfigured();
     setError("");
     const cred = await signInWithEmailAndPassword(auth, email, password);
-    // Update lastLoginAt
-    await setDoc(
-      doc(db, "users", cred.user.uid),
-      { lastLoginAt: serverTimestamp() },
-      { merge: true }
-    );
+    await syncUserProfile(cred.user);
     return cred.user;
   }
 
-  // ── Logout ─────────────────────────────────────────────────────────────────
+  async function loginWithGoogle() {
+    assertFirebaseConfigured();
+    setError("");
+
+    try {
+      const cred = await signInWithPopup(auth, googleProvider);
+      return syncUserProfile(cred.user);
+    } catch (err) {
+      if (googleShouldUseRedirect(err)) {
+        await signInWithRedirect(auth, googleProvider);
+        return null;
+      }
+      throw err;
+    }
+  }
+
   async function logout() {
     setError("");
     await signOut(auth);
     setUserProfile(null);
   }
 
-  // ── Password Reset ─────────────────────────────────────────────────────────
   async function resetPassword(email) {
+    assertFirebaseConfigured();
     setError("");
     await sendPasswordResetEmail(auth, email);
   }
 
-  // ── Listen for auth state changes ─────────────────────────────────────────
   useEffect(() => {
+    if (!isFirebaseConfigured) {
+      setUser(null);
+      setUserProfile(null);
+      setLoading(false);
+      return undefined;
+    }
+
+    getRedirectResult(auth)
+      .then((result) => {
+        if (result?.user) syncUserProfile(result.user);
+      })
+      .catch((err) => setError(err.code || "auth/redirect-failed"));
+
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       setUser(firebaseUser);
-      if (firebaseUser) {
-        // Fetch Firestore profile
-        const snap = await getDoc(doc(db, "users", firebaseUser.uid));
-        if (snap.exists()) setUserProfile(snap.data());
-      }
+      if (firebaseUser) await syncUserProfile(firebaseUser);
+      else setUserProfile(null);
       setLoading(false);
     });
+
     return unsub;
   }, []);
 
@@ -91,23 +160,11 @@ export function AuthProvider({ children }) {
     setError,
     signup,
     login,
+    loginWithGoogle,
     logout,
     resetPassword,
+    isFirebaseConfigured,
   };
 
-  return (
-    <AuthContext.Provider value={value}>
-      {children}
-    </AuthContext.Provider>
-  );
-}
-
-// ── Helpers ────────────────────────────────────────────────────────────────
-const AVATAR_COLORS = [
-  "#B8860B","#4A7C59","#C8503A","#3B6B9A",
-  "#7B4F8A","#2A7F7F","#C8703A","#9B4A6A",
-];
-function pickColor(uid) {
-  const idx = uid.charCodeAt(0) % AVATAR_COLORS.length;
-  return AVATAR_COLORS[idx];
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
