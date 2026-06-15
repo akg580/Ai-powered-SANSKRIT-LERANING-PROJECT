@@ -1,7 +1,7 @@
 // src/components/LoadingScreen.jsx
 export default function LoadingScreen({ message = "Loading…" }) {
   return (
-    <div style={{
+    <div className="loading-screen" style={{
       minHeight: "100vh",
       background: "linear-gradient(160deg,#FDF6E3,#F0E6C8 50%,#FDF6E3)",
       display: "flex", flexDirection: "column",
@@ -9,7 +9,7 @@ export default function LoadingScreen({ message = "Loading…" }) {
       fontFamily: "'Trebuchet MS',Verdana,sans-serif",
     }}>
       {/* Spinning Om */}
-      <div style={{
+      <div className="loading-mark" style={{
         width: 70, height: 70, borderRadius: "50%",
         background: "linear-gradient(135deg,#B8860B,#D4A843)",
         display: "flex", alignItems: "center", justifyContent: "center",

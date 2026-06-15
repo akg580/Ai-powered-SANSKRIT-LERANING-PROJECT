@@ -1,0 +1,337 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,650;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;600;700&display=swap");
+
+:root {
+  --ink: #18213a;
+  --ink-muted: #566078;
+  --ink-soft: #7b8498;
+  --canvas: #f6f4ff;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-solid: #ffffff;
+  --surface-tint: #eef7ff;
+  --line: rgba(37, 48, 84, 0.12);
+  --line-strong: rgba(37, 48, 84, 0.22);
+  --primary: #5b5ee9;
+  --primary-dark: #3338ba;
+  --cyan: #06b6d4;
+  --mint: #18a999;
+  --coral: #ff6b6b;
+  --mango: #f59e0b;
+  --violet: #8b5cf6;
+  --rose: #ec4899;
+  --shadow: 0 18px 45px rgba(37, 48, 84, 0.14);
+  --shadow-soft: 0 8px 24px rgba(37, 48, 84, 0.1);
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ink);
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", Inter, system-ui, sans-serif;
+  background:
+    linear-gradient(120deg, rgba(91, 94, 233, 0.1), transparent 34%),
+    linear-gradient(240deg, rgba(6, 182, 212, 0.12), transparent 42%),
+    linear-gradient(180deg, #fbfbff 0%, #f4f7ff 52%, #fff7f2 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(37, 48, 84, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37, 48, 84, 0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), transparent 75%);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.app-shell,
+.auth-screen,
+.loading-screen {
+  color: var(--ink) !important;
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", Inter, system-ui, sans-serif !important;
+  background:
+    linear-gradient(120deg, rgba(91, 94, 233, 0.1), transparent 34%),
+    linear-gradient(240deg, rgba(6, 182, 212, 0.12), transparent 42%),
+    linear-gradient(180deg, #fbfbff 0%, #f4f7ff 52%, #fff7f2 100%) !important;
+}
+
+.app-shell main {
+  background: transparent !important;
+}
+
+.top-nav {
+  height: 64px !important;
+  padding: 0 18px !important;
+  background: rgba(255, 255, 255, 0.78) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 10px 30px rgba(37, 48, 84, 0.08) !important;
+  backdrop-filter: blur(18px);
+}
+
+.bottom-nav {
+  background: rgba(255, 255, 255, 0.82) !important;
+  border-top: 1px solid var(--line) !important;
+  box-shadow: 0 -12px 32px rgba(37, 48, 84, 0.1) !important;
+  backdrop-filter: blur(18px);
+}
+
+.quick-nav-strip {
+  background: rgba(255, 255, 255, 0.76) !important;
+  border-bottom: 1px solid var(--line) !important;
+  box-shadow: 0 10px 26px rgba(37, 48, 84, 0.06) !important;
+  backdrop-filter: blur(16px);
+  scrollbar-width: none;
+}
+
+.quick-nav-strip::-webkit-scrollbar {
+  display: none;
+}
+
+.app-shell button,
+.auth-screen button,
+.avatar-menu button {
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", Inter, system-ui, sans-serif !important;
+  border-radius: 10px !important;
+}
+
+.app-shell button:not(:disabled),
+.auth-screen button:not(:disabled),
+.avatar-menu button:not(:disabled) {
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease !important;
+}
+
+.app-shell button:not(:disabled):hover,
+.auth-screen button:not(:disabled):hover,
+.avatar-menu button:not(:disabled):hover {
+  transform: translateY(-1px);
+}
+
+.app-shell button:not(:disabled):active,
+.auth-screen button:not(:disabled):active,
+.avatar-menu button:not(:disabled):active {
+  transform: translateY(0);
+}
+
+.app-shell input,
+.auth-screen input {
+  min-height: 46px;
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", Inter, system-ui, sans-serif !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid var(--line-strong) !important;
+  border-radius: 10px !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.app-shell input:focus,
+.auth-screen input:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 4px rgba(91, 94, 233, 0.14) !important;
+}
+
+.auth-card,
+.avatar-menu {
+  background: var(--surface) !important;
+  border: 1px solid var(--line) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow) !important;
+  backdrop-filter: blur(18px);
+}
+
+.auth-logo,
+.loading-mark {
+  background: linear-gradient(135deg, var(--primary), var(--cyan)) !important;
+  box-shadow: 0 18px 40px rgba(91, 94, 233, 0.28) !important;
+}
+
+.app-shell [style*="Palatino Linotype"],
+.auth-screen [style*="Palatino Linotype"],
+.loading-screen [style*="Palatino Linotype"],
+.avatar-menu [style*="Palatino Linotype"],
+h1,
+h2,
+h3 {
+  font-family: "Fraunces", "Noto Sans Devanagari", Georgia, serif !important;
+  letter-spacing: 0 !important;
+}
+
+.app-shell [style*="Trebuchet MS"],
+.auth-screen [style*="Trebuchet MS"],
+.loading-screen [style*="Trebuchet MS"],
+.avatar-menu [style*="Trebuchet MS"] {
+  font-family: "Plus Jakarta Sans", "Noto Sans Devanagari", Inter, system-ui, sans-serif !important;
+}
+
+.app-shell [style*="borderRadius:14"],
+.app-shell [style*="borderRadius: 14"],
+.app-shell [style*="borderRadius:12"],
+.app-shell [style*="borderRadius: 12"],
+.app-shell [style*="border-radius: 14"],
+.app-shell [style*="border-radius: 12"],
+.auth-screen [style*="borderRadius:18"],
+.auth-screen [style*="borderRadius: 18"],
+.auth-screen [style*="borderRadius:14"],
+.auth-screen [style*="borderRadius: 14"],
+.avatar-menu [style*="borderRadius:14"],
+.avatar-menu [style*="borderRadius: 14"] {
+  border-radius: var(--radius) !important;
+}
+
+.app-shell [style*="#FFFDF7"],
+.auth-screen [style*="#FFFDF7"],
+.avatar-menu [style*="#FFFDF7"],
+.app-shell [style*="rgb(255, 253, 247)"],
+.auth-screen [style*="rgb(255, 253, 247)"],
+.avatar-menu [style*="rgb(255, 253, 247)"] {
+  background-color: var(--surface-solid) !important;
+}
+
+.app-shell [style*="#F3EDD8"],
+.auth-screen [style*="#F3EDD8"],
+.avatar-menu [style*="#F3EDD8"],
+.app-shell [style*="rgb(243, 237, 216)"],
+.auth-screen [style*="rgb(243, 237, 216)"],
+.avatar-menu [style*="rgb(243, 237, 216)"] {
+  background-color: var(--surface-tint) !important;
+}
+
+.app-shell [style*="#FAF6EF"],
+.auth-screen [style*="#FAF6EF"],
+.loading-screen [style*="#FAF6EF"],
+.app-shell [style*="rgb(250, 246, 239)"],
+.auth-screen [style*="rgb(250, 246, 239)"],
+.loading-screen [style*="rgb(250, 246, 239)"] {
+  background-color: transparent !important;
+}
+
+.app-shell [style*="#E2D5B5"],
+.auth-screen [style*="#E2D5B5"],
+.avatar-menu [style*="#E2D5B5"],
+.app-shell [style*="rgb(226, 213, 181)"],
+.auth-screen [style*="rgb(226, 213, 181)"],
+.avatar-menu [style*="rgb(226, 213, 181)"] {
+  border-color: var(--line) !important;
+}
+
+.app-shell [style*="box-shadow"],
+.auth-screen [style*="box-shadow"],
+.avatar-menu [style*="box-shadow"] {
+  box-shadow: var(--shadow-soft) !important;
+}
+
+.app-shell [style*="#2C1A0E"],
+.auth-screen [style*="#2C1A0E"],
+.loading-screen [style*="#2C1A0E"],
+.avatar-menu [style*="#2C1A0E"],
+.app-shell [style*="rgb(44, 26, 14)"],
+.auth-screen [style*="rgb(44, 26, 14)"],
+.loading-screen [style*="rgb(44, 26, 14)"],
+.avatar-menu [style*="rgb(44, 26, 14)"] {
+  color: var(--ink) !important;
+}
+
+.app-shell [style*="#6B4F2A"],
+.auth-screen [style*="#6B4F2A"],
+.avatar-menu [style*="#6B4F2A"],
+.app-shell [style*="rgb(107, 79, 42)"],
+.auth-screen [style*="rgb(107, 79, 42)"],
+.avatar-menu [style*="rgb(107, 79, 42)"] {
+  color: var(--ink-muted) !important;
+}
+
+.app-shell [style*="#A08850"],
+.auth-screen [style*="#A08850"],
+.loading-screen [style*="#A08850"],
+.avatar-menu [style*="#A08850"],
+.app-shell [style*="rgb(160, 136, 80)"],
+.auth-screen [style*="rgb(160, 136, 80)"],
+.loading-screen [style*="rgb(160, 136, 80)"],
+.avatar-menu [style*="rgb(160, 136, 80)"] {
+  color: var(--ink-soft) !important;
+}
+
+.app-shell [style*="linear-gradient(135deg,#B8860B,#D4A843)"],
+.auth-screen [style*="linear-gradient(135deg,#B8860B,#D4A843)"],
+.loading-screen [style*="linear-gradient(135deg,#B8860B,#D4A843)"],
+.app-shell [style*="linear-gradient(135deg, #B8860B, #D4A843)"],
+.auth-screen [style*="linear-gradient(135deg, #B8860B, #D4A843)"],
+.loading-screen [style*="linear-gradient(135deg, #B8860B, #D4A843)"] {
+  background: linear-gradient(135deg, var(--primary), var(--cyan)) !important;
+}
+
+.app-shell [style*="#B8860B"],
+.auth-screen [style*="#B8860B"],
+.loading-screen [style*="#B8860B"],
+.avatar-menu [style*="#B8860B"],
+.app-shell [style*="rgb(184, 134, 11)"],
+.auth-screen [style*="rgb(184, 134, 11)"],
+.loading-screen [style*="rgb(184, 134, 11)"],
+.avatar-menu [style*="rgb(184, 134, 11)"] {
+  color: var(--primary) !important;
+}
+
+.app-shell a {
+  color: var(--primary-dark) !important;
+}
+
+.app-shell h1,
+.app-shell h2,
+.auth-screen h1,
+.auth-screen h2 {
+  text-wrap: balance;
+}
+
+.app-shell [style*="gridTemplateColumns:\"repeat(4,1fr)"],
+.app-shell [style*="grid-template-columns: repeat(4, 1fr)"] {
+  gap: 10px !important;
+}
+
+@media (min-width: 760px) {
+  .app-shell main > div > div[style*="maxWidth:680"],
+  .app-shell main > div > div[style*="max-width: 680"] {
+    max-width: 1040px !important;
+  }
+
+  .auth-screen {
+    padding: 36px !important;
+  }
+
+  .bottom-nav {
+    display: none !important;
+  }
+}
+
+@media (max-width: 520px) {
+  .top-nav {
+    height: 58px !important;
+    padding: 0 12px !important;
+  }
+
+  .quick-nav-strip {
+    top: 58px !important;
+  }
+
+  .auth-card {
+    padding: 22px 18px !important;
+  }
+
+  .app-shell [style*="gridTemplateColumns:\"repeat(4,1fr)"],
+  .app-shell [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}

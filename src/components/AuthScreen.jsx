@@ -3,12 +3,12 @@ import { useState } from "react";
 import { useAuth } from "../contexts/AuthContext";
 
 const T = {
-  bg:"#FAF6EF", bgCard:"#FFFDF7", bgAlt:"#F3EDD8",
-  border:"#E2D5B5", borderDk:"#C9B98A",
-  text:"#2C1A0E", textMid:"#6B4F2A", textSoft:"#A08850",
-  gold:"#B8860B", goldLt:"#D4A843", saffron:"#C8503A",
-  green:"#4A7C59", blue:"#3B6B9A", red:"#C8503A",
-  shadow:"0 4px 24px rgba(44,26,14,0.12)",
+  bg:"#F6F4FF", bgCard:"#FFFFFF", bgAlt:"#EEF7FF",
+  border:"#D9E0F2", borderDk:"#B9C4E2",
+  text:"#18213A", textMid:"#566078", textSoft:"#7B8498",
+  gold:"#5B5EE9", goldLt:"#06B6D4", saffron:"#FF6B6B",
+  green:"#18A999", blue:"#2563EB", red:"#FF6B6B",
+  shadow:"0 18px 45px rgba(37,48,84,0.14)",
 };
 
 // ── Small reusable pieces ──────────────────────────────────────────────────
@@ -202,13 +202,13 @@ export default function AuthScreen() {
 
   // ── Render ─────────────────────────────────────────────────────────────
   return (
-    <div style={{ minHeight: "100vh", background: `linear-gradient(160deg, #FDF6E3, #F0E6C8 50%, #FDF6E3)`,
+    <div className="auth-screen" style={{ minHeight: "100vh", background: `linear-gradient(160deg, #FDF6E3, #F0E6C8 50%, #FDF6E3)`,
       display: "flex", alignItems: "center", justifyContent: "center", padding: "20px", fontFamily: "'Trebuchet MS',Verdana,sans-serif" }}>
 
       <div style={{ width: "100%", maxWidth: 420 }}>
         {/* Logo */}
         <div style={{ textAlign: "center", marginBottom: 24 }}>
-          <div style={{ display: "inline-flex", width: 68, height: 68, borderRadius: "50%",
+          <div className="auth-logo" style={{ display: "inline-flex", width: 68, height: 68, borderRadius: "50%",
             background: `linear-gradient(135deg,${T.gold},${T.goldLt})`,
             alignItems: "center", justifyContent: "center", fontSize: 32,
             boxShadow: `0 8px 28px ${T.gold}50`, marginBottom: 12 }}>🕉️</div>
@@ -219,7 +219,7 @@ export default function AuthScreen() {
         </div>
 
         {/* Card */}
-        <div style={{ background: T.bgCard, borderRadius: 18, padding: "28px 28px 24px",
+        <div className="auth-card" style={{ background: T.bgCard, borderRadius: 18, padding: "28px 28px 24px",
           border: `1px solid ${T.border}`, boxShadow: T.shadow }}>
 
           {/* Tabs */}
@@ -333,7 +333,7 @@ export default function AuthScreen() {
           {mode === "signup" && (
             <div style={{ marginTop: 18, padding: "12px 14px", background: T.bgAlt, borderRadius: 10, border: `1px solid ${T.border}` }}>
               <div style={{ fontSize: 12, fontWeight: 700, color: T.textMid, marginBottom: 6 }}>What you get:</div>
-              {["Progress saved across all devices","XP points & chapter badges","Streak tracking & leaderboard","12 chapters + 180 test questions"].map((f, i) => (
+              {["Progress saved across all devices","XP points & chapter badges","Streak tracking & leaderboard","7 chapters + focused test questions"].map((f, i) => (
                 <div key={i} style={{ fontSize: 12, color: T.textMid, marginBottom: 3 }}>✅ {f}</div>
               ))}
             </div>

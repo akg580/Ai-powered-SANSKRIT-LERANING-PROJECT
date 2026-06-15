@@ -4,10 +4,10 @@ import { useAuth }     from "../contexts/AuthContext";
 import { useProgress } from "../contexts/ProgressContext";
 
 const T = {
-  bg:"#FAF6EF", bgCard:"#FFFDF7", bgAlt:"#F3EDD8",
-  border:"#E2D5B5", text:"#2C1A0E", textMid:"#6B4F2A",
-  textSoft:"#A08850", gold:"#B8860B", green:"#4A7C59",
-  saffron:"#C8503A", shadow:"0 4px 18px rgba(44,26,14,0.14)",
+  bg:"#F6F4FF", bgCard:"#FFFFFF", bgAlt:"#EEF7FF",
+  border:"#D9E0F2", text:"#18213A", textMid:"#566078",
+  textSoft:"#7B8498", gold:"#5B5EE9", green:"#18A999",
+  saffron:"#FF6B6B", shadow:"0 18px 45px rgba(37,48,84,0.14)",
 };
 
 export default function UserAvatar() {
@@ -28,7 +28,7 @@ export default function UserAvatar() {
   const initials  = (userProfile?.displayName || user.email || "U").slice(0, 2).toUpperCase();
   const avatarBg  = userProfile?.avatarColor || T.gold;
   const name      = userProfile?.displayName || user.email;
-  const totalChaps = 12;
+  const totalChaps = 7;
 
   return (
     <div ref={ref} style={{ position: "relative", flexShrink: 0 }}>
@@ -57,7 +57,7 @@ export default function UserAvatar() {
 
       {/* Dropdown panel */}
       {open && (
-        <div style={{
+        <div className="avatar-menu" style={{
           position: "absolute", top: 42, right: 0, zIndex: 999,
           width: 240, background: T.bgCard, borderRadius: 14,
           border: `1px solid ${T.border}`, boxShadow: T.shadow,

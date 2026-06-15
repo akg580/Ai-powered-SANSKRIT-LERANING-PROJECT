@@ -7,78 +7,81 @@ import LoadingScreen   from "./components/LoadingScreen.jsx";
 import UserAvatar      from "./components/UserAvatar.jsx";
 
 const T={
-  bg:"#FAF6EF",bgCard:"#FFFDF7",bgAlt:"#F3EDD8",bgDeep:"#EDE3C8",
-  border:"#E2D5B5",borderDk:"#C9B98A",
-  text:"#2C1A0E",textMid:"#6B4F2A",textSoft:"#A08850",
-  gold:"#B8860B",goldLt:"#D4A843",saffron:"#C8503A",green:"#4A7C59",
-  blue:"#3B6B9A",teal:"#2A7F7F",purple:"#7B4F8A",orange:"#C8703A",
-  pink:"#9B4A6A",olive:"#6B7A3A",slate:"#5A6E8A",
-  shadow:"0 2px 12px rgba(44,26,14,0.10)",
+  bg:"#F6F4FF",bgCard:"#FFFFFF",bgAlt:"#EEF7FF",bgDeep:"#E6EEFF",
+  border:"#D9E0F2",borderDk:"#B9C4E2",
+  text:"#18213A",textMid:"#566078",textSoft:"#7B8498",
+  gold:"#5B5EE9",goldLt:"#06B6D4",saffron:"#FF6B6B",green:"#18A999",
+  blue:"#2563EB",teal:"#0891B2",purple:"#8B5CF6",orange:"#F59E0B",
+  pink:"#EC4899",olive:"#65A30D",slate:"#64748B",
+  shadow:"0 8px 24px rgba(37,48,84,0.10)",
 };
 const CC={
   grammar:T.green,phonetics:T.blue,varga:T.orange,special:T.purple,
-  core:T.saffron,sutra:T.gold,pratyahara:T.teal,articulation:"#8B5E3C",
-  sthana:"#9B6B30",effort:"#607080",duration:T.teal,tone:"#7B50A0",
+  core:T.saffron,sutra:T.gold,pratyahara:T.teal,articulation:"#C2410C",
+  sthana:"#D97706",effort:"#475569",duration:T.teal,tone:"#7C3AED",
   nasality:T.pink,samjna:T.gold,meter:"#3A8050",position:T.blue,
   operation:T.saffron,agama:T.green,upasarga:T.orange,morphology:T.purple,
   process:T.blue,architecture:T.slate,vedic:T.purple,philosophy:T.textMid,
-  history:"#8B5A30",rule:T.olive,precision:T.saffron,shorthand:T.teal,
+  history:"#BE123C",rule:T.olive,precision:T.saffron,shorthand:T.teal,
   theory:T.slate,method:T.teal,classification:T.orange,conflict:T.saffron,
   sutratype:T.gold,optionality:T.green,
 };
 
 const CHAPTERS=[
-  {id:1,num:"§1-2",title:"Dhātu & Pratipadika",subtitle:"Verbal Roots & Nominal Stems",icon:"🌱",color:"#4A7C59",accent:"#EDF5EF",
+  {id:1,num:"Saṃjñā",title:"Saṃjñā Prakaraṇa",subtitle:"Technical Names, Markers & Operating Labels",icon:"🏷️",color:"#18A999",accent:"#E7FBF7",
    concepts:[
-    {term:"धातु (Dhātu)",meaning:"Words denoting action. Sūtra 1.3.1: भुवादयो धातवः",example:"भू·पठ्·लिख्·गम्·हस्",cat:"grammar",sutra:"1.3.1"},
-    {term:"औपदेशिक धातु",meaning:"1,930 original roots in Dhātupāṭha, 10 Gaṇas",example:"Gaṇa 1→भवति · Gaṇa 6→पठति · Gaṇa 10→चोरयति",cat:"grammar",sutra:""},
-    {term:"सनाद्यन्त धातु (3.1.32)",meaning:"Derivative roots via 12 suffixes: सन्·यङ्·णिच् etc.",example:"पठ्+सन्=पिपठिषति · भू+णिच्=भावयति",cat:"grammar",sutra:"3.1.32"},
-    {term:"प्रातिपदिक (1.2.45)",meaning:"Meaningful words — neither root nor suffix",example:"पुस्तक·घर·गाय·कृष्ण·राम",cat:"grammar",sutra:"1.2.45"},
-    {term:"कृत्तद्धितसमासाश्च (1.2.46)",meaning:"Kṛdanta+Taddhitānta+Samāsa are also Pratipadika",example:"पठित(kṛdanta)·पाठक(taddhita)·राजपुरुष(samāsa)",cat:"grammar",sutra:"1.2.46"},
-    {term:"त्रिमुनि",meaning:"Three foundational sages of Sanskrit grammar",example:"पाणिनि(Sūtras)·कात्यायन(Vārttikas)·पतञ्जलि(Mahābhāṣya)",cat:"history",sutra:""},
-    {term:"10 गण",meaning:"10 root-classes, each with a vikaraṇa (class-marker)",example:"1=शप् · 2=Ø(Luk) · 3=श्लु · 6=श · 10=णिच्",cat:"grammar",sutra:""},
+    {term:"संज्ञा (Saṃjñā)",meaning:"A technical name assigned by Pāṇini so later rules can operate with precision and economy.",example:"वृद्धि, गुण, संयोग, इत्, लोप — labels used again and again",cat:"samjna",sutra:""},
+    {term:"वृद्धि संज्ञा",meaning:"वृद्धिरादैच्: ā, ai, au receive the name Vṛddhi. It marks the strongest vowel grade.",example:"आ · ऐ · औ = वृद्धि",cat:"samjna",sutra:"1.1.1"},
+    {term:"गुण संज्ञा",meaning:"अदेङ् गुणः: a, e, o receive the name Guṇa. It marks the middle vowel grade.",example:"अ · ए · ओ = गुण",cat:"samjna",sutra:"1.1.2"},
+    {term:"इक् and Guṇa/Vṛddhi",meaning:"इको गुणवृद्धी: i, u, ṛ, ḷ are the vowels that take Guṇa and Vṛddhi substitutes in many operations.",example:"इ→ए/ऐ · उ→ओ/औ · ऋ→अर्/आर्",cat:"sutra",sutra:"1.1.3"},
+    {term:"सवर्ण (Savarṇa)",meaning:"तुल्यास्यप्रयत्नं सवर्णम्: sounds with the same place and effort are called Savarṇa.",example:"अ and आ are savarṇa; इ and ई are savarṇa",cat:"phonetics",sutra:"1.1.9"},
+    {term:"संयोग (Saṃyoga)",meaning:"हलोनन्तराः संयोगः: two or more consonants with no intervening vowel form a consonant cluster.",example:"भक्त = क्+त · पुष्प = ष्+प",cat:"phonetics",sutra:"1.1.7"},
+    {term:"इत् संज्ञा",meaning:"Markers attached to roots or suffixes for grammar-work. They guide operations and are then removed.",example:"णिच् has ण् and च् as technical markers",cat:"core",sutra:"1.3.2-9"},
+    {term:"लोप (Lopa)",meaning:"अदर्शनं लोपः: disappearance from pronunciation, not loss of grammatical force.",example:"It-markers disappear after doing their work",cat:"operation",sutra:"1.1.60"},
+    {term:"प्रत्याहार",meaning:"आदिरन्त्येन सहेता: a compact sound-group made from a starting sound plus a final It-marker.",example:"अच् = vowels · हल् = consonants · इक् = इ उ ऋ ऌ",cat:"pratyahara",sutra:"1.1.71"},
+    {term:"अधिकार and अनुवृत्ति",meaning:"A heading or carried-forward word supplies context to many following rules.",example:"One word continues across several sūtras to avoid repetition",cat:"architecture",sutra:"method"},
    ],
    quiz:[
-    {q:"How many Dhātus in Pāṇini's Dhātupāṭha?",opts:["500","1,930","3,978","42"],ans:1,exp:"1,930 Aupadeshika Dhātus in 10 Gaṇas."},
-    {q:"Which sūtra defines Dhātu?",opts:["1.2.45","1.3.1","3.1.32","1.1.1"],ans:1,exp:"Bhuvādayo dhātavaḥ (1.3.1)."},
-    {q:"Curādi Gaṇa (Group 10) vikaraṇa:",opts:["शप्","श्ना","णिच्","उ"],ans:2,exp:"Curādi uses णिच् — all causatives belong here."},
-    {q:"'Kṛttaddhitasamāsāśca' adds to Pratipadika:",opts:["All words","Kṛdanta+Taddhitānta+Samāsa","Only nouns","Suffixes"],ans:1,exp:"1.2.46 extends 1.2.45 to include all three derived categories."},
+    {q:"Which sounds are called Vṛddhi by 1.1.1?",opts:["अ ए ओ","आ ऐ औ","इ उ ऋ","य र ल व"],ans:1,exp:"वृद्धिरादैच् gives Vṛddhi-saṃjñā to आ, ऐ, औ."},
+    {q:"Which sounds are called Guṇa by 1.1.2?",opts:["अ ए ओ","आ ऐ औ","इ उ ऋ","क ख ग"],ans:0,exp:"अदेङ् गुणः gives Guṇa-saṃjñā to अ, ए, ओ."},
+    {q:"What does Saṃjñā do in Pāṇini's grammar?",opts:["Adds decoration","Names a technical category for later rules","Cancels rules","Means translation"],ans:1,exp:"A Saṃjñā is a technical label that lets later rules refer to a class precisely."},
+    {q:"अदर्शनं लोपः means:",opts:["Sound becomes long","A marker disappears from pronunciation","A vowel becomes Guṇa","A rule is optional"],ans:1,exp:"Lopa is non-appearance. The item is not pronounced but its grammatical effect can remain."},
    ],
    vedic:[
-    {dev:"चत्वारि वाक् परिमिता पदानि तानि विदुर्ब्राह्मणा ये मनीषिणः ।",roman:"catvāri vāk parimitā padāni tāni viduḥ brāhmaṇā ye manīṣiṇaḥ",
-     trans:"Speech has four measured forms; the wise Brāhmaṇas know them all.",source:"Ṛgveda 1.164.45",link:"https://sacred-texts.com/hin/rigveda/rv01164.htm",
-     rel:"The four levels of speech (Parā·Paśyantī·Madhyamā·Vaikharī) map onto Pāṇini's system. Dhātus carry meaning at the Paśyantī level; Pratipadikas bring it to Vaikharī (spoken)."},
     {dev:"अथ शब्दानुशासनम् ।",roman:"atha śabdānuśāsanam",trans:"Now begins the discipline of words.",
      source:"Mahābhāṣya — Patañjali",link:"https://sacred-texts.com/hin/",
-     rel:"Patañjali's opening. The word 'atha' itself is an Avyaya Pratipadika — showing the system in action from the very first word."},
-    {dev:"भूवादयो धातवः ।",roman:"bhūvādayo dhātavaḥ",trans:"Bhū and words like it are Dhātus.",
-     source:"Aṣṭādhyāyī 1.3.1",link:"https://ashtadhyayi.com/sutraani/1/3/1",
-     rel:"Six syllables covering all 1,930 roots via Anuvṛtti. Supreme economy — the foundational Saṃjñā-sūtra."},
+     rel:"Saṃjñā is the opening machinery of this discipline: first define the technical names, then operate with them."},
+    {dev:"वृद्धिरादैच् ।",roman:"vṛddhir ādaic",trans:"Ā, ai, au are called Vṛddhi.",
+     source:"Aṣṭādhyāyī 1.1.1",link:"https://ashtadhyayi.com/sutraani/1/1/1",
+     rel:"The first sūtra begins with a Saṃjñā. Pāṇini starts by naming the grammar's operating categories."},
+    {dev:"अदेङ् गुणः ।",roman:"adeṅ guṇaḥ",trans:"A, e, o are called Guṇa.",
+     source:"Aṣṭādhyāyī 1.1.2",link:"https://ashtadhyayi.com/sutraani/1/1/2",
+     rel:"Guṇa and Vṛddhi become reusable labels for vowel strengthening throughout the system."},
    ],
    levels:{
     easy:[
-      {q:"Which is a Dhātu?",opts:["पुस्तक","भू","रामः","लेखनी"],ans:1,exp:"भू (to be) is a Dhātu. The others are Pratipadikas."},
-      {q:"How many roots in Dhātupāṭha?",opts:["500","1,930","3,000","42"],ans:1,exp:"1,930 Aupadeshika Dhātus in 10 Gaṇas."},
-      {q:"'Trimuni' refers to:",opts:["3 vowels","Pāṇini+Kātyāyana+Patañjali","3 Gaṇas","3 Pratyāhāras"],ans:1,exp:"Three sages: Pāṇini·Kātyāyana·Patañjali."},
-      {q:"Sūtra for Dhātu:",opts:["1.2.45","1.3.1","3.1.32","1.1.1"],ans:1,exp:"Bhuvādayo dhātavaḥ (1.3.1)."},
-      {q:"'पठित' is:",opts:["Dhātu","Kṛdanta Pratipadika","Simple noun","Upasarga"],ans:1,exp:"पठ्+क्त = पठित — Kṛdanta Pratipadika."},
+      {q:"Saṃjñā means:",opts:["Technical name","Past tense","Compound","Vedic metre"],ans:0,exp:"Saṃjñā is a technical label used by later rules."},
+      {q:"Vṛddhi sounds are:",opts:["आ ऐ औ","अ ए ओ","इ उ ऋ","क ख ग"],ans:0,exp:"1.1.1 names आ, ऐ, औ as Vṛddhi."},
+      {q:"Guṇa sounds are:",opts:["आ ऐ औ","अ ए ओ","य र ल व","श ष स"],ans:1,exp:"1.1.2 names अ, ए, ओ as Guṇa."},
+      {q:"A cluster of consonants with no vowel between is:",opts:["Guṇa","Saṃyoga","Lopa","Pragṛhya"],ans:1,exp:"हलोनन्तराः संयोगः defines Saṃyoga."},
+      {q:"It-markers are finally:",opts:["Pronounced loudly","Removed by lopa","Changed to nouns","Always long"],ans:1,exp:"It-markers guide grammar and then disappear."},
     ],
     medium:[
-      {q:"Sūtra 3.1.32 creates:",opts:["Original 1930 roots","Derivative roots via San·Nic·Yaṅ","Pratipadikas","Compounds"],ans:1,exp:"Atideshika Dhātus — formed by adding 12 suffixes to existing roots."},
-      {q:"Which is NOT part of Pañcāṅga?",opts:["Dhātupāṭha","Gaṇapāṭha","Lipipāṭha","Liṅgānuśāsana"],ans:2,exp:"'Lipipāṭha' doesn't exist. 5 parts: Sūtra+Dhātu+Gaṇa+Uṇādi+Liṅga."},
-      {q:"Why 1.2.45 excludes 'pratyaya'?",opts:["Suffixes are Dhātus","Suffix alone lacks independent meaning","Convention","Grammar"],ans:1,exp:"Pratipadika must be 'arthavat' — independently meaningful."},
-      {q:"Adādi Gaṇa (Group 2) is special because:",opts:["Most roots","Śap vikaraṇa undergoes LUK deletion","Uses Nic","Only Vedic"],ans:1,exp:"Group 2: Śap undergoes Luk, signaling specific stem operations."},
-      {q:"'पठित' demonstrates:",opts:["Dhātu usage","Kṛdanta — kta suffix on root = Pratipadika","Upasarga","Sandhi"],ans:1,exp:"पठ्+क्त = Kṛdanta. Kṛdantas are Pratipadika per 1.2.46."},
+      {q:"इको गुणवृद्धी applies to which basic vowel group?",opts:["इ उ ऋ ऌ","अ आ ए","य र ल व","क च ट"],ans:0,exp:"इक् = इ, उ, ऋ, ऌ. These receive Guṇa/Vṛddhi substitutes."},
+      {q:"Savarṇa depends mainly on:",opts:["Same place and effort","Same meaning","Same gender","Same chapter"],ans:0,exp:"तुल्यास्यप्रयत्नं सवर्णम् defines Savarṇa by place and effort."},
+      {q:"Why are Saṃjñā rules important?",opts:["They shorten and stabilize later rules","They add stories","They remove examples","They replace pronunciation"],ans:0,exp:"Once a class is named, Pāṇini can use the compact label everywhere."},
+      {q:"Pratyāhāra is formed by:",opts:["Ādi + final It-marker","Two nouns","A verb ending","A Vedic accent"],ans:0,exp:"आदिरन्त्येन सहेता creates a compact sound-group."},
+      {q:"Lopa is best understood as:",opts:["Non-appearance","Physical destruction","Plurality","A consonant class"],ans:0,exp:"अदर्शनं लोपः means the item is not seen/heard in the output."},
     ],
     hard:[
-      {q:"'पठ्+सन् → पिपठिष' is called:",opts:["Aupadeshika","Atideshika / Sanādyanta Dhātu","Pratipadika","Āgama"],ans:1,exp:"New root from San suffix = Atideshika Dhātu, takes its own conjugational endings."},
-      {q:"1.2.45 vs 1.2.46 relationship:",opts:["Both equal","1.2.45 defines core; 1.2.46 EXTENDS via Anuvṛtti","1.2.46 cancels","Unrelated"],ans:1,exp:"1.2.46 uses Anuvṛtti of 'Pratipadikam' from 1.2.45 — perfect economy."},
-      {q:"Why is 1.3.1 a Saṃjñā Sūtra?",opts:["Performs phonetics","Defines/names the technical term 'Dhātu'","Resolves conflict","Governs sūtras"],ans:1,exp:"Saṃjñā sūtras assign technical labels. Without 'Dhātu', no rule could refer to all verbal roots."},
-      {q:"22 Upasargas × 1930 roots shows grammar is:",opts:["A fixed list","GENERATIVE — finite rules produce infinite outputs","Only descriptive","An error"],ans:1,exp:"22×1930 = 42,460+ compounds. Plus sanādyanta×tenses×persons = unlimited productivity."},
-      {q:"Curādi (Group 10) using णिच् means all verbs are:",opts:["Passive","CAUSATIVE — णिच् itself signals causation","Desiderative","Intensive"],ans:1,exp:"Curādi roots with णिच्: चोरयति, पाठयति, भावयति — all causative."},
+      {q:"Why does Pāṇini begin with Vṛddhi and Guṇa?",opts:["They are reusable vowel-strength labels needed across the system","They are the easiest words","They are only poetic","They cancel consonants"],ans:0,exp:"The opening rules establish high-frequency operating labels for later derivations."},
+      {q:"A marker can affect grammar after disappearing because:",opts:["Lopa hides sound, not grammatical instruction","It becomes a noun","It is pronounced twice","It stops all rules"],ans:0,exp:"The marker's work is registered before lopa removes it from pronunciation."},
+      {q:"Pratyāhāra shows Pāṇini's method of:",opts:["Compression with exact scope","Loose memorization","Translation","Storytelling"],ans:0,exp:"A few sounds and markers denote large sound sets precisely."},
+      {q:"Anuvṛtti helps by:",opts:["Carrying context forward across rules","Changing every vowel","Adding suffixes randomly","Removing examples"],ans:0,exp:"Inherited context lets short sūtras behave like connected instructions."},
+      {q:"Saṃjñā rules are closest to what in a modern formal system?",opts:["Named variables/classes","Decorative headings","Audio files","Footnotes only"],ans:0,exp:"A Saṃjñā is a named category used by later rules, like a class or symbol table entry."},
     ],
    }},
-  {id:2,num:"§3-8",title:"Varṇamātrikā",subtitle:"9 Vowels · 33 Consonants · 5 Varga Groups",icon:"🔤",color:"#3B6B9A",accent:"#EBF1F8",
+  {id:2,num:"§3-8",title:"Varṇamātrikā",subtitle:"9 Vowels · 33 Consonants · 5 Varga Groups",icon:"🔤",color:"#2563EB",accent:"#EAF2FF",
    concepts:[
     {term:"स्वर (Svara/Ach)",meaning:"9 independent vowels. 'स्वयं राजन्ते' — self-luminous",example:"अ  इ  उ  ऋ  ऌ  ए  ओ  ऐ  औ",cat:"phonetics",sutra:""},
     {term:"व्यञ्जन (Hal)",meaning:"33 consonants. Manifest only with vowel support",example:"25 sparśa + 4 antaḥstha + 4 ūṣma = 33",cat:"phonetics",sutra:""},
@@ -128,7 +131,7 @@ const CHAPTERS=[
       {q:"Sanskrit has exactly 9 core vowels because:",opts:["Arbitrary","3 basic positions × 3 forms = 9 — complete coverage of vocal tract","Historical","Vedic tradition"],ans:1,exp:"3 Sthānas (Kaṇṭha/Tālu/Oṣṭha) × short/diphthong-1/diphthong-2 = 9. Complete and non-redundant."},
     ],
    }},
-  {id:3,num:"§19-21",title:"Māheśvara Sūtras & Pratyāhāras",subtitle:"14 Drum-Formulas · 42 Abbreviations",icon:"🥁",color:"#C8503A",accent:"#FCF0EE",
+  {id:3,num:"§19-21",title:"Māheśvara Sūtras & Pratyāhāras",subtitle:"14 Drum-Formulas · 42 Abbreviations",icon:"🥁",color:"#FF6B6B",accent:"#FFF0F0",
    concepts:[
     {term:"14 माहेश्वर सूत्र",meaning:"Sound-strings from Shiva's ḍamaru. Purpose = create Pratyāhāras",example:"①अ इ उ ण् ②ऋ ऌ क् ③ए ओ ङ् ④ऐ औ च् ⑤ह य व र ट् ⑥ल ण् ⑦ञ म ङ ण न म् ⑧झ भ ञ् ⑨घ ढ ध ष् ⑩ज ब ग ड द श् ⑪ख फ छ ठ थ च ट त व् ⑫क प य् ⑬श ष स र् ⑭ह ल्",cat:"core",sutra:""},
     {term:"इत् संज्ञा (1.3.3+1.3.9)",meaning:"Final consonant = marker. Named by हलन्त्यम्, deleted by तस्य लोपः",example:"'अ इ उ ण्' → ण् is It-marker",cat:"core",sutra:"1.3.3"},
@@ -179,7 +182,7 @@ const CHAPTERS=[
       {q:"Without Pratyāhāras, one rule mentioning 'any vowel' would require:",opts:["9 entries","162 entries (9 vowels × 18 variants each)","42 entries","1 entry"],ans:1,exp:"Patañjali's mathematical proof: the compression ratio justifies the entire 14-sūtra system."},
     ],
    }},
-  {id:4,num:"§22-24",title:"Sthāna · Karaṇa · Prayatna",subtitle:"8 Places · Tongue Instrument · Articulation Effort",icon:"👄",color:"#C8703A",accent:"#FAF0E8",
+  {id:4,num:"§22-24",title:"Sthāna · Karaṇa · Prayatna",subtitle:"8 Places · Tongue Instrument · Articulation Effort",icon:"👄",color:"#F59E0B",accent:"#FFF7E6",
    concepts:[
     {term:"8 स्थान",meaning:"8 vocal-tract locations for sound production",example:"Uras·Kaṇṭha·Śiras·Jihvāmūla·Tālu·Mūrdhā·Danta·Oṣṭha+Nāsikā",cat:"sthana",sutra:"Śikṣā"},
     {term:"करण (Karaṇa)",meaning:"Tongue part that REACHES the Sthāna. जिह्वामूलेन·जिह्वामध्येन·जिह्वाग्रेण",example:"Guttural=tongue-root · Palatal=mid-tongue · Dental=tongue-tip",cat:"articulation",sutra:"TP 2.48"},
@@ -233,7 +236,7 @@ const CHAPTERS=[
       {q:"Sanskrit phonetics (5 Sthānas×5 stops) aligns with modern IPA because:",opts:["Coincidence","Both describe the SAME physical reality — the human vocal tract","Western borrowing","Tradition"],ans:1,exp:"Sanskrit phonetics is empirically correct science of the vocal tract — 2500 years before Western linguistics."},
     ],
    }},
-  {id:5,num:"§25-39",title:"Vowel System & Strengthening",subtitle:"18 Forms · Savarṇa · Guṇa · Vṛddhi · Laghu-Guru",icon:"🎵",color:"#B8860B",accent:"#FDF3DC",
+  {id:5,num:"§25-39",title:"Vowel System & Strengthening",subtitle:"18 Forms · Savarṇa · Guṇa · Vṛddhi · Laghu-Guru",icon:"🎵",color:"#8B5CF6",accent:"#F4EEFF",
    concepts:[
     {term:"18 भेद per vowel",meaning:"3 durations × 3 tones × 2 nasality = 18. Diphthongs=12 (no Hrasva). ऌ=12",example:"अ→18 forms · ए→12 forms · ऌ→12 forms",cat:"theory",sutra:""},
     {term:"ह्रस्व-दीर्घ-प्लुत (1.2.27)",meaning:"Three durations: ऊकालोऽज्झ्रस्वदीर्घप्लुतः",example:"Hrasva(1 mātrā):अइउऋऌ · Dīrgha(2):आईऊएओऐऔ · Pluta(3+):रा³म!",cat:"duration",sutra:"1.2.27"},
@@ -287,7 +290,7 @@ const CHAPTERS=[
       {q:"'Svara' originally meant 'musical note' before 'vowel.' This reveals:",opts:["Coincidence","IDENTITY of vowel and musical note — grammar and music share the same phonetic foundation: Nāda Brahman","Unrelated terms","Modern usage"],ans:1,exp:"Svara = self-shining sound. Same concept at different scales. Nāda Brahman: cosmic sound as substrate of both music and language. Grammar IS music."},
     ],
    }},
-  {id:6,num:"§40-71",title:"Morphological Operations",subtitle:"Saṃyoga · Sthānī · Ādeśa · Āgama · Upasarga",icon:"🔧",color:"#3B6B9A",accent:"#EBF1F8",
+  {id:6,num:"§40-71",title:"Morphological Operations",subtitle:"Saṃyoga · Sthānī · Ādeśa · Āgama · Upasarga",icon:"🔧",color:"#06B6D4",accent:"#E7FAFF",
    concepts:[
     {term:"संयोग",meaning:"2+ consonants with NO intervening vowel. Critical for Guru and sandhi",example:"पुष्प:ष्+प · भक्त:क्+त · मत्स्य:त्+स्+य",cat:"phonetics",sutra:""},
     {term:"उपधा",meaning:"Penultimate letter — 'workbench' for Guṇa/Vṛddhi",example:"पठ्→Upadhā=अ · लिख्→Upadhā=इ",cat:"position",sutra:""},
@@ -337,7 +340,7 @@ const CHAPTERS=[
       {q:"Upasarga+Verb must be a SINGLE lexical unit because:",opts:["Tradition","Upasargas modify the verb's meaning at the LEXICAL level — creating a new word, not a phrase","Grammar convenience","Vedic practice"],ans:1,exp:"English: 'break up' = phrasal (syntactic). Sanskrit: pra+bhū = prabhu (new WORD 'lord'). The semantic fusion is complete at the lexical level."},
     ],
    }},
-  {id:7,num:"§72-96",title:"Deletion, Optionality & Architecture",subtitle:"Lopa · Luk-Ślu-Lup · Bahulam · 7 Sūtra Types · Laghava",icon:"🏛️",color:"#5A6E8A",accent:"#EEF1F6",
+  {id:7,num:"§72-96",title:"Deletion, Optionality & Architecture",subtitle:"Lopa · Luk-Ślu-Lup · Bahulam · 7 Sūtra Types · Laghava",icon:"🏛️",color:"#EC4899",accent:"#FFF0F8",
    concepts:[
     {term:"लोप (1.1.60)",meaning:"अदर्शनं लोपः — non-perception. Eternal but invisible. Patañjali: 'nāsto lopaḥ'",example:"It-markers in Māheśvara Sūtras are lopa'd after use",cat:"operation",sutra:"1.1.60"},
     {term:"लुक्-श्लु-लुप् (1.1.61)",meaning:"Three coded deletions triggering DIFFERENT subsequent behaviors",example:"लुक्=Adādi stem-changes · श्लु=Juhoty-ādi reduplication · लुप्=Taddhita gender-felt",cat:"operation",sutra:"1.1.61"},
@@ -393,6 +396,87 @@ const CHAPTERS=[
 ];
 
 /* ── UTILITY ─────────────────────────────────────────────────────────── */
+const SANDHI_CHAPTER = {
+  id: 2,
+  num: "Sandhi",
+  title: "Sandhi Prakaraṇa",
+  subtitle: "Sound Joining, Transformations & Flow Rules",
+  icon: "🔗",
+  color: "#2563EB",
+  accent: "#EAF2FF",
+  concepts: [
+    {term:"सन्धि (Sandhi)",meaning:"The joining of nearby sounds. Pāṇini treats sound flow as a rule-based transformation, not random spelling change.",example:"सम् + गच्छति → सङ्गच्छति · देव + इन्द्रः → देवेन्द्रः",cat:"process",sutra:""},
+    {term:"संहितायाम्",meaning:"Sandhi operates when sounds are in close contact. First identify the boundary, then classify both sounds.",example:"word-final sound + next word's first sound = sandhi zone",cat:"rule",sutra:"6.1.72"},
+    {term:"स्वर सन्धि",meaning:"When vowels meet, they may combine, strengthen, or change into semivowels depending on the rule environment.",example:"देव + इन्द्रः → देवेन्द्रः · गुरु + आदेशः → गुर्वादेशः",cat:"phonetics",sutra:"6.1"},
+    {term:"सवर्णदीर्घ",meaning:"अकः सवर्णे दीर्घः: same-family vowels combine into their long form.",example:"अ + अ → आ · इ + इ → ई · उ + उ → ऊ",cat:"operation",sutra:"6.1.101"},
+    {term:"गुण सन्धि",meaning:"अ or आ followed by इ/ई or उ/ऊ leads to ए or ओ.",example:"देव + इन्द्रः → देवेन्द्रः · महा + उत्सवः → महोत्सवः",cat:"operation",sutra:"6.1.87"},
+    {term:"वृद्धि सन्धि",meaning:"अ or आ followed by ए/ऐ or ओ/औ gives strengthened results ऐ or औ.",example:"एक + एकः → एकैकः · वन + ओषधिः → वनौषधिः",cat:"operation",sutra:"6.1.88"},
+    {term:"यण् सन्धि",meaning:"इ, उ, ऋ, ऌ before a vowel may become य्, व्, र्, ल्.",example:"इति + अत्र → इत्यत्र · गुरु + आदेशः → गुर्वादेशः",cat:"process",sutra:"6.1.77"},
+    {term:"व्यञ्जन सन्धि",meaning:"Consonants adjust to neighboring sounds by voicing, doubling, nasalization, or place assimilation.",example:"सत् + जनः → सज्जनः · तत् + च → तच्च",cat:"phonetics",sutra:"8.2-8.4"},
+    {term:"अनुस्वार and परसवर्ण",meaning:"म् or anusvāra adapts to the following consonant's class, making pronunciation smooth.",example:"सम् + कृतम् → संस्कृतम् · सम् + गच्छति → सङ्गच्छति",cat:"operation",sutra:"8.4.58"},
+    {term:"विसर्ग सन्धि",meaning:"Visarga changes before vowels and consonants, often becoming र्, ओ, or a sibilant-like sound by context.",example:"हरिः + च → हरिश्च · रामः + गच्छति → रामो गच्छति",cat:"operation",sutra:"8.3"},
+    {term:"प्रकृतिभाव",meaning:"Some contexts intentionally block sandhi so the original form remains visible.",example:"special Vedic or grammatical environments may preserve the source form",cat:"rule",sutra:""},
+  ],
+  quiz: [
+    {q:"अ + अ usually becomes:",opts:["अ","आ","ए","ओ"],ans:1,exp:"सवर्णदीर्घ: same vowels combine into a long vowel."},
+    {q:"इ before another vowel may become:",opts:["य्","व्","र्","ल्"],ans:0,exp:"यण् sandhi: इ/ई → य् before a vowel."},
+    {q:"देव + इन्द्रः becomes:",opts:["देवेन्द्रः","देविन्द्रः","देवोन्द्रः","देवन्द्रः"],ans:0,exp:"अ/आ + इ/ई commonly gives ए by Guṇa sandhi."},
+    {q:"Sandhi mainly helps Sanskrit:",opts:["Flow smoothly in speech","Avoid meaning","Remove grammar","Create random spelling"],ans:0,exp:"Sandhi makes sound transitions smooth while staying rule-governed."},
+  ],
+  vedic: [
+    {dev:"संहितायाम् ।",roman:"saṃhitāyām",trans:"In close phonetic contact.",source:"Aṣṭādhyāyī 6.1.72",link:"https://ashtadhyayi.com/sutraani/6/1/72",rel:"Sandhi begins when sounds are in saṃhitā, close contact. This is the doorway into sound transformation."},
+    {dev:"इको यणचि ।",roman:"iko yaṇ aci",trans:"Ik vowels become Yaṇ before a vowel.",source:"Aṣṭādhyāyī 6.1.77",link:"https://ashtadhyayi.com/sutraani/6/1/77",rel:"A compact sandhi rule: इ उ ऋ ऌ turn into य् व् र् ल् before अच्."},
+    {dev:"अकः सवर्णे दीर्घः ।",roman:"akaḥ savarṇe dīrghaḥ",trans:"A vowel becomes long before its savarṇa vowel.",source:"Aṣṭādhyāyī 6.1.101",link:"https://ashtadhyayi.com/sutraani/6/1/101",rel:"The cleanest entry point into vowel sandhi: same family plus same family becomes the long member."},
+  ],
+  levels: {
+    easy: [
+      {q:"Sandhi means:",opts:["Sound joining","Root list","Case ending","Translation"],ans:0,exp:"Sandhi is rule-governed sound joining."},
+      {q:"अ + अ =",opts:["आ","ऐ","ओ","य"],ans:0,exp:"Same vowel family combines into long आ."},
+      {q:"इ + अ often becomes:",opts:["य","व","र","ल"],ans:0,exp:"इ becomes य् before a vowel in Yaṇ sandhi."},
+      {q:"उ + अ often becomes:",opts:["य","व","र","ल"],ans:1,exp:"उ becomes व् before a vowel in Yaṇ sandhi."},
+      {q:"Which is vowel sandhi?",opts:["देव + इन्द्रः → देवेन्द्रः","तत् + च → तच्च","सम् + कृतम् → संस्कृतम्","हरिः + च → हरिश्च"],ans:0,exp:"देवेन्द्रः shows vowel interaction."},
+    ],
+    medium: [
+      {q:"अकः सवर्णे दीर्घः handles:",opts:["Same-family vowel joining","Consonant clusters","Visarga only","Case endings"],ans:0,exp:"It lengthens same-family vowel contact."},
+      {q:"Guṇa sandhi result for अ + इ is:",opts:["ए","ऐ","ओ","औ"],ans:0,exp:"अ/आ + इ/ई gives ए."},
+      {q:"Vṛddhi sandhi result for अ + ए is:",opts:["ए","ऐ","ओ","आ"],ans:1,exp:"अ/आ + ए/ऐ gives ऐ."},
+      {q:"परसवर्ण means:",opts:["Assimilation to the following class","Long vowel","No change","A suffix"],ans:0,exp:"The sound takes the class/place of the following consonant."},
+      {q:"Saṃhitā condition means sounds are:",opts:["In close contact","Far apart","Only written","Only in compounds"],ans:0,exp:"संहितायाम् makes close contact the operating condition."},
+    ],
+    hard: [
+      {q:"In इको यणचि, इक् is the:",opts:["Replaceable vowel group","Result group","Exception","Case ending"],ans:0,exp:"इक् vowels are replaced by corresponding Yaṇ semivowels before अच्."},
+      {q:"In इको यणचि, अच् is the:",opts:["Triggering following vowel","Result","Deleted marker","Visarga"],ans:0,exp:"अच् is the following vowel environment that triggers Yaṇ substitution."},
+      {q:"Sandhi must be learned with conditions because:",opts:["Same sounds may behave differently by environment","It is random","Rules never apply","Only spelling matters"],ans:0,exp:"Pāṇini's sandhi is context-sensitive and condition-driven."},
+      {q:"Visarga sandhi is difficult because visarga:",opts:["Changes differently before vowels, voiced sounds, and sibilants","Never changes","Only becomes आ","Cancels words"],ans:0,exp:"Visarga is highly environment-sensitive."},
+      {q:"Best Sandhi workflow:",opts:["Identify boundary → classify sounds → apply rule → test pronunciation","Memorize random outputs","Ignore examples","Only translate"],ans:0,exp:"Sandhi is a workflow: boundary, sound classes, rule, spoken result."},
+    ],
+  },
+};
+
+CHAPTERS[1] = SANDHI_CHAPTER;
+
+function cleanSubchapterTitle(term) {
+  return term
+    .replace(/\s*\([^)]*\)/g, "")
+    .replace(/\s+—.*$/g, "")
+    .trim();
+}
+
+function getSubchapters(chapter) {
+  return chapter.concepts.map((concept, index) => ({
+    id: `${chapter.id}.${index + 1}`,
+    title: cleanSubchapterTitle(concept.term),
+    summary: concept.meaning,
+    concepts: [concept],
+  }));
+}
+
+function getChapterRange(chapter) {
+  const subchapters = getSubchapters(chapter);
+  if (!subchapters.length) return "No subchapters yet";
+  return `${subchapters[0].id}-${subchapters[subchapters.length - 1].id}`;
+}
+
 function PBar({value,max,color="#B8860B",h=6}){
   const p=max>0?Math.min(100,Math.round((value/max)*100)):0;
   return <div style={{background:"#EDE3C8",borderRadius:99,height:h,overflow:"hidden"}}>
@@ -564,9 +648,9 @@ function VedicView({vedic}){
 }
 
 /* ── GLOSSARY ────────────────────────────────────────────────────────── */
-function GlossaryScreen(){
+function GlossaryScreen({onOpen}){
   const[q,setQ]=useState("");const[catF,setCatF]=useState("all");
-  const all=CHAPTERS.flatMap(ch=>ch.concepts.map(c=>({...c,chTitle:ch.title,chColor:ch.color})));
+  const all=CHAPTERS.flatMap(ch=>ch.concepts.map(c=>({...c,chTitle:ch.title,chColor:ch.color,chapter:ch})));
   const cats=[...new Set(all.map(t=>t.cat))].sort();
   const filtered=all.filter(t=>(q===""||t.term.toLowerCase().includes(q.toLowerCase())||t.meaning.toLowerCase().includes(q.toLowerCase()))&&(catF==="all"||t.cat===catF));
   return(<div style={{paddingBottom:40}}>
@@ -583,7 +667,7 @@ function GlossaryScreen(){
       <div style={{fontSize:12,color:"#A08850",marginBottom:8}}>{filtered.length} results</div>
       <div style={{display:"flex",flexDirection:"column",gap:7}}>
         {filtered.map((t,i)=>{const cc=CC[t.cat]||"#A08850";return(
-          <div key={i} style={{background:"#FFFDF7",border:"1px solid #E2D5B5",borderLeft:`3px solid ${cc}`,borderRadius:10,padding:"11px 14px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
+          <button key={i} onClick={()=>onOpen(t.chapter)} style={{width:"100%",background:"#FFFDF7",border:"1px solid #E2D5B5",borderLeft:`3px solid ${cc}`,borderRadius:10,padding:"11px 14px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)",textAlign:"left",cursor:"pointer"}}>
             <div style={{display:"flex",justifyContent:"space-between",marginBottom:4,gap:8,flexWrap:"wrap"}}>
               <div style={{display:"flex",gap:8,alignItems:"center"}}>
                 <span style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:14,fontWeight:700,color:"#2C1A0E"}}>{t.term}</span>
@@ -593,8 +677,8 @@ function GlossaryScreen(){
             </div>
             <div style={{fontSize:12,color:"#6B4F2A",marginBottom:4}}>{t.meaning}</div>
             <div style={{fontSize:11,color:cc,background:cc+"12",padding:"3px 8px",borderRadius:5,display:"inline-block",fontFamily:"'Palatino Linotype',Georgia,serif"}}>{t.example}</div>
-            <div style={{fontSize:10,color:"#A08850",marginTop:4}}>→ {t.chTitle}</div>
-          </div>
+            <div style={{fontSize:10,color:"#A08850",marginTop:4}}>Open chapter → {t.chTitle}</div>
+          </button>
         );})}
       </div>
     </div>
@@ -602,12 +686,28 @@ function GlossaryScreen(){
 }
 
 /* ── CHAPTER DETAIL ──────────────────────────────────────────────────── */
-function ChapterDetail({ch,onBack}){
+function ChapterDetail({ch,onBack,onNavigate}){
   const{scores,completed,recordScore,recordLevelBadge,addXP,levelBadges}=useProgress();
   const[tab,setTab]=useState("concepts");
   const chScore=scores[ch.id]||0;const isDone=completed.has(ch.id);
   const C=ch.color;
-  const TABS=[{k:"concepts",l:"📚 Concepts"},{k:"flashcards",l:"🃏 Flashcards"},{k:"quiz",l:"❓ Quiz"},{k:"test",l:"📋 Test"},{k:"vedic",l:"📜 Vedic"},{k:"watch",l:"📺 Watch"}];
+  const TABS=[{k:"concepts",l:"🚀 Learn"},{k:"flashcards",l:"🎴 View Cards"},{k:"quiz",l:"⚡ Quick Quiz"},{k:"test",l:"🏆 Mastery Test"},{k:"vedic",l:"📜 Sources"},{k:"watch",l:"🎬 Watch"}];
+  const ACTIONS=[
+    {tab:"concepts",icon:"🚀",title:"Open & Learn",desc:"Structured subchapters"},
+    {tab:"flashcards",icon:"🎴",title:"View Cards",desc:"Flip key ideas"},
+    {tab:"quiz",icon:"⚡",title:"Practice Fast",desc:"Instant chapter quiz"},
+    {tab:"test",icon:"🏆",title:"Earn Mastery",desc:"Badges + XP"},
+  ];
+  const subchapters=getSubchapters(ch);
+  const[activeSub,setActiveSub]=useState(subchapters[0]?.id||"");
+  const chapterIndex=CHAPTERS.findIndex(item=>item.id===ch.id);
+  const prevChapter=chapterIndex>0?CHAPTERS[chapterIndex-1]:null;
+  const nextChapter=chapterIndex<CHAPTERS.length-1?CHAPTERS[chapterIndex+1]:null;
+  function jumpToSubchapter(id){
+    setTab("concepts");
+    setActiveSub(id);
+    setTimeout(()=>document.getElementById(`subchapter-${id}`)?.scrollIntoView({behavior:"smooth",block:"start"}),0);
+  }
   return(<div style={{minHeight:"100vh",background:"#FAF6EF"}}>
     <div style={{background:`linear-gradient(135deg,${ch.accent},#FDF6E3)`,borderBottom:`2px solid ${C}44`}}>
       <div style={{maxWidth:680,margin:"0 auto",padding:"12px 16px 0"}}>
@@ -620,6 +720,7 @@ function ChapterDetail({ch,onBack}){
             <p style={{fontSize:12,color:"#6B4F2A",margin:"0 0 6px"}}>{ch.subtitle}</p>
             <div style={{display:"flex",gap:5,flexWrap:"wrap",alignItems:"center"}}>
               <span style={{fontSize:10,padding:"2px 7px",borderRadius:4,background:"#EDE3C8",color:"#6B4F2A"}}>📚{ch.concepts.length}</span>
+              <span style={{fontSize:10,padding:"2px 7px",borderRadius:4,background:"#EDE3C8",color:"#6B4F2A"}}>{getChapterRange(ch)}</span>
               <span style={{fontSize:10,padding:"2px 7px",borderRadius:4,background:"#EDE3C8",color:"#6B4F2A"}}>❓{ch.quiz.length}</span>
               {isDone&&<span style={{fontSize:11,color:"#2A5C39",background:"#E8F5EA",padding:"2px 8px",borderRadius:99,border:"1px solid #4A7C59",fontWeight:700}}>✅ Mastered</span>}
               {chScore>0&&<span style={{fontSize:11,background:`linear-gradient(90deg,#B8860B,#D4A843)`,color:"#fff",padding:"2px 8px",borderRadius:99,fontWeight:700}}>+{chScore*15}XP</span>}
@@ -627,6 +728,31 @@ function ChapterDetail({ch,onBack}){
           </div>
         </div>
         {chScore>0&&<div style={{margin:"8px 0 0"}}><PBar value={chScore} max={ch.quiz.length} color={C} h={5}/></div>}
+        <div style={{marginTop:12,background:"#FFFDF7",border:"1px solid #E2D5B5",borderRadius:12,padding:10,boxShadow:"0 2px 12px rgba(44,26,14,0.08)"}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:8,marginBottom:8}}>
+            <span style={{fontSize:11,fontWeight:800,color:"#2C1A0E",textTransform:"uppercase",letterSpacing:1}}>Subchapters</span>
+            <span style={{fontSize:11,color:"#A08850"}}>{subchapters.length} quick stops</span>
+          </div>
+          <div style={{display:"flex",gap:7,overflowX:"auto",paddingBottom:2}}>
+            {subchapters.map(sub=>(
+              <button key={sub.id} onClick={()=>jumpToSubchapter(sub.id)} title={sub.title} style={{display:"flex",alignItems:"center",gap:6,flexShrink:0,padding:"7px 10px",borderRadius:10,border:`1px solid ${activeSub===sub.id?C:"#E2D5B5"}`,background:activeSub===sub.id?C+"16":"#F8FAFF",color:activeSub===sub.id?C:"#6B4F2A",fontSize:12,fontWeight:activeSub===sub.id?800:700,cursor:"pointer"}}>
+                <span>{sub.id}</span>
+                <span style={{maxWidth:120,overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap",fontWeight:600}}>{sub.title}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+        <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(135px,1fr))",gap:8,marginTop:10}}>
+          {ACTIONS.map(action=>(
+            <button key={action.tab} onClick={()=>setTab(action.tab)} style={{background:tab===action.tab?C+"16":"#FFFDF7",border:`1px solid ${tab===action.tab?C:"#E2D5B5"}`,borderRadius:12,padding:"10px 11px",textAlign:"left",cursor:"pointer",boxShadow:"0 2px 12px rgba(44,26,14,0.08)"}}>
+              <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
+                <span style={{fontSize:17}}>{action.icon}</span>
+                <span style={{fontSize:12,fontWeight:900,color:tab===action.tab?C:"#2C1A0E"}}>{action.title}</span>
+              </div>
+              <div style={{fontSize:10,color:"#A08850",fontWeight:700}}>{action.desc}</div>
+            </button>
+          ))}
+        </div>
         <div style={{display:"flex",gap:2,marginTop:12,overflowX:"auto"}}>
           {TABS.map(tb=>(
             <button key={tb.k} onClick={()=>setTab(tb.k)} style={{padding:"7px 10px",borderRadius:"8px 8px 0 0",border:`1px solid ${tab===tb.k?C:"#E2D5B5"}`,borderBottom:tab===tb.k?`2px solid #FAF6EF`:`1px solid #E2D5B5`,background:tab===tb.k?"#FAF6EF":"#F3EDD8",color:tab===tb.k?C:"#6B4F2A",fontSize:11,fontWeight:tab===tb.k?700:500,cursor:"pointer",whiteSpace:"nowrap",marginBottom:tab===tb.k?-1:0}}>{tb.l}</button>
@@ -635,20 +761,42 @@ function ChapterDetail({ch,onBack}){
       </div>
     </div>
     <div style={{maxWidth:680,margin:"0 auto",padding:"16px 16px 40px"}}>
-      {tab==="concepts"&&<div style={{display:"flex",flexDirection:"column",gap:10}}>
-        {ch.concepts.map((c,i)=>{const cc=CC[c.cat]||"#A08850";return(
-          <div key={i} style={{background:"#FFFDF7",border:"1px solid #E2D5B5",borderLeft:`4px solid ${cc}`,borderRadius:10,padding:"14px 16px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
-            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6,gap:8}}>
-              <span style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:800,color:"#2C1A0E"}}>{c.term}</span>
-              <div style={{display:"flex",gap:4,flexShrink:0,flexWrap:"wrap",justifyContent:"flex-end"}}>
-                <Badge text={c.cat} color={cc}/>
-                {c.sutra&&<Badge text={c.sutra} color="#B8860B"/>}
+      {tab==="concepts"&&<div style={{display:"flex",flexDirection:"column",gap:14}}>
+        <div style={{background:"#FFFDF7",border:"1px solid #E2D5B5",borderRadius:12,padding:"14px 16px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
+          <div style={{fontSize:11,fontWeight:800,color:C,textTransform:"uppercase",letterSpacing:1,marginBottom:8}}>Chapter outline</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:8}}>
+            {subchapters.map(sub=>(
+              <button key={sub.id} onClick={()=>jumpToSubchapter(sub.id)} style={{background:activeSub===sub.id?C+"14":"#F8FAFF",border:`1px solid ${activeSub===sub.id?C:"#E2D5B5"}`,borderRadius:10,padding:"9px 10px",textAlign:"left",cursor:"pointer"}}>
+                <div style={{fontSize:11,fontWeight:800,color:C,marginBottom:3}}>{sub.id}</div>
+                <div style={{fontSize:12,fontWeight:700,color:"#2C1A0E",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{sub.title}</div>
+              </button>
+            ))}
+          </div>
+        </div>
+        {subchapters.map(sub=>(
+          <section key={sub.id} id={`subchapter-${sub.id}`} style={{scrollMarginTop:150}}>
+            <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:8}}>
+              <span style={{background:C,color:"#fff",borderRadius:8,padding:"5px 9px",fontSize:12,fontWeight:900,boxShadow:`0 6px 16px ${C}30`}}>{sub.id}</span>
+              <div>
+                <h2 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:18,fontWeight:900,color:"#2C1A0E",margin:0}}>{sub.title}</h2>
+                <div style={{fontSize:12,color:"#A08850",marginTop:2}}>Subchapter {sub.id} of Chapter {ch.id}</div>
               </div>
             </div>
-            <div style={{fontSize:13,color:"#6B4F2A",lineHeight:1.6,marginBottom:8}}>{c.meaning}</div>
-            <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:12,color:cc,padding:"5px 10px",background:cc+"14",borderRadius:7,display:"inline-block"}}>{c.example}</div>
-          </div>
-        );})}
+            {sub.concepts.map((c,i)=>{const cc=CC[c.cat]||"#A08850";return(
+              <div key={i} style={{background:"#FFFDF7",border:"1px solid #E2D5B5",borderLeft:`4px solid ${cc}`,borderRadius:10,padding:"14px 16px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:6,gap:8}}>
+                  <span style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:15,fontWeight:800,color:"#2C1A0E"}}>{c.term}</span>
+                  <div style={{display:"flex",gap:4,flexShrink:0,flexWrap:"wrap",justifyContent:"flex-end"}}>
+                    <Badge text={c.cat} color={cc}/>
+                    {c.sutra&&<Badge text={c.sutra} color="#B8860B"/>}
+                  </div>
+                </div>
+                <div style={{fontSize:13,color:"#6B4F2A",lineHeight:1.6,marginBottom:8}}>{c.meaning}</div>
+                <div style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:12,color:cc,padding:"5px 10px",background:cc+"14",borderRadius:7,display:"inline-block"}}>{c.example}</div>
+              </div>
+            );})}
+          </section>
+        ))}
       </div>}
       {tab==="flashcards"&&<div>
         <p style={{fontSize:13,color:"#A08850",margin:"0 0 14px"}}>Tap each card to flip. Test yourself before the quiz!</p>
@@ -678,12 +826,22 @@ function ChapterDetail({ch,onBack}){
         <a href="https://youtube.com/playlist?list=PLi40Uu5ziQ7YnTssjlmllhSyP63LC1FXs" target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"12px 24px",borderRadius:99,background:"#FF0000",color:"#fff",textDecoration:"none",fontWeight:700,fontSize:15,boxShadow:"0 4px 14px rgba(255,0,0,0.3)"}}>▶ Open YouTube Playlist</a>
         <div style={{marginTop:14,fontSize:11,color:"#A08850",fontFamily:"'Palatino Linotype',Georgia,serif"}}>ॐ पाणिनये नमः</div>
       </div>}
+      <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(220px,1fr))",gap:10,marginTop:22}}>
+        <button disabled={!prevChapter} onClick={()=>prevChapter&&onNavigate(prevChapter)} style={{background:prevChapter?"#FFFDF7":"#F3F4F8",border:"1px solid #E2D5B5",borderRadius:12,padding:"12px 14px",textAlign:"left",cursor:prevChapter?"pointer":"not-allowed",opacity:prevChapter?1:0.55}}>
+          <div style={{fontSize:11,color:"#A08850",fontWeight:800,textTransform:"uppercase",letterSpacing:1}}>Previous Chapter</div>
+          <div style={{fontSize:13,color:"#2C1A0E",fontWeight:800,marginTop:4}}>{prevChapter?`${prevChapter.icon} ${prevChapter.title}`:"You are at the beginning"}</div>
+        </button>
+        <button disabled={!nextChapter} onClick={()=>nextChapter&&onNavigate(nextChapter)} style={{background:nextChapter?"#FFFDF7":"#F3F4F8",border:`1px solid ${nextChapter?nextChapter.color:"#E2D5B5"}`,borderRadius:12,padding:"12px 14px",textAlign:"left",cursor:nextChapter?"pointer":"not-allowed",opacity:nextChapter?1:0.55}}>
+          <div style={{fontSize:11,color:nextChapter?nextChapter.color:"#A08850",fontWeight:800,textTransform:"uppercase",letterSpacing:1}}>Next Chapter</div>
+          <div style={{fontSize:13,color:"#2C1A0E",fontWeight:800,marginTop:4}}>{nextChapter?`${nextChapter.icon} ${nextChapter.title}`:"All chapters complete"}</div>
+        </button>
+      </div>
     </div>
   </div>);
 }
 
 /* ── PROGRESS SCREEN ─────────────────────────────────────────────────── */
-function ProgressScreen(){
+function ProgressScreen({onOpen}){
   const{scores,completed,totalXP,streak,syncing}=useProgress();
   const tc=CHAPTERS.length;
   return(<div style={{paddingBottom:40}}>
@@ -712,17 +870,18 @@ function ProgressScreen(){
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:7}}>
         {CHAPTERS.map(ch=>{const s=scores[ch.id]||0;const done=completed.has(ch.id);
-          return(<div key={ch.id} style={{background:"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:10,padding:"11px 14px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)",display:"flex",alignItems:"center",gap:10}}>
+          return(<button key={ch.id} onClick={()=>onOpen(ch)} style={{width:"100%",background:"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:10,padding:"11px 14px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)",display:"flex",alignItems:"center",gap:10,textAlign:"left",cursor:"pointer"}}>
             <span style={{fontSize:18,minWidth:24}}>{ch.icon}</span>
             <div style={{flex:1,minWidth:0}}>
               <div style={{display:"flex",justifyContent:"space-between",marginBottom:4}}>
                 <span style={{fontSize:13,fontWeight:600,color:"#2C1A0E",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap"}}>{ch.title}</span>
                 <span style={{fontSize:11,color:ch.color,fontWeight:700,flexShrink:0,marginLeft:8}}>{s}/{ch.quiz.length}</span>
               </div>
+              <div style={{fontSize:10,color:"#A08850",marginBottom:5}}>{getChapterRange(ch)}</div>
               <PBar value={s} max={ch.quiz.length} color={ch.color} h={4}/>
             </div>
             {done&&<span style={{fontSize:15,flexShrink:0}}>✅</span>}
-          </div>);
+          </button>);
         })}
       </div>
     </div>
@@ -762,7 +921,7 @@ function HomeScreen({onOpen}){
         <h3 style={{fontSize:10,fontWeight:700,color:"#A08850",letterSpacing:1.5,textTransform:"uppercase",margin:"0 0 8px"}}>Continue Learning</h3>
         <button onClick={()=>onOpen(next)} style={{width:"100%",background:"#FFFDF7",border:`2px solid ${next.color}`,borderRadius:14,padding:"14px 16px",textAlign:"left",cursor:"pointer",boxShadow:`0 4px 18px ${next.color}25`,display:"flex",gap:12,alignItems:"center"}}>
           <span style={{fontSize:26}}>{next.icon}</span>
-          <div style={{flex:1}}><div style={{fontSize:9,color:next.color,fontWeight:800,letterSpacing:1.5,textTransform:"uppercase"}}>{next.num}</div><div style={{fontSize:14,fontWeight:700,color:"#2C1A0E"}}>{next.title}</div><div style={{fontSize:11,color:"#6B4F2A"}}>{next.subtitle}</div></div>
+          <div style={{flex:1}}><div style={{fontSize:9,color:next.color,fontWeight:800,letterSpacing:1.5,textTransform:"uppercase"}}>{next.num} · {getChapterRange(next)}</div><div style={{fontSize:14,fontWeight:700,color:"#2C1A0E"}}>{next.title}</div><div style={{fontSize:11,color:"#6B4F2A"}}>{next.subtitle}</div></div>
           <span style={{fontSize:18,color:next.color}}>→</span>
         </button>
       </div>}
@@ -784,6 +943,7 @@ function HomeScreen({onOpen}){
           return(<button key={ch.id} onClick={()=>!locked&&onOpen(ch)} style={{background:done?ch.accent:"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:10,padding:"8px 4px",textAlign:"center",cursor:locked?"not-allowed":"pointer",opacity:locked?0.4:1,boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
             <div style={{fontSize:16,marginBottom:2}}>{locked?"🔒":ch.icon}</div>
             <div style={{fontSize:8,color:ch.color,fontWeight:700}}>{ch.num}</div>
+            <div style={{fontSize:8,color:"#A08850",fontWeight:700,marginTop:2}}>{getChapterRange(ch)}</div>
             {done&&<div style={{fontSize:10,marginTop:1}}>✅</div>}
           </button>);
         })}
@@ -800,7 +960,7 @@ function HomeScreen({onOpen}){
 /* ══ ROOT APP ════════════════════════════════════════════════════════════ */
 export default function App(){
   const{user,loading:authLoading}=useAuth();
-  const{loaded:progressLoaded}=useProgress();
+  const{loaded:progressLoaded,scores,completed}=useProgress();
   const[nav,setNav]=useState("home");
   const[activeChap,setActiveChap]=useState(null);
 
@@ -811,8 +971,8 @@ export default function App(){
   function openChapter(ch){setActiveChap(ch);setNav("chapter");}
   const NAV=[{id:"home",icon:"🏠",label:"Home"},{id:"chapters",icon:"📚",label:"Chapters"},{id:"progress",icon:"📈",label:"Progress"},{id:"glossary",icon:"📖",label:"Glossary"}];
 
-  return(<div style={{minHeight:"100vh",background:"#FAF6EF",fontFamily:"'Trebuchet MS',Verdana,sans-serif",display:"flex",flexDirection:"column"}}>
-    <nav style={{position:"sticky",top:0,zIndex:100,background:"#FFFDF7",borderBottom:"2px solid #E2D5B5",boxShadow:"0 2px 10px rgba(44,26,14,0.08)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 14px",height:52}}>
+  return(<div className="app-shell" style={{minHeight:"100vh",background:"#FAF6EF",fontFamily:"'Trebuchet MS',Verdana,sans-serif",display:"flex",flexDirection:"column"}}>
+    <nav className="top-nav" style={{position:"sticky",top:0,zIndex:100,background:"#FFFDF7",borderBottom:"2px solid #E2D5B5",boxShadow:"0 2px 10px rgba(44,26,14,0.08)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 14px",height:52}}>
       <button onClick={()=>setNav("home")} style={{display:"flex",alignItems:"center",gap:8,background:"none",border:"none",cursor:"pointer",padding:0}}>
         <span style={{width:28,height:28,borderRadius:8,background:"linear-gradient(135deg,#B8860B,#D4A843)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🕉️</span>
         <span style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:13,fontWeight:800,color:"#2C1A0E"}}>Aṣṭādhyāyī</span>
@@ -826,6 +986,13 @@ export default function App(){
       </div>
       <UserAvatar/>
     </nav>
+    <div className="quick-nav-strip" style={{position:"sticky",top:64,zIndex:90,background:"#FFFDF7",borderBottom:"1px solid #E2D5B5",display:"flex",gap:8,overflowX:"auto",padding:"8px 14px"}}>
+      {NAV.map(n=>(
+        <button key={n.id} onClick={()=>{setNav(n.id);setActiveChap(null);}} style={{display:"flex",alignItems:"center",gap:7,flexShrink:0,padding:"8px 11px",borderRadius:10,border:`1px solid ${nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#E2D5B5"}`,background:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#F3EDD8":"#FFFDF7",color:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#6B4F2A",fontSize:12,fontWeight:800,cursor:"pointer"}}>
+          <span>{n.icon}</span><span>{n.label}</span>
+        </button>
+      ))}
+    </div>
     {nav==="chapter"&&activeChap&&(
       <div style={{background:"#F3EDD8",borderBottom:"1px solid #E2D5B5",padding:"5px 16px",display:"flex",alignItems:"center",gap:5,fontSize:12,color:"#A08850"}}>
         <button onClick={()=>{setNav("chapters");setActiveChap(null);}} style={{background:"none",border:"none",cursor:"pointer",color:"#A08850",fontSize:12,padding:0}}>📚 Chapters</button>
@@ -842,7 +1009,7 @@ export default function App(){
           </div>
           <div style={{padding:"14px 16px",maxWidth:680,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
             {CHAPTERS.map((ch,i)=>{
-              const{scores,completed}=useProgress();
+              const subchapters=getSubchapters(ch);
               const done=completed.has(ch.id);const cs=scores[ch.id]||0;
               const locked=i>0&&!completed.has(CHAPTERS[i-1].id)&&!scores[ch.id];
               return(<button key={ch.id} onClick={()=>!locked&&openChapter(ch)} style={{background:locked?"#F8F4EC":"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:14,padding:14,textAlign:"left",cursor:locked?"not-allowed":"pointer",opacity:locked?0.55:1,boxShadow:done?`0 4px 14px ${ch.color}25`:"0 2px 12px rgba(44,26,14,0.10)"}}>
@@ -852,8 +1019,12 @@ export default function App(){
                   {done&&<span style={{fontSize:14}}>✅</span>}
                 </div>
                 <div style={{fontSize:11,color:"#A08850",marginBottom:8}}>{ch.subtitle}</div>
+                <div style={{display:"flex",gap:5,flexWrap:"wrap",marginBottom:10}}>
+                  {subchapters.slice(0,4).map(sub=><span key={sub.id} style={{fontSize:10,color:ch.color,background:ch.color+"12",border:`1px solid ${ch.color}30`,borderRadius:7,padding:"3px 6px",fontWeight:800}}>{sub.id}</span>)}
+                  {subchapters.length>4&&<span style={{fontSize:10,color:"#A08850",background:"#F3EDD8",border:"1px solid #E2D5B5",borderRadius:7,padding:"3px 6px",fontWeight:700}}>+{subchapters.length-4}</span>}
+                </div>
                 <div style={{display:"flex",justifyContent:"space-between",fontSize:11,color:"#A08850"}}>
-                  <span>📚{ch.concepts.length} terms</span><span>❓{ch.quiz.length} Qs</span>
+                  <span>{getChapterRange(ch)}</span><span>📚{ch.concepts.length} terms</span><span>❓{ch.quiz.length} Qs</span>
                   {cs>0&&<span style={{color:ch.color,fontWeight:700}}>🏅{cs*15}XP</span>}
                 </div>
                 {cs>0&&<div style={{marginTop:7}}><PBar value={cs} max={ch.quiz.length} color={ch.color} h={4}/></div>}
@@ -862,11 +1033,11 @@ export default function App(){
           </div>
         </div>
       )}
-      {nav==="chapter"&&activeChap&&<ChapterDetail ch={activeChap} onBack={()=>{setNav("chapters");setActiveChap(null);}}/>}
-      {nav==="progress"&&<ProgressScreen/>}
-      {nav==="glossary"&&<GlossaryScreen/>}
+      {nav==="chapter"&&activeChap&&<ChapterDetail key={activeChap.id} ch={activeChap} onBack={()=>{setNav("chapters");setActiveChap(null);}} onNavigate={openChapter}/>}
+      {nav==="progress"&&<ProgressScreen onOpen={openChapter}/>}
+      {nav==="glossary"&&<GlossaryScreen onOpen={openChapter}/>}
     </main>
-    <div style={{position:"sticky",bottom:0,zIndex:100,background:"#FFFDF7",borderTop:"2px solid #E2D5B5",display:"flex",boxShadow:"0 -2px 10px rgba(44,26,14,0.07)"}}>
+    <div className="bottom-nav" style={{position:"sticky",bottom:0,zIndex:100,background:"#FFFDF7",borderTop:"2px solid #E2D5B5",display:"flex",boxShadow:"0 -2px 10px rgba(44,26,14,0.07)"}}>
       {NAV.map(n=>(
         <button key={n.id} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{flex:1,padding:"7px 4px",border:"none",background:nav===n.id?"#F3EDD8":"#FFFDF7",borderTop:nav===n.id?"2px solid #B8860B":"2px solid transparent",color:nav===n.id?"#B8860B":"#A08850",fontSize:10,fontWeight:nav===n.id?700:400,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:1}}>
           <span style={{fontSize:14}}>{n.icon}</span><span style={{fontSize:8}}>{n.label}</span>
