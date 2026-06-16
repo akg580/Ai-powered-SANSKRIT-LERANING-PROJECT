@@ -52,11 +52,11 @@ function Input({ label, type="text", value, onChange, placeholder, icon, error }
   );
 }
 
-function Btn({ children, onClick, loading, disabled = false, variant = "primary", style: sx = {} }) {
+function Btn({ children, onClick, loading, disabled = false, variant = "primary", style: sx = {}, className = "", ariaLabel }) {
   const isPrimary = variant === "primary";
   const isDisabled = loading || disabled;
   return (
-    <button onClick={onClick} disabled={isDisabled} type={onClick ? "button" : "submit"}
+    <button className={className} aria-label={ariaLabel} onClick={onClick} disabled={isDisabled} type={onClick ? "button" : "submit"}
       style={{
         width: "100%", padding: "13px", borderRadius: 12,
         background: isPrimary ? `linear-gradient(135deg,${T.gold},${T.goldLt})` : "transparent",
@@ -250,7 +250,7 @@ export default function AuthScreen() {
           {/* Global error / success */}
           {!isFirebaseConfigured && (
             <div style={{ background: "#FFF4D8", border: "1px solid #E8C97A", borderRadius: 10, padding: "10px 14px", marginBottom: 16, fontSize: 13, color: T.textMid, lineHeight: 1.5 }}>
-              Firebase config is still using placeholder values. Add your Firebase web app keys in src/firebase/config.js or Vite env vars, then restart the dev server.
+              Firebase config is missing. Add your Firebase web app keys in an ignored .env file, then restart the dev server.
             </div>
           )}
           {error && (
@@ -303,6 +303,8 @@ export default function AuthScreen() {
                 disabled={!isFirebaseConfigured}
                 variant="secondary"
                 onClick={handleGoogleLogin}
+                className="google-auth-button"
+                ariaLabel="Continue with Google"
                 style={{
                   background: "#fff",
                   border: "1.5px solid #DADCE0",

@@ -6,6 +6,6 @@ export default defineConfig({
   server: {
     host: 'localhost',
     port: 3000,
-    open: true
+    open: process.env.VITE_E2E_AUTH === '1' ? false : true
   }
 })

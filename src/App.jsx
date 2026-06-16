@@ -1,5 +1,5 @@
 // src/App.jsx — Ashtadhyayi Sahajabodha v2 (Auth + Progress Sync)
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth }     from "./contexts/AuthContext.jsx";
 import { useProgress } from "./contexts/ProgressContext.jsx";
 import AuthScreen      from "./components/AuthScreen.jsx";
@@ -455,6 +455,120 @@ const SANDHI_CHAPTER = {
 
 CHAPTERS[1] = SANDHI_CHAPTER;
 
+const CMS_STORAGE_KEY = "ashtadhyayi.cms.chapters.v1";
+
+function cloneChapters(value) {
+  return JSON.parse(JSON.stringify(value));
+}
+
+function normalizeChapter(chapter, index = 0) {
+  const fallbackColor = ["#18A999", "#2563EB", "#FF6B6B", "#F59E0B", "#8B5CF6", "#06B6D4", "#64748B"][index % 7];
+  const concepts = Array.isArray(chapter.concepts) ? chapter.concepts.map(concept => ({
+    term: concept.term || "Untitled Subchapter",
+    meaning: concept.meaning || "Add an explanation for this subchapter.",
+    example: concept.example || "Add an example.",
+    cat: concept.cat || "core",
+    sutra: concept.sutra || "",
+  })) : [];
+  const quiz = Array.isArray(chapter.quiz) ? chapter.quiz.map(item => {
+    const opts = Array.isArray(item.opts) && item.opts.length ? item.opts : ["Option A", "Option B", "Option C", "Option D"];
+    return {
+      q: item.q || "Untitled question",
+      opts,
+      ans: Math.max(0, Math.min(Number(item.ans) || 0, opts.length - 1)),
+      exp: item.exp || "Add an explanation.",
+    };
+  }) : [];
+  return {
+    id: Number(chapter.id) || index + 1,
+    num: chapter.num || `Chapter ${index + 1}`,
+    title: chapter.title || "Untitled Chapter",
+    subtitle: chapter.subtitle || "Add a clear chapter subtitle",
+    icon: chapter.icon || "📘",
+    color: chapter.color || fallbackColor,
+    accent: chapter.accent || `${fallbackColor}14`,
+    concepts,
+    quiz,
+    vedic: Array.isArray(chapter.vedic) ? chapter.vedic : [],
+    levels: chapter.levels || { easy: [], medium: [], hard: [] },
+  };
+}
+
+function normalizeChapters(chapters) {
+  const used = new Set();
+  const normalized = chapters.map((chapter, index) => {
+    const item = normalizeChapter(chapter, index);
+    while (used.has(item.id)) item.id += 1;
+    used.add(item.id);
+    return item;
+  });
+  return normalized.sort((a, b) => a.id - b.id);
+}
+
+function loadCmsChapters() {
+  try {
+    const saved = localStorage.getItem(CMS_STORAGE_KEY);
+    if (!saved) return cloneChapters(CHAPTERS);
+    const parsed = JSON.parse(saved);
+    if (!Array.isArray(parsed) || !parsed.length) return cloneChapters(CHAPTERS);
+    return normalizeChapters(parsed);
+  } catch {
+    return cloneChapters(CHAPTERS);
+  }
+}
+
+function saveCmsChapters(chapters) {
+  try {
+    localStorage.setItem(CMS_STORAGE_KEY, JSON.stringify(chapters));
+    return true;
+  } catch (err) {
+    console.error("CMS save failed:", err);
+    return false;
+  }
+}
+
+function isAdminUser(user) {
+  if (!user) return false;
+  const configured = (import.meta.env.VITE_ADMIN_EMAILS || "").split(",").map(email => email.trim().toLowerCase()).filter(Boolean);
+  if (!configured.length) return true;
+  return configured.includes(user.email?.toLowerCase());
+}
+
+function createChapter(nextId) {
+  return normalizeChapter({
+    id: nextId,
+    num: `Chapter ${nextId}`,
+    title: "New Sanskrit Chapter",
+    subtitle: "Add a focused learning promise",
+    icon: "✨",
+    color: "#6D5DFC",
+    accent: "#F0EEFF",
+    concepts: [createConcept()],
+    quiz: [createQuiz()],
+    vedic: [],
+    levels: { easy: [], medium: [], hard: [] },
+  }, nextId - 1);
+}
+
+function createConcept() {
+  return {
+    term: "New Subchapter",
+    meaning: "Write the core explanation learners should understand.",
+    example: "Add a memorable example.",
+    cat: "core",
+    sutra: "",
+  };
+}
+
+function createQuiz() {
+  return {
+    q: "Write a question for this chapter.",
+    opts: ["Option A", "Option B", "Option C", "Option D"],
+    ans: 0,
+    exp: "Explain why the answer is correct.",
+  };
+}
+
 function cleanSubchapterTitle(term) {
   return term
     .replace(/\s*\([^)]*\)/g, "")
@@ -519,8 +633,10 @@ function FlipCard({concept}){
 function QuizView({chapter,onScore}){
   const[step,setStep]=useState(0);const[sel,setSel]=useState(null);
   const[rev,setRev]=useState(false);const[ans,setAns]=useState([]);const[done,setDone]=useState(false);
-  const q=chapter.quiz[step];const total=chapter.quiz.length;
+  const safeQuiz=chapter.quiz||[];
+  const q=safeQuiz[step];const total=safeQuiz.length;
   const C=chapter.color;
+  if(!total)return <div style={{padding:18,textAlign:"center",color:"#A08850"}}>No quiz questions yet. Add questions in Admin CMS.</div>;
   function pick(i){if(!rev){setSel(i);setRev(true);}}
   function next(){const a=[...ans,sel===q.ans];setAns(a);if(step+1>=total){onScore&&onScore(a.filter(Boolean).length,total);setDone(true);}else{setStep(s=>s+1);setSel(null);setRev(false);}}
   function reset(){setStep(0);setSel(null);setRev(false);setAns([]);setDone(false);}
@@ -648,15 +764,15 @@ function VedicView({vedic}){
 }
 
 /* ── GLOSSARY ────────────────────────────────────────────────────────── */
-function GlossaryScreen({onOpen}){
+function GlossaryScreen({chapters,onOpen}){
   const[q,setQ]=useState("");const[catF,setCatF]=useState("all");
-  const all=CHAPTERS.flatMap(ch=>ch.concepts.map(c=>({...c,chTitle:ch.title,chColor:ch.color,chapter:ch})));
+  const all=chapters.flatMap(ch=>ch.concepts.map(c=>({...c,chTitle:ch.title,chColor:ch.color,chapter:ch})));
   const cats=[...new Set(all.map(t=>t.cat))].sort();
   const filtered=all.filter(t=>(q===""||t.term.toLowerCase().includes(q.toLowerCase())||t.meaning.toLowerCase().includes(q.toLowerCase()))&&(catF==="all"||t.cat===catF));
   return(<div style={{paddingBottom:40}}>
     <div style={{background:"linear-gradient(135deg,#FDF6E3,#F3EDD8)",borderBottom:"2px solid #E2D5B5",padding:"18px 18px 14px"}}>
       <h2 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:20,fontWeight:800,color:"#2C1A0E",margin:"0 0 4px"}}>📖 Glossary</h2>
-      <p style={{fontSize:13,color:"#A08850",margin:"0 0 10px"}}>{all.length} terms across all 7 chapters</p>
+      <p style={{fontSize:13,color:"#A08850",margin:"0 0 10px"}}>{all.length} terms across {chapters.length} chapters</p>
       <input value={q} onChange={e=>setQ(e.target.value)} placeholder="Search terms or meanings…" style={{width:"100%",padding:"10px 14px",borderRadius:10,border:"1.5px solid #E2D5B5",background:"#FFFDF7",fontSize:14,color:"#2C1A0E",outline:"none",boxSizing:"border-box"}}/>
     </div>
     <div style={{padding:"12px 18px 0",maxWidth:680,margin:"0 auto"}}>
@@ -686,7 +802,7 @@ function GlossaryScreen({onOpen}){
 }
 
 /* ── CHAPTER DETAIL ──────────────────────────────────────────────────── */
-function ChapterDetail({ch,onBack,onNavigate}){
+function ChapterDetail({ch,chapters,onBack,onNavigate}){
   const{scores,completed,recordScore,recordLevelBadge,addXP,levelBadges}=useProgress();
   const[tab,setTab]=useState("concepts");
   const chScore=scores[ch.id]||0;const isDone=completed.has(ch.id);
@@ -700,9 +816,9 @@ function ChapterDetail({ch,onBack,onNavigate}){
   ];
   const subchapters=getSubchapters(ch);
   const[activeSub,setActiveSub]=useState(subchapters[0]?.id||"");
-  const chapterIndex=CHAPTERS.findIndex(item=>item.id===ch.id);
-  const prevChapter=chapterIndex>0?CHAPTERS[chapterIndex-1]:null;
-  const nextChapter=chapterIndex<CHAPTERS.length-1?CHAPTERS[chapterIndex+1]:null;
+  const chapterIndex=chapters.findIndex(item=>item.id===ch.id);
+  const prevChapter=chapterIndex>0?chapters[chapterIndex-1]:null;
+  const nextChapter=chapterIndex<chapters.length-1?chapters[chapterIndex+1]:null;
   function jumpToSubchapter(id){
     setTab("concepts");
     setActiveSub(id);
@@ -841,9 +957,9 @@ function ChapterDetail({ch,onBack,onNavigate}){
 }
 
 /* ── PROGRESS SCREEN ─────────────────────────────────────────────────── */
-function ProgressScreen({onOpen}){
+function ProgressScreen({chapters,onOpen}){
   const{scores,completed,totalXP,streak,syncing}=useProgress();
-  const tc=CHAPTERS.length;
+  const tc=chapters.length;
   return(<div style={{paddingBottom:40}}>
     <div style={{background:"linear-gradient(135deg,#FDF6E3,#F3EDD8)",borderBottom:"2px solid #E2D5B5",padding:"18px 18px 14px"}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center"}}>
@@ -869,7 +985,7 @@ function ProgressScreen({onOpen}){
         <PBar value={completed.size} max={tc} color="#B8860B" h={10}/>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:7}}>
-        {CHAPTERS.map(ch=>{const s=scores[ch.id]||0;const done=completed.has(ch.id);
+        {chapters.map(ch=>{const s=scores[ch.id]||0;const done=completed.has(ch.id);
           return(<button key={ch.id} onClick={()=>onOpen(ch)} style={{width:"100%",background:"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:10,padding:"11px 14px",boxShadow:"0 2px 12px rgba(44,26,14,0.10)",display:"flex",alignItems:"center",gap:10,textAlign:"left",cursor:"pointer"}}>
             <span style={{fontSize:18,minWidth:24}}>{ch.icon}</span>
             <div style={{flex:1,minWidth:0}}>
@@ -889,11 +1005,11 @@ function ProgressScreen({onOpen}){
 }
 
 /* ── HOME SCREEN ─────────────────────────────────────────────────────── */
-function HomeScreen({onOpen}){
+function HomeScreen({chapters,onOpen}){
   const{scores,completed,totalXP,streak}=useProgress();
   const{userProfile}=useAuth();
-  const next=CHAPTERS.find(ch=>!completed.has(ch.id));
-  const inProg=CHAPTERS.filter(ch=>scores[ch.id]&&!completed.has(ch.id)).slice(0,3);
+  const next=chapters.find(ch=>!completed.has(ch.id));
+  const inProg=chapters.filter(ch=>scores[ch.id]&&!completed.has(ch.id)).slice(0,3);
   const firstName=(userProfile?.displayName||"").split(" ")[0]||"Scholar";
   return(<div style={{paddingBottom:40}}>
     <div style={{background:"linear-gradient(160deg,#FDF6E3,#F0E6C8 50%,#FDF6E3)",borderBottom:"2px solid #E2D5B5",padding:"24px 18px 18px",textAlign:"center",position:"relative",overflow:"hidden"}}>
@@ -904,7 +1020,7 @@ function HomeScreen({onOpen}){
         <h1 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:"clamp(16px,5vw,24px)",fontWeight:900,color:"#2C1A0E",margin:"0 0 4px"}}>Aṣṭādhyāyī Sahajabodha</h1>
         <p style={{fontSize:12,color:"#6B4F2A",margin:"0 0 14px"}}>Pāṇini's Sanskrit Grammar · Pauspi Prakriyā</p>
         <div style={{display:"flex",justifyContent:"center",gap:20,flexWrap:"wrap"}}>
-          {[{v:`${completed.size}/${CHAPTERS.length}`,l:"Chapters",c:"#B8860B"},{v:`${totalXP}XP`,l:"Points",c:"#4A7C59"},{v:`🔥${streak}`,l:"Streak",c:"#C8503A"}].map(s=>(
+          {[{v:`${completed.size}/${chapters.length}`,l:"Chapters",c:"#B8860B"},{v:`${totalXP}XP`,l:"Points",c:"#4A7C59"},{v:`🔥${streak}`,l:"Streak",c:"#C8503A"}].map(s=>(
             <div key={s.l} style={{textAlign:"center"}}><div style={{fontSize:20,fontWeight:800,color:s.c}}>{s.v}</div><div style={{fontSize:10,color:"#A08850"}}>{s.l}</div></div>
           ))}
         </div>
@@ -913,9 +1029,9 @@ function HomeScreen({onOpen}){
     <div style={{padding:"16px 16px 0",maxWidth:680,margin:"0 auto"}}>
       <div style={{marginBottom:16}}>
         <div style={{display:"flex",justifyContent:"space-between",fontSize:12,color:"#A08850",marginBottom:5}}>
-          <span>Overall Progress</span><span style={{color:"#B8860B",fontWeight:700}}>{Math.round((completed.size/CHAPTERS.length)*100)}%</span>
+          <span>Overall Progress</span><span style={{color:"#B8860B",fontWeight:700}}>{chapters.length?Math.round((completed.size/chapters.length)*100):0}%</span>
         </div>
-        <PBar value={completed.size} max={CHAPTERS.length} color="#B8860B" h={10}/>
+        <PBar value={completed.size} max={chapters.length} color="#B8860B" h={10}/>
       </div>
       {next&&<div style={{marginBottom:16}}>
         <h3 style={{fontSize:10,fontWeight:700,color:"#A08850",letterSpacing:1.5,textTransform:"uppercase",margin:"0 0 8px"}}>Continue Learning</h3>
@@ -937,9 +1053,9 @@ function HomeScreen({onOpen}){
           ))}
         </div>
       </div>}
-      <h3 style={{fontSize:10,fontWeight:700,color:"#A08850",letterSpacing:1.5,textTransform:"uppercase",margin:"0 0 8px"}}>All 7 Chapters</h3>
+      <h3 style={{fontSize:10,fontWeight:700,color:"#A08850",letterSpacing:1.5,textTransform:"uppercase",margin:"0 0 8px"}}>All {chapters.length} Chapters</h3>
       <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:7,marginBottom:20}}>
-        {CHAPTERS.map((ch,i)=>{const done=completed.has(ch.id);const locked=i>0&&!completed.has(CHAPTERS[i-1].id)&&!scores[ch.id];
+        {chapters.map((ch,i)=>{const done=completed.has(ch.id);const locked=false;
           return(<button key={ch.id} onClick={()=>!locked&&onOpen(ch)} style={{background:done?ch.accent:"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:10,padding:"8px 4px",textAlign:"center",cursor:locked?"not-allowed":"pointer",opacity:locked?0.4:1,boxShadow:"0 2px 12px rgba(44,26,14,0.10)"}}>
             <div style={{fontSize:16,marginBottom:2}}>{locked?"🔒":ch.icon}</div>
             <div style={{fontSize:8,color:ch.color,fontWeight:700}}>{ch.num}</div>
@@ -958,9 +1074,265 @@ function HomeScreen({onOpen}){
 }
 
 /* ══ ROOT APP ════════════════════════════════════════════════════════════ */
+function ProfileScreen({chapters,onOpen}){
+  const { user, userProfile, updateUserProfile } = useAuth();
+  const { scores, completed, totalXP, streak, syncing, resetProgress, exportProgress } = useProgress();
+  const [form,setForm]=useState({
+    displayName:userProfile?.displayName||"",
+    bio:userProfile?.bio||"",
+    learningGoal:userProfile?.learningGoal||"",
+    preferredScript:userProfile?.preferredScript||"Devanagari + Roman",
+    dailyTarget:userProfile?.dailyTarget||20,
+    avatarColor:userProfile?.avatarColor||"#6D5DFC",
+  });
+  const [saving,setSaving]=useState(false);
+  const [saved,setSaved]=useState("");
+  const mastery=chapters.length?Math.round((completed.size/chapters.length)*100):0;
+
+  useEffect(()=>{
+    setForm({
+      displayName:userProfile?.displayName||"",
+      bio:userProfile?.bio||"",
+      learningGoal:userProfile?.learningGoal||"",
+      preferredScript:userProfile?.preferredScript||"Devanagari + Roman",
+      dailyTarget:userProfile?.dailyTarget||20,
+      avatarColor:userProfile?.avatarColor||"#6D5DFC",
+    });
+  },[userProfile]);
+
+  function setField(field,value){setForm(current=>({...current,[field]:value}));}
+  async function saveProfile(e){
+    e.preventDefault();
+    setSaving(true);setSaved("");
+    try{
+      await updateUserProfile(form);
+      setSaved("Profile saved. Your learning system is up to date.");
+    }catch(err){
+      setSaved(err?.message||"Could not save profile.");
+    }finally{
+      setSaving(false);
+    }
+  }
+  function copyUserData(){
+    const payload={profile:userProfile,progress:exportProgress(),exportedAt:new Date().toISOString()};
+    navigator.clipboard?.writeText(JSON.stringify(payload,null,2));
+    setSaved("User data export copied to clipboard.");
+  }
+  function confirmReset(){
+    if(!window.confirm("Reset all progress for this account? Profile details stay saved."))return;
+    resetProgress();
+    setSaved("Progress reset for this account.");
+  }
+
+  return(<div className="profile-page">
+    <div className="profile-hero">
+      <div className="profile-avatar" style={{background:`linear-gradient(135deg,${form.avatarColor},${form.avatarColor}cc)`}}>
+        {(form.displayName||user?.email||"U").slice(0,2).toUpperCase()}
+      </div>
+      <div>
+        <div className="admin-kicker">User System</div>
+        <h2>{form.displayName||"Sanskrit Learner"}</h2>
+        <p>{user?.email} · profile, preferences, progress, and learning identity stored together.</p>
+      </div>
+    </div>
+
+    <div className="profile-grid">
+      <section className="profile-card">
+        <div className="admin-section-title">Profile & preferences</div>
+        <form onSubmit={saveProfile} className="admin-fields">
+          <label className="wide">Display name<input value={form.displayName} onChange={e=>setField("displayName",e.target.value)} /></label>
+          <label className="wide">Bio<textarea rows={3} value={form.bio} onChange={e=>setField("bio",e.target.value)} placeholder="A short note about your Sanskrit journey" /></label>
+          <label className="wide">Learning goal<input value={form.learningGoal} onChange={e=>setField("learningGoal",e.target.value)} /></label>
+          <label>Preferred script<select value={form.preferredScript} onChange={e=>setField("preferredScript",e.target.value)}>
+            <option>Devanagari + Roman</option><option>Devanagari only</option><option>Roman only</option>
+          </select></label>
+          <label>Daily target<input type="number" min="5" step="5" value={form.dailyTarget} onChange={e=>setField("dailyTarget",e.target.value)} /></label>
+          <label>Avatar color<input type="color" value={form.avatarColor} onChange={e=>setField("avatarColor",e.target.value)} /></label>
+          <div className="profile-actions wide">
+            <button type="submit" disabled={saving}>{saving?"Saving…":"Save Profile"}</button>
+            <button type="button" onClick={copyUserData}>Copy User Data</button>
+            <button type="button" className="danger" onClick={confirmReset}>Reset Progress</button>
+          </div>
+          {saved&&<div className="profile-status wide">{saved}</div>}
+        </form>
+      </section>
+
+      <aside className="profile-card">
+        <div className="admin-section-title">Progress vault</div>
+        <div className="profile-stats">
+          {[{v:`${completed.size}/${chapters.length}`,l:"Chapters"},{v:`${totalXP}XP`,l:"Experience"},{v:`🔥${streak}`,l:"Streak"},{v:`${mastery}%`,l:"Mastery"}].map(item=><div key={item.l}><strong>{item.v}</strong><span>{item.l}</span></div>)}
+        </div>
+        <div className="profile-sync">{syncing?"⏳ Saving progress…":"✅ Cloud/local progress synced"}</div>
+      </aside>
+    </div>
+
+    <section className="profile-card">
+      <div className="admin-section-title">Chapter progress</div>
+      <div className="profile-chapters">
+        {chapters.map(ch=>{
+          const score=scores[ch.id]||0;const done=completed.has(ch.id);
+          return <button key={ch.id} onClick={()=>onOpen(ch)}>
+            <span>{ch.icon}</span>
+            <div><strong>{ch.title}</strong><small>{score}/{ch.quiz.length} quiz · {getChapterRange(ch)}</small><PBar value={score} max={ch.quiz.length} color={ch.color} h={5}/></div>
+            <em>{done?"Done":"Open"}</em>
+          </button>;
+        })}
+      </div>
+    </section>
+  </div>);
+}
+
+function AdminCMS({chapters,onChange,onOpen,onReset}){
+  const[selectedId,setSelectedId]=useState(chapters[0]?.id||null);
+  const selected=chapters.find(ch=>ch.id===selectedId)||chapters[0];
+  const selectedIndex=chapters.findIndex(ch=>ch.id===selected?.id);
+  const cats=[...new Set([...Object.keys(CC), ...chapters.flatMap(ch=>ch.concepts.map(c=>c.cat||"core"))])].sort();
+
+  function commit(next){
+    const normalized=normalizeChapters(next);
+    onChange(normalized);
+    if(selectedId&&!normalized.some(ch=>ch.id===selectedId)) setSelectedId(normalized[0]?.id||null);
+  }
+  function updateChapter(field,value){
+    commit(chapters.map(ch=>ch.id===selected.id?normalizeChapter({...ch,[field]:value},selectedIndex):ch));
+  }
+  function addChapter(){
+    const nextId=Math.max(0,...chapters.map(ch=>Number(ch.id)||0))+1;
+    const chapter=createChapter(nextId);
+    commit([...chapters,chapter]);
+    setSelectedId(chapter.id);
+  }
+  function duplicateChapter(){
+    if(!selected)return;
+    const nextId=Math.max(0,...chapters.map(ch=>Number(ch.id)||0))+1;
+    const copy=normalizeChapter({...cloneChapters(selected),id:nextId,title:`${selected.title} Copy`,num:`Chapter ${nextId}`},chapters.length);
+    commit([...chapters,copy]);
+    setSelectedId(copy.id);
+  }
+  function deleteChapter(){
+    if(!selected||chapters.length<=1)return;
+    if(!window.confirm(`Delete chapter "${selected.title}"? This only changes CMS data on this browser.`))return;
+    commit(chapters.filter(ch=>ch.id!==selected.id));
+  }
+  function updateConcept(index,field,value){
+    updateChapter("concepts",selected.concepts.map((item,i)=>i===index?{...item,[field]:value}:item));
+  }
+  function addConcept(){updateChapter("concepts",[...selected.concepts,createConcept()]);}
+  function deleteConcept(index){updateChapter("concepts",selected.concepts.filter((_,i)=>i!==index));}
+  function updateQuiz(index,field,value){
+    updateChapter("quiz",selected.quiz.map((item,i)=>i===index?{...item,[field]:value}:item));
+  }
+  function addQuiz(){updateChapter("quiz",[...selected.quiz,createQuiz()]);}
+  function deleteQuiz(index){updateChapter("quiz",selected.quiz.filter((_,i)=>i!==index));}
+  function exportJson(){
+    navigator.clipboard?.writeText(JSON.stringify(chapters,null,2));
+    alert("CMS JSON copied to clipboard.");
+  }
+
+  if(!selected)return <div className="admin-cms"><button onClick={addChapter}>Create first chapter</button></div>;
+
+  return(<div className="admin-cms">
+    <div className="admin-hero">
+      <div>
+        <div className="admin-kicker">Admin CMS</div>
+        <h2>Content command center</h2>
+        <p>Add, edit, duplicate, delete, and preview chapters/subchapters without touching code. Changes are saved locally in this browser.</p>
+      </div>
+      <div className="admin-actions">
+        <button onClick={addChapter}>＋ Add Chapter</button>
+        <button onClick={duplicateChapter}>⧉ Duplicate</button>
+        <button onClick={exportJson}>⇩ Copy JSON</button>
+        <button onClick={onReset}>↺ Reset Defaults</button>
+      </div>
+    </div>
+
+    <div className="admin-grid">
+      <aside className="admin-list">
+        <div className="admin-section-title">Chapters</div>
+        {chapters.map(ch=>(
+          <button key={ch.id} className={ch.id===selected.id?"active":""} onClick={()=>setSelectedId(ch.id)}>
+            <span>{ch.icon}</span>
+            <div><strong>{ch.title}</strong><small>{getChapterRange(ch)} · {ch.concepts.length} subchapters</small></div>
+          </button>
+        ))}
+      </aside>
+
+      <section className="admin-editor">
+        <div className="admin-toolbar">
+          <strong>{selected.icon} Editing: {selected.title}</strong>
+          <div>
+            <button onClick={()=>onOpen(selected)}>Preview</button>
+            <button className="danger" disabled={chapters.length<=1} onClick={deleteChapter}>Delete</button>
+          </div>
+        </div>
+
+        <div className="admin-card">
+          <div className="admin-section-title">Chapter settings</div>
+          <div className="admin-fields">
+            <label>Order / ID<input type="number" value={selected.id} onChange={e=>updateChapter("id",Number(e.target.value)||selected.id)}/></label>
+            <label>Chapter Label<input value={selected.num} onChange={e=>updateChapter("num",e.target.value)}/></label>
+            <label>Icon<input value={selected.icon} onChange={e=>updateChapter("icon",e.target.value)}/></label>
+            <label>Theme Color<input type="color" value={selected.color} onChange={e=>updateChapter("color",e.target.value)}/></label>
+            <label className="wide">Title<input value={selected.title} onChange={e=>updateChapter("title",e.target.value)}/></label>
+            <label className="wide">Subtitle<input value={selected.subtitle} onChange={e=>updateChapter("subtitle",e.target.value)}/></label>
+          </div>
+        </div>
+
+        <div className="admin-card">
+          <div className="admin-toolbar">
+            <div><div className="admin-section-title">Subchapters / concepts</div><small>Each concept becomes one structured subchapter.</small></div>
+            <button onClick={addConcept}>＋ Add Subchapter</button>
+          </div>
+          <div className="admin-stack">
+            {selected.concepts.map((concept,index)=>(
+              <div key={index} className="admin-item">
+                <div className="admin-item-head">
+                  <strong>{selected.id}.{index+1} {concept.term||"Untitled"}</strong>
+                  <button className="danger" onClick={()=>deleteConcept(index)}>Delete</button>
+                </div>
+                <div className="admin-fields">
+                  <label className="wide">Subchapter title<input value={concept.term||""} onChange={e=>updateConcept(index,"term",e.target.value)}/></label>
+                  <label>Category<select value={concept.cat||"core"} onChange={e=>updateConcept(index,"cat",e.target.value)}>{cats.map(cat=><option key={cat} value={cat}>{cat}</option>)}</select></label>
+                  <label>Sūtra / Ref<input value={concept.sutra||""} onChange={e=>updateConcept(index,"sutra",e.target.value)}/></label>
+                  <label className="wide">Explanation<textarea rows={3} value={concept.meaning||""} onChange={e=>updateConcept(index,"meaning",e.target.value)}/></label>
+                  <label className="wide">Example / memory hook<textarea rows={2} value={concept.example||""} onChange={e=>updateConcept(index,"example",e.target.value)}/></label>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="admin-card">
+          <div className="admin-toolbar">
+            <div><div className="admin-section-title">Quick quiz</div><small>Use zero-based answer index: 0, 1, 2, or 3.</small></div>
+            <button onClick={addQuiz}>＋ Add Question</button>
+          </div>
+          <div className="admin-stack">
+            {selected.quiz.map((quiz,index)=>(
+              <div key={index} className="admin-item">
+                <div className="admin-item-head">
+                  <strong>Question {index+1}</strong>
+                  <button className="danger" onClick={()=>deleteQuiz(index)}>Delete</button>
+                </div>
+                <div className="admin-fields">
+                  <label className="wide">Question<input value={quiz.q||""} onChange={e=>updateQuiz(index,"q",e.target.value)}/></label>
+                  <label className="wide">Options, separated by |<input value={(quiz.opts||[]).join(" | ")} onChange={e=>updateQuiz(index,"opts",e.target.value.split("|").map(item=>item.trim()).filter(Boolean))}/></label>
+                  <label>Correct index<input type="number" min="0" max={Math.max(0,(quiz.opts?.length||1)-1)} value={quiz.ans||0} onChange={e=>updateQuiz(index,"ans",Number(e.target.value)||0)}/></label>
+                  <label className="wide">Explanation<textarea rows={2} value={quiz.exp||""} onChange={e=>updateQuiz(index,"exp",e.target.value)}/></label>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>);
+}
+
 export default function App(){
   const{user,loading:authLoading}=useAuth();
   const{loaded:progressLoaded,scores,completed}=useProgress();
+  const[chapters,setChapters]=useState(loadCmsChapters);
   const[nav,setNav]=useState("home");
   const[activeChap,setActiveChap]=useState(null);
 
@@ -968,50 +1340,64 @@ export default function App(){
     return <LoadingScreen message={authLoading?"Checking your account…":"Loading your progress…"}/>;
   if(!user) return <AuthScreen/>;
 
+  function updateChapters(next){
+    const normalized=normalizeChapters(next);
+    setChapters(normalized);
+    saveCmsChapters(normalized);
+  }
+  function resetCms(){
+    if(!window.confirm("Reset CMS content back to the bundled default chapters?"))return;
+    const defaults=cloneChapters(CHAPTERS);
+    updateChapters(defaults);
+    setActiveChap(null);
+    setNav("admin");
+  }
   function openChapter(ch){setActiveChap(ch);setNav("chapter");}
-  const NAV=[{id:"home",icon:"🏠",label:"Home"},{id:"chapters",icon:"📚",label:"Chapters"},{id:"progress",icon:"📈",label:"Progress"},{id:"glossary",icon:"📖",label:"Glossary"}];
+  const activeChapter=activeChap?chapters.find(ch=>ch.id===activeChap.id)||activeChap:null;
+  const admin=isAdminUser(user);
+  const NAV=[{id:"home",icon:"🏠",label:"Home"},{id:"chapters",icon:"📚",label:"Chapters"},{id:"progress",icon:"📈",label:"Progress"},{id:"glossary",icon:"📖",label:"Glossary"},{id:"profile",icon:"👤",label:"Profile"},...(admin?[{id:"admin",icon:"🛠️",label:"Admin"}]:[])];
 
   return(<div className="app-shell" style={{minHeight:"100vh",background:"#FAF6EF",fontFamily:"'Trebuchet MS',Verdana,sans-serif",display:"flex",flexDirection:"column"}}>
-    <nav className="top-nav" style={{position:"sticky",top:0,zIndex:100,background:"#FFFDF7",borderBottom:"2px solid #E2D5B5",boxShadow:"0 2px 10px rgba(44,26,14,0.08)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 14px",height:52}}>
-      <button onClick={()=>setNav("home")} style={{display:"flex",alignItems:"center",gap:8,background:"none",border:"none",cursor:"pointer",padding:0}}>
+    <nav className="top-nav" aria-label="Primary navigation" style={{position:"sticky",top:0,zIndex:100,background:"#FFFDF7",borderBottom:"2px solid #E2D5B5",boxShadow:"0 2px 10px rgba(44,26,14,0.08)",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 14px",height:52}}>
+      <button aria-label="Go to home" onClick={()=>setNav("home")} style={{display:"flex",alignItems:"center",gap:8,background:"none",border:"none",cursor:"pointer",padding:0}}>
         <span style={{width:28,height:28,borderRadius:8,background:"linear-gradient(135deg,#B8860B,#D4A843)",display:"flex",alignItems:"center",justifyContent:"center",fontSize:14}}>🕉️</span>
         <span style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:13,fontWeight:800,color:"#2C1A0E"}}>Aṣṭādhyāyī</span>
       </button>
       <div style={{display:"flex",gap:1,overflowX:"auto"}}>
         {NAV.map(n=>(
-          <button key={n.id} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{padding:"4px 8px",borderRadius:8,border:"none",background:nav===n.id?"#F3EDD8":"none",color:nav===n.id?"#B8860B":"#6B4F2A",fontSize:10,fontWeight:nav===n.id?700:500,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:1,flexShrink:0}}>
+          <button key={n.id} aria-current={nav===n.id?"page":undefined} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{padding:"4px 8px",borderRadius:8,border:"none",background:nav===n.id?"#F3EDD8":"none",color:nav===n.id?"#B8860B":"#6B4F2A",fontSize:10,fontWeight:nav===n.id?700:500,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:1,flexShrink:0}}>
             <span style={{fontSize:13}}>{n.icon}</span><span style={{fontSize:8}}>{n.label}</span>
           </button>
         ))}
       </div>
-      <UserAvatar/>
+      <UserAvatar totalChapters={chapters.length} onNavigate={(page)=>{setNav(page);setActiveChap(null);}}/>
     </nav>
     <div className="quick-nav-strip" style={{position:"sticky",top:64,zIndex:90,background:"#FFFDF7",borderBottom:"1px solid #E2D5B5",display:"flex",gap:8,overflowX:"auto",padding:"8px 14px"}}>
       {NAV.map(n=>(
-        <button key={n.id} onClick={()=>{setNav(n.id);setActiveChap(null);}} style={{display:"flex",alignItems:"center",gap:7,flexShrink:0,padding:"8px 11px",borderRadius:10,border:`1px solid ${nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#E2D5B5"}`,background:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#F3EDD8":"#FFFDF7",color:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#6B4F2A",fontSize:12,fontWeight:800,cursor:"pointer"}}>
+        <button key={n.id} aria-current={nav===n.id||(nav==="chapter"&&n.id==="chapters")?"page":undefined} onClick={()=>{setNav(n.id);setActiveChap(null);}} style={{display:"flex",alignItems:"center",gap:7,flexShrink:0,padding:"8px 11px",borderRadius:10,border:`1px solid ${nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#E2D5B5"}`,background:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#F3EDD8":"#FFFDF7",color:nav===n.id||(nav==="chapter"&&n.id==="chapters")?"#B8860B":"#6B4F2A",fontSize:12,fontWeight:800,cursor:"pointer"}}>
           <span>{n.icon}</span><span>{n.label}</span>
         </button>
       ))}
     </div>
-    {nav==="chapter"&&activeChap&&(
-      <div style={{background:"#F3EDD8",borderBottom:"1px solid #E2D5B5",padding:"5px 16px",display:"flex",alignItems:"center",gap:5,fontSize:12,color:"#A08850"}}>
-        <button onClick={()=>{setNav("chapters");setActiveChap(null);}} style={{background:"none",border:"none",cursor:"pointer",color:"#A08850",fontSize:12,padding:0}}>📚 Chapters</button>
-        <span>›</span><span style={{color:"#6B4F2A",fontWeight:600}}>{activeChap.icon} {activeChap.title}</span>
+    {nav==="chapter"&&activeChapter&&(
+       <div style={{background:"#F3EDD8",borderBottom:"1px solid #E2D5B5",padding:"5px 16px",display:"flex",alignItems:"center",gap:5,fontSize:12,color:"#A08850"}}>
+         <button aria-label="Back to all chapters" onClick={()=>{setNav("chapters");setActiveChap(null);}} style={{background:"none",border:"none",cursor:"pointer",color:"#A08850",fontSize:12,padding:0}}>📚 Chapters</button>
+        <span>›</span><span style={{color:"#6B4F2A",fontWeight:600}}>{activeChapter.icon} {activeChapter.title}</span>
       </div>
     )}
     <main style={{flex:1,overflowY:"auto"}}>
-      {nav==="home"&&<HomeScreen onOpen={openChapter}/>}
+      {nav==="home"&&<HomeScreen chapters={chapters} onOpen={openChapter}/>}
       {nav==="chapters"&&!activeChap&&(
         <div style={{paddingBottom:40}}>
           <div style={{background:"linear-gradient(135deg,#FDF6E3,#F3EDD8)",borderBottom:"2px solid #E2D5B5",padding:"18px 18px 14px"}}>
             <h2 style={{fontFamily:"'Palatino Linotype',Georgia,serif",fontSize:20,fontWeight:800,color:"#2C1A0E",margin:"0 0 3px"}}>All Chapters</h2>
-            <p style={{fontSize:13,color:"#A08850",margin:0}}>7 modules · Pushpa Dikshit's Aṣṭādhyāyī Sahajabodha</p>
+            <p style={{fontSize:13,color:"#A08850",margin:0}}>{chapters.length} modules · Pushpa Dikshit's Aṣṭādhyāyī Sahajabodha</p>
           </div>
           <div style={{padding:"14px 16px",maxWidth:680,margin:"0 auto",display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:10}}>
-            {CHAPTERS.map((ch,i)=>{
+            {chapters.map((ch,i)=>{
               const subchapters=getSubchapters(ch);
               const done=completed.has(ch.id);const cs=scores[ch.id]||0;
-              const locked=i>0&&!completed.has(CHAPTERS[i-1].id)&&!scores[ch.id];
+              const locked=false;
               return(<button key={ch.id} onClick={()=>!locked&&openChapter(ch)} style={{background:locked?"#F8F4EC":"#FFFDF7",border:`1.5px solid ${done?ch.color:"#E2D5B5"}`,borderRadius:14,padding:14,textAlign:"left",cursor:locked?"not-allowed":"pointer",opacity:locked?0.55:1,boxShadow:done?`0 4px 14px ${ch.color}25`:"0 2px 12px rgba(44,26,14,0.10)"}}>
                 <div style={{display:"flex",gap:10,alignItems:"flex-start",marginBottom:8}}>
                   <span style={{fontSize:22}}>{locked?"🔒":ch.icon}</span>
@@ -1033,13 +1419,15 @@ export default function App(){
           </div>
         </div>
       )}
-      {nav==="chapter"&&activeChap&&<ChapterDetail key={activeChap.id} ch={activeChap} onBack={()=>{setNav("chapters");setActiveChap(null);}} onNavigate={openChapter}/>}
-      {nav==="progress"&&<ProgressScreen onOpen={openChapter}/>}
-      {nav==="glossary"&&<GlossaryScreen onOpen={openChapter}/>}
+      {nav==="chapter"&&activeChapter&&<ChapterDetail key={activeChapter.id} ch={activeChapter} chapters={chapters} onBack={()=>{setNav("chapters");setActiveChap(null);}} onNavigate={openChapter}/>}
+      {nav==="progress"&&<ProgressScreen chapters={chapters} onOpen={openChapter}/>}
+      {nav==="glossary"&&<GlossaryScreen chapters={chapters} onOpen={openChapter}/>}
+      {nav==="profile"&&<ProfileScreen chapters={chapters} onOpen={openChapter}/>}
+      {nav==="admin"&&admin&&<AdminCMS chapters={chapters} onChange={updateChapters} onOpen={openChapter} onReset={resetCms}/>}
     </main>
     <div className="bottom-nav" style={{position:"sticky",bottom:0,zIndex:100,background:"#FFFDF7",borderTop:"2px solid #E2D5B5",display:"flex",boxShadow:"0 -2px 10px rgba(44,26,14,0.07)"}}>
       {NAV.map(n=>(
-        <button key={n.id} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{flex:1,padding:"7px 4px",border:"none",background:nav===n.id?"#F3EDD8":"#FFFDF7",borderTop:nav===n.id?"2px solid #B8860B":"2px solid transparent",color:nav===n.id?"#B8860B":"#A08850",fontSize:10,fontWeight:nav===n.id?700:400,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:1}}>
+        <button key={n.id} aria-current={nav===n.id?"page":undefined} onClick={()=>{setNav(n.id);if(n.id!=="chapter")setActiveChap(null);}} style={{flex:1,padding:"7px 4px",border:"none",background:nav===n.id?"#F3EDD8":"#FFFDF7",borderTop:nav===n.id?"2px solid #B8860B":"2px solid transparent",color:nav===n.id?"#B8860B":"#A08850",fontSize:10,fontWeight:nav===n.id?700:400,cursor:"pointer",display:"flex",flexDirection:"column",alignItems:"center",gap:1}}>
           <span style={{fontSize:14}}>{n.icon}</span><span style={{fontSize:8}}>{n.label}</span>
         </button>
       ))}

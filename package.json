@@ -18,7 +18,11 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test:static": "node tests/static.test.mjs",
+    "test:build": "vite build",
+    "test:e2e": "node tests/e2e.test.mjs",
+    "test": "npm run test:static && npm run test:build && npm run test:e2e"
   },
   "dependencies": {
     "react": "^18.2.0",

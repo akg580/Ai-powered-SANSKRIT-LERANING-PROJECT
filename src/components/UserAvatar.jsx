@@ -1,4 +1,4 @@
-// src/components/UserAvatar.jsx
+﻿// src/components/UserAvatar.jsx
 import { useState, useRef, useEffect } from "react";
 import { useAuth }     from "../contexts/AuthContext";
 import { useProgress } from "../contexts/ProgressContext";
@@ -10,7 +10,7 @@ const T = {
   saffron:"#FF6B6B", shadow:"0 18px 45px rgba(37,48,84,0.14)",
 };
 
-export default function UserAvatar() {
+export default function UserAvatar({ onNavigate, totalChapters = 7 }) {
   const { user, userProfile, logout } = useAuth();
   const { totalXP, completed, streak, syncing } = useProgress();
   const [open, setOpen] = useState(false);
@@ -28,7 +28,11 @@ export default function UserAvatar() {
   const initials  = (userProfile?.displayName || user.email || "U").slice(0, 2).toUpperCase();
   const avatarBg  = userProfile?.avatarColor || T.gold;
   const name      = userProfile?.displayName || user.email;
-  const totalChaps = 7;
+  const totalChaps = totalChapters;
+  function go(page) {
+    setOpen(false);
+    onNavigate?.(page);
+  }
 
   return (
     <div ref={ref} style={{ position: "relative", flexShrink: 0 }}>
@@ -86,7 +90,7 @@ export default function UserAvatar() {
             {[
               { v: `${totalXP}`, l: "XP",      c: T.gold    },
               { v: `${completed.size}/${totalChaps}`, l: "Done", c: T.green   },
-              { v: `🔥${streak}`, l: "Streak",  c: T.saffron },
+              { v: `ðŸ”¥${streak}`, l: "Streak",  c: T.saffron },
             ].map(s => (
               <div key={s.l} style={{ textAlign: "center", padding: "6px 4px",
                 background: T.bgAlt, borderRadius: 8, border: `1px solid ${T.border}` }}>
@@ -99,16 +103,16 @@ export default function UserAvatar() {
           {/* Sync status */}
           <div style={{ padding: "8px 16px", borderBottom: `1px solid ${T.border}`,
             display: "flex", alignItems: "center", gap: 6 }}>
-            <span style={{ fontSize: 12 }}>{syncing ? "⏳" : "✅"}</span>
+            <span style={{ fontSize: 12 }}>{syncing ? "â³" : "âœ…"}</span>
             <span style={{ fontSize: 11, color: T.textSoft }}>
-              {syncing ? "Saving progress…" : "All progress saved"}
+              {syncing ? "Saving progressâ€¦" : "All progress saved"}
             </span>
           </div>
 
           {/* Menu items */}
           <div style={{ padding: "6px 0" }}>
-            <MenuItem icon="📊" label="My Progress"  onClick={() => setOpen(false)} />
-            <MenuItem icon="⚙️"  label="Settings"     onClick={() => setOpen(false)} />
+            <MenuItem icon="👤" label="Profile & Settings" onClick={() => go("profile")} />
+            <MenuItem icon="📊" label="My Progress" onClick={() => go("progress")} />
             <div style={{ height: 1, background: T.border, margin: "4px 0" }} />
             <MenuItem icon="🚪" label="Sign Out" onClick={async () => { setOpen(false); await logout(); }} danger />
           </div>
@@ -137,3 +141,4 @@ function MenuItem({ icon, label, onClick, danger }) {
     </button>
   );
 }
+
