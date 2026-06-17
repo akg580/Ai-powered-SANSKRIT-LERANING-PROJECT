@@ -1,25 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Ashtadhyayi Sahajabodha — Learn Panini Sanskrit Grammar" />
-    <title>Aṣṭādhyāyī Sahajabodha</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <!-- Palatino / serif fonts for Sanskrit -->
-    <style>
-      * { box-sizing: border-box; margin: 0; padding: 0; }
-      body {
-        font-family: 'Trebuchet MS', Verdana, sans-serif;
-        background: #FAF6EF;
-        -webkit-font-smoothing: antialiased;
-      }
-      /* Devanagari rendering */
-      .dev { font-family: 'Noto Sans Devanagari', 'Mangal', serif; }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+  <!-- SEO -->
+  <title>Devavāṇī — Learn Sanskrit · Aṣṭādhyāyī Sahajabodha</title>
+  <meta name="description" content="Master Pāṇini's Aṣṭādhyāyī Sanskrit grammar through structured chapters, interactive flashcards, levelled quizzes, and Vedic text sources. Pauspi Prakriyā method." />
+  <meta name="theme-color" content="#0a0b14" />
+
+  <!-- Open Graph -->
+  <meta property="og:title"       content="Devavāṇī — Sanskrit Grammar Learning Platform" />
+  <meta property="og:description" content="Interactive Aṣṭādhyāyī learning: 7 chapters, 70+ terms, flashcards, quizzes, Vedic sources." />
+  <meta property="og:type"        content="website" />
+
+  <!-- Font preconnects -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Critical dark background to prevent flash of white -->
+  <style>
+    html, body, #root {
+      background: #0a0b14;
+      min-height: 100%;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      /* Prevent horizontal overflow during animations */
+      overflow-x: hidden;
+    }
+    /* Safe area support for mobile notch devices */
+    body {
+      padding-top: env(safe-area-inset-top);
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
 </html>
