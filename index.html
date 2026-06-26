@@ -1,46 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-
-  <!-- SEO -->
   <title>Devavāṇī — Learn Sanskrit · Aṣṭādhyāyī Sahajabodha</title>
-  <meta name="description" content="Master Pāṇini's Aṣṭādhyāyī Sanskrit grammar through structured chapters, interactive flashcards, levelled quizzes, and Vedic text sources. Pauspi Prakriyā method." />
-  <meta name="theme-color" content="#0a0b14" />
-
-  <!-- Open Graph -->
-  <meta property="og:title"       content="Devavāṇī — Sanskrit Grammar Learning Platform" />
-  <meta property="og:description" content="Interactive Aṣṭādhyāyī learning: 7 chapters, 70+ terms, flashcards, quizzes, Vedic sources." />
-  <meta property="og:type"        content="website" />
-
-  <!-- Font preconnects -->
+  <meta name="description" content="Master Pāṇini's Aṣṭādhyāyī Sanskrit grammar through structured chapters, interactive flashcards, levelled quizzes, and Vedic text sources." />
+  <meta name="theme-color" content="#F5F0E8" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0E0D0A" media="(prefers-color-scheme: dark)" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- Critical dark background to prevent flash of white -->
   <style>
+    /* Critical: prevent flash of wrong background */
     html, body, #root {
-      background: #0a0b14;
+      background: #F5F0E8;
       min-height: 100%;
     }
+    html[data-theme="dark"], html[data-theme="dark"] body, html[data-theme="dark"] #root {
+      background: #0E0D0A;
+    }
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
+      overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
-      /* Prevent horizontal overflow during animations */
-      overflow-x: hidden;
     }
-    /* Safe area support for mobile notch devices */
-    body {
-      padding-top: env(safe-area-inset-top);
-      padding-bottom: env(safe-area-inset-bottom);
-    }
+    /* Apply saved theme instantly before React hydrates */
+    (function(){
+      try {
+        var t = localStorage.getItem('dv-theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme','dark');
+      } catch(e) {}
+    })();
   </style>
+  <script>
+    // Apply saved theme BEFORE paint to prevent flash
+    try {
+      var t = localStorage.getItem('dv-theme');
+      if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch(e) {}
+  </script>
 </head>
 <body>
   <div id="root"></div>

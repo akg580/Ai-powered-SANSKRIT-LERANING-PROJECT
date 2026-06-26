@@ -3,5 +3,5 @@ dist/
 .DS_Store
 *.local
 .env
+src\firebase\config.js
 vite*.log
-src/firebase/config.js
