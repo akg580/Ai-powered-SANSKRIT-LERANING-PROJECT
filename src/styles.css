@@ -1439,7 +1439,7 @@ a:hover { opacity:0.8; }
 .relative { position: relative; }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
+@media (max-width: 760px) {
   .sidebar {
     position: fixed;
     left: -280px; top: var(--nav-h); width: 270px;
@@ -1460,7 +1460,7 @@ a:hover { opacity:0.8; }
   .menu-btn { display: flex !important; }
   .ch-grid { grid-template-columns: 1fr; }
 }
-@media (min-width: 901px) {
+@media (min-width: 761px) {
   .menu-btn { display: none !important; }
   .bottom-nav { display: none; }
 }

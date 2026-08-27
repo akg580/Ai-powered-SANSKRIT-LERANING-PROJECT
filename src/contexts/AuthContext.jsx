@@ -137,7 +137,7 @@ export function AuthProvider({ children }) {
   // ── E2E sync ─────────────────────────────────────────────────────────────
   async function syncTestUser(firebaseUser) {
     const stored = readLocalProfile(firebaseUser.uid);
-    const profile = { ...defaultProfile(firebaseUser), ...(stored || {}) };
+    const profile = { ...defaultProfile(firebaseUser, ROLES.ADMIN), ...(stored || {}), role: stored?.role || ROLES.ADMIN };
     setUser(firebaseUser);
     setUserProfile(profile);
     return firebaseUser;

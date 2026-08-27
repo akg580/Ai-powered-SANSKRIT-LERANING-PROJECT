@@ -120,7 +120,7 @@ export default function AuthScreen(){
     } else if(mode==="reset"){
       if(!validateEmail(email)){setErrs({email:"Enter a valid email"});return;}
       setLoading(true);
-      try{await resetPassword(email);setSuccess("Reset link sent — check your inbox!");}
+      try{await resetPassword(email);setSuccess("Reset email sent — check your inbox!");}
       catch(err){setError?.(friendlyError(err.code));}
       finally{setLoading(false);}
     }

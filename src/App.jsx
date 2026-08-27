@@ -6,6 +6,7 @@ import { useProgress } from "./contexts/ProgressContext.jsx";
 import AuthScreen      from "./components/AuthScreen.jsx";
 import LoadingScreen   from "./components/LoadingScreen.jsx";
 import UserAvatar      from "./components/UserAvatar.jsx";
+import AdminPanel      from "./Adminpanel.jsx";
 import "./styles.css";
 
 /* ── THEME HOOK ─────────────────────────────────────────────────────── */
@@ -34,8 +35,10 @@ const CC = {
   sutratype:"#C8860A",optionality:"#0D9488",
 };
 
+const LEARNING_ACTIONS = ["Open & Learn", "View Cards", "Practice Fast", "Earn Mastery"];
+
 /* ── CHAPTERS DATA ──────────────────────────────────────────────────── */
-const CHAPTERS = [
+export const CHAPTERS = [
   {
     id:1,num:"I",title:"Saṃjñā Prakaraṇa",
     subtitle:"Technical Names, Markers & Operating Labels",
@@ -117,7 +120,7 @@ const CHAPTERS = [
       },
     ],
     levels:{
-      easy:[
+      easy: [
         {q:"Saṃjñā means:",opts:["Technical name / label","Past tense form","A compound word","A Vedic metre"],ans:0,exp:"Saṃjñā = technical label used by later rules."},
         {q:"Vṛddhi sounds (1.1.1) are:",opts:["आ ऐ औ","अ ए ओ","इ उ ऋ","क ख ग"],ans:0,exp:"1.1.1 vṛddhirādaic names आ, ऐ, औ."},
         {q:"Guṇa sounds (1.1.2) are:",opts:["आ ऐ औ","अ ए ओ","य र ल व","श ष स"],ans:1,exp:"1.1.2 adeṅ guṇaḥ names अ, ए, ओ."},
@@ -163,7 +166,6 @@ const CHAPTERS = [
       {dev:"सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा कश्चित् दुःखभाग् भवेत् ॥",roman:"sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ · sarve bhadrāṇi paśyantu mā kaścit duḥkhabhāg bhavet",trans:"May all be happy; may all be free from illness; may all see auspiciousness; let none have a share in sorrow.",source:"Bṛhadāraṇyaka Upaniṣad — Universal peace prayer",rel:"सुखिनः+सर्वे: Visarga before 's' stays. भद्राणि+पश्यन्तु: Anusvāra before 'p' (labial) → labial nasal (Parasavarṇa 8.4.58). दुःखभाग्+भवेत्: voiced 'g' before 'bh' stays voiced. The most universally recited Sanskrit prayer uses every major sandhi type in eight syllables per line — phonetically perfect AND philosophically complete."},
       {dev:"अकः सवर्णे दीर्घः ।",roman:"akaḥ savarṇe dīrghaḥ",trans:"An ak-vowel before its Savarṇa vowel becomes long.",source:"Aṣṭādhyāyī 6.1.101 — the foundational vowel-sandhi sūtra",rel:"This rule is the grammatical DNA of half the compound words in Sanskrit epics: Rāmāyaṇa's 'महात्मा' (mahā+ātmā: a+ā→ā), Mahābhārata's 'महारथः' (mahā+ratha), Gītā's 'महाबाहो' (mahā+bāho). Every compound with 'महा' (great) in Sanskrit literature — thousands of epithets — uses this single sūtra 6.1.101."},
     ],
-,
     levels:{
       easy:[
         {q:"Sandhi means:",opts:["Sound joining / junction","Root listing","A case ending","A translation"],ans:0,exp:"Sandhi = rule-governed sound junction at word or morpheme boundaries."},
@@ -217,7 +219,6 @@ const CHAPTERS = [
       {dev:"कृण्वन्तो विश्वमार्यम् ॥",roman:"kṛṇvanto viśvam āryam",trans:"Making the whole world noble.",source:"Ṛgveda 9.63.17 — the great Vedic call to nobility",rel:"कृण्वन्तः = √कृ (Kryadi/Ananta class Ch.3) + Loṭ + Vikaraṇa 'u' (Śnu — NOT dropped by Luk) → kṛṇu+vant. The Ṛgveda's rallying cry uses Kryadi (Ananta) class root √kṛ with its unique Vikaraṇa Śnu — demonstrating the Ajanta vs Ananta contrast: here the Vikaraṇa STAYS. Pushpa Dikshit uses this verse to show why students must master both root classes."},
       {dev:"न हि ज्ञानेन सदृशं पवित्रमिह विद्यते ॥",roman:"na hi jñānena sadṛśaṃ pavitram iha vidyate",trans:"Indeed, nothing as purifying as knowledge exists in this world.",source:"Bhagavad Gītā 4.38",rel:"विद्यते = √विद् + Laṭ + Ātmanepada 3rd sg 'te'. Root √विद् is Adadi/Ananta class — Vikaraṇa dropped (Luk). ज्ञानेन = √ज्ञा + ल्युट् (Kṛt Ch.3) + Tṛtīyā. पवित्रम् = √पू + इत्र (Kṛt Ch.3). Three Ch.3 Pratyaya types in one verse: Ātmanepada Tiṅ (√vid), Kṛt abstract noun (jñāna), Kṛt adjective (pavitra). The Gītā's verse about purifying knowledge is itself built from Ch.3's purifying suffix-application process."},
     ],
-,
     levels:{
       easy:[
         {q:"How many types of Pratyaya are in Chapter 3?",opts:["2","3","4","6"],ans:2,exp:"4 types: Sanādi (new roots), Vikaraṇa (process helpers), Kṛt (nominal stems from roots), Tiṅ (verbal endings)."},
@@ -265,7 +266,6 @@ const CHAPTERS = [
       {dev:"प्रत्याहारेण सर्वे वर्णाः गृह्यन्ते ।",roman:"pratyāhāreṇa sarve varṇāḥ gṛhyante",trans:"By the Pratyāhāra method, all sounds are captured.",source:"Mahābhāṣya — Patañjali on the Māheśvara Sūtras",rel:"Patañjali's mathematical proof: without Pratyāhāras, every rule mentioning 'any consonant' would need to list all 33. With 'हल्' — one syllable covers all 33. The Mahābhārata has ~100,000 verses; if each were annotated with grammar, every sandhi rule would need 33 explicit consonant listings. The 14 Māheśvara Sūtras save the equivalent of several volumes of redundant text — compression as cosmic design."},
       {dev:"यच्चापि सर्वभूतानां बीजं तदहमर्जुन ।",roman:"yac cāpi sarvabhūtānāṃ bījaṃ tad aham arjuna",trans:"And whatever is the seed of all beings — that am I, O Arjuna.",source:"Bhagavad Gītā 10.39",rel:"यत्+च+अपि → यच्चापि: final 't' before 'c' (palatal) → 'c' (Parasavarṇa 8.4.58). Then च+अपि → चापि (Sāvarṇadīrgha a+a→ā). बीजम् contains ī (long palatal vowel, sūtra 1 of Māheśvara Sūtras). Kṛṣṇa identifying himself with the 'seed of all beings' uses the very phoneme (ī) that seeds the Pratyāhāra 'इक्' — the vowel group from which all Yaṇ sandhi derives."},
     ],
-,
     levels:{
       easy:[
         {q:"Māheśvara Sūtra count:",opts:["9","12","14","42"],ans:2,exp:"14 sūtras."},
@@ -307,7 +307,6 @@ const CHAPTERS = [
       {dev:"सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।",roman:"sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ",trans:"May all be happy; may all be free from illness.",source:"Bṛhadāraṇyaka Upaniṣad — Universal peace prayer",rel:"भवन्तु: भ=Oṣṭha(labial voiced aspirate), व=Oṣṭha(labial semivowel), न=Danta(dental nasal), त=Danta(dental stop), उ=Oṣṭha(labial vowel). FIVE sounds, all Oṣṭha or Danta — the entire word 'bhavantu' stays in the front of the mouth. The peace prayer's phonetics demonstrate Ch.5 Sthāna transitions across every line, making correct pronunciation a physical meditation on the vocal tract."},
       {dev:"यस्य नादेन जायन्ते सर्वे वर्णाः समन्ततः ।",roman:"yasya nādena jāyante sarve varṇāḥ samantataḥ",trans:"From whose resonance all sounds are born on every side.",source:"Tantra-śāstra verse on Nāda-Brahman / Śārada-tilaka",rel:"नाद (resonance/voiced sound) = the Bāhya Prayatna 'Nāda' (voiced airflow) from Ch.5. All 'voiced' (Ghoṣa) sounds — vowels, semivowels, voiced stops — share the Nāda Bāhya Prayatna. The Tantric concept of 'Nāda-Brahman' (Brahman as Sound) maps directly onto Ch.5's articulatory phonetics: Śvāsa (breath) for unvoiced, Nāda (voice) for voiced sounds."},
     ],
-,
     levels:{
       easy:[
         {q:"Kavarga Sthāna:",opts:["Tālu","Kaṇṭha","Danta","Mūrdhā"],ans:1,exp:"Gutturals at Kaṇṭha."},
@@ -349,7 +348,6 @@ const CHAPTERS = [
       {dev:"सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ।",roman:"sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt",trans:"The cosmic Person has a thousand heads, a thousand eyes, a thousand feet.",source:"Ṛgveda 10.90.1 — Puruṣa Sūkta",rel:"सहस्राक्षः: सहस्र+अक्ष → Sāvarṇadīrgha (a+a→ā, Ch.2/Ch.6): two Hrasva 'a' → one Dīrgha 'ā'. सहस्रपात्: ends in consonant 't' — Guru by position (saṃyoge guru, Ch.6). The Puruṣa Sūkta — Ṛgveda's cosmic creation hymn — uses Ch.6 duration patterns to create its rhythmic, meditative chant in Triṣṭubh metre (11 syllables per pāda)."},
       {dev:"न हि ज्ञानेन सदृशं पवित्रमिह विद्यते ।",roman:"na hi jñānena sadṛśaṃ pavitram iha vidyate",trans:"Indeed, nothing as purifying as knowledge exists in this world.",source:"Bhagavad Gītā 4.38",rel:"ज्ञान = √ज्ञा + ल्युट् (Kṛt Ch.3): root vowel ā is Dīrgha (2 mātrā, Ch.6). In 'जिज्ञासा' (desire to know): reduplication produces जि (Hrasva i, 1 mātrā Ch.6) + ज्ञा (Dīrgha ā, 2 mātrā). Ch.6 vowel durations shape the very sound of Vedāntic vocabulary — Hrasva in the reduplication, Dīrgha in the root. Grammar and spirituality share the same phonological architecture."},
     ],
-,
     levels:{
       easy:[
         {q:"Guṇa vowels:",opts:["आ ऐ औ","अ ए ओ","इ ई उ ऊ","ऋ ॠ"],ans:1,exp:"1.1.2: अ ए ओ = Guṇa."},
@@ -390,7 +388,6 @@ const CHAPTERS = [
       {dev:"वसुधैव कुटुम्बकम् ।",roman:"vasudhaiva kuṭumbakam",trans:"The whole earth is one family.",source:"Mahopaniṣad 6.72 / Hitopadeśa — India's national motto",rel:"Four syllables, all five Sthānas: व(Oṣṭha), स(Danta/Ūṣma), उ(Oṣṭha/Svara), ध(Danta/Tavarga), ऐ(Kaṇṭha-Tālu/Svara diphthong), क(Kaṇṭha/Kavarga), ट(Mūrdhā/Ṭavarga), म(Oṣṭha/nasal). The declaration of universal kinship touches ALL five Sthānas (Ch.5) and all phoneme classes (Ch.7) — as if to say: all sounds belong to one family too."},
       {dev:"नादब्रह्म — नादात् प्रभवन्ति सर्वे ।",roman:"nādabrahma — nādāt prabhavanti sarve",trans:"Brahman as Sound — from Sound all things arise.",source:"Śārada-tilaka Tantra 1.8 / Bhāgavata Purāṇa tradition",rel:"The Tantric teaching that 'all phonemes are essentially vowels' maps to Ch.7's structure: the 9 Svarāḥ (vowels) are the core, and consonants are vowels with articulation overlaid. The Bhāgavata Purāṇa (1.1.1) opens with 'सत्यं परं धीमहि' — धीमहि = √ध्यै (contemplate) + Ātmanepada, containing ध(Danta voiced aspirate Ch.7) + ī(palatal long vowel Ch.7). Scripture, tantra, and grammar share Ch.7's foundational inventory."},
     ],
-,
     levels:{
       easy:[
         {q:"Core vowels in Sanskrit:",opts:["5","7","9","12"],ans:2,exp:"9 core vowels."},
@@ -432,7 +429,6 @@ const CHAPTERS = [
       {dev:"सत्यं वद धर्मं चर स्वाध्यायान्मा प्रमदः ।",roman:"satyaṃ vada dharmaṃ cara svādhyāyān mā pramadaḥ",trans:"Speak truth. Walk in dharma. Do not neglect your study.",source:"Taittirīya Upaniṣad 1.11 — the Guru's parting instruction",rel:"Three imperative Dhātus: वद=√वद् + Loṭ 2nd sg; चर=√चर् + Loṭ 2nd sg (Ch.11 Sārvadhatuka). सत्यम्=√अस्+Kṛt(Ch.3). धर्मम्=√धृ+Kṛt(Ch.3). The Upaniṣad's graduation instructions use Loṭ imperative — exactly the mood for commands. Three instructions encoded through Ch.8 Dhātus conjugated in Ch.11's Loṭ Lakāra."},
       {dev:"यत्र नार्यस्तु पूज्यन्ते रमन्ते तत्र देवताः ।",roman:"yatra nāryastu pūjyante ramante tatra devatāḥ",trans:"Where women are honoured, there the gods rejoice.",source:"Manusmṛti 3.56 / Mahābhārata",rel:"पूज्यन्ते = √पूज् + Laṭ + Passive Ātmanepada 3rd pl (Ch.11 + Ch.3 Karmani prayoga). रमन्ते = √रम् + Laṭ + Ātmanepada 3rd pl (Ātmane because enjoyment is for the gods themselves — Pada-Nirṇaya Ch.3). √रम् (to rejoice) is the root of 'Rāma' himself — the same Ch.8 Dhātu that names the hero also means 'divine delight.' Grammar reveals hidden unity."},
     ],
-,
     levels:{
       easy:[
         {q:"√भू means:",opts:["To know","To be / become","To go","To speak"],ans:1,exp:"√भू = to be, to become."},
@@ -477,7 +473,6 @@ const CHAPTERS = [
       {dev:"ते द्वौ शोभनौ बालकौ पठतः ।",roman:"te dvau śobhanau bālakau paṭhataḥ",trans:"Those two beautiful boys are reading.",source:"Sanskrit pedagogical sentence — Pushpa Dikshit Pauspi tradition",rel:"ते(Prathamā du m pronoun), द्वौ(Prathamā du m numeral), शोभनौ(Prathamā du m adjective), बालकौ(Prathamā du m noun) — ALL four words in Prathamā dual. Perfect Ch.9 concordance: pronoun + numeral + adjective + noun agreeing in gender, number, case simultaneously. पठतः = Laṭ 3rd du (verb agreeing with dual subject, Ch.11). This pedagogical sentence demonstrates complete Ch.9 concordance — the same principle governing every noun phrase in Rāmāyaṇa and Mahābhārata."},
       {dev:"एष एव पन्थाः — इत्येव विद्वान् पुण्यकृत् तरति ।",roman:"eṣa eva panthāḥ — ity eva vidvān puṇyakṛt tarati",trans:"This alone is the path — thus the wise and meritorious man crosses over.",source:"Kaṭha Upaniṣad 1.3.15",rel:"एषः = Prathamā sg masculine pronoun (Etad/Idam paradigm, Ch.9 Sarvanāma). पन्थाः = Prathamā sg masculine (path — special n-stem: पन्थाः/पन्थानौ/पन्थानः, Ch.9). विद्वान् = Prathamā sg masculine (wise one — vat-stem adjective used as noun, Ch.9 special class). Three different Ch.9 Prathamā forms: demonstrative pronoun, n-stem noun, and vat-stem substantive — Ch.9 Śabdarūpa variety in one Upaniṣadic statement."},
     ],
-,
     levels:{
       easy:[
         {q:"Prathamā Vibhakti marks the:",opts:["Object (Karma)","Subject (Kartā)","Instrument (Karaṇa)","Location (Adhikaraṇa)"],ans:1,exp:"Prathamā = the subject or agent of the sentence."},
@@ -523,7 +518,6 @@ const CHAPTERS = [
       {dev:"इत्थं सदा भावयतां त्वत्कथासुधया नित्यं भृतम् ।",roman:"itthaṃ sadā bhāvayatāṃ tvatkathāsudhayā nityaṃ bhṛtam",trans:"Thus always, of those who contemplate — nourished eternally by the nectar of Your stories.",source:"Bhāgavata Purāṇa 1.1.3 — the opening invocation",rel:"इत्थम् = Avyaya (thus/in this way, Ch.10). सदा = Avyaya (always, Ch.10). नित्यम् = Avyaya (eternally, Ch.10). THREE Avyayas in two lines — the Bhāgavata Purāṇa opens with Avyaya density to describe ETERNAL, UNCHANGING qualities. Just as Avyayas never change form, the divine qualities they describe never change. Ch.10's Avyaya is the grammatical form of eternity."},
       {dev:"सुभाषितं वक्तुम् अशक्यं नास्ति ।",roman:"subhāṣitaṃ vaktum aśakyaṃ nāsti",trans:"There is no good saying that is impossible to speak.",source:"Sanskrit subhāṣita tradition",rel:"सुभाषितम् = सु+√भाष्+Kṛt (Ch.3+Ch.8 Upasarga 'su', Prathamā sg neuter). वक्तुम् = Kṛt 'tumun' (infinitive/adverb Ch.3+Ch.10, always neuter Dvitīयā). अशक्यम् = Prathamā sg neuter adjective (impossible — prefix 'a'+√śak+Kṛt 'ya', Ch.3). The subhāṣita genre uses Avyayas heavily and is composed in Anuṣṭubh metre where Laghu-Guru (Ch.6) determines elegant rhythm. Good Sanskrit is inseparable from good grammar."},
     ],
-,
     levels:{
       easy:[
         {q:"Avyaya words:",opts:["Change for gender","Change for case","Never change — always the same form","Change for number"],ans:2,exp:"Avyaya = indeclinable. One form in all contexts. अत्र is always अत्र."},
@@ -569,7 +563,6 @@ const CHAPTERS = [
       {dev:"स्वर्गं लभेत वीरः — धर्मं चरेत् सर्वदा ।",roman:"svargaṃ labhet vīraḥ — dharmaṃ caret sarvadā",trans:"The hero may attain heaven — one should walk the path of dharma always.",source:"Mahābhārata — Śānti Parva",rel:"लभेत = √लभ् + Vidhiliṅ 3rd sg Ātmanepada 'एत' (may obtain — Ātmane because √लभ् is Ṅit, Ch.3 Pada-Nirṇaya). चरेत् = √चर् + Vidhiliṅ 3rd sg Parasmaipada 'एत्' (should walk). Ch.11 Vidhiliṅ covers both wish (labhet) and moral advice (caret). सर्वदा = Avyaya (always, Ch.10). The grammar of the Mahābhārata's ethical teaching is Ch.11's optative mood."},
       {dev:"तिप् तस् झि सिप् थस् थ मिप् वस् मस् त आताम् झ थास् आथाम् ध्वम् इट् वहि महिङ् ।",roman:"tip tas jhi sip thas tha mip vas mas ta ātām jha thās āthām dhvam iṭ vahi mahiṅ",trans:"[The 18 Tiṅ suffixes:] ti/tas/jhi (3rd), si/thas/tha (2nd), mi/vas/mas (1st) Parasmaipada; ta/ātām/jha, thās/āthām/dhvam, iṭ/vahi/mahiṅ Ātmanepada.",source:"Aṣṭādhyāyī 3.4.77-112 — the foundational Tiṅ enumeration",rel:"These 18 suffixes encode EVERY verb form in the Ṛgveda, Rāmāyaṇa, Mahābhārata, and all Sanskrit literature. 'गच्छति' (RV) uses 'ति'. 'युद्ध्यस्व' (Gītā) uses 'स्व' (2nd sg Ātmane Loṭ). 'अस्मि' (Upaniṣad) uses 'मि'. The entire verbal system of Sanskrit epic and Vedic literature reduces to these 18 Tiṅ suffixes."},
     ],
-,
     levels:{
       easy:[
         {q:"What does the 'अ' prefix before a verb root indicate?",opts:["Future tense","Laṅ (past) Lakāra","Negative meaning","Imperative"],ans:1,exp:"अ augment (Āṭ-āgama) is the marker of Laṅ Lakāra — अपठत् = was reading/read (past)."},
@@ -615,7 +608,6 @@ const CHAPTERS = [
       {dev:"न चोरहार्यं न च राजहार्यं न भ्रातृभाज्यं न च भारकारि । व्यये कृते वर्धत एव नित्यं विद्याधनं सर्वधनप्रधानम् ॥",roman:"na corahāryaṃ na ca rājahāryaṃ na bhrātṛbhājyaṃ na ca bhārakāri · vyaye kṛte vardhata eva nityaṃ vidyādhanaṃ sarvadhanaprādhānam",trans:"It cannot be stolen, seized, divided, or burdened. When spent, it only grows — the wealth of knowledge is the greatest of all wealths.",source:"Subhāṣita — traditional Sanskrit wisdom verse on knowledge",rel:"व्यये कृते = Saptamī absolute (when spent — locative absolute construction, Ch.12). वर्धते = √वृध् + Laṭ + Ātmanepada 3rd sg (grows, for itself Ch.11). एव = Avyaya (only, Ch.10). विद्याधनम् = Prathamā sg neuter compound (Ch.9). This beloved verse on education uses ALL systems: Ch.9 Śabdarūpa, Ch.10 Viśeṣaṇa+Avyaya, Ch.11 Laṭ, Ch.12 Saptamī absolute — all twelve chapters of this curriculum in one celebrated subhāṣita."},
       {dev:"यद् यद् विभूतिमत् सत्त्वं श्रीमदूर्जितमेव वा । तत् तद् एवावगच्छ त्वं मम तेजोंऽशसम्भवम् ॥",roman:"yad yad vibhūtimat sattvaṃ śrīmad ūrjitam eva vā · tat tad evāvagaccha tvaṃ mama tejāṃśasambhavam",trans:"Whatever being is glorious, prosperous, or powerful — know that every such being has its origin in a fraction of my splendour.",source:"Bhagavad Gītā 10.41 — Kṛṣṇa's summary of divine manifestations",rel:"यद् यद्...तत् तद् = Yat-Tat correlative (Ch.12 — the most powerful correlative construction in Sanskrit). अवगच्छ = अव+√गम् + Loṭ 2nd sg (know! Ch.11+Ch.8 Upasarga). त्वम्(Prathamā Ch.9), मम(Ṣaṣṭhī — my Ch.9). The Gītā's grand declaration of divine immanence uses the yad-tad correlative (Ch.12), vat-stem adjectives (Ch.9), Loṭ imperative (Ch.11), Ṣaṣṭhī possessive (Ch.9), and Upasarga (Ch.8 'ava') — ALL twelve chapters in Kṛṣṇa's most expansive utterance."},
     ],
-,
     levels:{
       easy:[
         {q:"A complete Sanskrit sentence minimally requires:",opts:["Only a noun","Subject (Prathamā) + Verb (Tinanta)","Three nouns","An adjective"],ans:1,exp:"Kartā in Prathamā + Kriyā (Tinanta). 'स: गच्छति' is complete."},
@@ -888,10 +880,10 @@ function ChapterDetail({ch,chapters,onBack,onNavigate}){
   const prevCh=chIdx>0?chapters[chIdx-1]:null;
   const nextCh=chIdx<chapters.length-1?chapters[chIdx+1]:null;
   const TABS=[
-    {k:"concepts",label:"📖 Learn",count:ch.concepts.length},
-    {k:"flashcards",label:"🎴 Flashcards",count:null},
-    {k:"quiz",label:"⚡ Quiz",count:ch.quiz.length},
-    {k:"test",label:"🏆 Mastery",count:null},
+    {k:"concepts",label:"📖 Open & Learn",count:ch.concepts.length},
+    {k:"flashcards",label:"🎴 View Cards",count:null},
+    {k:"quiz",label:"⚡ Practice Fast",count:ch.quiz.length},
+    {k:"test",label:"🏆 Earn Mastery",count:null},
     {k:"vedic",label:"📜 Sources",count:ch.vedic?.length},
     {k:"watch",label:"🎬 Watch",count:null},
   ];
@@ -1008,7 +1000,7 @@ function ChapterDetail({ch,chapters,onBack,onNavigate}){
 
           {tab==="flashcards"&&(
             <div>
-              <p style={{color:"var(--text-muted)",fontSize:13,marginBottom:18}}>Click any card to flip and reveal the meaning.</p>
+              <p style={{color:"var(--text-muted)",fontSize:13,marginBottom:18}}>Tap each card to flip and reveal the meaning.</p>
               <div className="fc-grid">{ch.concepts.map((c,i)=><FlipCard key={i} concept={c} index={i}/>)}</div>
             </div>
           )}
@@ -1095,6 +1087,13 @@ function ChaptersScreen({chapters,onOpen}){
                   ))}
                   {subs.length>4&&<span className="tag" style={{color:"var(--text-muted)",borderColor:"var(--border-faint)",background:"var(--surface-1)",fontSize:9}}>+{subs.length-4}</span>}
                 </div>
+                <div style={{display:"flex",flexWrap:"wrap",gap:5,marginBottom:10}}>
+                  {LEARNING_ACTIONS.map(action=>(
+                    <span key={action} className="tag" style={{color:ch.color,borderColor:`${ch.color}33`,background:`${ch.color}0c`,fontSize:9}}>
+                      {action}
+                    </span>
+                  ))}
+                </div>
                 <div className="ch-footer">
                   <span>📚 {ch.concepts.length}</span>
                   <span>❓ {ch.quiz.length} Qs</span>
@@ -1179,7 +1178,7 @@ function ProgressScreen({chapters,onOpen}){
       <div className="content-inner">
         <div style={{marginBottom:22}}>
           <div className="label-caps" style={{marginBottom:7}}>Your Journey</div>
-          <h1 style={{fontSize:"clamp(20px,3.5vw,30px)",marginBottom:5}}>📈 Progress</h1>
+          <h1 style={{fontSize:"clamp(20px,3.5vw,30px)",marginBottom:5}}>📈 My Progress</h1>
           <div style={{fontSize:12,color:syncing?"var(--gold-vivid)":"var(--teal)"}}>{syncing?"⏳ Saving…":"✅ All progress saved"}</div>
         </div>
         <div className="prog-hero anim-fade-up">
@@ -1321,6 +1320,13 @@ function HomeScreen({chapters,onOpen}){
                       {isDone&&<span style={{fontSize:14}}>✅</span>}
                     </div>
                     <div className="ch-sub">{ch.subtitle}</div>
+                    <div style={{display:"flex",flexWrap:"wrap",gap:5,marginTop:12}}>
+                      {LEARNING_ACTIONS.map(action=>(
+                        <span key={action} className="tag" style={{color:ch.color,borderColor:`${ch.color}33`,background:`${ch.color}0c`,fontSize:9}}>
+                          {action}
+                        </span>
+                      ))}
+                    </div>
                   </button>
                 );
               })}
@@ -1338,6 +1344,7 @@ function HomeScreen({chapters,onOpen}){
               Pāṇini's Aṣṭādhyāyī contains ~4,000 sūtras averaging just 2–3 syllables each. Written ~400 BCE, it remains the most compact and complete grammatical description of any language ever produced.
             </p>
           </div>
+          <div style={{fontSize:12,color:"var(--text-muted)",marginTop:10}}>Core track {completed?.size||0}/7</div>
         </div>
       </div>
     </div>
@@ -1346,7 +1353,7 @@ function HomeScreen({chapters,onOpen}){
 
 /* ── PROFILE SCREEN ─────────────────────────────────────────────────── */
 function ProfileScreen({chapters}){
-  const {user,userProfile,updateUserProfile,signOut}=useAuth();
+  const {user,userProfile,updateUserProfile,logout}=useAuth();
   const {scores,completed,totalXP,streak,syncing,resetProgress}=useProgress();
   const [form,setForm]=useState({displayName:"",bio:"",learningGoal:"",preferredScript:"Devanagari + Roman",dailyTarget:20,avatarColor:"#C8860A"});
   const [saving,setSaving]=useState(false);
@@ -1371,7 +1378,7 @@ function ProfileScreen({chapters}){
   return(
     <div className="main-content">
       <div className="content-inner">
-        <div className="label-caps" style={{marginBottom:16}}>Account</div>
+        <div className="label-caps" style={{marginBottom:16}}>User System</div>
         <div className="section-box anim-fade-up" style={{marginBottom:14,padding:"20px 22px"}}>
           <div style={{display:"flex",gap:16,alignItems:"center"}}>
             <div className="prof-avatar" style={{background:`linear-gradient(135deg,${form.avatarColor},${form.avatarColor}bb)`,color:"#fff"}}>
@@ -1392,8 +1399,8 @@ function ProfileScreen({chapters}){
           <div className="section-box">
             <div className="section-header"><span style={{fontSize:14,fontWeight:700}}>Profile & Preferences</span></div>
             <form onSubmit={save}>
-              <div className="form-field"><label className="form-label">Display Name</label><input className="form-input" value={form.displayName} onChange={e=>setForm(f=>({...f,displayName:e.target.value}))}/></div>
-              <div className="form-field"><label className="form-label">Learning Goal</label><input className="form-input" value={form.learningGoal} onChange={e=>setForm(f=>({...f,learningGoal:e.target.value}))} placeholder="e.g. Read the Aṣṭādhyāyī in 1 year"/></div>
+              <div className="form-field"><label className="form-label">Display name<input className="form-input" value={form.displayName} onChange={e=>setForm(f=>({...f,displayName:e.target.value}))}/></label></div>
+              <div className="form-field"><label className="form-label">Learning goal<input className="form-input" value={form.learningGoal} onChange={e=>setForm(f=>({...f,learningGoal:e.target.value}))} placeholder="e.g. Read the Aṣṭādhyāyī in 1 year"/></label></div>
               <div className="form-field"><label className="form-label">Bio</label><textarea className="form-textarea" value={form.bio} onChange={e=>setForm(f=>({...f,bio:e.target.value}))} placeholder="Your Sanskrit journey…"/></div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10}}>
                 <div className="form-field"><label className="form-label">Script</label>
@@ -1401,7 +1408,7 @@ function ProfileScreen({chapters}){
                     <option>Devanagari + Roman</option><option>Devanagari only</option><option>Roman only</option>
                   </select>
                 </div>
-                <div className="form-field"><label className="form-label">Daily Target (min)</label><input className="form-input" type="number" min="5" step="5" value={form.dailyTarget} onChange={e=>setForm(f=>({...f,dailyTarget:e.target.value}))}/></div>
+                <div className="form-field"><label className="form-label">Daily target<input className="form-input" type="number" min="5" step="5" value={form.dailyTarget} onChange={e=>setForm(f=>({...f,dailyTarget:e.target.value}))}/></label></div>
               </div>
               <div className="form-field"><label className="form-label">Avatar Colour</label>
                 <input type="color" value={form.avatarColor} onChange={e=>setForm(f=>({...f,avatarColor:e.target.value}))} style={{width:"100%",height:38,border:"none",borderRadius:8,padding:3,cursor:"pointer",background:"transparent"}}/>
@@ -1413,6 +1420,7 @@ function ProfileScreen({chapters}){
           <div style={{display:"flex",flexDirection:"column",gap:12}}>
             <div className="section-box">
               <div className="section-header"><span style={{fontSize:14,fontWeight:700}}>Progress Vault</span></div>
+              <div className="label-caps" style={{marginBottom:8}}>Chapter Progress</div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:12}}>
                 {[{v:`${completed?.size||0}/${chapters.length}`,l:"Chapters"},{v:`${totalXP||0}XP`,l:"XP"},{v:`🔥${streak||0}`,l:"Streak"},{v:`${mastery}%`,l:"Mastery"}].map(s=>(
                   <div key={s.l} className="stat-chip"><div className="stat-val" style={{fontSize:17}}>{s.v}</div><div className="stat-lbl">{s.l}</div></div>
@@ -1426,7 +1434,7 @@ function ProfileScreen({chapters}){
               <div style={{display:"flex",flexDirection:"column",gap:7}}>
                 <button className="btn btn-ghost btn-w" onClick={()=>{const d={profile:userProfile,at:new Date().toISOString()};navigator.clipboard?.writeText(JSON.stringify(d,null,2));setMsg("Copied ✓");}}>📋 Export My Data</button>
                 <button className="btn btn-ghost btn-w" onClick={()=>{if(window.confirm("Reset all progress? Cannot be undone.")){resetProgress?.();setMsg("Progress reset.");}}}>🔄 Reset Progress</button>
-                <button className="btn btn-ghost btn-w" style={{color:"var(--saffron)",borderColor:"rgba(214,65,10,0.25)"}} onClick={()=>signOut?.()}>🚪 Sign Out</button>
+                <button className="btn btn-ghost btn-w" style={{color:"var(--saffron)",borderColor:"rgba(214,65,10,0.25)"}} onClick={()=>logout?.()}>🚪 Sign Out</button>
               </div>
             </div>
           </div>

@@ -2,10 +2,10 @@
 // Full CMS: chapters · concepts · quiz · vedic · user roles
 // Admin = full access · Editor = content only (no users tab)
 import { useState, useRef } from "react";
-import { useAuth, ROLES } from "../contexts/AuthContext";
-import { useCMS }  from "../contexts/CMSContext";
+import { useAuth, ROLES } from "./contexts/AuthContext.jsx";
+import { useCMS }  from "./contexts/Cmscontext.jsx";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase/runtimeConfig";
+import { db } from "./firebase/runtimeConfig";
 
 /* ── Small UI helpers ──────────────────────────────────────────────────────── */
 function Badge({ color, children }) {
@@ -56,17 +56,47 @@ function Input({ label, value, onChange, placeholder="", multiline=false, rows=3
     outline:"none", transition:"border-color 0.15s",
     resize: multiline ? "vertical" : undefined,
   };
+  const control = multiline
+    ? <textarea style={{...sharedStyle,marginTop:6}} rows={rows} value={value} onChange={onChange} placeholder={placeholder}
+        onFocus={e=>e.target.style.borderColor="var(--gold-vivid)"}
+        onBlur={e=>e.target.style.borderColor="var(--border-soft)"}/>
+    : <input style={{...sharedStyle,marginTop:6}} value={value} onChange={onChange} placeholder={placeholder}
+        onFocus={e=>e.target.style.borderColor="var(--gold-vivid)"}
+        onBlur={e=>e.target.style.borderColor="var(--border-soft)"}/>;
   return (
     <div className="form-field">
-      {label && <label className="form-label">{label}</label>}
-      {multiline
-        ? <textarea style={sharedStyle} rows={rows} value={value} onChange={onChange} placeholder={placeholder}
-            onFocus={e=>e.target.style.borderColor="var(--gold-vivid)"}
-            onBlur={e=>e.target.style.borderColor="var(--border-soft)"}/>
-        : <input style={sharedStyle} value={value} onChange={onChange} placeholder={placeholder}
-            onFocus={e=>e.target.style.borderColor="var(--gold-vivid)"}
-            onBlur={e=>e.target.style.borderColor="var(--border-soft)"}/>
-      }
+      {label ? <label className="form-label" style={{display:"block"}}>{label}{control}</label> : control}
+    </div>
+  );
+}
+
+function NewChapterPanel() {
+  const [form, setForm] = useState({
+    title: "New Sanskrit Chapter",
+    subtitle: "",
+    subchapterTitle: "",
+    explanation: "",
+  });
+  const [preview, setPreview] = useState(false);
+
+  return (
+    <div className="section-box" style={{padding:20}}>
+      <div className="section-header">
+        <span style={{fontSize:16,fontWeight:700}}>New Sanskrit Chapter</span>
+      </div>
+      <Input label="Title" value={form.title} onChange={e=>setForm(f=>({...f,title:e.target.value}))}/>
+      <Input label="Subtitle" value={form.subtitle} onChange={e=>setForm(f=>({...f,subtitle:e.target.value}))}/>
+      <Input label="Subchapter title" value={form.subchapterTitle} onChange={e=>setForm(f=>({...f,subchapterTitle:e.target.value}))}/>
+      <Input label="Explanation" value={form.explanation} onChange={e=>setForm(f=>({...f,explanation:e.target.value}))} multiline rows={4}/>
+      <Btn variant="primary" onClick={()=>setPreview(true)}>Preview</Btn>
+      {preview&&(
+        <div className="concept-card" style={{marginTop:16,borderLeftColor:"var(--gold-vivid)"}}>
+          <h2 style={{fontSize:20,marginBottom:6}}>{form.title}</h2>
+          <div style={{fontSize:13,color:"var(--text-muted)",marginBottom:12}}>{form.subtitle}</div>
+          <h3 style={{fontSize:16,marginBottom:6}}>{form.subchapterTitle}</h3>
+          <p style={{fontSize:13,lineHeight:1.7,color:"var(--text-secondary)",margin:0}}>{form.explanation}</p>
+        </div>
+      )}
     </div>
   );
 }
@@ -515,6 +545,7 @@ export default function AdminPanel({ onClose }) {
   const [contentTab, setContentTab] = useState("concepts"); // concepts|quiz|vedic|meta
   const [adminTab, setAdminTab]     = useState("content");  // content|users
   const [seedMsg, setSeedMsg]       = useState("");
+  const [creatingChapter, setCreatingChapter] = useState(false);
 
   const activeChapter = chapters.find(c => c.id === activeChapterId);
 
@@ -562,6 +593,9 @@ export default function AdminPanel({ onClose }) {
           <div>
             <div style={{ fontFamily:"var(--font-display)", fontSize:17, fontWeight:700, color:"var(--text-primary)" }}>
               Devavāṇī CMS
+            </div>
+            <div style={{ fontSize:11, color:"var(--text-muted)" }}>
+              Content command center
             </div>
             <div style={{ fontSize:11, color:"var(--text-muted)" }}>
               {userProfile?.role === "admin" ? "🔴 Admin" : "🟡 Editor"} — {userProfile?.email}
@@ -615,9 +649,12 @@ export default function AdminPanel({ onClose }) {
             <div style={{ fontSize:10, fontWeight:700, color:"var(--text-faint)", letterSpacing:"0.12em", textTransform:"uppercase", padding:"6px 8px 8px" }}>
               Chapters
             </div>
+            <Btn variant="teal" size="sm" style={{width:"100%",justifyContent:"center",marginBottom:8}} onClick={() => setCreatingChapter(true)}>
+              Add Chapter
+            </Btn>
             {chapters.map(ch => (
               <button key={ch.id}
-                onClick={() => { setActiveChapterId(ch.id); setContentTab("concepts"); }}
+                onClick={() => { setCreatingChapter(false); setActiveChapterId(ch.id); setContentTab("concepts"); }}
                 style={{
                   width:"100%", padding:"8px 10px", border:"none",
                   background: activeChapterId===ch.id ? "var(--gold-subtle)" : "transparent",
@@ -636,7 +673,11 @@ export default function AdminPanel({ onClose }) {
           </div>
 
           {/* Content area */}
-          {activeChapter ? (
+          {creatingChapter ? (
+            <div style={{ flex:1, padding:"18px 22px", overflowY:"auto" }}>
+              <NewChapterPanel/>
+            </div>
+          ) : activeChapter ? (
             <div style={{ flex:1, padding:"18px 22px", overflowY:"auto" }}>
               {/* Chapter header */}
               <div style={{ display:"flex", alignItems:"center", gap:10, marginBottom:16, paddingBottom:12, borderBottom:"1.5px solid var(--border-soft)" }}>

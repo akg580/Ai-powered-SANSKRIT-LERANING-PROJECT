@@ -7,7 +7,7 @@ import { ProgressProvider } from "./contexts/ProgressContext.jsx";
 import { CMSProvider }      from "./contexts/CMSContext.jsx";
 
 // Import the bundled chapter data so CMSProvider can seed from it
-import { CHAPTERS } from "./chapters.js";
+import { CHAPTERS } from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
