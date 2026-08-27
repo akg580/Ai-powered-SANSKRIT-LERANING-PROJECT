@@ -63,50 +63,57 @@ const CHAPTERS = [
         dev:"अथ शब्दानुशासनम् ।",
         roman:"atha śabdānuśāsanam",
         trans:"Now begins the discipline of words.",
-        source:"Mahābhāṣya — Patañjali, opening verse",
-        rel:"The entire grammar begins with a Saṃjñā (technical label) — not a rule, not a conjugation. Pāṇini's first act is to NAME his vocabulary. This is the architectural insight of Chapter 1: define your terms before operating with them."
+        source:"Mahābhāṣya — Patañjali, opening invocation",
+        rel:"The Mahābhāṣya begins not with a rule but with a declaration of PURPOSE — the discipline (anuśāsana) of words (śabda). Saṃjñā is the first instrument of this discipline: before you can rule anything, you must NAME it. Patañjali wrote this commentary 200 years after Pāṇini precisely because the Saṃjñā system was too compressed to use without explanation."
       },
       {
         dev:"वृद्धिरादैच् ।",
         roman:"vṛddhir ādaic",
         trans:"Ā, ai, au are called Vṛddhi.",
-        source:"Aṣṭādhyāyī 1.1.1 — The FIRST sūtra of 4000",
-        rel:"The very first sūtra of the Aṣṭādhyāyī is a Saṃjñā-sūtra — a naming rule, not an operation. By calling ā/ai/au 'Vṛddhi,' Pāṇini creates a reusable label that appears in hundreds of later rules without re-listing these sounds each time. This IS economy of grammar."
+        source:"Aṣṭādhyāyī 1.1.1 — The very FIRST sūtra",
+        rel:"Pāṇini chose Vṛddhi as his first definition because patronymics — the names of great lineages — all use Vṛddhi: दाशरथि (son of Daśaratha, from Rāmāyaṇa) = दशरथ + इञ् → Vṛddhi of 'a' → ā: दाशरथि. Every royal name in Vālmīki Rāmāyaṇa that means 'son of X' uses the Vṛddhi operation defined here. Grammar chose its first definition to honour ancestry."
       },
       {
-        dev:"अदेङ् गुणः ।",
-        roman:"adeṅ guṇaḥ",
-        trans:"A, e, o are called Guṇa.",
-        source:"Aṣṭādhyāyī 1.1.2",
-        rel:"The second sūtra is also a Saṃjñā. Together, sūtras 1.1.1 and 1.1.2 define the entire vowel-strengthening system in 8 syllables. Every Guṇa sandhi (देव+इन्द्रः=देवेन्द्रः) and Vṛddhi operation (causatives, patronymics) in the grammar depends on these two names defined here in Ch.1."
+        dev:"मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः । यत्क्रौञ्चमिथुनादेकमवधीः काममोहितम् ॥",
+        roman:"mā niṣāda pratiṣṭhāṃ tvam agamaḥ śāśvatīḥ samāḥ · yat krauñcamithunād ekam avadhīḥ kāmamohitam",
+        trans:"O fowler, may you never find rest for eternal years — for you have killed one of a pair of Krauñcas who were united in love.",
+        source:"Vālmīki Rāmāyaṇa 1.2.15 — The FIRST śloka of Sanskrit literature",
+        rel:"This is the first poem ever composed in Sanskrit — the first śloka, born from Vālmīki's grief. Grammatically: निषाद (O Niṣāda — Sambodhanam, 8th vibhakti), त्वम् (Prathamā pronoun), अगमः (Laṅ 2nd sg — may you go/attain). The word क्रौञ्च is itself a Saṃjñā — a proper name (technical label) for the bird species. Saṃjñā rules (Ch.1) determine HOW this bird-name is grammatically treated throughout Vālmīki's text."
       },
       {
-        dev:"तत्र तत्र नियन्त्रितानां शब्दानां संज्ञा कर्तव्या ।",
-        roman:"tatra tatra niyantritānāṃ śabdānāṃ saṃjñā kartavyā",
-        trans:"Wherever terms are regulated, a technical name (Saṃjñā) must be given.",
-        source:"Vyākaraṇa Mahābhāṣya — Patañjali's commentary principle",
-        rel:"Patañjali articulates why Saṃjñā is the foundational chapter: without naming a class precisely, no rule can operate precisely. This principle is what makes the Aṣṭādhyāyī a generative system rather than a mere word-list. Ch.1 Saṃjñā enables Ch.2 Sandhi, Ch.3 Pratyaya, and every subsequent operation."
-      },
-      {
-        dev:"हलोऽनन्तराः संयोगः ।",
-        roman:"halo'nantarāḥ saṃyogaḥ",
-        trans:"Consecutive consonants (with no vowel between) are called Saṃyoga (cluster).",
-        source:"Aṣṭādhyāyī 1.1.7",
-        rel:"Saṃyoga is itself a Saṃjñā — a technical label for consonant clusters. This label is then used in the Guru-Laghu meter rule (1.4.11: saṃyoge guru) to determine syllable weight in Vedic metre. One Saṃjñā from Ch.1 powers both phonetics (Ch.4 Sthāna) and poetics (Laghu-Guru meter in Ch.6)."
+        dev:"नारायणं नमस्कृत्य नरं चैव नरोत्तमम् । देवीं सरस्वतीं चैव ततो जयमुदीरयेत् ॥",
+        roman:"nārāyaṇaṃ namaskṛtya naraṃ caiva narottamam · devīṃ sarasvatīṃ caiva tato jayam udīrayet",
+        trans:"Having bowed to Nārāyaṇa, to Nara the supreme of men, and to the goddess Sarasvatī — then let one recite the Jaya (victory/Mahābhārata).",
+        source:"Mahābhārata 1.1.0 — Opening invocation by Vyāsa",
+        rel:"नारायणम् = Dvitīyā sg masculine (object of namaskṛtya). नरोत्तमम् = compound: नर+उत्तम, Dvitīyā sg — the Saṃyoga cluster 'tt' (Ch.1 Saṃjñā 1.1.7) determines its Guru syllable weight in Anuṣṭubh metre. नमस्कृत्य = √नम्+Kṛt 'tvā' suffix — an Avyaya (Ch.10). The Mahābhārata opens by invoking Sarasvatī — the goddess of language — whose domain is the Saṃjñā system that makes language precise."
       },
       {
         dev:"तुल्यास्यप्रयत्नं सवर्णम् ।",
         roman:"tulyāsyaprayatnaṃ savarṇam",
-        trans:"Sounds with the same place and same internal effort are called Savarṇa (homogeneous).",
+        trans:"Sounds with the same articulation-place and effort are homogeneous (Savarṇa).",
         source:"Aṣṭādhyāyī 1.1.9",
-        rel:"Savarṇa-Saṃjñā is defined here in Ch.1, but it does its work in Ch.2: अकः सवर्णे दीर्घः (6.1.101) — 'an ak-vowel becomes long before its Savarṇa.' Without the Ch.1 definition, the Ch.2 sandhi rule is meaningless. This cross-chapter dependency demonstrates why Pāṇini structured his grammar with definitions first."
+        rel:"This Saṃjñā appears directly in the Ṛgveda's transmission tradition: Vedic phonetics texts (Prātiśākhyas) use 'Savarṇa' to classify sounds for correct recitation. When the Ṛgveda priest recites 'अग्निमीळे' (RV 1.1.1), the sandhi 'agnīle' requires knowing that 'i' and 'ī' are Savarṇa (same place/effort). The Ch.1 Saṃjñā is the key to correct Vedic chanting — grammar serves scripture."
       },
       {
         dev:"अदर्शनं लोपः ।",
         roman:"adarśanaṃ lopaḥ",
-        trans:"Non-appearance is called Lopa.",
+        trans:"Non-appearance (of a sound) is called Lopa.",
         source:"Aṣṭādhyāyī 1.1.60",
-        rel:"Lopa-Saṃjñā (non-appearance) is defined here in Ch.1 and used everywhere: It-markers disappear by Lopa (1.3.9), Vikaraṇa suffixes disappear by Luk-Lopa in Ananta class roots (Ch.3 Pratyaya), and sandhi-deleted sounds in Ch.2 also invoke this name. One definition, infinite application — the power of Saṃjñā."
+        rel:"The Rāmāyaṇa's first verse 'मा निषाद' contains Lopa in action: 'त्वम्+अगमः' → Visarga of 'त्वम्' disappears (Lopa) before 'अ'. This Lopa is NOT loss of meaning — the grammatical relationship persists. Similarly, in 'नमस्कृत्य' (from the Mahābhārata opener), the 'स्' of 'नमस्' undergoes transformation — a process invoked under Ch.1's Lopa-Saṃjñā. Every text uses Lopa; Ch.1 names it first."
+      },
+      {
+        dev:"हलोऽनन्तराः संयोगः ।",
+        roman:"halo'nantarāḥ saṃyogaḥ",
+        trans:"Consecutive consonants with no vowel between them are called Saṃyoga.",
+        source:"Aṣṭādhyāyī 1.1.7",
+        rel:"The Ṛgveda's Gāyatrī mantra 'तत्सवितुर्वरेण्यम्' contains Saṃyoga clusters: 'र्व' in 'वरेण्यम्', 'ण्य' — these clusters make the syllables Guru (heavy) by Ch.6's rule 1.4.11. The Gāyatrī's strict 24-syllable meter (8+8+8 Laghu-Guru pattern) works ONLY because Ch.1 first defines Saṃyoga. Every metre in every Vedic text presupposes this single Ch.1 Saṃjñā."
+      },
+      {
+        dev:"यस्य नामैव शास्त्रस्य प्रयोजनम् ।",
+        roman:"yasya nāmaiva śāstrasya prayojanam",
+        trans:"The name itself is the purpose of the science.",
+        source:"Vyākaraṇa-śāstra traditional maxim on Saṃjñā",
+        rel:"This maxim captures the entire philosophy of Ch.1: in Pāṇini's grammar, the name (Saṃjñā) is not decoration — it IS the mechanism. 'Vṛddhi' is not just a word for ā/ai/au; it is an operational code that fires hundreds of rules. The Mahābhārata's Yudhiṣṭhira, when asked 'what is the most wonderful thing?', answers with a Saṃjñā-like precision: 'every day men die, yet those who remain think they will live forever.' Precise naming reveals truth."
       },
     ],
     levels:{
@@ -147,56 +154,16 @@ const CHAPTERS = [
       {q:"Saṃhitā (6.1.72) is:",opts:["A type of vowel","The prerequisite contact-condition for all sandhi","A consonant cluster","The name for long vowels"],ans:1,exp:"Saṃhitā = close phonetic contact. ALL sandhi rules presuppose this condition."},
     ],
     vedic:[
-      {
-        dev:"विश्वामित्रस्य रक्षति ब्रह्मेदं भारतं जनम् ।",
-        roman:"viśvāmitrasya rakṣati brahmedaṃ bhārataṃ janam",
-        trans:"This sacred knowledge of Viśvāmitra protects the people of Bhārata.",
-        source:"Ṛgveda 3.53.12",
-        rel:"ब्रह्म+इदम् → ब्रह्मेदम् is Guṇa sandhi (Ch.2): a + i → e (6.1.87). But the word 'ब्रह्म' itself is a Pratipadika whose Savarṇa-membership (Ch.1: 1.1.9) determines which sandhi rule applies. Ch.1 Savarṇa + Ch.2 Guṇa sandhi operating together in one word."
-      },
-      {
-        dev:"तमेव शरणं गच्छ सर्वभावेन भारत ।",
-        roman:"tam eva śaraṇaṃ gaccha sarvabhāvena bhārata",
-        trans:"Take refuge in Him alone with all your being, O Bhārata.",
-        source:"Bhagavad Gītā 18.62",
-        rel:"तम्+एव: Visarga of 'तम्' disappears before 'एव' — Visarga Sandhi (Ch.2, 8.3.15). शरणम्+गच्छ: Anusvāra (Ch.2) before 'ग्'. सर्व+भावेन: a+ā→ā Sāvarṇadīrgha (6.1.101, Ch.2). Three distinct sandhi rules from Ch.2 in one verse, all enabled by Ch.1's definition of Savarṇa and Saṃhitā."
-      },
-      {
-        dev:"योगस्थः कुरु कर्माणि सङ्गं त्यक्त्वा धनञ्जय ।",
-        roman:"yogasthaḥ kuru karmāṇi saṅgaṃ tyaktvā dhanañjaya",
-        trans:"Established in yoga, perform your actions, abandoning attachment, O Dhanañjaya.",
-        source:"Bhagavad Gītā 2.48",
-        rel:"धनञ्जय: this name itself is a sandhi form — धनम्+जय → धनञ्जय. The anusvāra (ṃ) of 'dhanam' assimilates to the palatal class before 'j' (Parasavarṇa, Ch.2: 8.4.58). त्यक्त्वा: √त्यज्+क्त्वा — Kṛt pratyaya (Ch.3) applied to root, with ज्+क् cluster (Saṃyoga from Ch.1 Saṃjñā) triggering specific changes."
-      },
-      {
-        dev:"इन्द्र इद्धर्योः सचा संमिश्ल आ वचोयुजा ।",
-        roman:"indra iddharayoḥ sacā saṃmiśla ā vacoyujā",
-        trans:"Indra indeed, with his two bays, accompanied with speech-yoked praises.",
-        source:"Ṛgveda 1.7.2",
-        rel:"इन्द्रः+इत् → इन्द्र+इत् → इन्द्रेत् (Guṇa sandhi a+i→e, Ch.2). Then इन्द्र+इद् → इन्द्रिद् with Visarga absorbed. संमिश्ल: Parasavarṇa assimilation — anusvāra before 'म' takes labial nasal (Ch.2: 8.4.58). This Ṛgvedic verse is a Vedic sandhi laboratory, demonstrating multiple Ch.2 rules applied continuously in oral tradition."
-      },
-      {
-        dev:"उपैति सर्वं जगत् ।",
-        roman:"upaiti sarvaṃ jagat",
-        trans:"The entire universe comes to [Him].",
-        source:"Bhagavad Gītā 11.21 (partial)",
-        rel:"उप+एति: उपसर्ग (prefix) + √इ root. The sandhi here is Vṛddhi: a+e→ai (6.1.88, Ch.2) would give 'उपैति.' But wait — this is also Ch.3 Pratyaya: √इ + लट् + ति. Sandhi (Ch.2) AND suffix application (Ch.3) operate on the same word simultaneously. सर्वम्+जगत्: Anusvāra before 'ज्' — visarga sandhi (Ch.2). Cumulative grammar visible at every junction."
-      },
-      {
-        dev:"नमस्ते सते सर्वलोकाश्रयाय ।",
-        roman:"namaste sate sarvalokāśrayāya",
-        trans:"Salutation to You, the Existent, the refuge of all worlds.",
-        source:"Viṣṇu Sahasranāma — closing verse",
-        rel:"सर्व+लोक+आश्रयाय: three-way sandhi chain — (1) a+a→ā (Sāvarṇadīrgha 6.1.101), then (2) the compound itself uses Samāsa. नमस्+ते: Visarga of 'नमः' before 'त' (dental) → becomes 's' (Visarga sandhi 8.3.15, Ch.2). This chain of sandhi demonstrates why Ch.1 Savarṇa must be defined BEFORE Ch.2 sandhi can operate."
-      },
-      {
-        dev:"अकः सवर्णे दीर्घः ।",
-        roman:"akaḥ savarṇe dīrghaḥ",
-        trans:"An ak-vowel before its Savarṇa becomes long.",
-        source:"Aṣṭādhyāyī 6.1.101 — core vowel sandhi rule",
-        rel:"This single sūtra contains three Saṃjñās from Ch.1: (1) 'अक्' = Pratyāhāra from Māheśvara Sūtras (Ch.4), (2) 'सवर्ण' = defined at 1.1.9 (Ch.1), (3) 'दीर्घ' = defined at 1.2.27 (Ch.6). Ch.2 sandhi is literally impossible to state without Ch.1 definitions. This is the cumulative architecture of the Aṣṭādhyāyī in one sūtra."
-      },
+      {dev:"अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम् । होतारं रत्नधातमम् ॥",roman:"agnim īḷe purohitaṃ yajñasya devam ṛtvijam · hotāraṃ ratnadhātamam",trans:"I praise Agni, the household priest, divine officiant of the sacrifice, the invoker who bestows the greatest treasure.",source:"Ṛgveda 1.1.1 — first verse of the world's oldest text",rel:"Sandhi laboratory: पुरोहितम्+यज्ञस्य — Visarga before 'y' stays. देवम्+ऋत्विजम् — Anusvāra before 'ṛ'. The Ṛgveda was composed with full sandhi awareness; priests had to chant these junctions perfectly. Correct sandhi = correct ritual = cosmic order (ṛta). Ch.2 codifies what Vedic priests practised for millennia."},
+      {dev:"एकं सद् विप्रा बहुधा वदन्ति अग्निं यमं मातरिश्वानमाहुः ।",roman:"ekaṃ sad viprā bahudhā vadanti agniṃ yamaṃ mātariśvānam āhuḥ",trans:"Truth is one; the wise call it by many names — they call it Agni, Yama, Mātariśvan.",source:"Ṛgveda 1.164.46 — the most quoted Ṛgvedic philosophical verse",rel:"मातरिश्वानम्+आहुः → मातरिश्वानमाहुः: Anusvāra before vowel. एकम्+सद् — Anusvāra before 's'. This verse declares all names for God are ONE — itself a lesson in sandhi: many surface forms, one underlying rule-system. Grammar and philosophy share the same structure."},
+      {dev:"धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः । मामकाः पाण्डवाश्चैव किमकुर्वत सञ्जय ॥",roman:"dharmakṣetre kurukṣetre savetā yuyutsavaḥ · māmakāḥ pāṇḍavāścaiva kim akurvata sañjaya",trans:"In the field of Dharma, in Kurukṣetra — my people and the Pāṇḍavas assembled, desirous of battle. What did they do, O Sañjaya?",source:"Bhagavad Gītā 1.1 — Mahābhārata, opening verse",rel:"पाण्डवाः+च+एव → पाण्डवाश्चैव: double sandhi — Visarga before 'c' → 'ś', then च+एव → चैव (Vṛddhi sandhi a+e→ai, 6.1.88). The Mahābhārata's opening question uses the most complex sandhi in its very first line — as if Vyāsa tests whether the listener knows Ch.2 before they hear the story."},
+      {dev:"रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः ।",roman:"rāmo vigrahavān dharmaḥ sādhuḥ satyaparākramaḥ",trans:"Rāma is dharma in embodied form, virtuous, of true valour.",source:"Vālmīki Rāmāyaṇa 3.37.13",rel:"रामः+विग्रहवान् → रामो+विग्रहवान्: Visarga before 'v' (voiced) → 'o' (Visarga sandhi 8.3.15). This single verse shows Visarga behaving DIFFERENTLY in two adjacent positions — before voiced 'v' it becomes 'o'; before sibilant 'ś' in साधुः it stays. Ch.2 Visarga sandhi has multiple environment-sensitive rules — the Rāmāyaṇa is their living demonstration."},
+      {dev:"तमेव विदित्वातिमृत्युमेति नान्यः पन्था विद्यतेऽयनाय ॥",roman:"tam eva viditvā ati mṛtyum eti nānyaḥ panthā vidyate'yanāya",trans:"Only by knowing Him does one transcend death. There is no other path for liberation.",source:"Śvetāśvatara Upaniṣad 3.8",rel:"विदित्वा+अति → विदित्वाति: Sāvarṇadīrgha (ā+a→ā, 6.1.101). न+अन्यः → नान्यः: Sāvarṇadīrgha (a+a→ā). विद्यते+अयनाय → विद्यतेऽयनाय: Visarga elided before 'a' shown by avagraha. Three different sandhi rules in one śloka on the 'one path' — multiple sandhi paths encoding a single truth."},
+      {dev:"यत्र योगेश्वरः कृष्णो यत्र पार्थो धनुर्धरः । तत्र श्रीर्विजयो भूतिर्ध्रुवा नीतिर्मतिर्मम ॥",roman:"yatra yogeśvaraḥ kṛṣṇo yatra pārtho dhanurdharaḥ · tatra śrīr vijayo bhūtir dhruvā nītir matir mama",trans:"Where Kṛṣṇa the Lord of Yoga is, where Pārtha the archer is — there dwell glory, victory, prosperity, and eternal justice.",source:"Bhagavad Gītā 18.78 — the final verse of the Gītā",rel:"कृष्णः+यत्र → कृष्णो: Visarga before 'y' → 'o'. धनुः+धरः → धनुर्धरः: Visarga before 'd' → 'r'. श्रीः+विजयः → श्रीर्विजयः: Visarga before 'v' → 'r'. The Gītā's final verse is a cascade of four Visarga-to-'r' transformations — Sañjaya's closing vision expressed through Ch.2's most musical sandhi rule."},
+      {dev:"सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः । सर्वे भद्राणि पश्यन्तु मा कश्चित् दुःखभाग् भवेत् ॥",roman:"sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ · sarve bhadrāṇi paśyantu mā kaścit duḥkhabhāg bhavet",trans:"May all be happy; may all be free from illness; may all see auspiciousness; let none have a share in sorrow.",source:"Bṛhadāraṇyaka Upaniṣad — Universal peace prayer",rel:"सुखिनः+सर्वे: Visarga before 's' stays. भद्राणि+पश्यन्तु: Anusvāra before 'p' (labial) → labial nasal (Parasavarṇa 8.4.58). दुःखभाग्+भवेत्: voiced 'g' before 'bh' stays voiced. The most universally recited Sanskrit prayer uses every major sandhi type in eight syllables per line — phonetically perfect AND philosophically complete."},
+      {dev:"अकः सवर्णे दीर्घः ।",roman:"akaḥ savarṇe dīrghaḥ",trans:"An ak-vowel before its Savarṇa vowel becomes long.",source:"Aṣṭādhyāyī 6.1.101 — the foundational vowel-sandhi sūtra",rel:"This rule is the grammatical DNA of half the compound words in Sanskrit epics: Rāmāyaṇa's 'महात्मा' (mahā+ātmā: a+ā→ā), Mahābhārata's 'महारथः' (mahā+ratha), Gītā's 'महाबाहो' (mahā+bāho). Every compound with 'महा' (great) in Sanskrit literature — thousands of epithets — uses this single sūtra 6.1.101."},
     ],
+,
     levels:{
       easy:[
         {q:"Sandhi means:",opts:["Sound joining / junction","Root listing","A case ending","A translation"],ans:0,exp:"Sandhi = rule-governed sound junction at word or morpheme boundaries."},
@@ -241,63 +208,16 @@ const CHAPTERS = [
       {q:"The Dhātu Adhikāra sūtra (3.1.91 'धातोः') functions by:",opts:["Listing all 1930 roots","Extending authority over ALL Ch.3 suffixation rules via Anuvṛtti — one word governs hundreds of rules","Naming the 10 Lakāras","Defining Sandhi rules"],ans:1,exp:"By Anuvṛtti (carry-forward), 'dhātoḥ' silently applies to every rule in Chapter 3. This is Pāṇini's Laghavam (minimal rule length) at its most powerful."},
     ],
     vedic:[
-      {
-        dev:"अग्ने नय सुपथा राये अस्मान् विश्वानि देव वयुनानि विद्वान् ।",
-        roman:"agne naya supathā rāye asmān viśvāni deva vayunāni vidvān",
-        trans:"O Agni, lead us to prosperity by a good path; O God, knowing all our deeds.",
-        source:"Ṛgveda 1.189.1 / Īśāvāsyopaniṣad 18 (closing prayer)",
-        rel:"नय = √नी + लोट् (Lot Lakāra, Sārvadhatuka) + Tiṅ 'hi' = imperative 'lead.' Cumulative grammar: Ch.1 Saṃjñā names the Lot Lakāra; Ch.2 sandhi joins 'nay+a' smoothly (Yaṇ sandhi: i→y); Ch.3 Pratyaya applies — Lot Lakāra placed on root, then replaced by Tiṅ 'hi' via Lasyah (step 5 of the 6-step Dhātu-prakriyā). Three chapters active in one Vedic imperative."
-      },
-      {
-        dev:"इन्द्रं विश्वा अवीवृधन् समुद्रव्यचसं गिरः ।",
-        roman:"indraṃ viśvā avīvṛdhan samudravyacasaṃ giraḥ",
-        trans:"All songs have magnified Indra, ocean-vast, with their hymns.",
-        source:"Ṛgveda 1.11.1",
-        rel:"अवीवृधन् = √वृध् + णिच् (Sanādi causative, Ch.3.1.26) → Sanadyanta root वीवृध् + लुङ् (Lung/Ārdhadhatuka) + 3rd plural Tiṅ. Demonstrates simultaneously: Ch.1 It-saṃjñā of ण् in णिच् (guides causative formation); Ch.2 sandhi (ā+ī→ī Sāvarṇadīrgha); Ch.3 Sanādi + Ārdhadhatuka classification + Tiṅ-ādesha. Four chapters in one compound Ṛgvedic verb form."
-      },
-      {
-        dev:"सत्यमेव जयते नानृतम् ।",
-        roman:"satyam eva jayate nānṛtam",
-        trans:"Truth alone triumphs, not falsehood.",
-        source:"Muṇḍakopaniṣad 3.1.6 / Indian National Motto",
-        rel:"जयते = √जि + लट् (Sārvadhatuka) + 'te' (Ātmanepada Tiṅ). Ch.1: root √जि has Svarita-Jit It-saṃjñā → Ubhayapada (both voices). Ch.3 Pada-Nirṇaya selects Ātmanepada because the victory benefits the subject. न+अनृतम् → नानृतम्: Ch.2 Sāvarṇadīrgha (a+a→ā). सत्यम्+एव: Ch.2 Visarga sandhi (ḥ before e becomes '). Ch.1 Saṃjñā → Ch.2 Sandhi → Ch.3 Pada-Nirṇaya: all three chapters operating in two words."
-      },
-      {
-        dev:"भवतु शुभम् ।",
-        roman:"bhavatu śubham",
-        trans:"Let there be auspiciousness.",
-        source:"Traditional Vedic blessing — Upaniṣadic invocations",
-        rel:"भवतु = √भू (Bhvadi/Ajanta class, Ch.3) + लोट् (Sārvadhatuka, Ch.3) + Vikaraṇa शप् (Ch.3.1.68) → bhava (a-ending Ajanta stem) + 'tu' (3rd sg Tiṅ). The Guṇa operation (u→o in bhava) is triggered because Lot is Sārvadhatuka (Ch.3 classification) — and Guṇa itself is named in Ch.1 sūtra 1.1.2. The Ch.1 Guṇa-Saṃjñā, the Ch.3 Sārvadhatuka-classification, and Ch.3 Vikaraṇa all cooperate in this two-syllable blessing."
-      },
-      {
-        dev:"पिपठिषामि वेदम् ।",
-        roman:"pipathiṣāmi vedam",
-        trans:"I desire to study/read the Veda.",
-        source:"Pāṇinīya grammatical example — Pushpa Dikshit's canonical teaching",
-        rel:"पिपठिषामि = √पठ् + सन् (Ch.3 Sanādi Pratyaya 3.1.7) → new Sanadyanta root पिपठिष् (root-status by 3.1.32: Sanadyanta Dhatavah) + लट् + 'mi' (1st sg Tiṅ). It-saṃjñā (Ch.1) of 'न्' in सन् guides the reduplication (pi-paṭh). Ch.2 sandhi creates the 'pi' vowel pattern. Ch.3 Sanādi mechanism, Ch.1 anubandha memory, and Ch.2 vowel rules all converge in one word expressing the desire to learn the very texts that contain these rules."
-      },
-      {
-        dev:"कृण्वन्तो विश्वमार्यम् ।",
-        roman:"kṛṇvanto viśvam āryam",
-        trans:"Let us make the entire world noble.",
-        source:"Ṛgveda 9.63.17 — the Vedic rallying cry",
-        rel:"कृण्वन्तः = √कृ (Kryadi class — Ananta/Anajanta, Ch.3) + लोट् + Vikaraṇa 'u' (Śnu, Ch.3.1.73 — NOT dropped by Luk, unlike Ajanta). विश्वम्+आर्यम्: Ch.2 Sāvarṇadīrgha (a+ā→ā). This verse demonstrates the Ajanta vs Ananta contrast (Ch.3) — the Vikaraṇa remains in Kryadi class, producing 'kṛṇu' stem. Mastering this distinction is, as Pushpa Dikshit insists, the gateway to all Sanskrit conjugation."
-      },
-      {
-        dev:"असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मा अमृतं गमय ।",
-        roman:"asato mā sad gamaya · tamaso mā jyotir gamaya · mṛtyor māmṛtaṃ gamaya",
-        trans:"Lead me from the unreal to the Real. From darkness to Light. From death to Immortality.",
-        source:"Bṛhadāraṇyaka Upaniṣad 1.3.28 — the great prayer",
-        rel:"गमय = √गम् + णिच् (Causative Sanādi, Ch.3) → गम्+अय → 'gamaya' (cause to go/lead). Ch.1 It-saṃjñā: 'ण्' in णिच् is an It-marker (guides causative formation, then deleted by Lopa 1.3.9). Ch.2 sandhi: गम्+अय (the 'a' of णिच् joins the Vikaraṇa 'ay'). The most famous prayer in the Upaniṣads is built entirely on Ch.3 Sanādi (causative) Pratyaya mechanics operating on the root √गम् — the same root that appears in examples throughout Chapters 1-3."
-      },
-      {
-        dev:"धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः ।",
-        roman:"dharmakṣetre kurukṣetre savetā yuyutsavaḥ",
-        trans:"In the holy field of Dharma, in the field of Kuru, assembled desiring to fight.",
-        source:"Bhagavad Gītā 1.1 — the opening verse",
-        rel:"युयुत्सवः = √युध् + सन् (Ch.3 Sanādi: desire to fight) → Sanadyanta root युयुत्स् (with reduplication by Ch.1 It-saṃjñā rules) + उ (Kṛt suffix, Ch.3) → युयुत्सु + plural = युयुत्सवः. Ch.2 sandhi: धर्म+क्षेत्रे (compound junction). This opening verse of the Gītā uses Ch.3 Sanādi Pratyaya for its most dramatic word: 'those desiring battle' — desire expressed through √यु+San, the very mechanism Pushpa Dikshit uses to introduce Sanādi suffixes."
-      },
+      {dev:"असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मा अमृतं गमय ॥",roman:"asato mā sad gamaya · tamaso mā jyotir gamaya · mṛtyor māmṛtaṃ gamaya",trans:"Lead me from the unreal to the Real. From darkness to Light. From death to Immortality.",source:"Bṛhadāraṇyaka Upaniṣad 1.3.28 — the great Vedic prayer",rel:"गमय = √गम् + णिच् (Sanādi causative Ch.3.1.26: cause to go/lead) + Loṭ 2nd sg. The root √गम् appears three times — each time with the same causative णिच् suffix. Repetition IS the grammar lesson: one root, one Sanādi suffix, three philosophical transformations. Ch.3 Sanādi creates 'gamaya' from 'gam' the same way it creates 'kāraya' from 'kṛ' — the derivation engine of all Sanskrit causatives."},
+      {dev:"युयुत्सवः — युद्धार्थं समवेताः योधाः ।",roman:"yuyutsavaḥ — yuddhārthaṃ savetāḥ yodhāḥ",trans:"Those desirous of battle — warriors assembled for war.",source:"Bhagavad Gītā 1.1 context — Mahābhārata",rel:"युयुत्सवः = √युध् + सन् (Ch.3 Sanādi: desire to fight) + उ (Kṛt) + Prathamā pl. The San suffix on √युध् → yuyutsa → yuyutsavaḥ. This is the EXACT Sanādi mechanism: existing root + San suffix = new root expressing desire, then declined. The Mahābhārata's central word for 'warrior spirit' is built on Ch.3 Sanādi. Grammar names the impulse that drives epic history."},
+      {dev:"कारयामास विश्वकर्मा — लङ्काम् अद्भुतां पुरीम् ।",roman:"kārayāmāsa viśvakarmā — laṅkām adbhutāṃ purīm",trans:"Viśvakarmā caused (it) to be built — the marvellous city of Laṅkā.",source:"Vālmīki Rāmāyaṇa 5.9.3 — description of Laṅkā",rel:"कारयामास = √कृ + णिच् (Sanādi causative Ch.3) + आम् + √अस् + लिट् (Perfect — Ārdhadhatuka). Two-stage derivation: Ch.3 Sanādi (Ṇic creating 'kāra') + Ch.3 Ārdhadhatuka Tiṅ. Vālmīki uses the causative to describe divine architecture — God 'causing' creation, encoded through Ch.3's Sanādi system. The most beautiful city in Sanskrit literature is grammatically a Sanādi form."},
+      {dev:"तपसा ब्रह्म विजिज्ञासस्व — तपो ब्रह्मेति ।",roman:"tapasā brahma vijijñāsasva · tapo brahmeti",trans:"Seek to know Brahman through tapas. Tapas is Brahman.",source:"Taittirīya Upaniṣad 3.2 — Bhṛgu's instruction",rel:"विजिज्ञासस्व = वि + √ज्ञा + सन् (Ch.3 Sanādi: desire to know) + Loṭ 2nd sg Ātmanepada 'sva'. The San suffix on √jñā creates 'jijñāsa' (desire to know) — the word for ALL philosophical inquiry in Sanskrit. जिज्ञासा (desire to know Brahman) is literally built from Ch.3's Sanādi suffix. The Upaniṣad's instruction to 'seek' is expressed through the grammatical mechanism that produces 'seeking.'"},
+      {dev:"पिपठिषामि वेदम् — सनाद्यन्त धातोः उदाहरणम् ।",roman:"pipathiṣāmi vedam — sanādyanta dhātoḥ udāharaṇam",trans:"I desire to study the Veda — example of a Sanadyanta Dhātu.",source:"Pāṇinīya-vyākaraṇa — Pushpa Dikshit canonical teaching",rel:"पिपठिषामि = √पठ् + सन् (Ch.3.1.7) → reduplication (pi-) + paṭh + iṣ → new root पिपठिष् → Dhātu-saṃjñā by 3.1.32 → + Laṭ + 1st sg 'mi'. The desire to study the Veda is expressed through the mechanism the student must master to form this word. Perfectly recursive: grammar teaches you to SAY you want to learn grammar."},
+      {dev:"भवतु शुभम् — लोकाः समस्ताः सुखिनो भवन्तु ॥",roman:"bhavatu śubham — lokāḥ samastāḥ sukhino bhavantu",trans:"Let there be auspiciousness — may all the worlds be happy.",source:"Traditional Vedic blessing / Mahābhārata peace invocation",rel:"भवतु = √भू (Bhvadi/Ajanta Ch.3) + Loṭ + Vikaraṇa शप् + 3rd sg 'tu'. भवन्तु = same + 3rd pl 'antu'. Both forms demonstrate Ch.3 Ajanta class (Vikaraṇa Śap → 'bhava' stem), Loṭ Sārvadhatuka, and Guṇa of 'u→o'. The universal blessing uses the most fundamental Ajanta conjugation — Ch.3's most basic pattern expressing humanity's deepest wish."},
+      {dev:"कृण्वन्तो विश्वमार्यम् ॥",roman:"kṛṇvanto viśvam āryam",trans:"Making the whole world noble.",source:"Ṛgveda 9.63.17 — the great Vedic call to nobility",rel:"कृण्वन्तः = √कृ (Kryadi/Ananta class Ch.3) + Loṭ + Vikaraṇa 'u' (Śnu — NOT dropped by Luk) → kṛṇu+vant. The Ṛgveda's rallying cry uses Kryadi (Ananta) class root √kṛ with its unique Vikaraṇa Śnu — demonstrating the Ajanta vs Ananta contrast: here the Vikaraṇa STAYS. Pushpa Dikshit uses this verse to show why students must master both root classes."},
+      {dev:"न हि ज्ञानेन सदृशं पवित्रमिह विद्यते ॥",roman:"na hi jñānena sadṛśaṃ pavitram iha vidyate",trans:"Indeed, nothing as purifying as knowledge exists in this world.",source:"Bhagavad Gītā 4.38",rel:"विद्यते = √विद् + Laṭ + Ātmanepada 3rd sg 'te'. Root √विद् is Adadi/Ananta class — Vikaraṇa dropped (Luk). ज्ञानेन = √ज्ञा + ल्युट् (Kṛt Ch.3) + Tṛtīyā. पवित्रम् = √पू + इत्र (Kṛt Ch.3). Three Ch.3 Pratyaya types in one verse: Ātmanepada Tiṅ (√vid), Kṛt abstract noun (jñāna), Kṛt adjective (pavitra). The Gītā's verse about purifying knowledge is itself built from Ch.3's purifying suffix-application process."},
     ],
+,
     levels:{
       easy:[
         {q:"How many types of Pratyaya are in Chapter 3?",opts:["2","3","4","6"],ans:2,exp:"4 types: Sanādi (new roots), Vikaraṇa (process helpers), Kṛt (nominal stems from roots), Tiṅ (verbal endings)."},
@@ -336,56 +256,16 @@ const CHAPTERS = [
       {q:"Standard Pratyāhāra count:",opts:["14","22","33","42"],ans:3,exp:"~42 standard Pratyāhāras from the 14 combinatorially arranged sūtras."},
     ],
     vedic:[
-      {
-        dev:"नृत्तावसाने नटराजराजो ननाद ढक्कां नवपञ्चवारम् । काव्यालपन्तं प्रतिपद्य बोधं शिष्यार्थसिद्ध्यै स्वमनुस्मरेत ॥",
-        roman:"nṛttāvasāne naṭarājarājo nanāda ḍhakkāṃ navapañcavāram · kāvyālapantaṃ pratipadya bodhaṃ śiṣyārthasiddhyai svamanusmareta",
-        trans:"At the close of the cosmic dance, the King of Dancers sounded his drum fourteen times. Having received that illumination of speech/poetry, [Pāṇini] composed [the grammar] for the benefit of his students, to be ever remembered.",
-        source:"Traditional invocatory verse — Pāṇini-sūtra preamble",
-        rel:"नवपञ्च = 9+5 = 14 — the 14 Māheśvara Sūtras. The Pratyāhāras these 14 sūtras generate are themselves Saṃjñās (Ch.1) — compact technical labels like 'अच्' and 'हल्.' So Māheśvara Sūtras (Ch.4) are the PHONOLOGICAL foundation of all Saṃjñā (Ch.1), and both together enable Sandhi rules (Ch.2) and Pratyaya-application (Ch.3). The ḍamaru beat encodes Chapters 1–4 simultaneously."
-      },
-      {
-        dev:"आदिरन्त्येन सहेता ।",
-        roman:"ādirantyen sahetā",
-        trans:"The starting sound together with the final marker encompasses all sounds between.",
-        source:"Aṣṭādhyāyī 1.1.71 — the Pratyāhāra-formation rule",
-        rel:"Five syllables define ALL 42 Pratyāhāras at once. Every single Sandhi rule in Ch.2 uses Pratyāhāras: 'इको यणचि' — here 'इक्' and 'अच्' are both Pratyāhāras from Māheśvara Sūtras (Ch.4). Every Pratyaya rule in Ch.3 uses them too: 'अचि' in many Kṛt rules. Māheśvara Sūtras (Ch.4) are the phonological vocabulary that makes Chapters 2 and 3 writable in compact form."
-      },
-      {
-        dev:"ॐ तत्सत् ।",
-        roman:"oṃ tat sat",
-        trans:"Om — That — Existence-Truth.",
-        source:"Bhagavad Gītā 17.23 — the three syllables of Brahman",
-        rel:"ॐ is itself a Pratyāhāra-class sound — it contains all sounds of the Māheśvara Sūtras compressed into one phoneme. Phonetically: अ (sūtra 1) + उ (sūtra 1) + म् (sūtra 7 anusvāra). 'त्+अ+त्' = Ananta class root (Ch.3 concept: consonant-ending stem). The three syllables of the most sacred mantra are fully analysable only after learning Ch.4 (sound encoding) + Ch.3 (root formation) + Ch.1 (Saṃjñā)."
-      },
-      {
-        dev:"इको यणचि ।",
-        roman:"iko yaṇ aci",
-        trans:"Ik-vowels become Yaṇ semivowels before any vowel.",
-        source:"Aṣṭādhyāyī 6.1.77 — Ch.2 Sandhi rule",
-        rel:"This Ch.2 Sandhi rule contains THREE Pratyāhāras from the Māheśvara Sūtras (Ch.4): (1) 'इक्' = इ उ ऋ ऌ [from sūtra-1 start + sūtra-2 It क्], (2) 'यण्' = य र ल व [sūtra-5 start + sūtra-5 It ट्], (3) 'अच्' = all 9 vowels [sūtra-1 start + sūtra-4 It च्]. Without the Māheśvara Sūtras (Ch.4), this 5-syllable rule cannot be decoded. Chapters 4 and 2 are architecturally inseparable."
-      },
-      {
-        dev:"हलन्त्यम् ।",
-        roman:"halantam",
-        trans:"The final consonant [of an upadesha form] is [named as] It.",
-        source:"Aṣṭādhyāyī 1.3.3 — the It-identification rule",
-        rel:"'हल्' in 'हलन्त्यम्' is a Pratyāhāra from Māheśvara Sūtras (Ch.4): ह (sūtra 5 start) + ल् (sūtra 14 It) = all 33 consonants. So Ch.4 Pratyāhāra 'हल्' is used inside the Ch.1 It-saṃjñā rule itself! Māheśvara Sūtras (Ch.4) are actually deployed before Ch.1 definitions can even be stated — they are the presuppositional layer on which all of Ch.1 rests."
-      },
-      {
-        dev:"तपसा ब्रह्म विजिज्ञासस्व ।",
-        roman:"tapasā brahma vijijñāsasva",
-        trans:"Seek to know Brahman through tapas (intense discipline).",
-        source:"Taittirīya Upaniṣad 3.2",
-        rel:"विजिज्ञासस्व = वि + √ज्ञा + सन् (Sanādi, Ch.3: desire to know) + आत्मनेपद Tiṅ 'sva'. Ch.4: 'ज्ञ' is a Saṃyoga (Ch.1 Saṃjñā: हलोऽनन्तराः संयोगः), and its Sthāna and Prayatna are analysed in Ch.5 (phonetics). Ch.1 Saṃjñā + Ch.3 Sanādi + Ch.4 Pratyāhāra for consonant classification + Ch.5 phonetics — all four chapters active in one compound Vedic verb. The discipline of tapas itself demands cumulative grammatical knowledge."
-      },
-      {
-        dev:"प्रत्याहारेण सर्वे वर्णाः गृह्यन्ते ।",
-        roman:"pratyāhāreṇa sarve varṇāḥ gṛhyante",
-        trans:"By the Pratyāhāra technique, all sounds are captured [in compact codes].",
-        source:"Vyākaraṇa Mahābhāṣya — Patañjali's meta-comment on the Māheśvara Sūtras",
-        rel:"Patañjali's summary of why the Māheśvara Sūtras (Ch.4) are indispensable: they compress the entire phonological inventory into 42 codes. 'गृह्यन्ते' = √ग्रह् + Kṛt Pratyaya (Ch.3) in passive voice — showing Ch.3 Pratyaya applied to explain Ch.4's function. 'वर्णाः' = phonemes, whose Sthāna and Karaṇa are detailed in Ch.5. The grammar is a self-referential system: its rules are themselves analysable by its own rules."
-      },
+      {dev:"नृत्तावसाने नटराजराजो ननाद ढक्कां नवपञ्चवारम् । काव्यालपन्तं प्रतिपद्य बोधं शिष्यार्थसिद्ध्यै स्वमनुस्मरेत ॥",roman:"nṛttāvasāne naṭarājarājo nanāda ḍhakkāṃ navapañcavāram · kāvyālapantaṃ pratipadya bodhaṃ śiṣyārthasiddhyai svam anusmareta",trans:"At the end of the cosmic dance, Naṭarāja sounded his drum fourteen times. Having received that illumination of speech, let one contemplate it for the benefit of students.",source:"Śivasūtra-vibhāga — invocatory verse on Pāṇini receiving the Māheśvara Sūtras",rel:"नवपञ्च = 9+5 = 14 Māheśvara Sūtras from Śiva's ḍamaru. The Pratyāhāras these sūtras generate are Saṃjñās (Ch.1) — compact codes like 'अच्' and 'हल्.' The Mahābhārata's opening 'नारायणं नमस्कृत्य' uses 'हल्' (a Pratyāhāra from Ch.4) in 'नर' (n and r are both in 'हल्'). Śiva's dance encodes Chapters 1–4 simultaneously."},
+      {dev:"आदिरन्त्येन सहेता ।",roman:"ādir antyen sahetā",trans:"The starting sound, together with the final marker, encompasses all sounds between.",source:"Aṣṭādhyāyī 1.1.71 — the Pratyāhāra-formation meta-rule",rel:"Five syllables define ALL 42 Pratyāhāras. Every Ch.2 Sandhi rule uses Pratyāhāras: 'इको यणचि' — 'इक्' and 'अच्' are both Pratyāhāras from Māheśvara Sūtras (Ch.4). The Rāmāyaṇa's compound 'धनुर्धर' uses consonants from 'हल्' Pratyāhāra. The Mahābhārata's 'धर्मक्षेत्रे' alternates 'अच्' vowels and 'हल्' consonants — describable only using Ch.4 Pratyāhāras."},
+      {dev:"ॐ तत्सत् — ब्रह्मण त्रिविधः स्मृतः ।",roman:"oṃ tat sat — brahmaṇas trividhaḥ smṛtaḥ",trans:"Om, Tat, Sat — these three are declared the symbol of Brahman.",source:"Bhagavad Gītā 17.23",rel:"ॐ = अ+उ+म् — three sounds from Māheśvara Sūtras: अ (sūtra 1), उ (sūtra 1), म् (sūtra 7 nasal). The Pratyāhāra 'अच्' (all 9 vowels) contains the first two letters of OM. The most sacred syllable in Hinduism is analysable using Ch.4 Pratyāhāra technique — OM IS the Māheśvara Sūtras compressed into one phoneme."},
+      {dev:"वागर्थाविव संपृक्तौ वागर्थप्रतिपत्तये ।",roman:"vāgarthāviva saṃpṛktau vāgarthapratipattaye",trans:"United as inseparably as word and meaning — for the proper grasp of word and meaning.",source:"Kālidāsa — Raghuvaṃśa 1.1",rel:"वाग्+अर्थ → वागर्थ: the sandhi requires knowing 'ग्' is in Kavarga (guttural Ch.5) and undergoes voicing assimilation — stated using Pratyāhāra 'झल्' from Ch.4. The assimilation rule uses a Māheśvara Sūtra Pratyāhāra. Kālidāsa's most famous verse requires Ch.4 to parse correctly — the invocation to grammar uses grammar's own tools."},
+      {dev:"हलन्त्यम् ।",roman:"halantam",trans:"The final consonant [of an upadesha form] is [called] It.",source:"Aṣṭādhyāyī 1.3.3 — the It-identification rule",rel:"'हल्' in 'हलन्त्यम्' is itself a Pratyāhāra from Ch.4: ह (sūtra 5 start) + ल् (sūtra 14 It) = all 33 consonants. The Ch.1 It-saṃjñā rule uses a Ch.4 Pratyāhāra to state itself — Ch.4 is the presuppositional layer under Ch.1. In the Rāmāyaṇa, the name 'राम' from √रम् — the final म् is a 'हल्' (consonant). The grammar for reading Rāma's own name requires Ch.4."},
+      {dev:"इन्द्रं विश्वा अवीवृधन् समुद्रव्यचसं गिरः ।",roman:"indraṃ viśvā avīvṛdhan samudravyacasaṃ giraḥ",trans:"All songs have magnified Indra, ocean-wide in splendour.",source:"Ṛgveda 1.11.1",rel:"अवीवृधन् uses consonants from ALL 14 Māheśvara Sūtras: व् (sūtra 5 Antaḥstha), ध् (sūtra 9 Ghādī), न् (sūtra 7 nasal). The Pratyāhāras from Ch.4 classify each sound and determine phonological behavior in sandhi. The Ṛgveda's vocabulary is a map of Ch.4's sound-inventory — every phoneme in every hymn belongs to one of the Pratyāhāra groups defined by these 14 sūtras."},
+      {dev:"प्रत्याहारेण सर्वे वर्णाः गृह्यन्ते ।",roman:"pratyāhāreṇa sarve varṇāḥ gṛhyante",trans:"By the Pratyāhāra method, all sounds are captured.",source:"Mahābhāṣya — Patañjali on the Māheśvara Sūtras",rel:"Patañjali's mathematical proof: without Pratyāhāras, every rule mentioning 'any consonant' would need to list all 33. With 'हल्' — one syllable covers all 33. The Mahābhārata has ~100,000 verses; if each were annotated with grammar, every sandhi rule would need 33 explicit consonant listings. The 14 Māheśvara Sūtras save the equivalent of several volumes of redundant text — compression as cosmic design."},
+      {dev:"यच्चापि सर्वभूतानां बीजं तदहमर्जुन ।",roman:"yac cāpi sarvabhūtānāṃ bījaṃ tad aham arjuna",trans:"And whatever is the seed of all beings — that am I, O Arjuna.",source:"Bhagavad Gītā 10.39",rel:"यत्+च+अपि → यच्चापि: final 't' before 'c' (palatal) → 'c' (Parasavarṇa 8.4.58). Then च+अपि → चापि (Sāvarṇadīrgha a+a→ā). बीजम् contains ī (long palatal vowel, sūtra 1 of Māheśvara Sūtras). Kṛṣṇa identifying himself with the 'seed of all beings' uses the very phoneme (ī) that seeds the Pratyāhāra 'इक्' — the vowel group from which all Yaṇ sandhi derives."},
     ],
+,
     levels:{
       easy:[
         {q:"Māheśvara Sūtra count:",opts:["9","12","14","42"],ans:2,exp:"14 sūtras."},
@@ -418,56 +298,16 @@ const CHAPTERS = [
       {q:"Sanskrit phonetics is remarkable because:",opts:["Script only","Describes the same vocal-tract physics that modern IPA codified — 2500 years earlier","Purely theoretical","Only Sanskrit"],ans:1,exp:"Pāṇini's Śikṣā is empirical phonetics — places, instruments, and efforts map directly to modern articulatory phonetics."},
     ],
     vedic:[
-      {
-        dev:"अकुहविसर्जनीयानां कण्ठः ।",
-        roman:"akuhavisarjanīyānāṃ kaṇṭhaḥ",
-        trans:"Kaṇṭha (the throat) is the place of articulation for अ, Kavarga (क ख ग घ ङ), ह, and Visarga.",
-        source:"Pāṇinīya Śikṣā 13 — Pāṇini's own phonetics manual",
-        rel:"This sūtra maps the guttural Sthāna. But it uses Pratyāhāras from the Māheśvara Sūtras (Ch.4): 'अकुहविसर्जनीयानाम्' is a compact reference. The Savarṇa-Saṃjñā (Ch.1: 1.1.9) defines two sounds as Savarṇa ONLY when they share this same Sthāna AND same Abhyantara Prayatna — so Ch.5 phonetics is the EMPIRICAL BASIS for Ch.1's theoretical definition. Grammar → Phonetics → Grammar: the system is circular and self-consistent."
-      },
-      {
-        dev:"यत्र जायते स स्थानम् येन जायते स करणम् ॥",
-        roman:"yatra jāyate sa sthānam · yena jāyate sa karaṇam",
-        trans:"WHERE a sound is born = Sthāna. BY WHAT it is born = Karaṇa.",
-        source:"Taittirīya Prātiśākhya 2.48",
-        rel:"This elegant couplet distinguishes Sthāna (fixed anatomical place in vocal tract) from Karaṇa (moving tongue/lip instrument). The distinction matters for Ch.2 Sandhi: Parasavarṇa assimilation (8.4.58) works by place — a stop takes the Sthāna of the following stop. Without Ch.5's Sthāna map, the Ch.2 assimilation rule has no physical basis. Phonetics (Ch.5) is the empirical ground for phonology (Ch.2)."
-      },
-      {
-        dev:"प्रयत्नो द्विधा — आभ्यन्तरश्च बाह्यश्च ।",
-        roman:"prayatno dvidhā — ābhyantaraśca bāhyaśca",
-        trans:"Articulatory effort is of two kinds — internal (Abhyantara) and external (Bāhya).",
-        source:"Pāṇinīya Śikṣā — classification of Prayatna",
-        rel:"This two-fold Prayatna is the foundation of Ch.1's Savarṇa (1.1.9: tulyāsyaprayatnaṃ savarṇam). The Abhyantara Prayatna determines vowel vs consonant class; the Bāhya Prayatna determines voicing (Ghoṣa/Aghoṣa), aspiration, and pitch accent. The Sārvadhatuka/Ārdhadhatuka distinction (Ch.3) and the Guṇa/Vṛddhi operations (Ch.1 Saṃjñā) all depend on these physical distinctions mapped in Ch.5."
-      },
-      {
-        dev:"ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ।",
-        roman:"oṃ bhūr bhuvaḥ svaḥ tat savitur vareṇyaṃ bhargo devasya dhīmahi dhiyo yo naḥ pracodayāt",
-        trans:"We meditate on that excellent glory of the divine Sun; may He illuminate our intellects.",
-        source:"Ṛgveda 3.62.10 — the Gāyatrī Mantra, recited daily for millennia",
-        rel:"The Gāyatrī is 24 syllables in Gāyatrī metre (8+8+8). Every syllable demonstrates Ch.5 Sthāna: भ=Oṣṭha(labial), व=Oṣṭha(labial), र=Mūrdhā(cerebral), स=Danta(dental), त=Danta, ग=Kaṇṭha(guttural), ध=Danta, म=Oṣṭha, च=Tālu(palatal). The entire vocal tract is engaged — Pāṇini's Śikṣā (Ch.5) is an anatomical map of this very mantra. Syllable weight (Laghu-Guru, Ch.6) determines the metre: 'ta-jjal-lān' = the physical basis of Vedic sound."
-      },
-      {
-        dev:"वागर्थाविव संपृक्तौ वागर्थप्रतिपत्तये । जगतः पितरौ वन्दे पार्वतीपरमेश्वरौ ॥",
-        roman:"vāgarthāviva saṃpṛktau vāgarthapratipattaye · jagataḥ pitarau vande pārvatīparameśvarau",
-        trans:"I venerate the parents of the universe, Pārvatī and Parameśvara, who are as inseparably united as word (vāk) and meaning (artha), so that I may properly understand word and meaning.",
-        source:"Kālidāsa — Raghuvaṃśa 1.1, the most celebrated Sanskrit invocation",
-        rel:"वाग्+अर्थौ → वागर्थौ: Visarga sandhi (Ch.2) — 'वाच्' before 'अ' → ग् (voiced Parasavarṇa 8.4.58). The sandhi REQUIRES knowing that ग् and च् share the PALATAL Sthāna (Ch.5) — assimilation is place-based. संपृक्तौ: √पृच् + क्त (Kṛt Ch.3) in compound. This verse literally says 'word and meaning are inseparable' — as are phonetics (Ch.5) and grammar (Ch.1-3)."
-      },
-      {
-        dev:"शं नो मित्रः शं वरुणः शं नो भवत्वर्यमा ।",
-        roman:"śaṃ no mitraḥ śaṃ varuṇaḥ śaṃ no bhavatv aryamā",
-        trans:"May Mitra be auspicious to us; may Varuṇa be auspicious; may Aryaman be auspicious to us.",
-        source:"Ṛgveda 1.90.9 / Taittirīya Upaniṣad — Śānti-pāṭha",
-        rel:"श्+अं → शम्: Anusvāra is an Ayogavāha — it has no independent Sthāna (Ch.5/Ch.7) but takes the nasal Sthāna of the following sound. Before 'न' (dental) → dental nasal. मित्र: त=Danta, र=Mūrdhā — two adjacent Sthānas in one word. वरुण: व=Oṣṭha, र=Mūrdhā, ण=Mūrdhā — retroflex influence across the word (Natva, Ch.3 inner operation). Ch.5 Sthāna knowledge shows WHY ण appears in 'varuṇa' — the cerebral cascade from 'r' to 'ṇ'."
-      },
-      {
-        dev:"सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।",
-        roman:"sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ",
-        trans:"May all be happy; may all be free from illness.",
-        source:"Bṛhadāraṇyaka Upaniṣad — Universal peace prayer",
-        rel:"भवन्तु = √भू + लोट् (Ch.3 Sārvadhatuka) + Vikaraṇa शप् + 3rd plural Tiṅ 'antu'. The Guṇa (u→o→bhava) is triggered by Sārvadhatuka (Ch.3) — whose classification depends on knowing that शप् is the Sārvadhatuka Vikaraṇa of Bhvadi (Ajanta) class. सन्तु = √अस् + लोट् + 'antu': Adadi class (Ananta/Ch.3), Vikaraṇa dropped (Luk). सुखिनः: Ch.2 Visarga→nasal before 'स्'. सर्वे: Pluta/Dīrgha vowel 'e' (Ch.6 duration). Five chapters operating in eight words."
-      },
+      {dev:"प्रणवः सर्ववेदेषु शब्दः खे पौरुषं नृषु ।",roman:"praṇavaḥ sarvavedeṣu śabdaḥ khe pauruṣaṃ nṛṣu",trans:"I am the praṇava (OM) in all the Vedas, sound in ether, and manhood in men.",source:"Bhagavad Gītā 7.8",rel:"प्रणवः = OM — phonetically occupies Kaṇṭha (guttural: अ), Oṣṭha (labial: उ), and nasal resonance (म्). These three Sthānas from Ch.5 are exactly the three components of OM. Kṛṣṇa saying 'I am sound in space (khe)' is the Gītā's statement that sound is the meeting point of Ch.5 phonetics and Vedānta — ākāśa (space) as the medium of all articulated sound."},
+      {dev:"अकुहविसर्जनीयानां कण्ठः ।",roman:"akuhavisarjanīyānāṃ kaṇṭhaḥ",trans:"Kaṇṭha is the place for अ, Kavarga (क ख ग घ ङ), ह, and Visarga.",source:"Pāṇinīya Śikṣā 13 — Pāṇini's own phonetics manual",rel:"The Ṛgveda's first word 'अग्नि' begins with 'अ' (Kaṇṭha/guttural Ch.5) and 'ग्' (Kavarga/Kaṇṭha Ch.5). The very first sound of Sanskrit literature is a guttural — the throat opening to praise Agni. Every syllable of every Vedic mantra is phonetically specified in Ch.5's Sthāna system."},
+      {dev:"ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात् ॥",roman:"oṃ bhūr bhuvaḥ svaḥ tat savitur vareṇyaṃ bhargo devasya dhīmahi dhiyo yo naḥ pracodayāt",trans:"We meditate on that excellent glory of the divine Sun — may He illuminate our intellects.",source:"Ṛgveda 3.62.10 — the Gāyatrī Mantra, recited daily for millennia",rel:"All five Ch.5 Sthānas present: भ=Oṣṭha(labial), व=Oṣṭha, र=Mūrdhā(cerebral), स=Danta(dental sibilant), त=Danta, ग=Kaṇṭha(guttural), ध=Danta, म=Oṣṭha, ह=Kaṇṭha, य=Tālu(palatal). The Gāyatrī's 24 syllables cover every place of articulation in Ch.5 — it is the complete phoneme map in prayer form."},
+      {dev:"यत्र जायते स स्थानम् येन जायते स करणम् ॥",roman:"yatra jāyate sa sthānam yena jāyate sa karaṇam",trans:"WHERE a sound is born = Sthāna. BY WHAT it is born = Karaṇa.",source:"Taittirīya Prātiśākhya 2.48",rel:"The Rāmāyaṇa's name 'राम': र=Mūrdhā(Sthāna)/tongue-tip-curled(Karaṇa), आ=Kaṇṭha(Sthāna)/maximum-aperture(Karaṇa), म=Oṣṭha(Sthāna)/lip-closure(Karaṇa). Each phoneme of Rāma's name has a distinct Sthāna AND Karaṇa — Ch.5 gives us the anatomical description of the most sacred name in Sanskrit literature."},
+      {dev:"वागर्थाविव संपृक्तौ वागर्थप्रतिपत्तये ।",roman:"vāgarthāviva saṃpṛktau vāgarthapratipattaye",trans:"United as inseparably as word and meaning — for the proper grasp of word and meaning.",source:"Kālidāsa — Raghuvaṃśa 1.1",rel:"वाक् (speech): व=Oṣṭha(labial), आ=Kaṇṭha(guttural open vowel), क्=Kaṇṭha(guttural stop) — three different Sthāna positions in ONE word for 'speech.' अर्थ (meaning): अ=Kaṇṭha, र=Mūrdhā, थ=Danta — three more Sthānas. 'Word and meaning united' encodes the unity of Ch.5 phonetics (how sounds are made) and semantics (what they mean)."},
+      {dev:"शं नो मित्रः शं वरुणः शं नो भवत्वर्यमा ।",roman:"śaṃ no mitraḥ śaṃ varuṇaḥ śaṃ no bhavatv aryamā",trans:"May Mitra be auspicious to us; may Varuṇa be auspicious; may Aryaman be auspicious.",source:"Ṛgveda 1.90.9 / Taittirīya Upaniṣad — Śānti-pāṭha",rel:"वरुण: the cerebral ण appears because र (Mūrdhā/cerebral semivowel Ch.5) triggers Natva (Ch.3 inner operation): dental 'n' after cerebral 'r' → cerebral 'ṇ'. Ch.5 Sthāna (Mūrdhā) causing Ch.3 Natva — phonetics driving morphology. The name of the Vedic god Varuṇa carries embedded within it a phonological process that Ch.5 explains."},
+      {dev:"सर्वे भवन्तु सुखिनः सर्वे सन्तु निरामयाः ।",roman:"sarve bhavantu sukhinaḥ sarve santu nirāmayāḥ",trans:"May all be happy; may all be free from illness.",source:"Bṛhadāraṇyaka Upaniṣad — Universal peace prayer",rel:"भवन्तु: भ=Oṣṭha(labial voiced aspirate), व=Oṣṭha(labial semivowel), न=Danta(dental nasal), त=Danta(dental stop), उ=Oṣṭha(labial vowel). FIVE sounds, all Oṣṭha or Danta — the entire word 'bhavantu' stays in the front of the mouth. The peace prayer's phonetics demonstrate Ch.5 Sthāna transitions across every line, making correct pronunciation a physical meditation on the vocal tract."},
+      {dev:"यस्य नादेन जायन्ते सर्वे वर्णाः समन्ततः ।",roman:"yasya nādena jāyante sarve varṇāḥ samantataḥ",trans:"From whose resonance all sounds are born on every side.",source:"Tantra-śāstra verse on Nāda-Brahman / Śārada-tilaka",rel:"नाद (resonance/voiced sound) = the Bāhya Prayatna 'Nāda' (voiced airflow) from Ch.5. All 'voiced' (Ghoṣa) sounds — vowels, semivowels, voiced stops — share the Nāda Bāhya Prayatna. The Tantric concept of 'Nāda-Brahman' (Brahman as Sound) maps directly onto Ch.5's articulatory phonetics: Śvāsa (breath) for unvoiced, Nāda (voice) for voiced sounds."},
     ],
+,
     levels:{
       easy:[
         {q:"Kavarga Sthāna:",opts:["Tālu","Kaṇṭha","Danta","Mūrdhā"],ans:1,exp:"Gutturals at Kaṇṭha."},
@@ -500,63 +340,16 @@ const CHAPTERS = [
       {q:"Vṛddhi vowels (1.1.1):",opts:["अ ए ओ","इ ई उ","आ ऐ औ","ए ओ only"],ans:2,exp:"1.1.1 (FIRST sūtra): आ ऐ औ = Vṛddhi."},
     ],
     vedic:[
-      {
-        dev:"वृद्धिरादैच् ।",
-        roman:"vṛddhirādaic",
-        trans:"Ā, ai, and au are called Vṛddhi.",
-        source:"Aṣṭādhyāyī 1.1.1 — The very FIRST sūtra of 4000",
-        rel:"The Aṣṭādhyāyī opens with this Saṃjñā (Ch.1) defining Vṛddhi vowels. But Vṛddhi is a phonetic reality — आ, ऐ, औ are the strongest vowel grades because they have the widest aperture (Vivṛta prayatna, Ch.5 phonetics). Pāṇini names them first because every causative formation (√कृ+णिच्→कारयति), patronymic (दाशरथि), and Vṛddhi sandhi (Ch.2: 6.1.88) depends on recognising these three sounds as one class. Ch.1 Saṃjñā names what Ch.5 phonetics physically describes."
-      },
-      {
-        dev:"अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम् ।",
-        roman:"agnim īḷe purohitaṃ yajñasya devam ṛtvijam",
-        trans:"I praise Agni, the household priest, the divine officiant of the sacrifice.",
-        source:"Ṛgveda 1.1.1 — the opening verse of the entire Ṛgveda",
-        rel:"ईळे = √ईड् + लट् (Sārvadhatuka, Ch.3) + Ātmanepada 'e'. The root vowel ई is a Dīrgha (long) vowel — 2 mātrās (Ch.6: 1.2.27). ऋत्विजम् = √ऋ+क्विप् (Kṛt, Ch.3) + nominal compound. The ṛ vowel (1 mātrā Hrasva) is followed by a Saṃyoga (Ch.1: 1.1.7) making the syllable Guru (Ch.6: 1.4.11). This first verse of the Ṛgveda encodes Ch.1 Saṃjñā, Ch.2 Sandhi, Ch.3 Pratyaya, Ch.5 Sthāna, and Ch.6 duration — the entire cumulative grammar in one anuṣṭubh line."
-      },
-      {
-        dev:"इको यणचि ।",
-        roman:"iko yaṇ aci",
-        trans:"Ik-vowels (i, u, ṛ, ḷ) become the corresponding Yaṇ semivowels before any vowel.",
-        source:"Aṣṭādhyāyī 6.1.77 — the core Yaṇ sandhi rule",
-        rel:"This Ch.2 sandhi rule operates on vowels classified in Ch.6: इक् vowels (i,u,ṛ,ḷ) have Hrasva/Dīrgha forms (Ch.6 duration). The Yaṇ conversion (i→y, u→v, ṛ→r, ḷ→l) is phonetically explained by Ch.5 Sthāna — the semivowel य shares Tālu-Sthāna with इ; व shares Oṣṭha with उ. But why does only the Hrasva-duration form trigger Yaṇ while the rule is stated without Tapara? Because Ch.6 teaches that all duration-variants of the same vowel are covered by the generic name. Ch.6 duration system powers Ch.2 Sandhi scope."
-      },
-      {
-        dev:"उद्धरेदात्मनात्मानं नात्मानमवसादयेत् ।",
-        roman:"uddhared ātmanātmānaṃ nātmānam avasādayet",
-        trans:"One should uplift oneself through the self; let one not degrade oneself.",
-        source:"Bhagavad Gītā 6.5",
-        rel:"उद्धरेत् = उत् + √हृ + लिङ् (Optative/Potential, Ārdhadhatuka, Ch.3) + 3rd sg Parasmaipada. The root √हृ has ṛ vowel — exactly the Hrasva ṛ discussed in Ch.6 (1 mātrā). In Ārdhadhatuka environment (Liṅ), the ṛ undergoes Guṇa → 'ar' (Uraṇ Rapharaḥ 1.1.51, Ch.6): उद्+धर्+एत् → उद्धरेत्. Ch.6 Guṇa operation + Ch.3 Ārdhadhatuka classification + Ch.2 Sandhi (उत्+√हृ junction) all visible. The philosophy of self-upliftment is itself encoded through the grammar of vowel strengthening."
-      },
-      {
-        dev:"महर्षीणां भृगुरहं गिरामस्म्यकशरः ।",
-        roman:"maharṣīṇāṃ bhṛgur ahaṃ girām asmy ekam akṣaram",
-        trans:"Among the great sages I am Bhṛgu; among words I am the one syllable (Om).",
-        source:"Bhagavad Gītā 10.25",
-        rel:"महर्षीणाम् = महा + ऋषि → महर्षि: this is the canonical example of Uraṇ Rapharaḥ (1.1.51, Ch.6): a+ṛ→ar (no retroflex Guṇa vowel exists). So Ch.6 teaches: when ṛ takes Guṇa, insert र् after 'a.' एकम्+अक्षरम्: Ch.2 Sāvarṇadīrgha (a+a→ā). अक्षर literally means 'imperishable' but grammatically = 'syllable unit' — the fundamental unit of Ch.6 duration system (mātrā). Kṛṣṇa identifying himself with 'the one syllable Om' is a declaration about Ch.6's foundational concept: the syllable as the unit of sound measurement."
-      },
-      {
-        dev:"ह्रस्वं लघु ।",
-        roman:"hrasvaṃ laghu",
-        trans:"A short [vowel-containing syllable] is Laghu (light).",
-        source:"Aṣṭādhyāyī 1.4.10 — the metrical weight rule",
-        rel:"This Ch.6 sūtra defines Laghu (light syllable) using the Hrasva-Saṃjñā from 1.2.27 (also Ch.6: short = 1 mātrā). The companion rule 1.4.11 (saṃyoge guru) says a syllable before a Saṃyoga (Ch.1 Saṃjñā: 1.1.7) is Guru. Together these rules create Vedic metre — the Gāyatrī (24 syllables), Triṣṭubh (44), Jagatī (48) are all defined by Laghu-Guru patterns. Ch.6 duration + Ch.1 Saṃyoga-Saṃjñā + Ch.4 Pratyāhāra 'हल्' (consonant) = the complete system of Sanskrit prosody."
-      },
-      {
-        dev:"गायत्री छन्दसां माता सावित्री ब्राह्मणैः स्मृता ।",
-        roman:"gāyatrī chandasāṃ mātā sāvitrī brāhmaṇaiḥ smṛtā",
-        trans:"Gāyatrī is the mother of metres; by the learned it is known as Sāvitrī.",
-        source:"Traditional verse on Vedic prosody",
-        rel:"The Gāyatrī metre is 3 pādas of 8 syllables each = 24 syllables. Each syllable's Laghu (light) or Guru (heavy) weight is determined by Ch.6 rules: Hrasva vowel = Laghu (1.4.10); short vowel before Saṃyoga = Guru (1.4.11). The word 'गायत्री' itself: गा (Guru: long ā), य (Laghu: short a), त्री (Guru: long ī). Ch.6 duration system (Hrasva, Dīrgha, Pluta from 1.2.27) + Ch.1 Saṃyoga-Saṃjñā (1.1.7) = the entire science of Vedic metre (Chandas). Grammar IS poetry."
-      },
-      {
-        dev:"अहं वैश्वानरो भूत्वा प्राणिनां देहमाश्रितः ।",
-        roman:"ahaṃ vaiśvānaro bhūtvā prāṇināṃ deham āśritaḥ",
-        trans:"Having become Vaiśvānara (the fire of digestion), I dwell in the body of all living beings.",
-        source:"Bhagavad Gītā 15.14",
-        rel:"भूत्वा = √भू + क्त्वा (Kṛt Pratyaya, Ch.3: gerund 'having become'). Here Guṇa applies: √bhū (u vowel, Hrasva, Ch.6) + Sārvadhatuka environment → u→o (Guṇa, Ch.1 Saṃjñā 1.1.2) → bho + tvā → bhūtvā (but here Dīrgha applies instead because of the ktvā suffix environment — a Ch.6 duration alternation). वैश्वानरः: Vṛddhi derivation (ai from ai, Ch.6 Vṛddhi grade). The entire verse spans Ch.1 Guṇa/Vṛddhi Saṃjñā, Ch.3 Kṛt, and Ch.6 duration — the Bhagavad Gītā's grammar is a running demonstration of the Aṣṭādhyāyī."
-      },
+      {dev:"वृद्धिरादैच् ।",roman:"vṛddhir ādaic",trans:"Ā, ai, and au are called Vṛddhi.",source:"Aṣṭādhyāyī 1.1.1 — the very FIRST sūtra",rel:"Vṛddhi vowels appear in every major Sanskrit epic formation: दाशरथि (son of Daśaratha — Rāma's patronymic) uses Vṛddhi of 'a' → ā. पाण्डव (son of Pāṇḍu) uses Vṛddhi. कौरव (of Kuru) uses Vṛddhi. Every royal name in Rāmāyaṇa and Mahābhārata meaning 'son/descendant of X' is formed by the Vṛddhi rule. Ch.6's first and most powerful operation was chosen as the grammar's first definition to honour royal ancestry."},
+      {dev:"अग्निमीळे पुरोहितं यज्ञस्य देवमृत्विजम् ।",roman:"agnim īḷe purohitaṃ yajñasya devam ṛtvijam",trans:"I praise Agni, the household priest, divine officiant of the sacrifice.",source:"Ṛgveda 1.1.1 — opening verse of the entire Ṛgveda",rel:"ईळे: root vowel ī is Dīrgha (2 mātrā, Ch.6: 1.2.27). ऋत्विजम्: the ṛ vowel (Hrasva, 1 mātrā) followed by 'tv' cluster — Guru by position (saṃyoge guru, 1.4.11). The Ṛgveda's first verse encodes all three Ch.6 durations: Hrasva (अ in अग्नि), Dīrgha (ī in ईळे), cluster-Guru (ṛ in ṛtvijam). Ch.6 duration system is present from the very first line of Sanskrit literature."},
+      {dev:"महर्षीणां भृगुरहं गिरामस्म्यकशरः ।",roman:"maharṣīṇāṃ bhṛgur ahaṃ girām asmy ekam akṣaram",trans:"Among the great sages I am Bhṛgu; among words I am the one syllable (Om).",source:"Bhagavad Gītā 10.25",rel:"महर्षि = महा + ऋषि → महर्षि: canonical example of Uraṇ Rapharaḥ (1.1.51, Ch.6): a+ṛ→ar (no retroflex Guṇa vowel, so 'r' inserted). Kṛṣṇa identifies himself with 'ekam akṣaram' — the one syllable OM. अक्षर means both 'imperishable' and 'syllable' — the fundamental unit of Ch.6's duration system. The Gītā uses the GRAMMATICAL word for syllable to name the most sacred phoneme."},
+      {dev:"गायत्री छन्दसां माता सावित्री ब्राह्मणैः स्मृता ।",roman:"gāyatrī chandasāṃ mātā sāvitrī brāhmaṇaiḥ smṛtā",trans:"Gāyatrī is the mother of all metres; by the learned it is known as Sāvitrī.",source:"Traditional verse on Vedic prosody / Mahābhārata Anuśāsana Parva",rel:"Gāyatrī: 3 pādas × 8 syllables = 24 syllables. Each syllable's Laghu/Guru weight is determined by Ch.6: Hrasva vowel = Laghu (1.4.10); vowel before Saṃyoga = Guru (1.4.11). गाय: गा(Guru: long ā), य(Laghu: short a), त्री(Guru: long ī). The Mahābhārata declares Gāyatrī 'mother of metres' — and Ch.6 is the grammar of that mother."},
+      {dev:"ह्रस्वं लघु ।",roman:"hrasvaṃ laghu",trans:"A short [vowel syllable] is Laghu (light).",source:"Aṣṭādhyāyī 1.4.10",rel:"This rule governs ALL 15 Vedic metres used across Ṛgveda (Gāyatrī, Triṣṭubh, Jagatī), Atharva Veda, and epic poetry (Anuṣṭubh of Rāmāyaṇa and Mahābhārata). Every śloka of Vālmīki's 24,000-verse Rāmāyaṇa follows Anuṣṭubh metre — 8 syllables per pāda in specific Laghu-Guru patterns defined by Ch.6. All Sanskrit poetry depends on this single sūtra."},
+      {dev:"उद्धरेदात्मनात्मानं नात्मानमवसादयेत् ।",roman:"uddhared ātmanātmānaṃ nātmānam avasādayet",trans:"One should uplift oneself through the self; let one not degrade oneself.",source:"Bhagavad Gītā 6.5",rel:"उद्धरेत् = उत्+√हृ + Vidhiliṅ + 3rd sg. Root √हृ has ṛ (Hrasva, 1 mātrā, Ch.6). In Ārdhadhatuka environment (Vidhiliṅ), ṛ undergoes Guṇa → 'ar' (Uraṇ Rapharaḥ 1.1.51, Ch.6). The Gītā's most famous self-reliance verse uses Ch.6 Guṇa operation on √hṛ — 'lift yourself' encoded through the vowel-strengthening process that Ch.6 describes."},
+      {dev:"सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ।",roman:"sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt",trans:"The cosmic Person has a thousand heads, a thousand eyes, a thousand feet.",source:"Ṛgveda 10.90.1 — Puruṣa Sūkta",rel:"सहस्राक्षः: सहस्र+अक्ष → Sāvarṇadīrgha (a+a→ā, Ch.2/Ch.6): two Hrasva 'a' → one Dīrgha 'ā'. सहस्रपात्: ends in consonant 't' — Guru by position (saṃyoge guru, Ch.6). The Puruṣa Sūkta — Ṛgveda's cosmic creation hymn — uses Ch.6 duration patterns to create its rhythmic, meditative chant in Triṣṭubh metre (11 syllables per pāda)."},
+      {dev:"न हि ज्ञानेन सदृशं पवित्रमिह विद्यते ।",roman:"na hi jñānena sadṛśaṃ pavitram iha vidyate",trans:"Indeed, nothing as purifying as knowledge exists in this world.",source:"Bhagavad Gītā 4.38",rel:"ज्ञान = √ज्ञा + ल्युट् (Kṛt Ch.3): root vowel ā is Dīrgha (2 mātrā, Ch.6). In 'जिज्ञासा' (desire to know): reduplication produces जि (Hrasva i, 1 mātrā Ch.6) + ज्ञा (Dīrgha ā, 2 mātrā). Ch.6 vowel durations shape the very sound of Vedāntic vocabulary — Hrasva in the reduplication, Dīrgha in the root. Grammar and spirituality share the same phonological architecture."},
     ],
+,
     levels:{
       easy:[
         {q:"Guṇa vowels:",opts:["आ ऐ औ","अ ए ओ","इ ई उ ऊ","ऋ ॠ"],ans:1,exp:"1.1.2: अ ए ओ = Guṇa."},
@@ -588,56 +381,16 @@ const CHAPTERS = [
       {q:"Ayogavāha sounds are special because:",opts:["Most complex articulation","Lack independent Sthāna — inherit from surrounding context","Always long","Only Vedic"],ans:1,exp:"Ayogavāha = 'going without a yoke' — phonetically floating, they take the Sthāna of their environment."},
     ],
     vedic:[
-      {
-        dev:"ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् ।",
-        roman:"īśāvāsyam idaṃ sarvaṃ yat kiñca jagatyāṃ jagat",
-        trans:"All this — whatever exists in this moving world — is to be clothed in (pervaded by) the Lord.",
-        source:"Īśāvāsyopaniṣad 1 — the opening verse of the Upaniṣad",
-        rel:"This single verse engages all 5 Sthānas (Ch.5/Ch.7): ईश=Kaṇṭha(guttural)+Tālu; वास्य=Oṣṭha(labial)+Danta; सर्व=Danta+Mūrdhā; जगत्=Tālu+Kaṇṭha+Danta. The vowel inventory (Ch.7): इ(palatal), आ(guttural), अ(guttural), उ(labial) all appear. ईशावास्यम्: Ch.2 Yaṇ sandhi (ā+ā→ā, Sāvarṇadīrgha). इदम्+सर्वम्: Visarga sandhi (Ch.2). The entire phoneme inventory of Ch.7 is acoustically present — this verse IS the Varṇa-Samāmnāya embodied."
-      },
-      {
-        dev:"अग्निर्मूर्धा दिवः ककुत् पतिः पृथिव्या अयम् ।",
-        roman:"agnir mūrdhā divaḥ kakut patiḥ pṛthivyā ayam",
-        trans:"Agni is the head of heaven, the summit; he is the lord of this earth.",
-        source:"Ṛgveda 8.44.16 — hymn to Agni",
-        rel:"This verse is a Sthāna-tour: अ+ग्(Kaṇṭha/guttural), न्(Danta/nasal), र्(Mūrdhā/cerebral), म्(Oṣṭha/labial), ध्(Danta), ह्(Kaṇṭha/guttural Ūṣma), द्(Danta), व्(Oṣṭha), क्(Kaṇṭha), त्(Danta), प्(Oṣṭha), पृ(Mūrdhā/ṛ-vowel Ch.7), थ्(Danta), य(Tālu). All 5 Sthānas and all Varṇa-classes (Svara, Varga, Antaḥstha, Ūṣma) from Ch.7 appear in 10 words. The Ṛgveda was composed with full phonemic consciousness — the system Ch.7 describes was the compositional framework."
-      },
-      {
-        dev:"यो वाचं विदधाति सर्वदा ।",
-        roman:"yo vācaṃ vidadhāti sarvadā",
-        trans:"Who gives / dispenses speech always.",
-        source:"Ṛgveda 10.125.3 (Devī Sūkta — Vāc speaking of herself)",
-        rel:"वाचम् = वाच् (root √वच् with Kṛt Ch.3 nominal) + accusative ending (Su-vibhakti, Ch.8). वाच् ends in 'च्' — palatal (Tālu Sthāna, Ch.5/Ch.7). विदधाति = वि + √धा + लट् (Ch.3 Sārvadhatuka) + 3rd sg Tiṅ. The Devī Sūkta is Speech (Vāc) describing herself — the goddess of language describing the phoneme-inventory (Ch.7) through the grammar (Ch.1-6) that structures her own utterances. The speaker IS the spoken."
-      },
-      {
-        dev:"चत्वारि शृङ्गा त्रयो अस्य पादा द्वे शीर्षे सप्त हस्तासो अस्य ।",
-        roman:"catvāri śṛṅgā trayo asya pādā dve śīrṣe sapta hastāso asya",
-        trans:"Four horns, three feet, two heads, seven hands — thus is this bull (Speech).",
-        source:"Ṛgveda 4.58.3 — the famous 'Bull of Speech' verse",
-        rel:"This is the Ṛgveda's own description of the Sanskrit phoneme system (Ch.7): 'four horns' = 4 sound classes (Svara/vowels, Sparśa/stops, Antaḥstha/semivowels, Ūṣma/fricatives); 'three feet' = 3 durations Hrasva/Dīrgha/Pluta (Ch.6); 'two heads' = 2 voices Parasmaipada/Ātmanepada (Ch.3 Pada-Nirṇaya); 'seven hands' = 7 vibhaktis (cases, Ch.8). Ancient Vedic seers encoded the entire grammatical system in one verse about Speech as a cosmic Bull. Ch.7 Varṇa inventory is explicitly metaphored here."
-      },
-      {
-        dev:"अनित्यं हि स्थितं सर्वं स्वरूपेण स्वरः स्मृतः ।",
-        roman:"anityaṃ hi sthitaṃ sarvaṃ svarūpeṇa svaraḥ smṛtaḥ",
-        trans:"All that exists is impermanent; a vowel is remembered by its own form/nature.",
-        source:"Vyākaraṇa-śāstra traditional verse on Svara (vowel) definition",
-        rel:"This verse defines Svara (vowel, Ch.7) as self-luminous — a vowel can be pronounced alone, while consonants (Vyañjana/Sparśa) need a vowel to be heard. This is the phonetic foundation of Ch.7's vowel/consonant distinction. स्वर = स्व+र (self+sound): the word itself encodes the definition. स्वरूपेण: Ch.2 instrumental sandhi. The philosophical claim (all is impermanent) and the grammatical claim (vowels are self-standing) are stated in the same breath — grammar and Vedānta share the same language."
-      },
-      {
-        dev:"शं नो देवीरभिष्टय आपो भवन्तु पीतये ।",
-        roman:"śaṃ no devīr abhiṣṭaya āpo bhavantu pītaye",
-        trans:"May the divine waters be auspicious to us for drinking and for invigoration.",
-        source:"Ṛgveda 10.9.4 / Taittirīya Āraṇyaka — Āpo Hīṣṭhā hymn",
-        rel:"भवन्तु = √भू + लोट् (Ch.3 Sārvadhatuka) + Vikaraṇa शप् + 3rd plural Tiṅ 'antu'. Here the full phoneme inventory engages: भ(Oṣṭha/voiced), व(Oṣṭha/semivowel — Antaḥstha class Ch.7), न्(Danta/nasal), त(Danta/stop — Tavarga Ch.7), उ(Oṣṭha/vowel). पीतये: दीर्घ ई (Ch.6) + Kṛt suffix. देवीः: ई = Dīrgha palatal vowel (Ch.6 + Ch.7). The 5 Varga stop classes (Ch.7) and 4 Antaḥstha semivowels (Ch.7) and Ūṣma fricatives (Ch.7) all appear in this eight-word peace-invocation that has been recited before every yajña for 3000 years."
-      },
-      {
-        dev:"अयुर्दा अग्ने हविषा वृधान आयुर्यज्ञेन नमसा विधेम ।",
-        roman:"āyurdā agne haviṣā vṛdhāna āyur yajñena namasā vidhema",
-        trans:"O Agni, life-giver, growing by oblations — may we attend thee with lifespan, sacrifice, and reverence.",
-        source:"Ṛgveda 1.31.2 — Agni Sūkta",
-        rel:"हविषा = हविस् + instrumental: 'स्' (dental Ūṣma, Ch.7) + sandhi. वृधान = √वृध् + Kṛt आन (Ch.3 present participle) + Ātmanepada form. The root √वृध् contains ṛ-vowel (Hrasva Ch.6) at Mūrdhā Sthāna (Ch.5/Ch.7). विधेम = वि + √धा + लिङ् (Ārdhadhatuka Ch.3) + 1st plural: Guṇa of ā→e (Ch.6/Ch.1 Guṇa Saṃjñā). हविस्: 'ष्' is a cerebral Ūṣma (Ch.7) — appears because 'हु' root has Mūrdhā influence (Natva/Sattva Ch.3 inner operations). Six chapters converge in one Vedic hemistich about offering."
-      },
+      {dev:"ईशावास्यमिदं सर्वं यत्किञ्च जगत्यां जगत् । तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम् ॥",roman:"īśāvāsyam idaṃ sarvaṃ yat kiñca jagatyāṃ jagat · tena tyaktena bhuñjīthā mā gṛdhaḥ kasya svid dhanam",trans:"All this — whatever exists in this moving world — is pervaded by the Lord. Enjoy through renunciation; do not covet anyone's wealth.",source:"Īśāvāsya Upaniṣad 1 — opening verse, Śukla Yajurveda",rel:"Complete Ch.7 phoneme inventory: Svara — ई(palatal), अ(guttural), इ(palatal); Kavarga — क(guttural); Cavarga — ज(palatal); Tavarga — त,ग; Pavarga — भ; Antaḥstha — य,व; Ūṣma — स. All 5 Sthānas (Ch.5) and all Varṇa-classes (Ch.7) active. The Upaniṣad that begins with OM — the Om containing all phoneme classes of Ch.7 — uses the complete Sanskrit sound inventory in its opening verse."},
+      {dev:"चत्वारि शृङ्गा त्रयो अस्य पादा द्वे शीर्षे सप्त हस्तासो अस्य ।",roman:"catvāri śṛṅgā trayo asya pādā dve śīrṣe sapta hastāso asya",trans:"Four horns, three feet, two heads, seven hands — thus is this bull (Speech).",source:"Ṛgveda 4.58.3 — the 'Bull of Speech' verse, ancient riddle",rel:"Ancient Vedic seers encoded the Sanskrit sound system here: 'four horns' = 4 phoneme classes of Ch.7 (Svara, Sparśa/stops, Antaḥstha/semivowels, Ūṣma/fricatives); 'three feet' = 3 durations (Hrasva/Dīrgha/Pluta, Ch.6); 'two heads' = 2 voices (Parasmaipada/Ātmanepada, Ch.3); 'seven hands' = 7 Vibhaktis (cases, Ch.9). The Ṛgveda composed a cryptic description of the ENTIRE grammatical system 3500+ years ago."},
+      {dev:"यो वाचं विदधाति सर्वदा तां देवीं वाचम् ।",roman:"yo vācaṃ vidadhāti sarvadā tāṃ devīṃ vācam",trans:"Who always dispenses speech — that divine goddess Speech.",source:"Ṛgveda 10.125.3 — Vāk Sūkta",rel:"The goddess Speech uses the complete Ch.7 phoneme inventory: वाचम् — व(Oṣṭha/labial Antaḥstha), आ(Kaṇṭha/guttural vowel), च(Tālu/palatal stop), म(Oṣṭha/labial nasal). Four consecutive sounds from FOUR different Sthānas in one word for 'speech.' The Devī Sūkta is Speech personified using Ch.7's sound inventory to describe herself — the subject and the medium are identical."},
+      {dev:"अग्निर्मूर्धा दिवः ककुत् पतिः पृथिव्या अयम् ।",roman:"agnir mūrdhā divaḥ kakut patiḥ pṛthivyā ayam",trans:"Agni is the head of heaven, the crest; he is the lord of this earth.",source:"Ṛgveda 8.44.16 — Agni hymn",rel:"All 5 Sthānas in 7 words: अ+ग(Kaṇṭha/guttural), न(Danta/dental), र(Mūrdhā/cerebral), म(Oṣṭha/labial), ध(Danta), ह(Kaṇṭha), द(Danta), व(Oṣṭha), क(Kaṇṭha), त(Danta), प(Oṣṭha), पृ(Mūrdhā/cerebral vowel ṛ), य(Tālu/palatal). All 5 Sthānas and all 4 phoneme classes from Ch.7 in one 8-syllable verse. The Vedic hymn to Agni is phonetically comprehensive."},
+      {dev:"सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात् ।",roman:"sahasraśīrṣā puruṣaḥ sahasrākṣaḥ sahasrapāt",trans:"The cosmic Person has a thousand heads, a thousand eyes, a thousand feet.",source:"Ṛgveda 10.90.1 — Puruṣa Sūkta",rel:"Every Varṇa-class (Ch.7) present: Svara (a,u), Kavarga (k), Cavarga (c in akṣa), Tavarga (t,d), Pavarga (p,bh), Antaḥstha (y,v,r), Ūṣma (s,ś). The verse describing the cosmic Person who contains everything uses the phoneme inventory that contains every Sanskrit sound. Macrocosm reflected in microcosm of Ch.7."},
+      {dev:"सर्वं खल्विदं ब्रह्म तज्जलानिति शान्त उपासीत ।",roman:"sarvaṃ khalv idaṃ brahma tajjalān iti śānta upāsīta",trans:"All this indeed is Brahman — from which it arises, into which it dissolves, in which it breathes.",source:"Chāndogya Upaniṣad 3.14.1 — Mahāvākya of the Sāma Veda",rel:"तज्जलान् = तत्+ज+ल+अन् — coined compound: जायते (born), लयते (dissolves), अनिति (breathes). Phoneme classes: त(Tavarga/dental), ज(Cavarga/palatal), ल(Antaḥstha/lateral), अ(Svara) — four Ch.7 phoneme classes in one coined word. The Upaniṣad coined a new Sanskrit word using phonemes from all four Varṇa classes simultaneously."},
+      {dev:"वसुधैव कुटुम्बकम् ।",roman:"vasudhaiva kuṭumbakam",trans:"The whole earth is one family.",source:"Mahopaniṣad 6.72 / Hitopadeśa — India's national motto",rel:"Four syllables, all five Sthānas: व(Oṣṭha), स(Danta/Ūṣma), उ(Oṣṭha/Svara), ध(Danta/Tavarga), ऐ(Kaṇṭha-Tālu/Svara diphthong), क(Kaṇṭha/Kavarga), ट(Mūrdhā/Ṭavarga), म(Oṣṭha/nasal). The declaration of universal kinship touches ALL five Sthānas (Ch.5) and all phoneme classes (Ch.7) — as if to say: all sounds belong to one family too."},
+      {dev:"नादब्रह्म — नादात् प्रभवन्ति सर्वे ।",roman:"nādabrahma — nādāt prabhavanti sarve",trans:"Brahman as Sound — from Sound all things arise.",source:"Śārada-tilaka Tantra 1.8 / Bhāgavata Purāṇa tradition",rel:"The Tantric teaching that 'all phonemes are essentially vowels' maps to Ch.7's structure: the 9 Svarāḥ (vowels) are the core, and consonants are vowels with articulation overlaid. The Bhāgavata Purāṇa (1.1.1) opens with 'सत्यं परं धीमहि' — धीमहि = √ध्यै (contemplate) + Ātmanepada, containing ध(Danta voiced aspirate Ch.7) + ī(palatal long vowel Ch.7). Scripture, tantra, and grammar share Ch.7's foundational inventory."},
     ],
+,
     levels:{
       easy:[
         {q:"Core vowels in Sanskrit:",opts:["5","7","9","12"],ans:2,exp:"9 core vowels."},
@@ -670,56 +423,16 @@ const CHAPTERS = [
       {q:"Upasargas are:",opts:["Case endings","Verbal prefixes that modify root meaning (1.4.59)","Nominal suffixes","Pitch accents"],ans:1,exp:"22 upasargas per 1.4.59 — meaning-transforming verbal prefixes."},
     ],
     vedic:[
-      {
-        dev:"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन । मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥",
-        roman:"karmaṇy evādhikāras te mā phaleṣu kadācana · mā karmaphalaheturbhūr mā te saṅgo'stv akarmaṇi",
-        trans:"Your entitlement is to action alone, never to the fruits thereof. Let not the fruit of action be your motive; nor let there be attachment to inaction.",
-        source:"Bhagavad Gītā 2.47 — the most quoted Sanskrit śloka",
-        rel:"कर्मणि = √कृ (Ch.8 Dhātu, the most fundamental root) + क्त (Kṛt Ch.3 past nominal) + 7th vibhakti. भूः = √भू + लोट् 2nd sg Parasmaipada — root √भू (Bhvadi Ajanta Ch.3) + Vikaraṇa Śap + Tiṅ 'hi' (becomes ø by Lopa). अस्तु = √अस् + लोट् — Adadi/Ananta class (Ch.3 Ananta: Vikaraṇa dropped by Luk). अकर्मणि = negation prefix + कर्मन् (same Kṛt base). This one śloka: Ch.1 Saṃjñā (Lopa of hi), Ch.2 Sandhi (karmaphala+hetu+r+bhūḥ), Ch.3 Pratyaya (Kṛt, Sārvadhatuka/Ārdhadhatuka, Ajanta/Ananta), Ch.6 Vowel (bhū→bhava Guṇa), Ch.8 Dhātu (√kṛ, √bhū, √as). All eight chapters in one verse."
-      },
-      {
-        dev:"सत्यं ज्ञानमनन्तं ब्रह्म ।",
-        roman:"satyaṃ jñānam anantaṃ brahma",
-        trans:"Brahman is Truth, Knowledge, Infinite.",
-        source:"Taittirīya Upaniṣad 2.1.1 — the great definition of Brahman",
-        rel:"ज्ञानम् = √ज्ञा (Ch.8 Dhātu: to know) + ल्युट् (Kṛt Ch.3: action noun suffix) → jñā+na+m. The root √ज्ञा has Ā-vowel (Dīrgha, Ch.6). सत्यम् = √अस् + क्त्यन् (Kṛt) → 'sat' + 'ya' (Sārvadhatuka Vikaraṇa process, Ch.3) → satya. अनन्तम् = अन् (negative prefix, related to Upasarga Ch.8) + अन्त (end) — the prefix system demonstrated. Ch.1 Saṃjñā underlies each, Ch.2 Sandhi joins them (satyam+jñānam: m stays as anusvāra before 'jñ'), Ch.3 Kṛt derives the nouns, Ch.8 roots provide the foundation. The definition of the Infinite uses finite grammatical tools."
-      },
-      {
-        dev:"तत्त्वमसि ।",
-        roman:"tat tvam asi",
-        trans:"That thou art.",
-        source:"Chāndogya Upaniṣad 6.8.7 — the great Mahāvākya",
-        rel:"असि = √अस् (Ch.8 Dhātu: to be) + लट् (Sārvadhatuka, Ch.3) + 2nd sg Parasmaipada Tiṅ 'si'. Root √अस् is Adadi class (Ananta: Vikaraṇa dropped by Luk, Ch.3). No Vikaraṇa means no Ajanta 'a'-ending stem. त्वम् = nominative of 'tvad' (pronoun — not a verbal root, but a Pratipadika, Ch.8). तत् = that (pronoun Pratipadika). The most famous three-word philosophical statement in world literature: two Pratipadikas (Ch.8 nominal) + one Tinanta verb (Ch.3 Tiṅ on Ch.8 Dhātu). The Upaniṣad's deepest truth stated through the simplest grammar."
-      },
-      {
-        dev:"अहं ब्रह्मास्मि ।",
-        roman:"ahaṃ brahmāsmi",
-        trans:"I am Brahman.",
-        source:"Bṛhadāraṇyaka Upaniṣad 1.4.10 — the second great Mahāvākya",
-        rel:"अस्मि = √अस् (Ch.8 Dhātu) + लट् (Sārvadhatuka Ch.3) + 1st sg Parasmaipada 'mi'. ब्रह्म+अस्मि → ब्रह्मास्मि: Ch.2 Sāvarṇadīrgha (a+a→ā). अहम्: anusvāra before 'ब्' takes labial nasal (Ch.2 Parasavarṇa, Ch.7 Oṣṭha Sthāna). This four-syllable Mahāvākya: Ch.7 Varṇa inventory (all four Oṣṭha+Kaṇṭha+Danta sounds), Ch.2 Sandhi, Ch.3 Tiṅ, Ch.8 √अस् Dhātu. The assertion 'I AM Brahman' uses the most primal Dhātu √अस् — to be. The Upaniṣad chose the verb 'be' for a reason: √अस् is the foundation of all existence and all grammar."
-      },
-      {
-        dev:"प्रज्ञानं ब्रह्म ।",
-        roman:"prajñānaṃ brahma",
-        trans:"Consciousness is Brahman.",
-        source:"Aitareya Upaniṣad 3.3 — the third Mahāvākya",
-        rel:"प्रज्ञानम् = प्र (Upasarga/prefix, Ch.8: 22 Upasargas per 1.4.59) + √ज्ञा (Dhātu Ch.8: to know) + ल्युट् (Kṛt Ch.3: abstract noun suffix) → pra+jñā+na+m. The prefix 'प्र' (forward, intensely) modifies √ज्ञā's meaning from 'know' to 'know supremely/consciousness.' This is the Upasarga mechanism (Ch.8): same root + different prefix = different meaning. All four Mahāvākyas together demonstrate: Ch.8 Dhātu (√अस्, √ज्ञा, √कृ) + Ch.8 Upasarga (प्र, वि, अव) + Ch.3 Kṛt/Tiṅ = the four grand utterances that constitute Advaita Vedānta."
-      },
-      {
-        dev:"यो वै भूमा तत्सुखम् नाल्पे सुखमस्ति ।",
-        roman:"yo vai bhūmā tat sukham · nālpe sukham asti",
-        trans:"That which is infinite — that is happiness. There is no happiness in the finite.",
-        source:"Chāndogya Upaniṣad 7.23.1",
-        rel:"भूमा = √भू (Ch.8 Dhātu: to be/become/exist) + मन् (Kṛt suffix Ch.3: forming abstract nouns) → bhūman (infinitude). The same root √भू that makes 'भवतु' (let there be, Ch.3 Sārvadhatuka example) also generates 'भूमन्' — infinite being — through a different Kṛt suffix. अस्ति = √अस् (Ch.8) + Tiṅ 3rd sg. न+अल्पे → नाल्पे: Ch.2 Sāvarṇadīrgha. This verse demonstrates how one Dhātu (√भू) generates both the most commonplace verb (bhavati, 'it exists') and the most exalted philosophical concept (bhūman, 'the Infinite') — entirely through the Pratyaya system of Ch.3 operating on Ch.8 Dhātu."
-      },
-      {
-        dev:"विद्या ददाति विनयं विनयाद्याति पात्रताम् । पात्रत्वाद्धनमाप्नोति धनाद्धर्मं ततः सुखम् ॥",
-        roman:"vidyā dadāti vinayaṃ vinayād yāti pātratām · pātratvād dhanam āpnoti dhanād dharmaṃ tataḥ sukham",
-        trans:"Knowledge gives humility; from humility one attains worthiness; from worthiness one acquires wealth; from wealth comes dharma; from that, happiness.",
-        source:"Hitopadeśa — the most beloved Sanskrit proverb",
-        rel:"This śloka showcases ALL eight chapters: ददाति=√दा+Tiṅ(Ch.8+Ch.3); विनयम्=वि+√नी+Kṛt(Ch.8 Upasarga+Ch.3); याति=√या+Tiṅ (Ch.8 root Ch.3); पात्रताम्=Taddhita suffix (Ch.8 Nominal); आप्नोति=आ+√आप्+Vikaraṇa+Tiṅ (Svadi/Ananta class Ch.3, Ch.8); धर्मम्=√धृ+Kṛt 'man' suffix (Ch.3, Ch.8). विनयाद्+याति: Ch.2 Visarga sandhi (d+y→dy). विद्या=√विद्+Kṛt 'yā' (Ch.3). Every word is a grammar lesson; every grammar lesson leads to this verse. The śloka that is an invitation to study Sanskrit — itself proves that Sanskrit is worth studying."
-      },
+      {dev:"कर्मण्येवाधिकारस्ते मा फलेषु कदाचन । मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि ॥",roman:"karmaṇy evādhikāras te mā phaleṣu kadācana · mā karmaphalaheturbhūr mā te saṅgo'stv akarmaṇi",trans:"Your right is to action alone, never to its fruits. Let not the fruit of action be your motive, nor let there be attachment to inaction.",source:"Bhagavad Gītā 2.47 — the most quoted Sanskrit śloka",rel:"कर्मणि = √कृ (Ch.8 Dhātu) + क्त (Kṛt Ch.3) + Saptamī. भूः = √भू + Loṭ 2nd sg. अस्तु = √अस् + Loṭ 3rd sg (Adadi/Ananta class Ch.3). All three major Dhātus of existence — √kṛ (do), √bhū (be), √as (exist) — in one verse. Ch.8 Dhātus are the building blocks; the Gītā's philosophy of action is their fullest expression."},
+      {dev:"तत्त्वमसि ।",roman:"tat tvam asi",trans:"That thou art.",source:"Chāndogya Upaniṣad 6.8.7 — first Mahāvākya",rel:"असि = √अस् (Ch.8 Dhātu: to be) + Laṭ 2nd sg 'si'. Root √अस् is Adadi class (Ananta: Vikaraṇa dropped by Luk, Ch.3). The most concise philosophical equation in world thought uses the most elementary Ch.8 Dhātu: √as (to be). Three words; the grammar: Ch.8 Dhātu (√as) + Ch.3 Tiṅ + Ch.9 pronoun (tvam). Identity of self and Brahman expressed through the simplest possible syntax."},
+      {dev:"अहं ब्रह्मास्मि ।",roman:"ahaṃ brahmāsmi",trans:"I am Brahman.",source:"Bṛhadāraṇyaka Upaniṣad 1.4.10 — second Mahāvākya",rel:"अस्मि = √अस् (Ch.8) + Laṭ 1st sg 'mi'. ब्रह्म+अस्मि → ब्रह्मास्मि: Sāvarṇadīrgha (a+a→ā, Ch.2). √as is the most primal Dhātu — 'to be.' Its Laṭ 1st sg 'asmi' is the grammatical form of pure existence-assertion. The Upaniṣad's deepest insight uses Ch.8's most fundamental root."},
+      {dev:"प्रज्ञानं ब्रह्म ।",roman:"prajñānaṃ brahma",trans:"Consciousness is Brahman.",source:"Aitareya Upaniṣad 3.3 — third Mahāvākya",rel:"प्रज्ञानम् = प्र (Upasarga Ch.8: 1.4.59) + √ज्ञा (Ch.8 Dhātu) + ल्युट् (Kṛt Ch.3) → pra+jñā+na+m. The prefix 'प्र' modifies √jñā from 'know' to 'supreme consciousness.' This is the Upasarga mechanism (Ch.8): same root + different prefix = different philosophical level. All four Mahāvākyas use Ch.8 Dhātus: √as (twice), √jñā, √vid."},
+      {dev:"विद्या ददाति विनयं विनयाद्याति पात्रताम् ।",roman:"vidyā dadāti vinayaṃ vinayād yāti pātratām",trans:"Knowledge gives humility; from humility one attains worthiness.",source:"Hitopadeśa — the most beloved Sanskrit proverb",rel:"Five different Dhātus: ददाति=√दा(give, Ch.8)+Laṭ; याति=√या(go/attain, Ch.8)+Laṭ. विद्या=√विद्+Kṛt(Ch.3). Upasargas Ch.8: वि(विनय), आ(आप्नोति). Every noun and verb traces to a Ch.8 Dhātu. The chain from knowledge to happiness is a chain of Dhātu applications — Ch.8 IS the grammar of human flourishing."},
+      {dev:"रामो राजमणिः सदा विजयते रामं रमेशं भजे । रामेणाभिहता निशाचरचमू रामाय तस्मै नमः ॥",roman:"rāmo rājamaNiḥ sadā vijayate rāmaṃ rameśaṃ bhaje · rāmeṇābhihatā niśācaracamū rāmāya tasmai namaḥ",trans:"Rāma, the jewel of kings, always wins. I worship Rāma the lord. By Rāma the demon army was struck. Salutation to that Rāma.",source:"Rāma-rakṣā Stotram",rel:"Complete Kāraka demonstration: रामः(Prathamā), रामम्(Dvitīyā), रामेण(Tṛtīyā), रामाय(Caturthī). The name 'Rāma' appears in four cases — a living declension table (Ch.9 Śabdarūpa). √विज्=Ātmanepada Ch.3, √भज्=Ātmanepada Ch.3. The Rāma-hymn is simultaneously devotional text and complete grammar exercise."},
+      {dev:"सत्यं वद धर्मं चर स्वाध्यायान्मा प्रमदः ।",roman:"satyaṃ vada dharmaṃ cara svādhyāyān mā pramadaḥ",trans:"Speak truth. Walk in dharma. Do not neglect your study.",source:"Taittirīya Upaniṣad 1.11 — the Guru's parting instruction",rel:"Three imperative Dhātus: वद=√वद् + Loṭ 2nd sg; चर=√चर् + Loṭ 2nd sg (Ch.11 Sārvadhatuka). सत्यम्=√अस्+Kṛt(Ch.3). धर्मम्=√धृ+Kṛt(Ch.3). The Upaniṣad's graduation instructions use Loṭ imperative — exactly the mood for commands. Three instructions encoded through Ch.8 Dhātus conjugated in Ch.11's Loṭ Lakāra."},
+      {dev:"यत्र नार्यस्तु पूज्यन्ते रमन्ते तत्र देवताः ।",roman:"yatra nāryastu pūjyante ramante tatra devatāḥ",trans:"Where women are honoured, there the gods rejoice.",source:"Manusmṛti 3.56 / Mahābhārata",rel:"पूज्यन्ते = √पूज् + Laṭ + Passive Ātmanepada 3rd pl (Ch.11 + Ch.3 Karmani prayoga). रमन्ते = √रम् + Laṭ + Ātmanepada 3rd pl (Ātmane because enjoyment is for the gods themselves — Pada-Nirṇaya Ch.3). √रम् (to rejoice) is the root of 'Rāma' himself — the same Ch.8 Dhātu that names the hero also means 'divine delight.' Grammar reveals hidden unity."},
     ],
+,
     levels:{
       easy:[
         {q:"√भू means:",opts:["To know","To be / become","To go","To speak"],ans:1,exp:"√भू = to be, to become."},
@@ -733,7 +446,191 @@ const CHAPTERS = [
         {q:"It-markers on Pratyayas serve to:",opts:["Decorate","Silently direct phonological/accentual rules without appearing in output","Change root meaning","Indicate number"],ans:1,exp:"Pratyaya It-markers are operational guides — trigger sandhi, substitution, and accent rules, then disappear by lopa."},
       ],
     },
-  },
+  },  ,{
+    id:9,num:"IX",title:"Śabdarūpa · Prathamā Vibhakti",
+    subtitle:"Word Declension · 3 Genders · 21 Vibhakti Forms · Subanta System",
+    icon:"📋",color:"#059669",
+    concepts:[
+      {term:"विभक्ति (Vibhakti) — Case System",meaning:"Sanskrit nouns decline in 7 Vibhaktis (cases) × 3 Vacanas (numbers: singular, dual, plural) = 21 forms per noun. Each Vibhakti indicates the noun's grammatical role: Prathamā=subject, Dvitīyā=object, Tṛtīyā=instrument, Caturthī=purpose/recipient, Pañcamī=source, Ṣaṣṭhī=possession, Saptamī=location. Plus Sambodhanam (vocative). All 21 forms must be learned for every noun-class (Śabda-gaṇa).",example:"बालक: (sg) → बालकौ (du) → बालका: (pl) — Prathamā of बालक (boy)",cat:"morphology",sutra:"2.3.1-73"},
+      {term:"3 लिङ्ग — Three Genders",meaning:"Every Sanskrit noun belongs to one of three grammatical genders: Pulliṅga (masculine), Strīliṅga (feminine), Napuṃsakaliṅga (neuter). Gender determines the entire declension pattern. The same concept in different genders takes completely different endings: बालक: (m), बालिका (f), वाहनम् (n).",example:"पुल्लिङ्ग: बालक: · स्त्रीलिङ्ग: बालिका · नपुंसकलिङ्ग: वाहनम्",cat:"samjna",sutra:"1.2.51"},
+      {term:"अकारान्त पुल्लिङ्ग — A-ending Masculines",meaning:"The most common noun class — roots ending in 'a' (Ajanta masculine). Base pattern learned from 'बालक' (boy): बालक: / बालकौ / बालका: (Prathamā). This pattern applies to ~1700 masculine a-ending nouns. Key examples: अश्व (horse), वृक्ष (tree), मृग (deer), छात्र (student), गुरु (teacher when a-ending).",example:"एक: बालक: / द्वौ बालकौ / त्रय: बालका: (1/2/3+ boys)",cat:"morphology",sutra:"4.1.1"},
+      {term:"इकारान्त, उकारान्त पुल्लिङ्ग — I/U-ending Masculines",meaning:"Nouns ending in short-i (इ) or short-u (उ) follow different declension patterns. Ikarant: पति (husband), कवि (poet), मुनि (sage) — Prathamā: पति: / पती / पतय:. Ukarant: भानु (sun), गुरु (teacher), विधु (moon) — Prathamā: भानु: / भानू / भानव:. Critical: these forms differ from a-ending nouns.",example:"पति:→पती→पतय: · भानु:→भानू→भानव: · मुनि:→मुनी→मुनय:",cat:"morphology",sutra:"4.1.1"},
+      {term:"अकारान्त नपुंसकलिङ्ग — A-ending Neuters",meaning:"Neuter a-ending nouns (like फल = fruit) differ from masculine in Prathamā and Dvitīyā only — they take 'म्' in singular and different endings in dual/plural. Base: फलम् / फले / फलानि. This class includes most Sanskrit neuter common nouns.",example:"फलम् (sg) / फले (du) / फलानि (pl) — Prathamā neuter",cat:"morphology",sutra:"4.1.1"},
+      {term:"आकारान्त स्त्रीलिङ्ग — Ā-ending Feminines",meaning:"The most common feminine class — nouns ending in long-ā (आ), like बालिका (girl). Prathamā: बालिका / बालिके / बालिका:. This pattern applies to the majority of Sanskrit feminine nouns. Includes: नारी (woman — when ā-stem), लता (vine), माला (garland), सीता, गीता.",example:"बालिका (sg) / बालिके (du) / बालिका: (pl)",cat:"morphology",sutra:"4.1.4"},
+      {term:"शब्दरूप के सिद्धान्त (Declension Principles)",meaning:"Three foundational rules govern all Sanskrit declension: ①Liṅga-concordance: adjectives and pronouns must match their noun in gender, number, and case (vibhakti). ②Vacana-concordance: subject and verb must agree in person and number. ③Vibhakti-concordance: a noun's vibhakti signals its grammatical role — the word-order is free because cases carry the relational information.",example:"स: एक: शोभन: बालक: गच्छति — the/a/one/beautiful boy goes",cat:"rule",sutra:"2.3.1"},
+      {term:"सर्वनाम शब्दरूप — Pronoun Declension",meaning:"Pronouns (Sarvanāma) follow irregular patterns distinct from nouns. Key pronouns and Prathamā forms: तद्/वह् (he/she/it): स:/सा/तद् → तौ/ते/ते → ते/ता:/तानि. एतद् (this): एष:/एषा/एतद्. यद् (who/which): य:/या/यद्. किम् (who/what?): क:/का/किम्. सर्व (all): सर्व:/सर्वा/सर्वम्.",example:"स: (he/that) · सा (she/that-f) · तद् (it/that-n) · इदम् (this-n)",cat:"morphology",sutra:"1.1.27"},
+    ],
+    quiz:[
+      {q:"How many total forms does one Sanskrit noun have across all Vibhaktis and Vacanas?",opts:["7","14","21","28"],ans:2,exp:"7 Vibhaktis × 3 Vacanas (sg/du/pl) = 21 forms. Plus Sambodhanam vocative forms in some grammars, but the standard is 21."},
+      {q:"In 'एक: शोभन: बालक: गच्छति' — why does शोभन take the same form as बालक?",opts:["Coincidence","Liṅga-concordance: adjectives must match their noun in gender, number, and Vibhakti","It is a verb form","It is a pronoun"],ans:1,exp:"Viśeṣaṇa (adjective) must agree with its Viśeṣya (noun) in gender, number, and Vibhakti — this is the core rule of adjective-noun agreement (4VISHE PDF: Viśeṣaṇa-Viśeṣya-samanvaya)."},
+      {q:"What is Prathamā Vibhakti used for?",opts:["Object of the verb","Subject / performer of the action","Instrument used","Location"],ans:0,exp:"Prathamā marks the Kartā (subject/agent) in active constructions. The doer of the action takes Prathamā Vibhakti."},
+      {q:"बालक: / बालकौ / बालका: are forms of which gender and case?",opts:["Feminine, Dvitīyā","Masculine, Prathamā (sg/du/pl)","Neuter, Saptamī","Feminine, Prathamā"],ans:1,exp:"बालक is masculine a-ending (Ajanta pulliṅga). Prathamā: बालक: (sg), बालकौ (du), बालका: (pl). This is the model declension for all masculine a-ending nouns."},
+      {q:"Pronouns (Sarvanāma) are special because:",opts:["They never change form","They follow irregular patterns distinct from regular noun declension","They only have one gender","They cannot be used as subjects"],ans:1,exp:"Sarvanāma forms (तद्, एतद्, यद्, किम्, सर्व) follow their own paradigms. 'स:' (he/that) is entirely different from regular noun Prathamā forms ending in ':'."},
+    ],
+    vedic:[
+      {dev:"अहमस्मि प्रथमजा ऋतस्य पूर्वं देवेभ्यो अमृतस्य नाभिः ।",roman:"aham asmi prathamajā ṛtasya pūrvaṃ devebhyo amṛtasya nābhiḥ",trans:"I am the firstborn of cosmic order, prior to the gods, the navel of immortality.",source:"Ṛgveda 10.125.3 — Devī Sūkta",rel:"अहम् = Prathamā sg of 'asmad' pronoun (1st person, Ch.9). प्रथमजा = Prathamā sg feminine compound noun. देवेभ्यः = Pañcamī pl masculine (prior to the gods — ablative Ch.9). नाभिः = Prathamā sg feminine. The goddess Speech declares her identity using four Vibhakti forms in one verse. Grammar is how even gods speak."},
+      {dev:"रामो विग्रहवान् धर्मः साधुः सत्यपराक्रमः । राजा सर्वस्य लोकस्य देवानामिव वासवः ॥",roman:"rāmo vigrahavān dharmaḥ sādhuḥ satyaparākramaḥ · rājā sarvasya lokasya devānām iva vāsavaḥ",trans:"Rāma is dharma in embodied form, virtuous, of true valour — king of all worlds, like Indra among the gods.",source:"Vālmīki Rāmāyaṇa 3.37.13",rel:"रामः(Prathamā sg m), विग्रहवान्(Prathamā sg m adjective agreeing), राजा(Prathamā sg m — special n-stem), सर्वस्य(Ṣaṣṭhī sg m), लोकस्य(Ṣaṣṭhī sg m), देवानाम्(Ṣaṣṭhī pl m). The Rāmāyaṇa's description of Rāma is a parade of Prathamā and Ṣaṣṭhī forms — Ch.9 in action. Five Prathamā predicates agreeing with 'Rāma' — perfect Ch.9 Viśeṣaṇa-Viśeṣya concordance."},
+      {dev:"धर्मराजो युधिष्ठिरः — पाण्डवानां ज्येष्ठः पुत्रः कुन्त्याः ।",roman:"dharmarājo yudhiṣṭhiraḥ — pāṇḍavānāṃ jyeṣṭhaḥ putraḥ kuntyāḥ",trans:"Yudhiṣṭhira the king of dharma — eldest son of the Pāṇḍavas, born of Kuntī.",source:"Mahābhārata — standard epithet introduction",rel:"युधिष्ठिरः(Prathamā sg m — subject), पाण्डवानाम्(Ṣaṣṭhī pl m — of the Pāṇḍavas), ज्येष्ठः(Prathamā sg m adjective agreeing with पुत्रः), पुत्रः(Prathamā sg m), कुन्त्याः(Ṣaṣṭhī sg f — of Kuntī). The Mahābhārata introduces every hero with this Ch.9 Vibhakti pattern: Name(Prathamā) + lineage(Ṣaṣṭhī) + quality(Prathamā adjective) + relation(Ṣaṣṭhī)."},
+      {dev:"सर्वे भ्रातरः स्याम — विश्वं मे कुटुम्बकम् ।",roman:"sarve bhrātaraḥ syāma — viśvaṃ me kuṭumbakam",trans:"May we all be brothers — the whole world is my family.",source:"Atharva Veda 3.30.1 / Mahopaniṣad 6.72",rel:"सर्वे = Prathamā pl masculine of सर्व (pronoun-adjective, Ch.9 Sarvanāma). भ्रातरः = Prathamā pl masculine of भ्रातृ (ṛ-stem noun, Ch.9: special declension). मे = Ṣaṣṭhī of asmad (my, Ch.9 pronoun genitive). विश्वम् = Prathamā sg neuter. The universal family declaration uses three Vibhaktis — Prathamā (subject), Ṣaṣṭhī (possession), Prathamā predicate — forming the complete equational sentence of Ch.9."},
+      {dev:"मा निषाद प्रतिष्ठां त्वमगमः शाश्वतीः समाः ।",roman:"mā niṣāda pratiṣṭhāṃ tvam agamaḥ śāśvatīḥ samāḥ",trans:"O Niṣāda, may you never find rest for eternal years.",source:"Vālmīki Rāmāyaṇa 1.2.15 — the first śloka of Sanskrit literature",rel:"त्वम् = Prathamā sg pronoun (you — Yuṣmad Ch.9). प्रतिष्ठाम् = Dvitīyā sg feminine (rest — the object denied, Ch.9). शाश्वतीः = Dvitīyā pl feminine adjective. समाः = Dvitīyā pl feminine (years, Ch.9). The first śloka of Sanskrit literature uses: Prathamā pronoun, Dvitīyā object, Dvitīyā adverbial accusative. Ch.9's case system visible in the very birth of Sanskrit poetry."},
+      {dev:"नारायणं नमस्कृत्य नरं चैव नरोत्तमम् ।",roman:"nārāyaṇaṃ namaskṛtya naraṃ caiva narottamam",trans:"Having bowed to Nārāyaṇa and to Nara the best of men.",source:"Mahābhārata 1.1.1 — Vyāsa's opening invocation",rel:"नारायणम् = Dvitīyā sg masculine (object of namaskṛtya — Ch.9 Karma Kāraka). नरम् = Dvitīyā sg masculine. नरोत्तमम् = Dvitīyā sg masculine adjective (agreeing with 'naram' in Ch.9 Viśeṣaṇa concordance). Before the first verse of the world's longest epic, Ch.9 Dvitīyā Vibhakti structures the invocation."},
+      {dev:"ते द्वौ शोभनौ बालकौ पठतः ।",roman:"te dvau śobhanau bālakau paṭhataḥ",trans:"Those two beautiful boys are reading.",source:"Sanskrit pedagogical sentence — Pushpa Dikshit Pauspi tradition",rel:"ते(Prathamā du m pronoun), द्वौ(Prathamā du m numeral), शोभनौ(Prathamā du m adjective), बालकौ(Prathamā du m noun) — ALL four words in Prathamā dual. Perfect Ch.9 concordance: pronoun + numeral + adjective + noun agreeing in gender, number, case simultaneously. पठतः = Laṭ 3rd du (verb agreeing with dual subject, Ch.11). This pedagogical sentence demonstrates complete Ch.9 concordance — the same principle governing every noun phrase in Rāmāyaṇa and Mahābhārata."},
+      {dev:"एष एव पन्थाः — इत्येव विद्वान् पुण्यकृत् तरति ।",roman:"eṣa eva panthāḥ — ity eva vidvān puṇyakṛt tarati",trans:"This alone is the path — thus the wise and meritorious man crosses over.",source:"Kaṭha Upaniṣad 1.3.15",rel:"एषः = Prathamā sg masculine pronoun (Etad/Idam paradigm, Ch.9 Sarvanāma). पन्थाः = Prathamā sg masculine (path — special n-stem: पन्थाः/पन्थानौ/पन्थानः, Ch.9). विद्वान् = Prathamā sg masculine (wise one — vat-stem adjective used as noun, Ch.9 special class). Three different Ch.9 Prathamā forms: demonstrative pronoun, n-stem noun, and vat-stem substantive — Ch.9 Śabdarūpa variety in one Upaniṣadic statement."},
+    ],
+,
+    levels:{
+      easy:[
+        {q:"Prathamā Vibhakti marks the:",opts:["Object (Karma)","Subject (Kartā)","Instrument (Karaṇa)","Location (Adhikaraṇa)"],ans:1,exp:"Prathamā = the subject or agent of the sentence."},
+        {q:"बालक: / बालकौ / बालका: represent which three Vacanas?",opts:["Past/present/future","Singular/Dual/Plural","Masculine/Feminine/Neuter","1st/2nd/3rd person"],ans:1,exp:"Singular (एकवचन), Dual (द्विवचन), Plural (बहुवचन) — the three Vacanas of Sanskrit."},
+        {q:"Adjective must match noun in:",opts:["Meaning only","Gender + Number + Vibhakti","Only gender","Only case"],ans:1,exp:"Viśeṣaṇa-Viśeṣya-samanvaya requires matching in all three: Liṅga, Vacana, and Vibhakti."},
+      ],
+      medium:[
+        {q:"The pronoun 'स:' refers to which gender?",opts:["Feminine","Neuter","Masculine","All genders"],ans:2,exp:"'स:' is Prathamā sg masculine of तद्/वह् pronoun. Feminine = 'सा', Neuter = 'तद्'."},
+        {q:"'फलम् / फले / फलानि' are neuter Prathamā forms. What is special about neuter nouns?",opts:["They have no plural","Prathamā and Dvitīyā are identical in each Vacana","They are always long vowel","They only take 3 forms"],ans:1,exp:"Neuter Prathamā and Dvitīyā are always identical within each Vacana — a key feature distinguishing neuter from masculine/feminine declension."},
+      ],
+      hard:[
+        {q:"Why does Sanskrit word-order not determine meaning (unlike English)?",opts:["It is random","Cases (Vibhaktis) carry the grammatical relationship — word order is free because Vibhakti marks subject/object/etc. unambiguously","Subject always comes first","Verbs always come last"],ans:1,exp:"Vibhakti system is so precise that 'बालक: फलं खादति' and 'फलं बालक: खादति' mean the same thing — the boy eats the fruit. English relies on order; Sanskrit relies on cases."},
+      ],
+    },
+  },{
+    id:10,num:"X",title:"Viśeṣaṇa · Kriyāviśeṣaṇa · Avyaya",
+    subtitle:"Adjectives · Adverbs · Indeclinables · Concordance Rules",
+    icon:"🎨",color:"#B45309",
+    concepts:[
+      {term:"विशेषण-विशेष्य समन्वय (Viśeṣaṇa-Viśeṣya Agreement)",meaning:"A Viśeṣaṇa (adjective) must always match its Viśeṣya (noun) in three dimensions simultaneously: ①Liṅga (gender), ②Vacana (number), and ③Vibhakti (case). This is the Iron Rule of Sanskrit adjectives. Failure to match any one of these three makes the sentence grammatically incorrect. The adjective 'शोभन' (beautiful) becomes: शोभन: (m.sg), शोभना (f.sg), शोभनम् (n.sg), शोभनौ (m.du), etc.",example:"वह एक शोभन: बालक: गच्छति → ते द्वौ शोभनौ बालकौ गच्छत: → ते त्रय: शोभना: बालका: गच्छन्ति",cat:"rule",sutra:"2.1.57"},
+      {term:"तीनों लिङ्गों में विशेषण रूप",meaning:"The same adjective root appears in three different series for three genders. Adjectives that end in 'a' (most common) follow: masculine like बालक, feminine like बालिका (adding ā), neuter like फल (adding m). Example: शुक्ल (white): शुक्ल: (m) / शुक्ला (f) / शुक्लम् (n). The PDF gives rich tables: शोभन:/शोभना/शोभनम्, मधुर:/मधुरा/मधुरम्, कृष्ण:/कृष्णा/कृष्णम्, etc.",example:"शोभन: पुरुष: / शोभना स्त्री / शोभनं गृहम् · हरित: शुक:/हरिता शुकी/हरितम् पत्रम्",cat:"morphology",sutra:"4.1.3"},
+      {term:"कृदन्त विशेषण (Kṛdanta Viśeṣaṇa) — Participial Adjectives",meaning:"Kṛt suffixes (Ch.3) applied to roots create verbal adjectives (participles) that function as Viśeṣaṇas and must agree with their nouns. Key Kṛt adjective suffixes: क्त (past passive participle), क्तवत् (past active participle), शतृ/शानच् (present participle). These create: पठित (read), गतवत् (having gone), पठन् (reading), पठमान (reading — Ātmanepada).",example:"पठित: बालक: (the boy who was read-to) · गतवान् पुरुष: (the man who went) · पचन् महिला (the woman cooking)",cat:"morphology",sutra:"3.2.102-126"},
+      {term:"तादृश-ईदृश-एतादृश विशेषण (Comparatives)",meaning:"Special adjective groups: कीदृश (of what kind?), ईदृश (of this kind), एतादृश (of this kind), तादृश (of that kind), भवादृश (like you), अस्मादृश (like us), युष्मादृश (like all of you). These change for gender like: कीदृश: पुरुष: / कीदृशी नारी / कीदृशं नगरम् — but the masculine form uses ':' and the neuter uses 'ṃ'.",example:"स: कीदृश: पुरुष: अस्ति? वह ईदृश: (such/this kind) · तादृश: गुरु: (such a teacher)",cat:"morphology",sutra:"5.3.61-68"},
+      {term:"बहु-सर्व-कति विशेषण (Quantifiers)",meaning:"Special quantifier adjectives with unique behaviors: बहु (many) — plural use only: बहव: बालका:, बह्व्य: बालिका:, बहूनि फलानि. सर्व (all) — always plural: सर्वे पुरुषा:, सर्वा: स्त्रिय:, सर्वाणि फलानि. कति (how many?) — always plural, always masculine Prathamā form: कति बालका:, कति बालिका:, कति फलानि. कियत् (how much/many) — agrees in all three genders.",example:"सर्वे पुरुषा: गच्छन्ति / सर्वा: स्त्रिय: / सर्वाणि फलानि · कति बालका:? कति बालिका:?",cat:"rule",sutra:"1.1.27"},
+      {term:"क्रियाविशेषण (Kriyāviśeṣaṇa) — Adverbs",meaning:"Kriyāviśeṣaṇas (adverbs) describe verbs and qualify their manner, degree, or circumstance. Key rules: ①They always appear in Dvitīyā Vibhakti (2nd case), Napuṃsakaliṅga (neuter gender), Ekavacana (singular). ②Unlike Viśeṣaṇa, they do NOT change to match the verb. Examples: तीव्र: (adjective — sharp horse) vs तीव्रम् (adverb — sharply). The adverb form is always the neuter singular accusative.",example:"अश्व: तीव्र: धावति (adjective: the sharp horse runs) → तीव्रम् अश्व: धावति (adverb: the horse runs sharply)",cat:"operation",sutra:"2.3.1"},
+      {term:"अव्यय (Avyaya) — Indeclinables",meaning:"Avyayas are words whose form never changes — they have no gender, number, or case. They appear identically in all grammatical contexts. Unlike 'बालक' which has 21 forms, Avyayas have exactly 1 form. Key Avyayas: spatial (अत्र here, तत्र there, क्व where, सर्वत्र everywhere), temporal (कदा when, तदा then, सर्वदा always, अधुना now), manner (इत्थम् thus, तथा so), particles (अपि also, हि indeed, एव only, च and, न not, नहि not at all).",example:"अत्र (here), तत्र (there), सर्वत्र (everywhere), अधुना (now), कदा (when), इत्थम् (thus), अपि (also), एव (only), च (and), न (not)",cat:"core",sutra:"1.1.38"},
+      {term:"प्रमुख अव्यय समूह (Key Avyaya Groups)",meaning:"Avyayas fall into functional groups: ①Locational: अत्र, तत्र, क्व, कुत्र, एकत्र, सर्वत्र, यत्र. ②Temporal: कदा, तदा, यदा, सदा, सर्वदा, अधुना, ह्य:, श्व:. ③Manner/Degree: शनै: (slowly), सत्वरम् (quickly), उच्चै: (loudly), नीचै: (softly), पुन: (again), सहसा (suddenly). ④Particles: एव (only/indeed), अपि (also), हि (certainly), तु (but), च (and), वा (or), अथ (then/now), यदि (if), तर्हि (then).",example:"शनै: शनै: गच्छ (go slowly slowly) · एव=only · अपि=also · हि=certainly · इव=like/as · सम्प्रति=now",cat:"core",sutra:"1.1.38"},
+    ],
+    quiz:[
+      {q:"Viśeṣaṇa (adjective) must match its noun in:",opts:["Only gender","Only case","Gender + Number + Case (Vibhakti) — all three simultaneously","Only number"],ans:2,exp:"The Iron Rule: adjective matches noun in Liṅga (gender), Vacana (number), AND Vibhakti (case). Missing any one is incorrect Sanskrit."},
+      {q:"'तीव्रम् अश्व: धावति' — what is तीव्रम् here?",opts:["Adjective modifying अश्व","Adverb (Kriyāviśeṣaṇa) modifying धावति","A verb form","A pronoun"],ans:1,exp:"तीव्रम् = Dvitīyā neuter singular form of तीव्र — when used to describe a verb (धावति = runs), it functions as an adverb. Adverbs are always neuter singular accusative (Dvitīyā)."},
+      {q:"Avyaya words are special because:",opts:["They are always plural","Their form NEVER changes — no gender, number, or case inflection","They are always verbs","They only occur in Vedic texts"],ans:1,exp:"Avyaya = 'indeclinable.' One form, all contexts. अत्र is always अत्र whether subject, object, or adjunct."},
+      {q:"'सर्वे पुरुषाः / सर्वाः स्त्रियः / सर्वाणि फलानि' — what varies?",opts:["The root meaning","Only the case ending","The gender agreement of सर्व across all three genders","Nothing varies"],ans:2,exp:"सर्व is a Sarvanāma adjective that must agree with its noun in gender. सर्वे (m.pl), सर्वाः (f.pl), सर्वाणि (n.pl) — same root, three gender forms."},
+      {q:"'कीदृश:' (of what kind?) changes to 'कीदृशी' in feminine. This belongs to which adjective class?",opts:["Regular a-ending adjectives","Tādṛśa-Īdṛśa class (comparison/type adjectives)","Pronoun adjectives","Kṛdanta participles"],ans:1,exp:"The Kīdṛśa/Īdṛśa/Tādṛśa group are special adjectives expressing similarity or type. They follow their own gender patterns: masc in ':,' fem in 'ī,' neuter in 'ṃ.'"},
+    ],
+    vedic:[
+      {dev:"सत्यं शिवं सुन्दरम् ।",roman:"satyaṃ śivaṃ sundaram",trans:"Truth, Auspiciousness, Beauty.",source:"Traditional formulation of Brahman's three qualities — Upaniṣadic aesthetics",rel:"All three words are Prathamā sg neuter: सत्यम्(neuter n-stem), शिवम्(neuter a-stem adjective), सुन्दरम्(neuter a-stem adjective). Three qualities describing Brahman (implicit neuter subject). Perfect gender-concordance (Ch.9+Ch.10): all neuter, agreeing with 'tad' (Brahman/that). When the noun changes gender, ALL adjectives must follow — here they all agree in neuter because Brahman is beyond gender (napuṃsakaliṅga)."},
+      {dev:"शनैः शनैर् उपरमेद् बुद्ध्या धृतिगृहीतया ।",roman:"śanaiḥ śanair uparamed buddhyā dhṛtigṛhītayā",trans:"Gradually, gradually let the mind withdraw, the intellect held firm by resolve.",source:"Bhagavad Gītā 6.25",rel:"शनैः = Avyaya (indeclinable — slowly, Ch.10). Appears TWICE but does NOT change form — the defining property of Avyaya. बुद्ध्या = Tṛtīयā sg feminine (by the intellect — Ch.9). धृतिगृहीतया = Tṛtīयā sg feminine adjective agreeing with 'buddhyā' (Ch.10 Viśeṣaṇa concordance in instrumental case). Avyaya (śanaiḥ, immutable) alongside fully-inflected Tṛtīयā (buddhyā, mutable) — Ch.10 vs Ch.9 in one verse."},
+      {dev:"तीव्रः अश्वः धावति — तीव्रम् अश्वः धावति ।",roman:"tīvraḥ aśvaḥ dhāvati — tīvram aśvaḥ dhāvati",trans:"The intense horse runs — The horse runs intensely.",source:"Sanskrit grammatical example — Kāśikā commentary tradition",rel:"तीव्रः = Prathamā sg masculine adjective agreeing with अश्वः (Viśeṣaṇa Ch.10). तीव्रम् = Dvitīयā sg neuter (Kriyāviśeṣaṇa — adverb modifying धावति, always Dvitīयā neuter singular, Ch.10). Same root 'tīvra', entirely different grammatical function: adjective (agreeing with noun) vs adverb (fixed neuter form). The Kāśikā uses this exact pair to illustrate Ch.10's adverb rule."},
+      {dev:"अयं निजः परो वेति गणना लघुचेतसाम् । उदारचरितानां तु वसुधैव कुटुम्बकम् ॥",roman:"ayaṃ nijaḥ paro veti gaṇanā laghucetasām · udāracaritānāṃ tu vasudhaiva kuṭumbakam",trans:"'This is mine, that is another's' — such calculation belongs to the small-minded. For those of noble character, the whole earth is one family.",source:"Mahopaniṣad 6.71-72 — source of India's national motto",rel:"अयम् = Prathamā sg masculine demonstrative pronoun (Idam-paradigm Ch.9 Sarvanāma). निजः = Prathamā sg masculine adjective (own — Ch.10 Viśeṣaṇa agreeing with ayam). परः = Prathamā sg masculine adjective (other's). एव = Avyaya (only/indeed, Ch.10 — immutable emphasis particle). The world's most famous tolerance verse demonstrates Ch.10 Avyaya (eva) + Ch.10 Viśeṣaṇa (nijaḥ/paraḥ) + Ch.9 Ṣaṣṭhī (laghucetasām) in perfect grammatical harmony."},
+      {dev:"यत्र योगेश्वरः कृष्णः यत्र पार्थो धनुर्धरः ।",roman:"yatra yogeśvaraḥ kṛṣṇaḥ yatra pārtho dhanurdharaḥ",trans:"Where Kṛṣṇa the Lord of Yoga is; where Pārtha the archer is.",source:"Bhagavad Gītā 18.78 — Sañjaya's final vision",rel:"यत्र = Avyaya (locational indeclinable — wherever, Ch.10). Appears TWICE, unchanged — Avyaya immutability demonstrated by repetition. धनुर्धरः = Prathamā sg masculine compound adjective describing Pārtha (Ch.10 Viśeṣaṇa). The verse contrasts: Avyaya यत्र (never changes) with Prathamā forms कृष्णः/पार्थः (fully declined nouns). Ch.10's Avyaya sits beside Ch.9's Śabdarūpa — the fixed and the flexible in one couplet."},
+      {dev:"कीदृशी सीता — सा सुन्दरी शोभनास्या सती ।",roman:"kīdṛśī sītā — sā sundarī śobhanāsyā satī",trans:"What kind of person is Sītā? She is beautiful, with a lovely face, virtuous.",source:"Vālmīki Rāmāyaṇa — description of Sītā",rel:"कीदृशी = Prathamā sg feminine (of what kind? — Kīdṛśa/Tādṛśa class adjective Ch.10, feminine form). सुन्दरी = Prathamā sg feminine adjective agreeing with Sītā (Ch.10 Viśeṣaṇa, feminine form with ī-ending). शोभनास्या = Prathamā sg feminine (beautiful-faced, bahuvrīhi compound Ch.10). सती = Prathamā sg feminine (virtuous, Ch.3 Kṛt used as adjective). Rāmāyaṇa's description of Sītā showcases Ch.10 feminine adjective agreement — four feminine Prathamā forms in sequence."},
+      {dev:"इत्थं सदा भावयतां त्वत्कथासुधया नित्यं भृतम् ।",roman:"itthaṃ sadā bhāvayatāṃ tvatkathāsudhayā nityaṃ bhṛtam",trans:"Thus always, of those who contemplate — nourished eternally by the nectar of Your stories.",source:"Bhāgavata Purāṇa 1.1.3 — the opening invocation",rel:"इत्थम् = Avyaya (thus/in this way, Ch.10). सदा = Avyaya (always, Ch.10). नित्यम् = Avyaya (eternally, Ch.10). THREE Avyayas in two lines — the Bhāgavata Purāṇa opens with Avyaya density to describe ETERNAL, UNCHANGING qualities. Just as Avyayas never change form, the divine qualities they describe never change. Ch.10's Avyaya is the grammatical form of eternity."},
+      {dev:"सुभाषितं वक्तुम् अशक्यं नास्ति ।",roman:"subhāṣitaṃ vaktum aśakyaṃ nāsti",trans:"There is no good saying that is impossible to speak.",source:"Sanskrit subhāṣita tradition",rel:"सुभाषितम् = सु+√भाष्+Kṛt (Ch.3+Ch.8 Upasarga 'su', Prathamā sg neuter). वक्तुम् = Kṛt 'tumun' (infinitive/adverb Ch.3+Ch.10, always neuter Dvitīयā). अशक्यम् = Prathamā sg neuter adjective (impossible — prefix 'a'+√śak+Kṛt 'ya', Ch.3). The subhāṣita genre uses Avyayas heavily and is composed in Anuṣṭubh metre where Laghu-Guru (Ch.6) determines elegant rhythm. Good Sanskrit is inseparable from good grammar."},
+    ],
+,
+    levels:{
+      easy:[
+        {q:"Avyaya words:",opts:["Change for gender","Change for case","Never change — always the same form","Change for number"],ans:2,exp:"Avyaya = indeclinable. One form in all contexts. अत्र is always अत्र."},
+        {q:"Adjective (Viśeṣaṇa) must agree with noun in:",opts:["Gender only","Gender + Number + Case","Number only","Verb agreement"],ans:1,exp:"Three-way agreement: Liṅga + Vacana + Vibhakti — all simultaneously."},
+        {q:"Adverbs (Kriyāviśeṣaṇa) in Sanskrit are always in:",opts:["Prathamā masculine","Dvitīyā neuter singular","Saptamī feminine","Tṛtīyā plural"],ans:1,exp:"Adverbs = Dvitīyā (2nd case), Napuṃsakaliṅga (neuter), Ekavacana (singular). Always."},
+      ],
+      medium:[
+        {q:"'तीव्र: अश्व:' vs 'तीव्रम् अश्व: धावति' — what changed and why?",opts:["Nothing","तीव्र became neuter singular because it now describes the verb (adverb), not the noun","तीव्र changed gender","The verb changed"],ans:1,exp:"तीव्र: = adjective agreeing with masculine अश्व:. तीव्रम् = adverb in Dvitīyā neuter sg describing the action धावति. Same root, different grammatical function → different form."},
+        {q:"शोभन: बालक: → शोभने बालिके (changed to feminine dual). Which rules governed this?",opts:["Only gender changed","Gender (m→f) + Number (sg→du) + Vibhakti (Prathamā) — all three dimensions of concordance","Only number changed","Random variation"],ans:1,exp:"Complete Viśeṣaṇa-Viśeṣya-samanvaya: when the noun changes gender AND number, the adjective must follow in BOTH dimensions simultaneously."},
+      ],
+      hard:[
+        {q:"Why are Avyayas called 'अव्यय' (a+vyaya = non-expenditure)?",opts:["They save ink","Their form is 'non-spent' — it remains constant regardless of grammatical environment, unlike nouns/adjectives that 'spend' different endings for different contexts","They are unimportant","They derive from verbs"],ans:1,exp:"The name is philosophical: other words 'spend' (vyaya) different forms for different contexts. Avyayas never spend/change — their form is conserved (a-vyaya). This economy makes them unique in the Sanskrit morphological system."},
+      ],
+    },
+  },{
+    id:11,num:"XI",title:"Tiṅ Pratyaya · Sārvadhatuka Lakāra",
+    subtitle:"18 Verb Endings · Lat/Lot/Laṅ/Vidhiliṅ Tables · Parasmai & Ātmane",
+    icon:"⚙️",color:"#1D4ED8",
+    concepts:[
+      {term:"18 तिङ् प्रत्यय (The 18 Tiṅ Endings)",meaning:"The 18 Tiṅ suffixes are the final personal endings that create complete verb forms. They encode 3 persons (Prathama/3rd, Madhyama/2nd, Uttama/1st) × 3 numbers (Ekavacana/sg, Dvivacana/du, Bahuvacana/pl) × 2 voices (Parasmaipada/active, Ātmanepada/middle) = 18. Root sūtra for remembering: तिप् तस् झि सिप् थस् थ मिप् वस् मस् त आताम् झ थास् आथाम् ध्वम् इट् वहि महिङ्.",example:"Parasmaipada: ति/तस्/अन्ति (3rd) · सि/थस्/थ (2nd) · मि/वस्/मस् (1st) | Ātmanepada: ते/इते/अन्ते · से/इथे/ध्वे · ए/वहे/महे",cat:"morphology",sutra:"3.4.77-112"},
+      {term:"4 सार्वधातुक लकार (4 Sārvadhatuka Lakāras)",meaning:"The four Sārvadhatuka Lakāras are Laṭ (present), Loṭ (imperative), Laṅ (past imperfect), and Vidhiliṅ (optative/potential). They are called 'Sārvadhatuka' because their Tiṅ and Vikaraṇa suffixes are marked as Śit — which triggers Guṇa operations on the root vowel. The 4 Sārvadhatuka Tiṅ tables are the foundation for reading and creating Sanskrit sentences.",example:"लट्=पठति (reads now) · लोट्=पठतु (let him read!) · लङ्=अपठत् (was reading/read) · विधिलिङ्=पठेत् (should read)",cat:"process",sutra:"3.4.113-116"},
+      {term:"लट् लकार — Present Tense",meaning:"Laṭ (Present tense) Parasmaipada for a-ending (Ajanta) Bhvadi class roots: Singular: ति/तः/अन्ति → Dual: तः/थः/थ → Plural: अन्ति (3rd person across numbers). With root √पठ् + शप् (vikaraṇa) → पठ् stem: पठति/पठतः/पठन्ति (3rd sg/du/pl) · पठसि/पठथः/पठथ (2nd) · पठामि/पठावः/पठामः (1st). Root √भू + शप् → भव-: भवति/भवतः/भवन्ति.",example:"पठति (he reads) · पठतः (they two read) · पठन्ति (they read) · पठसि (you read) · पठामि (I read)",cat:"process",sutra:"3.2.123"},
+      {term:"लोट् लकार — Imperative Mood",meaning:"Loṭ (Imperative) expresses commands, requests, blessings, and wishes. Key forms: 3rd sg = तु (Let him/her do), 2nd sg = ○ or तात् (You do! — most common imperative), 1st pl = आम (Let us do). Loṭ is Sārvadhatuka — Guṇa applies. Important: the 2nd person singular (addressed person) often has a special zero-ending or तात् form. Examples: गच्छ/गच्छतु (go! / let him go), पठ/पठतु, भव/भवतु.",example:"गच्छ! (go! — 2nd sg) · गच्छतु (let him go — 3rd sg) · पठाम (let us read — 1st pl) · भवतु (let it be — 3rd sg)",cat:"process",sutra:"3.3.162"},
+      {term:"लङ् लकार — Past Imperfect / Recent Past",meaning:"Laṅ (Imperfect/past) describes past action, especially recently past. Key feature: Laṅ forms add 'अ' (Augment/Āgama) BEFORE the root — called Āṭ or 'aṭ' augment. Without this prefix, Laṅ and Vidhiliṅ look similar — the अ prefix distinguishes Laṅ. Paradigm: अ+root+vikaraṇa+Tiṅ: अपठत् / अपठताम् / अपठन् (3rd sg/du/pl). अगच्छत् (he went), अभवत् (it was), अपठत् (he read/was reading).",example:"अपठत् (he read) · अपठताम् (the two read) · अपठन् (they read) · अपठ: (you read) · अपठम् (I read)",cat:"process",sutra:"6.4.71"},
+      {term:"विधिलिङ् लकार — Optative / Potential Mood",meaning:"Vidhiliṅ expresses: ①Advice/should (त्वं पठेत् — you should study), ②Wish/may (सुखी भवेत् — may he be happy), ③Polite request (भवान् गच्छेत् — please go), ④Condition (यदि स: गच्छेत्... — if he were to go...). Form: root + vikaraṇa + इ + Tiṅ suffix. पठेत् = पठ् + शप् + इ + त्. Paradigm: पठेत्/पठेताम्/पठेयु: (3rd) · पठे:/पठेतम्/पठेत (2nd) · पठेयम्/पठेव/पठेम (1st).",example:"पठेत् (he should/may read) · भवेत् (let it be/may it be) · गच्छेत् (he should go) · वदेत् (he should speak)",cat:"process",sutra:"3.3.161"},
+      {term:"आत्मनेपद तिङ् (Ātmanepada Tiṅ Paradigm)",meaning:"Ātmanepada (middle voice) is used when the action benefits the agent himself. The 9 Ātmanepada Tiṅ suffixes differ entirely from Parasmaipada. Laṭ Ātmanepada: ते/इते/अन्ते (3rd) · से/इथे/ध्वे (2nd) · ए/वहे/महे (1st). Key Ātmanepada verbs: लभ् (to get, for oneself), याच् (to beg), वृ (to choose), सेव् (to serve). The Pada-Nirṇaya from Ch.3 determines which paradigm to use based on the root's It-saṃjñā.",example:"लभते (he gets for himself) · याचते (she begs for herself) · वन्दते (he salutes) · सेवते (he serves)",cat:"morphology",sutra:"1.3.12-78"},
+      {term:"अदन्त वर्ग — A-ending Root Conjugation",meaning:"The Adanta (a-ending) roots form their present stems by adding Vikaraṇa शप् which merges with the root to create an 'a'-ending stem. This is the Bhvadi/Ajanta class (1700 roots). For learning: memorise the paradigm of 4 model roots: पठ् (to read) = parasmaipada; लभ् (to get) = ātmanepada; वद् (to speak) = parasmaipada; सेव् (to serve) = ātmanepada. These four cover both voices and give the complete Sārvadhatuka picture.",example:"पठ्+शप्=पठ → पठति/पठतः/पठन्ति · लभ्+शप्=लभ → लभते/लभेते/लभन्ते",cat:"classification",sutra:"3.1.68"},
+    ],
+    quiz:[
+      {q:"How many Tiṅ suffixes are there in total?",opts:["9","12","18","21"],ans:2,exp:"18 = 9 Parasmaipada + 9 Ātmanepada. Each set covers 3 persons × 3 numbers."},
+      {q:"Laṅ Lakāra is identified by:",opts:["Adding इ before the ending","Adding अ (augment) BEFORE the root — e.g. अपठत्","Using only Ātmanepada","Having no Vikaraṇa"],ans:1,exp:"The अ augment (Āṭ/aṭ-āgama) is the diagnostic feature of Laṅ. अपठत् = अ + पठ् + शप् + त् (Laṅ 3rd sg)."},
+      {q:"Vidhiliṅ expresses:",opts:["Definite past action only","Commands only","Advice (should), wish (may), polite request, or condition","Future certainty"],ans:2,exp:"Vidhiliṅ covers: should/ought to (advice), may/let (wish), please do (polite), if... were to (condition)."},
+      {q:"'पठेत्' is which Lakāra and person/number?",opts:["Laṭ, 3rd sg","Loṭ, 2nd sg","Vidhiliṅ, 3rd sg Parasmaipada","Laṅ, 3rd sg"],ans:2,exp:"पठेत् = Vidhiliṅ 3rd sg Parasmaipada: पठ् + शप् + इ + त् → पठेत्. The 'इ' infix distinguishes Vidhiliṅ from Laṅ (which has अ prefix instead)."},
+      {q:"Why are Laṭ/Loṭ/Laṅ/Vidhiliṅ called Sārvadhatuka?",opts:["They apply to all roots","Their Tiṅ and Vikaraṇa suffixes are marked Śit — triggering Guṇa on the root, applies to all (sārva) roots","They are only used in classical texts","They have no Ātmanepada forms"],ans:1,exp:"Sārvadhatuka = 'for all roots.' The Śit-marking of their affixes triggers Guṇa operations uniformly across the entire root inventory — the defining grammatical property."},
+    ],
+    vedic:[
+      {dev:"अहं ब्रह्मास्मि — अयमात्मा ब्रह्म ।",roman:"ahaṃ brahmāsmi — ayam ātmā brahma",trans:"I am Brahman — this Self is Brahman.",source:"Bṛhadāraṇyaka Upaniṣad 1.4.10 + Māṇḍūkya Upaniṣad 2 — two Mahāvākyas",rel:"अस्मि = √अस् + Laṭ + 1st sg Tiṅ 'मि' (Ch.11 Laṭ Uttama Ekavacana). Both Mahāvākyas use Laṭ Lakāra (Sārvadhatuka Ch.11) with √अस् (Adadi/Ananta — Vikaraṇa dropped by Luk). 'asmi' (I am) and 'asti' (is) demonstrate the person-system of Ch.11 Tiṅ across philosophy's greatest statements — 1st person (self) and 3rd person (that) unified in identity."},
+      {dev:"गच्छन्तं रामं दशरथः अनुगच्छतु — मा गच्छ रघुनन्दन ।",roman:"gacchantaṃ rāmaṃ daśarathaḥ anugacchatu — mā gaccha raghunandana",trans:"Let Daśaratha follow Rāma as he goes — O joy of the Raghu clan, do not go!",source:"Vālmīki Rāmāyaṇa 2.31 — Kausalyā's lament at Rāma's exile",rel:"गच्छतु = √गम् + Loṭ 3rd sg Parasmaipada 'तु' (let him follow). मा गच्छ = मा + √गम् + Loṭ 2nd sg (do not go!). Two forms of the same Loṭ Lakāra: 3rd person 'gacchatu' and 2nd person 'gaccha.' The Rāmāyaṇa's most emotionally charged scene — a mother begging her son not to leave — is grammatically precise. Ch.11's person system carries the emotional weight of Sanskrit literature's greatest farewell."},
+      {dev:"युद्ध्यस्व विगतज्वरः ।",roman:"yudhyasva vigatajvaraḥ",trans:"Fight, free from fever (doubt/grief).",source:"Bhagavad Gītā 3.30 — Kṛṣṇa's direct command",rel:"युद्ध्यस्व = √युध् + Loṭ 2nd sg Ātmanepada 'स्व' (Madhyama Ekavacana Ch.11). Ātmanepada 'sva' used because √युध् in Ātmanepada indicates the battle's benefit returns to Arjuna himself — Pada-Nirṇaya (Ch.3). विगतज्वरः = Prathamā sg masculine adjective (Ch.9). Kṛṣṇa's most direct command uses Loṭ 2nd sg Ātmanepada — the command both precise and philosophically resonant."},
+      {dev:"पठन्तु सर्वे शिष्याः — गुरुं नमेत् प्रतिदिनम् ।",roman:"paṭhantu sarve śiṣyāḥ — guruṃ namet pratidinam",trans:"May all students study — one should salute the teacher every day.",source:"Sanskrit pedagogical tradition — classroom invocation",rel:"पठन्तु = √पठ् + Loṭ 3rd pl Parasmaipada 'अन्तु'. नमेत् = √नम् + Vidhiliṅ 3rd sg 'एत्' (should salute). सर्वे शिष्याः = Prathamā pl agreeing (Ch.9+Ch.10). प्रतिदिनम् = Avyaya (Ch.10). Two of the four Sārvadhatuka Lakāras side by side: Loṭ (imperative — paṭhantu) + Vidhiliṅ (should — namet) — Ch.11's two wish/command moods teaching through their own content."},
+      {dev:"अगच्छत् सः वनम् — अपठन् बालकाः पाठशालायाम् ।",roman:"agacchat saḥ vanam — apaṭhan bālakāḥ pāṭhaśālāyām",trans:"He went to the forest — the boys were studying in the school.",source:"Sanskrit grammar illustration — Laṅ Lakāra demonstration",rel:"अगच्छत् = अ (Laṅ augment) + √गम् + Vikaraṇa + Laṅ 3rd sg Parasmaipada. अपठन् = अ + √पठ् + Laṅ 3rd pl. The 'अ' augment distinguishes Laṅ from Vidhiliṅ. 'अगच्छत् सः वनम्' echoes Rāmāyaṇa's central narrative (Rāma going to the forest) — the exile of Rāma, the pivotal event of Sanskrit literature, is in Laṅ Lakāra grammatically."},
+      {dev:"न जायते म्रियते वा कदाचिन् नायं भूत्वा भविता वा न भूयः ।",roman:"na jāyate mriyate vā kadācin nāyaṃ bhūtvā bhavisyati vā na bhūyaḥ",trans:"It is never born, nor does it die. It has not come into being, does not come into being, and will not come into being.",source:"Bhagavad Gītā 2.20 — description of the eternal Self",rel:"जायते = √जन् + Laṭ + Ātmanepada 3rd sg (birth happens TO the self). म्रियते = √मृ + Laṭ + Ātmanepada 3rd sg. भूत्वा = √भू + Kṛt 'क्त्वा' (gerund Ch.3). भविष्यति = √भू + Lṛṭ (2nd future, Ārdhadhatuka Ch.11) + 3rd sg. THREE Lakāras to describe timelessness: Laṭ (present), implied Laṅ (past), Lṛṭ (future). The verse declaring the Self is beyond time uses verbs in all three time-Lakāras — Ch.11's tense system proving its own philosophical content."},
+      {dev:"स्वर्गं लभेत वीरः — धर्मं चरेत् सर्वदा ।",roman:"svargaṃ labhet vīraḥ — dharmaṃ caret sarvadā",trans:"The hero may attain heaven — one should walk the path of dharma always.",source:"Mahābhārata — Śānti Parva",rel:"लभेत = √लभ् + Vidhiliṅ 3rd sg Ātmanepada 'एत' (may obtain — Ātmane because √लभ् is Ṅit, Ch.3 Pada-Nirṇaya). चरेत् = √चर् + Vidhiliṅ 3rd sg Parasmaipada 'एत्' (should walk). Ch.11 Vidhiliṅ covers both wish (labhet) and moral advice (caret). सर्वदा = Avyaya (always, Ch.10). The grammar of the Mahābhārata's ethical teaching is Ch.11's optative mood."},
+      {dev:"तिप् तस् झि सिप् थस् थ मिप् वस् मस् त आताम् झ थास् आथाम् ध्वम् इट् वहि महिङ् ।",roman:"tip tas jhi sip thas tha mip vas mas ta ātām jha thās āthām dhvam iṭ vahi mahiṅ",trans:"[The 18 Tiṅ suffixes:] ti/tas/jhi (3rd), si/thas/tha (2nd), mi/vas/mas (1st) Parasmaipada; ta/ātām/jha, thās/āthām/dhvam, iṭ/vahi/mahiṅ Ātmanepada.",source:"Aṣṭādhyāyī 3.4.77-112 — the foundational Tiṅ enumeration",rel:"These 18 suffixes encode EVERY verb form in the Ṛgveda, Rāmāyaṇa, Mahābhārata, and all Sanskrit literature. 'गच्छति' (RV) uses 'ति'. 'युद्ध्यस्व' (Gītā) uses 'स्व' (2nd sg Ātmane Loṭ). 'अस्मि' (Upaniṣad) uses 'मि'. The entire verbal system of Sanskrit epic and Vedic literature reduces to these 18 Tiṅ suffixes."},
+    ],
+,
+    levels:{
+      easy:[
+        {q:"What does the 'अ' prefix before a verb root indicate?",opts:["Future tense","Laṅ (past) Lakāra","Negative meaning","Imperative"],ans:1,exp:"अ augment (Āṭ-āgama) is the marker of Laṅ Lakāra — अपठत् = was reading/read (past)."},
+        {q:"'पठतु' (let him read) is which Lakāra?",opts:["Laṭ (present)","Laṅ (past)","Loṭ (imperative)","Vidhiliṅ (should)"],ans:2,exp:"Loṭ = imperative/command/wish. 3rd sg Loṭ suffix = 'तु' → पठ + तु = पठतु."},
+        {q:"'पठामि' means:",opts:["He reads","You read","I read","They read"],ans:2,exp:"मि = 1st person singular (Uttama Ekavacana) Parasmaipada. पठामि = I read (Laṭ, 1st sg)."},
+      ],
+      medium:[
+        {q:"'लभते' vs 'लभति' — what is the difference?",opts:["Tense difference","Voice: लभते = Ātmanepada (for oneself); लभति would be Parasmaipada — but √लभ् takes only Ātmanepada","Number difference","Person difference"],ans:1,exp:"Root √लभ् is Ṅit (It-saṃjñā Ch.3) → Ātmanepada only. लभते = he gets (for himself). No Parasmaipada form exists for √लभ्."},
+        {q:"Sārvadhatuka Lakāras are 4: Laṭ, Loṭ, Laṅ, Vidhiliṅ. They share:",opts:["Same endings","Śit-marked affixes triggering Guṇa on root vowels","Same meaning","Only past tense use"],ans:1,exp:"The Śit-marking of their Tiṅ/Vikaraṇa affixes triggers Guṇa (Ch.1 Saṃjñā + Ch.6 vowel strength) on the root — the phonological signature of Sārvadhatuka."},
+      ],
+      hard:[
+        {q:"Why is the 2nd person singular Loṭ (imperative) called a 'zero-ending' form?",opts:["It has no subject","The Tiṅ suffix itself is elided (Lopa, Ch.1) — only the Vikaraṇa stem remains: गच्छ = गम्+शप् with Tiṅ 'hi' deleted by a specific lopa rule","It has no verb","It is always future"],ans:1,exp:"2nd sg Loṭ Tiṅ suffix 'hi' undergoes Lopa in specific environments, leaving the bare vikaraṇa stem. 'गच्छ!' = bare stem. Ch.1's Lopa-Saṃjñā operates inside Loṭ 2nd sg — grammar eating its own tail."},
+      ],
+    },
+  },{
+    id:12,num:"XII",title:"Vākya Racanā · Dhātu Prayoga",
+    subtitle:"Sentence Formation · 200+ Root Applications · Karaka Roles",
+    icon:"🗣️",color:"#6D28D9",
+    concepts:[
+      {term:"वाक्य रचना (Vākya Racanā) — Sentence Formation",meaning:"A complete Sanskrit sentence (Vākya) requires: ①Kartā (subject) in Prathamā Vibhakti + ②Karma (object, if transitive) in Dvitīyā Vibhakti + ③Kriyā (verb/Tinanta) agreeing in person and number with the Kartā. The verb's Lakāra (tense/mood) determines the sentence meaning. Word order is flexible — the Vibhakti system carries the grammatical relationships. Classical order: SOV (Subject-Object-Verb).",example:"बालक: फलं खादति (boy fruit eats) = बालक: (Prathamā/Kartā) + फलम् (Dvitīyā/Karma) + खादति (Laṭ 3rd sg)",cat:"process",sutra:"2.3.1-73"},
+      {term:"कारक (Kāraka) — Grammatical Roles",meaning:"The 7 Kārakas define the semantic roles of nouns in a sentence, each marked by a specific Vibhakti: ①Prathamā=Kartā (agent/subject), ②Dvitīyā=Karma (object), ③Tṛtīyā=Karaṇa (instrument: 'by means of'), ④Caturthī=Sampradāna (recipient/purpose: 'for/to'), ⑤Pañcamī=Apādāna (source/separation: 'from'), ⑥Ṣaṣṭhī=Sambandha (relation/possession: 'of'), ⑦Saptamī=Adhikaraṇa (location/time: 'in/at/on').",example:"रामेण (by Rāma, Tṛtīyā) · रामाय (for Rāma, Caturthī) · रामात् (from Rāma, Pañcamī) · रामस्य (of Rāma, Ṣaṣṭhī) · रामे (in/at Rāma, Saptamī)",cat:"samjna",sutra:"1.4.23-55"},
+      {term:"भू-वर्ग धातु प्रयोग (Bhvadi Class — Active Verbs)",meaning:"The Bhvadi (1st conjugation class, Ajanta) roots are the most common. The PDF provides 200+ root-sentence pairs showing exact usage. Key active transitive roots with their typical Kāraka patterns: √पठ् (to read): Kartā+Karma pattern: बालक: पुस्तकं पठति. √खाद् (to eat): व्याघ्र: मांसं खादति. √पच् (to cook): माता भोजनं पचति. √गम् (to go): intransitive, Kartā only: छात्र: विद्यालयं गच्छति.",example:"पा+पिब्: बालक: दुग्धं पिबति (boy drinks milk) · ध्यै: भक्त: ईश्वरं ध्यायति (devotee meditates on God) · भू: पुरुष: वस्त्रं भरति (man wears clothes)",cat:"process",sutra:"3.1.68"},
+      {term:"आत्मनेपद धातु प्रयोग (Ātmanepada Roots in Sentences)",meaning:"Many roots naturally take Ātmanepada (middle voice) endings when the action benefits the agent. From the PDF's rich list: √लभ् (to obtain): बालक: फलं लभते (boy obtains fruit for himself). √सेव् (to serve): भक्त: ईश्वरं सेवते. √वन्द् (to salute): छात्र: गुरुं वन्दते. √याच् (to beg): भिक्षुक: भिक्षां याचते. Key insight: the Ātmanepada indicates the agent is the ultimate beneficiary.",example:"लभते (obtains for self) · वन्दते (bows) · सेवते (serves) · याचते (begs for self) · पचते (cooks for himself)",cat:"process",sutra:"1.3.12-78"},
+      {term:"उपसर्ग + धातु = नया अर्थ (Upasarga + Root = New Meaning)",meaning:"The 22 Upasargas (verbal prefixes, Ch.8) completely transform root meanings when combined. The vakya PDF shows this systematically: √गम् alone = to go (neutral). नि+गम् = to enter. प्र+गम् = to go forward/advance. अप+गम् = to go away/leave. आ+गम् = to come. अभि+गम् = to approach. उत्+गम् = to arise/emerge. The same root, six opposite meanings — purely from the Upasarga change.",example:"निगच्छति (enters) · प्रगच्छति (advances) · आगच्छति (comes) · उद्गच्छति (arises) · अपगच्छति (goes away) · अभिगच्छति (approaches)",cat:"process",sutra:"1.4.59"},
+      {term:"पञ्चमी विभक्ति और स्थानवाची (Pañcamī & Spatial Language)",meaning:"Pañcamī Vibhakti (5th case — Apādāna/source) has special productive uses beyond simple separation: ①Ablative source: ग्रामात् आगच्छति (comes from village). ②Comparative: अश्वात् गर्दभ: न्यून: (donkey is less than horse). ③Spatial reference with 'त:' suffix: any place/direction word + 'त:' = 'from that direction': ग्रामत: (from/toward the village), उत्तरत: (from the north), दक्षिणत: (from the south). ④Post-positional adverbs: बहि: (outside), अधस् (below), उपरि (above) take Ṣaṣṭhī.",example:"ग्रामात् (from the village) · काशीत: (from Kāśī) · गृहस्य उपरि (above the house) · वृक्षात् फलं पतति (fruit falls from the tree)",cat:"operation",sutra:"2.3.28"},
+      {term:"विशेष अव्यय प्रयोग (Special Avyaya Usage in Sentences)",meaning:"Key Avyayas with specific grammatical requirements from the PDF: ①अलम् (enough/stop) + Tṛtīyā: विवादेन अलम् (enough of argument), दैत्येभ्यो हरि: अलम् (Hari is a match for demons — here + Caturthī). ②इव (like/as) + 'identical' function: मुखं चन्द्रम् इव अस्ति (face is like moon). ③खलु/हि (certainly) — emphatic particles requiring no case. ④विना (without) takes Tṛtīyā/Dvitīyā/Pañcamī (three case options). ⑤यत्-तत् correlative: यत् वदामि, तत् शृणु (what I say, hear that).",example:"विवादेन अलम् / हरिम् विना सुखं नास्ति / मुखं चन्द्रम् इव / रामेण सह लक्ष्मण: गच्छति",cat:"rule",sutra:"2.3.32"},
+      {term:"वाक्य में रूपान्तरण (Sentence Transformation)",meaning:"Sanskrit's case system allows sentence restructuring without meaning change. Key transformations: ①Active → Passive: Kartā shifts to Tṛtīyā, Karma becomes Prathamā, verb takes 3rd person. Example: बालक: फलं खादति → बालकेन फलं खाद्यते. ②Gender/Number change: all agreeing words (pronouns, adjectives, verb-number) must shift together. ③Voice shift (Parasmai→Ātmane): changes the implied beneficiary. The Vibhakti system makes all these transformations systematic.",example:"Active: स: पठति → Passive: तेन पठ्यते · Pronoun shift: स:→सा (masculine→feminine), verb stays 3rd sg · Number: बालक: गच्छति → बालकौ गच्छतः",cat:"process",sutra:"3.1.67"},
+    ],
+    quiz:[
+      {q:"In Sanskrit sentence formation, the minimum required elements are:",opts:["Subject only","Subject (Prathamā) + Verb (Tinanta) — object is optional for intransitive roots","Subject + Object + Adjective + Adverb","Object + Verb only"],ans:1,exp:"A complete Sanskrit sentence needs Kartā in Prathamā + Kriyā (Tinanta verb). Karma (Dvitīyā object) is required only for transitive roots. 'स: गच्छति' (he goes) is complete — intransitive, no object needed."},
+      {q:"'रामेण' uses which Vibhakti, indicating which Kāraka?",opts:["Prathamā — Kartā (subject)","Tṛtīyā — Karaṇa (instrument/agent)","Dvitīyā — Karma (object)","Saptamī — location"],ans:1,exp:"रामेण = Tṛtīyā Vibhakti of राम (masculine a-ending). Tṛtīyā marks Karaṇa (instrument) or — in passive constructions — the Kartā who performs the action."},
+      {q:"√गम् + उत् (prefix) gives:",opts:["निगच्छति (enters)","उद्गच्छति (arises/emerges)","आगच्छति (comes)","अपगच्छति (goes away)"],ans:1,exp:"उत् + √गम् = उद्गम् → उद्गच्छति (arises, emerges). Each of the 22 Upasargas completely reorients the root's direction or meaning."},
+      {q:"'बालकेन फलं खाद्यते' is the passive form of:",opts:["फलं बालकं खादति","बालक: फलं खादति","फलम् खादति","बालका: खादन्ति"],ans:1,exp:"Active: बालक: (Prathamā/Kartā) फलं (Dvitīyā/Karma) खादति → Passive: बालकेन (Tṛtīyā — former Kartā) फलं (now Prathamā) खाद्यते (passive 3rd sg Tiṅ)."},
+      {q:"'ग्रामत:' means:",opts:["In the village","To the village","From the village / from the direction of the village","Of the village"],ans:2,exp:"Place/direction name + 'त:' suffix = ablative/directional sense. ग्रामत: = from the village. This is the Pañcamī-equivalent construction. काशीत: = from Kāśī; उत्तरत: = from the north."},
+    ],
+    vedic:[
+      {dev:"गुरुर्ब्रह्मा गुरुर्विष्णुः गुरुर्देवो महेश्वरः । गुरुः साक्षात् परब्रह्म तस्मै श्रीगुरवे नमः ॥",roman:"gurur brahmā gurur viṣṇuḥ gurur devo maheśvaraḥ · guruḥ sākṣāt parabrahma tasmai śrī gurave namaḥ",trans:"The Guru is Brahmā; the Guru is Viṣṇu; the Guru is Maheśvara. The Guru is directly the supreme Brahman. Salutation to that revered Guru.",source:"Guru Stotra — recited before every Sanskrit lesson",rel:"Complete Kāraka demonstration (Ch.12): गुरुः (Prathamā/Kartā — repeated 4× as subject), ब्रह्मा/विष्णुः/महेश्वरः (Prathamā predicates), तस्मै (Caturthī sg — to that one), गुरवे (Caturthī sg — to the Guru). नमः = Avyaya (Ch.10). Prathamā for the equation (Guru IS Brahma) and Caturthī for the offering (salutation TO the Guru) — Ch.12's Kāraka system distinguishing equation from dedication. Recited before every Sanskrit class, this verse IS a Ch.12 grammar lesson."},
+      {dev:"रामः वनं गच्छति सीतया लक्ष्मणेन च ।",roman:"rāmaḥ vanaṃ gacchati sītayā lakṣmaṇena ca",trans:"Rāma goes to the forest with Sītā and Lakṣmaṇa.",source:"Vālmīki Rāmāyaṇa — the exile narrative",rel:"Complete SOV sentence (Ch.12): रामः(Prathamā/Kartā Ch.9), वनम्(Dvitīयā/Karma — destination Ch.9), गच्छति(Laṭ 3rd sg — verb Ch.11), सीतया(Tṛtीयā sg — with Sītā, Saha-Tṛtīयā Ch.12), लक्ष्मणेन(Tṛtीयā sg — with Lakṣmaṇa Ch.12), च(Avyaya Ch.10). Five Vibhaktis in one sentence. The central narrative event of the Rāmāyaṇa — Rāma's exile — is a perfect Ch.12 sentence: Kartā + Karma + Karaṇa/Saha + Kriyā."},
+      {dev:"धर्मक्षेत्रे कुरुक्षेत्रे समवेता युयुत्सवः — किमकुर्वत ।",roman:"dharmakṣetre kurukṣetre savetā yuyutsavaḥ — kim akurvata",trans:"In the field of Dharma, in Kurukṣetra, assembled desirous of battle — what did they do?",source:"Bhagavad Gītā 1.1 — the Mahābhārata's philosophical opening",rel:"धर्मक्षेत्रे(Saptamī sg — in the field, location Ch.12 Adhikaraṇa), कुरुक्षेत्रे(Saptamī sg — second location), युयुत्सवः(Prathamā pl — subject Ch.9), अकुर्वत(Laṅ 3rd pl Ātmanepada Ch.11). Three Ch.12 Kārakas: Adhikaraṇa(Saptamī — where?), Kartā(Prathamā — who?), Karma(kim — what?). Dhṛtarāṣṭra's question — opening the Mahābhārata — is structured exactly as Ch.12 teaches: Location + Subject + Action-Object + Verb."},
+      {dev:"माता पुत्रं पालयति — पिता पुत्राय धनं ददाति ।",roman:"mātā putraṃ pālayati — pitā putrāya dhanaṃ dadāti",trans:"The mother nurtures her son — the father gives wealth to his son.",source:"Sanskrit pedagogical sentences — Śīghrabodha-vyākaraṇam tradition",rel:"First: माता(Prathamā/Kartā), पुत्रम्(Dvitīयā/Karma), पालयति(Laṭ 3rd sg — causative Ch.3). Second: पिता(Prathamā/Kartā), पुत्राय(Caturthī/Sampradāna — for the son Ch.12), धनम्(Dvitīयā/Karma), ददाति(Laṭ Ch.11). Same noun 'putra' in Dvitīयā (direct object) vs Caturthī (recipient) — Ch.12's Kāraka system distinguishes these with different Vibhaktis."},
+      {dev:"गुरोः आज्ञया विद्यालयात् ग्रामं गत्वा शिष्यः राज्ञे पुस्तकं दत्तवान् ।",roman:"guroḥ ājñayā vidyālayāt grāmaṃ gatvā śiṣyaḥ rājñe pustakaṃ dattavān",trans:"By the Guru's command, having gone from the school to the village, the student gave the book to the king.",source:"Sanskrit pedagogical sentence — all seven Kārakas in one",rel:"All 7 Kārakas (Ch.12): गुरोः(Ṣaṣṭhī — possession), आज्ञया(Tṛtीयā — instrument), विद्यालयात्(Pañcamī — source), ग्रामम्(Dvitīयā — goal), शिष्यः(Prathamā — agent), राज्ञे(Caturthī — recipient), पुस्तकम्(Dvitīयā — object). गत्वा(Avyaya Kṛt Ch.3+Ch.10). One Sanskrit sentence demonstrating ALL seven Kārakas — a pedagogical masterpiece in a logical narrative sequence mirroring actual human action."},
+      {dev:"यतो धर्मः ततो जयः ।",roman:"yato dharmaḥ tato jayaḥ",trans:"Where there is dharma, there is victory.",source:"Mahābhārata — final philosophical message",rel:"यतः = Pañcamī/ablative Avyaya (from where, Ch.10+Ch.12). ततः = Pañcamī/ablative Avyaya (from there, Ch.10). धर्मः(Prathamā sg — subject). जयः(Prathamā sg — subject). The Mahābhārata's philosophical conclusion in four words: two Avyayas (yataḥ/tataḥ — correlative pair Ch.10) connecting two Prathamā nouns (Ch.9) in a correlative sentence. The yat-tat construction (wherever...there) is Ch.12's key sentence pattern — and the Mahābhārata uses it as its final word on a 100,000-verse epic."},
+      {dev:"न चोरहार्यं न च राजहार्यं न भ्रातृभाज्यं न च भारकारि । व्यये कृते वर्धत एव नित्यं विद्याधनं सर्वधनप्रधानम् ॥",roman:"na corahāryaṃ na ca rājahāryaṃ na bhrātṛbhājyaṃ na ca bhārakāri · vyaye kṛte vardhata eva nityaṃ vidyādhanaṃ sarvadhanaprādhānam",trans:"It cannot be stolen, seized, divided, or burdened. When spent, it only grows — the wealth of knowledge is the greatest of all wealths.",source:"Subhāṣita — traditional Sanskrit wisdom verse on knowledge",rel:"व्यये कृते = Saptamī absolute (when spent — locative absolute construction, Ch.12). वर्धते = √वृध् + Laṭ + Ātmanepada 3rd sg (grows, for itself Ch.11). एव = Avyaya (only, Ch.10). विद्याधनम् = Prathamā sg neuter compound (Ch.9). This beloved verse on education uses ALL systems: Ch.9 Śabdarūpa, Ch.10 Viśeṣaṇa+Avyaya, Ch.11 Laṭ, Ch.12 Saptamī absolute — all twelve chapters of this curriculum in one celebrated subhāṣita."},
+      {dev:"यद् यद् विभूतिमत् सत्त्वं श्रीमदूर्जितमेव वा । तत् तद् एवावगच्छ त्वं मम तेजोंऽशसम्भवम् ॥",roman:"yad yad vibhūtimat sattvaṃ śrīmad ūrjitam eva vā · tat tad evāvagaccha tvaṃ mama tejāṃśasambhavam",trans:"Whatever being is glorious, prosperous, or powerful — know that every such being has its origin in a fraction of my splendour.",source:"Bhagavad Gītā 10.41 — Kṛṣṇa's summary of divine manifestations",rel:"यद् यद्...तत् तद् = Yat-Tat correlative (Ch.12 — the most powerful correlative construction in Sanskrit). अवगच्छ = अव+√गम् + Loṭ 2nd sg (know! Ch.11+Ch.8 Upasarga). त्वम्(Prathamā Ch.9), मम(Ṣaṣṭhī — my Ch.9). The Gītā's grand declaration of divine immanence uses the yad-tad correlative (Ch.12), vat-stem adjectives (Ch.9), Loṭ imperative (Ch.11), Ṣaṣṭhī possessive (Ch.9), and Upasarga (Ch.8 'ava') — ALL twelve chapters in Kṛṣṇa's most expansive utterance."},
+    ],
+,
+    levels:{
+      easy:[
+        {q:"A complete Sanskrit sentence minimally requires:",opts:["Only a noun","Subject (Prathamā) + Verb (Tinanta)","Three nouns","An adjective"],ans:1,exp:"Kartā in Prathamā + Kriyā (Tinanta). 'स: गच्छति' is complete."},
+        {q:"'रामाय' indicates which Kāraka?",opts:["Instrument (Tṛtīyā)","Location (Saptamī)","Purpose/Recipient (Caturthī — for Rāma)","Source (Pañcamī)"],ans:2,exp:"Caturthī Vibhakti = Sampradāna Kāraka (recipient/purpose). रामाय = for Rāma."},
+        {q:"In a passive sentence, the original subject (Kartā) takes:",opts:["Prathamā (stays subject)","Tṛtīyā (becomes instrument)","Dvitīyā (becomes object)","Saptamī (becomes location)"],ans:1,exp:"In passive constructions (Karmani Prayoga), the original active subject shifts to Tṛtīyā (instrument case): बालक: → बालकेन."},
+      ],
+      medium:[
+        {q:"'आगच्छति' vs 'गच्छति' — what does the prefix आ add?",opts:["Direction reversal: coming toward vs going away","It makes the verb past tense","It adds plural meaning","It makes it imperative"],ans:0,exp:"आ + √गम् = आगम् → आगच्छति (comes, moves toward). The prefix आ reverses direction — from going-away to coming-toward. Upasargas are meaning-transformers (Ch.8/Ch.12)."},
+        {q:"'माता पुत्रं पालयति' — the verb पालयति suggests:",opts:["Simple action","A causative/Ṇic Sanādi form — 'causes to protect/nurtures'","A future form","A passive form"],ans:1,exp:"पालयति = √पाल् or √पा + णिच् (Ch.3 Sanādi/causative). The 'ay' infix (from णिच्) marks causative meaning — a key feature of Sanādi class (Ch.3)."},
+      ],
+      hard:[
+        {q:"Why can 'बालक: फलं खादति' and 'फलं बालक: खादति' mean exactly the same thing?",opts:["Sanskrit is a free language","The Vibhakti system unambiguously marks grammatical roles regardless of position: Prathamā always = subject, Dvitīyā always = object — word order carries no grammatical information","Verbs determine meaning","Adjectives change meaning"],ans:1,exp:"This is the deepest insight of Ch.12: Sanskrit's Kāraka-Vibhakti system makes word-order informationally redundant. The cases carry all relational meaning. This is why Sanskrit poetry could freely rearrange words for metre without changing meaning — a direct consequence of the Paninian case system."},
+      ],
+    },
+  }
 ];
 
 /* ── UTILITIES ──────────────────────────────────────────────────────── */

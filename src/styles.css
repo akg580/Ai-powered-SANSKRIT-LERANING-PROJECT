@@ -41,14 +41,18 @@
   --indigo-lt:     rgba(67,56,202,0.09);
 
   /* Chapter accent palette */
-  --ch-1: #0D9488;
-  --ch-2: #2563EB;
-  --ch-3: #7C3AED;
-  --ch-4: #E11D48;
-  --ch-5: #D97706;
-  --ch-6: #8B5CF6;
-  --ch-7: #0891B2;
-  --ch-8: #DB2777;
+  --ch-1:  #0D9488;
+  --ch-2:  #2563EB;
+  --ch-3:  #7C3AED;
+  --ch-4:  #E11D48;
+  --ch-5:  #D97706;
+  --ch-6:  #8B5CF6;
+  --ch-7:  #0891B2;
+  --ch-8:  #DB2777;
+  --ch-9:  #059669;
+  --ch-10: #B45309;
+  --ch-11: #1D4ED8;
+  --ch-12: #6D28D9;
 
   /* Text hierarchy */
   --text-primary:   #1A1209;
@@ -149,14 +153,18 @@
   --indigo:        #818CF8;
   --indigo-lt:     rgba(129,140,248,0.12);
 
-  --ch-1: #14B8A6;
-  --ch-2: #60A5FA;
-  --ch-3: #A78BFA;
-  --ch-4: #FB7185;
-  --ch-5: #FBBF24;
-  --ch-6: #C084FC;
-  --ch-7: #22D3EE;
-  --ch-8: #F472B6;
+  --ch-1:  #14B8A6;
+  --ch-2:  #60A5FA;
+  --ch-3:  #A78BFA;
+  --ch-4:  #FB7185;
+  --ch-5:  #FBBF24;
+  --ch-6:  #C084FC;
+  --ch-7:  #22D3EE;
+  --ch-8:  #F472B6;
+  --ch-9:  #34D399;
+  --ch-10: #FCD34D;
+  --ch-11: #93C5FD;
+  --ch-12: #C4B5FD;
 
   --text-primary:   #F0EDE6;
   --text-secondary: #C4BEB4;
