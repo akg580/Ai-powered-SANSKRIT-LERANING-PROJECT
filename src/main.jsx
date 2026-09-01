@@ -1,13 +1,10 @@
-// src/main.jsx — Devavāṇī v4.1
+// src/main.jsx — Devavāṇī v5.0
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import App, { CHAPTERS } from "./App.jsx";
 import { AuthProvider }     from "./contexts/AuthContext.jsx";
 import { ProgressProvider } from "./contexts/ProgressContext.jsx";
 import { CMSProvider }      from "./contexts/CMSContext.jsx";
-
-// Import the bundled chapter data so CMSProvider can seed from it
-import { CHAPTERS } from "./App.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

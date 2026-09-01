@@ -2,7 +2,7 @@
 // Content Management: chapters, concepts, quiz questions, vedic texts
 // Admin/Editor: add · edit · delete · reorder
 // Learners: read-only from Firestore, falls back to bundled CHAPTERS
-import { createContext, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { collection, deleteDoc, doc, onSnapshot, serverTimestamp, setDoc, updateDoc, writeBatch } from "firebase/firestore";
 import { db, isE2EAuthMode } from "../firebase/runtimeConfig";
 import { useAuth } from "./AuthContext";
@@ -80,7 +80,11 @@ export function CMSProvider({ children, defaultChapters = [] }) {
 
   // ── Real-time listener ───────────────────────────────────────────────────
   useEffect(() => {
-    if (isE2EAuthMode) { setCmsLoaded(true); return; }
+    if (isE2EAuthMode || !user) {
+      setChapters(defaultChapters);
+      setCmsLoaded(true);
+      return;
+    }
 
     const unsub = onSnapshot(
       chaptersCol(),
@@ -97,13 +101,13 @@ export function CMSProvider({ children, defaultChapters = [] }) {
         setCmsLoaded(true);
       },
       err => {
-        console.error("CMS load error:", err);
+        console.warn("CMS read unavailable; using bundled curriculum.", err?.code || err?.message || err);
         setChapters(defaultChapters);
         setCmsLoaded(true);
       }
     );
     return unsub;
-  }, []);
+  }, [defaultChapters, user]);
 
   // ── Seed Firestore from bundled data (admin only, once) ──────────────────
   const seedFromDefault = useCallback(async () => {
@@ -111,10 +115,6 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     setSaving(true);
     setCmsError("");
     try {
-      if (isE2EAuthMode) {
-        setChapters(defaultChapters);
-        return;
-      }
       const batch = writeBatch(db);
       for (const ch of defaultChapters) {
         const data = sanitizeChapter({ ...ch, updatedBy: user?.email || "" });
@@ -132,17 +132,6 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     if (!canWrite) throw new Error("Not authorised.");
     setSaving(true); setCmsError("");
     try {
-      if (isE2EAuthMode) {
-        setChapters(prev => {
-          const next = { ...ch, id: Number(ch.id) };
-          const exists = prev.some(item => Number(item.id) === Number(next.id));
-          const updated = exists
-            ? prev.map(item => Number(item.id) === Number(next.id) ? next : item)
-            : [...prev, next];
-          return updated.sort((a, b) => Number(a.id) - Number(b.id));
-        });
-        return;
-      }
       const data = sanitizeChapter({ ...ch, updatedBy: user?.email || "" });
       await setDoc(chapterRef(ch.id), data);
     } catch (e) { setCmsError(e.message); throw e; }
@@ -153,13 +142,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
   const deleteChapter = useCallback(async (chapterId) => {
     if (userProfile?.role !== "admin") throw new Error("Admin only.");
     setSaving(true); setCmsError("");
-    try {
-      if (isE2EAuthMode) {
-        setChapters(prev => prev.filter(ch => Number(ch.id) !== Number(chapterId)));
-        return;
-      }
-      await deleteDoc(chapterRef(chapterId));
-    }
+    try { await deleteDoc(chapterRef(chapterId)); }
     catch (e) { setCmsError(e.message); throw e; }
     finally { setSaving(false); }
   }, [userProfile]);
@@ -169,12 +152,6 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     if (!canWrite) throw new Error("Not authorised.");
     setSaving(true); setCmsError("");
     try {
-      if (isE2EAuthMode) {
-        setChapters(prev => prev.map(ch => (
-          Number(ch.id) === Number(chapterId) ? { ...ch, ...patch } : ch
-        )));
-        return;
-      }
       await updateDoc(chapterRef(chapterId), {
         ...patch,
         updatedAt: serverTimestamp(),
