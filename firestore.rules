@@ -1,21 +1,31 @@
-// firestore.rules
-// Deploy with: firebase deploy --only firestore:rules
-// Or paste this in Firebase Console → Firestore → Rules tab
-
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    function signedIn() { return request.auth != null; }
+    function owns(uid) { return signedIn() && request.auth.uid == uid; }
+    function role() { return get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role; }
+    function admin() { return signedIn() && role() == 'admin'; }
+    function editor() { return signedIn() && role() in ['admin', 'editor']; }
+    function validRole() { return request.resource.data.role in ['learner', 'editor', 'admin']; }
 
-    // Users can only read/write their OWN document
-    match /users/{userId} {
-      allow read, write: if request.auth != null
-                         && request.auth.uid == userId;
-
-      // Progress sub-collection
+    match /users/{uid} {
+      allow read: if owns(uid) || admin();
+      allow create: if owns(uid) && request.resource.data.uid == uid
+                    && request.resource.data.role == 'learner';
+      // Owners cannot rewrite role or identity; admins can only change roles.
+      allow update: if (owns(uid) && request.resource.data.diff(resource.data).affectedKeys()
+        .hasOnly(['displayName', 'avatarColor', 'bio', 'learningGoal', 'preferredScript',
+                  'dailyTarget', 'updatedAt', 'lastLoginAt']))
+        || (admin() && validRole() && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['role', 'updatedAt']));
       match /progress/{document} {
-        allow read, write: if request.auth != null
-                           && request.auth.uid == userId;
+        allow read, write: if owns(uid);
       }
+    }
+    match /cms_chapters/{chapterId} {
+      allow read: if signedIn();
+      allow create, update: if editor();
+      allow delete: if admin();
     }
   }
 }

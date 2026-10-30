@@ -5,8 +5,8 @@ import { useAuth } from "../contexts/AuthContext";
 import { useProgress } from "../contexts/ProgressContext";
 
 export function ProfileScreen({chapters}){
-  const {user,userProfile,updateUserProfile,signOut}=useAuth();
-  const {scores,completed,totalXP,streak,syncing,resetProgress}=useProgress();
+  const {user,userProfile,updateUserProfile,logout}=useAuth();
+  const {scores,completed,totalXP,streak,syncing,resetProgress,exportProgress}=useProgress();
   const [form,setForm]=useState({displayName:"",bio:"",learningGoal:"",preferredScript:"Devanagari + Roman",dailyTarget:20,avatarColor:"#C8860A"});
   const [saving,setSaving]=useState(false);
   const [msg,setMsg]=useState("");
@@ -83,9 +83,9 @@ export function ProfileScreen({chapters}){
             <div className="section-box">
               <div className="section-header"><span style={{fontSize:14,fontWeight:700}}>Account Actions</span></div>
               <div style={{display:"flex",flexDirection:"column",gap:7}}>
-                <button className="btn btn-ghost btn-w" onClick={()=>{const d={profile:userProfile,at:new Date().toISOString()};navigator.clipboard?.writeText(JSON.stringify(d,null,2));setMsg("Copied ✓");}}>📋 Export My Data</button>
+                <button className="btn btn-ghost btn-w" onClick={()=>{const d={profile:userProfile,progress:exportProgress(),at:new Date().toISOString()};navigator.clipboard?.writeText(JSON.stringify(d,null,2));setMsg("Copied ✓");}}>📋 Export My Data</button>
                 <button className="btn btn-ghost btn-w" onClick={()=>{if(window.confirm("Reset all progress? Cannot be undone.")){resetProgress?.();setMsg("Progress reset.");}}}>🔄 Reset Progress</button>
-                <button className="btn btn-ghost btn-w" style={{color:"var(--saffron)",borderColor:"rgba(214,65,10,0.25)"}} onClick={()=>signOut?.()}>🚪 Sign Out</button>
+                <button className="btn btn-ghost btn-w" style={{color:"var(--saffron)",borderColor:"rgba(214,65,10,0.25)"}} onClick={()=>logout()}>🚪 Sign Out</button>
               </div>
             </div>
           </div>

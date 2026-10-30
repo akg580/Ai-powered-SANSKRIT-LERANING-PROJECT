@@ -46,6 +46,9 @@ export function ProgressProvider({ children }) {
   const pendingRef = useRef(null);
 
   useEffect(() => {
+    pendingRef.current = null;
+    if (saveTimer.current) clearTimeout(saveTimer.current);
+    setSyncing(false);
     if (!user) {
       setScores({});
       setCompleted(new Set());
@@ -91,12 +94,12 @@ export function ProgressProvider({ children }) {
       }
     );
 
-    return unsub;
-  }, [user]);
+    return () => { unsub(); if (saveTimer.current) clearTimeout(saveTimer.current); };
+  }, [user?.uid]);
 
   const scheduleSave = useCallback((data) => {
     if (!user) return;
-    pendingRef.current = data;
+    pendingRef.current = { ...pendingRef.current, ...data };
 
     if (isE2EAuthMode) {
       setSyncing(false);
@@ -141,6 +144,8 @@ export function ProgressProvider({ children }) {
   }
 
   function recordScore(chapterId, score, total) {
+    if (!Number.isFinite(total) || total <= 0) return 0;
+    score = Math.max(0, Math.min(total, Number(score) || 0));
     const newScores = {
       ...scores,
       [chapterId]: Math.max(scores[chapterId] || 0, score),
@@ -183,6 +188,7 @@ export function ProgressProvider({ children }) {
   }
 
   function resetProgress() {
+    localStorage.removeItem(lastStudyKey(user?.uid));
     setScores({});
     setCompleted(new Set());
     setTotalXP(0);

@@ -13,11 +13,14 @@ export function QuizView({chapter,onScore}){
 
   function choose(i){ if(answered)return; setSel(i); setAnswered(true); if(i===cur.ans)setScore(s=>s+1); }
   function next(){
-    const ns=score+(sel===cur.ans?1:0);
+    if (!answered || done) return;
+    const ns=score;
     if(qi+1>=questions.length){setDone(true);onScore?.(ns,questions.length);}
     else{setQi(q=>q+1);setSel(null);setAnswered(false);}
   }
   function reset(){setQi(0);setSel(null);setAnswered(false);setScore(0);setDone(false);}
+
+  if(!questions.length) return <p>No quiz questions available yet.</p>;
 
   if(done){
     const pct=Math.round((score/questions.length)*100);

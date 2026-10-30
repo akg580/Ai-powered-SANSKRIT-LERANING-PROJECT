@@ -16,8 +16,9 @@ export function LevelTest({chapter,onXP,levelBadges,onBadge}){
 
   function choose(i){if(answered)return;setSel(i);setAnswered(true);if(i===cur.ans)setScore(s=>s+1);}
   function next(){
-    const ns=score+(sel===cur.ans?1:0);
-    if(qi+1>=questions.length){setDone(true);onXP?.(ns*xpMap[level]);onBadge?.(chapter.id,level);}
+    if (!answered || done) return;
+    const ns=score;
+    if(qi+1>=questions.length){setDone(true);onXP?.(ns*xpMap[level]);if(ns/questions.length>=0.8) onBadge?.(chapter.id,level);}
     else{setQi(q=>q+1);setSel(null);setAnswered(false);}
   }
   function reset(){setLevel(null);setQi(0);setSel(null);setAnswered(false);setScore(0);setDone(false);}
@@ -36,9 +37,9 @@ export function LevelTest({chapter,onXP,levelBadges,onBadge}){
         </div>
         <div className="level-grid">
           {lvls.map(l=>{
-            const earned=levelBadges?.[chapter.id]?.includes(l.id);
+            const earned=Boolean(levelBadges?.[chapter.id]?.[l.id]);
             return(
-              <button key={l.id} className={`level-card${earned?" earned":""}`}
+              <button key={l.id} disabled={!l.q} className={`level-card${earned?" earned":""}`}
                 style={{"--accent-color":`${l.color}14`}}
                 onClick={()=>l.q>0&&setLevel(l.id)}>
                 <div className="level-icon">{earned?"🥇":l.icon}</div>
@@ -61,7 +62,7 @@ export function LevelTest({chapter,onXP,levelBadges,onBadge}){
           <div style={{fontSize:10,color:"var(--text-muted)",letterSpacing:"0.08em",textTransform:"uppercase"}}>XP Earned</div>
         </div>
         <h3 style={{fontFamily:"var(--font-display)",fontSize:22,marginBottom:8}}>
-          🥇 {level.charAt(0).toUpperCase()+level.slice(1)} Badge!
+          {score/questions.length>=0.8 ? `🥇 ${level} Badge!` : "Keep practicing — 80% earns a badge"}
         </h3>
         <p style={{fontSize:13,color:"var(--text-muted)",marginBottom:20}}>{score}/{questions.length} correct</p>
         <button className="btn btn-ghost btn-sm" onClick={reset}>Try another level</button>

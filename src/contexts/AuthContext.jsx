@@ -1,6 +1,6 @@
 // src/contexts/AuthContext.jsx — Devavāṇī v4.1
 // Role-based auth: admin | editor | learner
-// Admin email is seeded from VITE_ADMIN_EMAIL env var (first signup auto-gets admin)
+// Roles are assigned through trusted Firestore administration, never client email lists.
 import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
@@ -33,13 +33,6 @@ export const ROLES = {
   LEARNER: "learner",
 };
 
-// Admin email(s) — set in .env as VITE_ADMIN_EMAILS=a@b.com,c@d.com
-// These emails automatically receive admin role on first signup/login
-const ADMIN_EMAILS = (import.meta.env.VITE_ADMIN_EMAILS || "")
-  .split(",")
-  .map(e => e.trim().toLowerCase())
-  .filter(Boolean);
-
 export function useAuth() { return useContext(AuthContext); }
 
 // ── Role helpers ─────────────────────────────────────────────────────────────
@@ -51,12 +44,6 @@ export function canManageUsers(profile)   { return isAdmin(profile); }
 function pickColor(uid) {
   const colors = ["#B8860B","#4A7C59","#C8503A","#3B6B9A","#7B4F8A","#2A7F7F","#C8703A","#9B4A6A"];
   return colors[uid.charCodeAt(0) % colors.length];
-}
-
-function resolveRole(email) {
-  const e = (email || "").toLowerCase().trim();
-  if (ADMIN_EMAILS.includes(e)) return ROLES.ADMIN;
-  return ROLES.LEARNER;
 }
 
 function assertFirebaseConfigured() {
@@ -79,7 +66,7 @@ function readLocalProfile(uid) {
 }
 
 function defaultProfile(firebaseUser, roleOverride) {
-  const role = roleOverride || resolveRole(firebaseUser.email);
+  const role = roleOverride || ROLES.LEARNER;
   return {
     uid: firebaseUser.uid,
     email: firebaseUser.email?.toLowerCase() || "",
@@ -107,8 +94,8 @@ export function AuthProvider({ children }) {
 
   // ── Sync profile from Firestore ─────────────────────────────────────────
   async function syncUserProfile(firebaseUser) {
-    const roleFromEmail = resolveRole(firebaseUser.email);
-    const fallback = defaultProfile(firebaseUser, roleFromEmail);
+    const initialRole = ROLES.LEARNER;
+    const fallback = defaultProfile(firebaseUser, initialRole);
     setUserProfile(fallback);
 
     try {
@@ -117,16 +104,16 @@ export function AuthProvider({ children }) {
 
       if (snap.exists()) {
         const stored = snap.data();
-        // Promote to admin if email matches VITE_ADMIN_EMAILS
-        const effectiveRole = roleFromEmail === ROLES.ADMIN ? ROLES.ADMIN : (stored.role || ROLES.LEARNER);
+        // Read the server-controlled role; login never promotes an account.
+        const effectiveRole = Object.values(ROLES).includes(stored.role) ? stored.role : ROLES.LEARNER;
         const merged = { ...fallback, ...stored, role: effectiveRole };
-        await setDoc(ref, { lastLoginAt: serverTimestamp(), role: effectiveRole }, { merge: true });
+        await setDoc(ref, { lastLoginAt: serverTimestamp() }, { merge: true });
         setUserProfile(merged);
       } else {
         // First-time user
         const data = { ...fallback, createdAt: serverTimestamp(), lastLoginAt: serverTimestamp() };
         await setDoc(ref, data);
-        setUserProfile({ ...fallback, role: roleFromEmail });
+        setUserProfile({ ...fallback, role: initialRole });
       }
     } catch (err) {
       console.error("Profile sync failed:", err);
@@ -194,6 +181,7 @@ export function AuthProvider({ children }) {
   async function setUserRole(targetUid, newRole) {
     if (!isAdmin(userProfile)) throw new Error("Not authorized — admin only.");
     if (!Object.values(ROLES).includes(newRole)) throw new Error(`Invalid role: ${newRole}`);
+    if (isE2EAuthMode) throw new Error("Role management requires a connected Firebase project.");
     const ref = doc(db, "users", targetUid);
     await updateDoc(ref, { role: newRole, updatedAt: serverTimestamp() });
   }
@@ -215,9 +203,9 @@ export function AuthProvider({ children }) {
       ...safeUpdates,
       updatedAt: isE2EAuthMode ? new Date().toISOString() : serverTimestamp(),
     };
-    setUserProfile(nextProfile);
 
     if (isE2EAuthMode) {
+      setUserProfile(nextProfile);
       localStorage.setItem(E2E_PROFILE_KEY, JSON.stringify(nextProfile));
       setUser(u => u ? { ...u, displayName: safeUpdates.displayName } : u);
       return nextProfile;
@@ -226,7 +214,8 @@ export function AuthProvider({ children }) {
     assertFirebaseConfigured();
     if (auth.currentUser?.displayName !== safeUpdates.displayName)
       await updateProfile(auth.currentUser, { displayName: safeUpdates.displayName });
-    await setDoc(doc(db, "users", user.uid), nextProfile, { merge: true });
+    await updateDoc(doc(db, "users", user.uid), { ...safeUpdates, updatedAt: serverTimestamp() });
+    setUserProfile(nextProfile);
     return nextProfile;
   }
 

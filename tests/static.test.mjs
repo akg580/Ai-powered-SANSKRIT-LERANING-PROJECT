@@ -21,7 +21,7 @@ function assert(condition, message) {
 
 const packageJson = JSON.parse(read("package.json"));
 const gitignore = read(".gitignore");
-const app = read("src/App.jsx");
+const app = read("src/data/chapters.js");
 const authContext = read("src/contexts/AuthContext.jsx");
 const progressContext = read("src/contexts/ProgressContext.jsx");
 const runtimeConfig = read("src/firebase/runtimeConfig.js");
@@ -53,14 +53,23 @@ test("lesson data includes aligned chapter 1 and chapter 2 content", () => {
 });
 
 test("chapter learning actions are present", () => {
-  for (const label of ["Open & Learn", "View Cards", "Practice Fast", "Earn Mastery"]) {
-    assert(app.includes(label), `missing learning action: ${label}`);
+  for (const label of ["Learn", "Flashcards", "Quiz", "Mastery"]) {
+    assert(read("src/screens/ChapterDetail.jsx").includes(label), `missing learning action: ${label}`);
   }
 });
 
 test("git no longer tracks local Firebase config", () => {
   const output = execFileSync("git", ["ls-files", "src/firebase/config.js"], { encoding: "utf8" }).trim();
   assert(output === "", "src/firebase/config.js is still tracked by git");
+});
+
+test("curriculum has no empty chapters and question answers are valid", () => {
+  const chapters = JSON.parse(execFileSync(process.execPath, ["--input-type=module", "-e", "import { CHAPTERS } from './src/data/chapters.js'; console.log(JSON.stringify(CHAPTERS))"], {encoding:"utf8"}));
+  assert(chapters.every(ch => ch && ch.id && ch.title), "Empty chapter entry");
+  assert(new Set(chapters.map(ch => ch.id)).size === chapters.length, "Duplicate chapter IDs");
+  for (const ch of chapters) for (const q of [...ch.quiz, ...Object.values(ch.levels || {}).flat()]) {
+    assert(Number.isInteger(q.ans) && q.ans >= 0 && q.ans < q.opts.length, `Invalid answer in ${ch.title}`);
+  }
 });
 
 if (failures.length) {

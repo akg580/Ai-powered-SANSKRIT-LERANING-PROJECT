@@ -11,7 +11,7 @@ export function GlossaryScreen({chapters,onOpen}){
   const cats=[...new Set(all.map(t=>t.cat))].sort();
   const filtered=all.filter(t=>{
     const mC=catF==="all"||t.cat===catF;
-    const mQ=!q||t.term.toLowerCase().includes(q.toLowerCase())||t.meaning.toLowerCase().includes(q.toLowerCase());
+    const mQ=!q||t.term.toLowerCase().includes(q.toLowerCase())||t.meaning.toLowerCase().includes(q.toLowerCase())||(t.sutra||" ").toLowerCase().includes(q.toLowerCase());
     return mC&&mQ;
   });
   return(

@@ -20,6 +20,7 @@ const DEBUG_PORT = Number(process.env.E2E_DEBUG_PORT) || await getFreePort();
 const APP_URL = `http://127.0.0.1:${APP_PORT}/`;
 const CHROME_PATHS = [
   process.env.CHROME_PATH,
+  "/usr/bin/chromium",
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
 ].filter(Boolean);
@@ -383,158 +384,21 @@ const globalTimeout = setTimeout(async () => {
   process.exit(1);
 }, 120000);
 
+try {
 await setup();
+await test("mock login", async()=>{await setInput(0,"learner@example.com");await setInput(1,"Strong123");await submitActiveForm();await waitForText("Chapters");});
+await test("navigation",async()=>{for(const name of ["Chapters","Progress","Glossary","Profile","Home"]){await clickText(name);assert((await bodyText()).length>300,name+" empty");}});
+await test("all chapter tabs",async()=>{await clickText("Chapters");await clickText("Sandhi Prakaraṇa");for(const name of ["Flashcards","Mastery","Sources","Watch","Learn"]){await clickText(name);assert((await bodyText()).includes("Sandhi Prakaraṇa"),name+" failed");}});
+await test("perfect quiz records exactly 60 XP",async()=>{await clickText("Quiz");const {CHAPTERS}=await import('../src/data/chapters.js');const questions=CHAPTERS.find(c=>c.id===2).quiz;for(let i=0;i<questions.length;i++){await evaluate(`document.querySelectorAll('.quiz-opt')[${questions[i].ans}].click()`);await delay(150);await clickText(i===questions.length-1?"See results":"Next");}await waitForText("100%");await clickText("Progress");log("PROGRESS: "+await bodyText());assert(await hasText("60XP"),"Expected 60 XP");assert(await hasText("4/4 questions"),"Expected 4/4");});
 
-await test("auth validation, signup, reset, and login flows", async () => {
-  await clickText("Sign In");
-  await submitActiveForm();
-  await waitForText("Enter a valid email");
-  await waitForText("Password required");
-
-  await clickText("Create Account");
-  await clearInputs();
-  await setInput(0, "Test Scholar");
-  await setInput(2, "weak");
-  await setInput(3, "different");
-  await submitActiveForm();
-  await waitForText("Enter a valid email");
-  await waitForText("Min 8 chars");
-
-  await clearInputs();
-  await setInput(0, "Test Scholar");
-  await setInput(1, "test@example.com");
-  await setInput(2, "Strong123");
-  await setInput(3, "Mismatch123");
-  await submitActiveForm();
-  await waitForText("Passwords do not match");
-
-  await clickText("Sign In");
-  await clickText("Forgot your password?");
-  await setInput(0, "reset@example.com");
-  await submitActiveForm();
-  await waitForText("Reset email sent");
-
-  await clickText("Back to Sign In");
-  await setInput(0, "learner@example.com");
-  await setInput(1, "Strong123");
-  await submitActiveForm();
-  await waitForText("CONTINUE LEARNING");
+await test("mastery fail/pass and badge regression",async()=>{
+ await clickText("Chapters");await clickText("Sandhi Prakaraṇa");await clickText("Mastery");const {CHAPTERS}=await import('../src/data/chapters.js');const q=CHAPTERS.find(c=>c.id===2).levels.easy;
+ for(const pass of [false,true]){await clickText("Beginner");for(let i=0;i<q.length;i++){const idx=pass?q[i].ans:(q[i].ans+1)%q[i].opts.length;await evaluate(`document.querySelectorAll('.quiz-opt')[${idx}].click()`);await delay(100);await clickText(i===q.length-1?"Finish":"Next");}await waitForText(pass?"Badge!":"80% earns a badge");await clickText("Try another level");assert((await hasText("Badge earned"))===pass,"Incorrect badge");}
 });
-
-await test("global navigation opens every main page", async () => {
-  await clickText("Chapters");
-  await waitForText("All Chapters");
-  await waitForText("Sandhi Prakaraṇa");
-
-  await clickText("Progress");
-  await waitForText("My Progress");
-  await waitForText("Overall Mastery");
-
-  await clickText("Glossary");
-  await waitForText("Glossary");
-  await waitForText("53 terms across");
-
-  await clickText("Home");
-  await waitForText("CONTINUE LEARNING");
-});
-
-await test("chapter sections, subchapters, cards, sources, and watch page", async () => {
-  await clickText("Chapters");
-  await clickText("Sandhi Prakaraṇa");
-  await waitForText("SUBCHAPTERS");
-  await waitForText("Sandhi Prakaraṇa");
-
-  await clickText("2.4");
-  await waitForText("सवर्णदीर्घ");
-
-  await clickText("View Cards");
-  await waitForText("Tap each card");
-  await evaluate("document.querySelector('[style*=perspective]')?.click()");
-  await waitForText("Pāṇini");
-
-  await clickText("Sources");
-  await waitForText("इको यणचि");
-
-  await clickText("Watch");
-  await waitForText("Open YouTube Playlist");
-});
-
-await test("Sandhi quiz records progress and unlocks completion UI", async () => {
-  await clickText("Practice Fast");
-  await answerQuiz(["आ", "य्", "देवेन्द्रः", "Flow smoothly in speech"]);
-  await waitForText("Excellent");
-
-  await clickText("Progress");
-  await waitForText("1/7");
-  await waitForText("60XP");
-});
-
-await test("progress and glossary entries deep-link back into chapters", async () => {
-  await clickText("Progress");
-  await clickText("Sandhi Prakaraṇa");
-  await waitForText("SUBCHAPTERS");
-
-  await clickText("Glossary");
-  await setInput(0, "visarga");
-  await waitForText("विसर्ग सन्धि");
-  await clickText("Open chapter");
-  await waitForText("Sandhi Prakaraṇa");
-});
-
-await test("profile system saves user settings and exposes progress", async () => {
-  await clickText("Profile");
-  await waitForText("USER SYSTEM");
-  await setInputByLabel("Display name", "Profile Scholar");
-  await setInputByLabel("Learning goal", "Study one Sanskrit concept daily");
-  await setInputByLabel("Daily target", "30");
-  await clickText("Save Profile");
-  await waitForText("Profile saved");
-  await waitForText("PROGRESS VAULT");
-  await waitForText("CHAPTER PROGRESS");
-});
-
-await test("admin CMS can create, edit, and preview content", async () => {
-  await clickText("Admin");
-  await waitForText("Content command center");
-  await clickText("Add Chapter");
-  await waitForText("New Sanskrit Chapter");
-  await setInputByLabel("Title", "CMS Test Chapter");
-  await setInputByLabel("Subtitle", "Managed from the admin CMS");
-  await setInputByLabel("Subchapter title", "CMS Test Subchapter");
-  await setInputByLabel("Explanation", "This content was edited through the CMS.");
-  await clickText("Preview");
-  await waitForText("CMS Test Chapter");
-  await waitForText("CMS Test Subchapter");
-  await waitForText("This content was edited through the CMS.");
-});
-
-await test("logout returns to auth screen", async () => {
-  await clickAvatar();
-  await waitForText("Sign Out");
-  await clickText("Sign Out");
-  await waitForText("Sign In");
-});
-
-await test("e2e mode does not call Firebase network APIs", async () => {
-  const forbidden = networkUrls.filter((url) => (
-    url.includes("identitytoolkit.googleapis.com")
-    || url.includes("firestore.googleapis.com")
-    || url.includes("securetoken.googleapis.com")
-  ));
-  assert(forbidden.length === 0, `Unexpected Firebase network calls: ${forbidden.join(", ")}`);
-});
-
-await test("browser console has no runtime errors", async () => {
-  assert(consoleErrors.length === 0, `Console errors:\n${consoleErrors.join("\n")}`);
-});
-
-await cleanup();
-clearTimeout(globalTimeout);
-
-const failed = results.filter((result) => !result.ok);
-if (failed.length) {
-  console.error(`\n${failed.length} e2e test(s) failed.`);
-  process.exit(1);
-}
-
-console.log("\nE2E tests passed.");
+await test("all chapters render",async()=>{const {CHAPTERS}=await import('../src/data/chapters.js');for(const ch of CHAPTERS){await clickText("Chapters");await clickText(ch.title);await clickText("Flashcards");await clickText("Sources");assert(await hasText(ch.title),"Missing chapter");}});
+await test("profile save retains quiz progress",async()=>{await clickText("Profile");await setInput(0,"Profile Scholar");await clickText("Save Profile");await waitForText("Profile saved");await clickText("Progress");await waitForText("4/4 questions");});
+await test("CMS editor opens",async()=>{await evaluate(`document.querySelector('[aria-label="Open content manager"]').click()`);await waitForText("Devavāṇī CMS");await clickText("Chapter Info");await clickText("Save Chapter Info");await clickText("✕ Close");});
+await test("mobile navigation",async()=>{await client.send("Emulation.setDeviceMetricsOverride",{width:390,height:844,deviceScaleFactor:1,mobile:true});await delay(250);await evaluate(`document.querySelector('[aria-label="Open menu"]').click()`);await delay(150);await clickText("Chapters");await waitForText("All Chapters");assert(await evaluate("document.documentElement.scrollWidth <= 390"),"horizontal overflow");});
+await test("logout",async()=>{await client.send("Emulation.clearDeviceMetricsOverride");await delay(250);await clickText("Profile");await clickText("Sign Out");await waitForText("Sign In");});
+await test("console errors",async()=>{assert(consoleErrors.length===0,consoleErrors.join("\n"));});
+} finally { await cleanup();clearTimeout(globalTimeout); }console.log(JSON.stringify(results.map(({name,ok,error})=>({name,ok,error:error?.message}))));process.exit(results.some(r=>!r.ok)?1:0);

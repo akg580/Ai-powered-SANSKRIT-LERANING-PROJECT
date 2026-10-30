@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useAuth, ROLES } from "../contexts/AuthContext";
 import { useCMS }  from "../contexts/CMSContext";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { db } from "../firebase/runtimeConfig";
+import { db, isE2EAuthMode } from "../firebase/runtimeConfig";
 
 /* ── Small UI helpers ──────────────────────────────────────────────────────── */
 function Badge({ color, children }) {
@@ -432,6 +432,7 @@ function UserManager() {
   useEffect(() => {
     (async () => {
       try {
+        if (isE2EAuthMode) { setUsers([]); setMsg("User management requires a connected Firebase project."); return; }
         const snap = await getDocs(query(collection(db, "users"), orderBy("email")));
         setUsers(snap.docs.map(d => ({ id: d.id, ...d.data() })));
       } catch(e) { setMsg(`❌ ${e.message}`); }

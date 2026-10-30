@@ -407,7 +407,7 @@ export const CHAPTERS = [
         {q:"It-markers on Pratyayas serve to:",opts:["Decorate","Silently direct phonological/accentual rules without appearing in output","Change root meaning","Indicate number"],ans:1,exp:"Pratyaya It-markers are operational guides — trigger sandhi, substitution, and accent rules, then disappear by lopa."},
       ],
     },
-  },  ,{
+  }, {
     id:9,num:"IX",title:"Śabdarūpa · Prathamā Vibhakti",
     subtitle:"Word Declension · 3 Genders · 21 Vibhakti Forms · Subanta System",
     icon:"📋",color:"#059669",

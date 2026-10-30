@@ -65,7 +65,7 @@ function sanitizeChapter(ch) {
       hard:   (ch.levels?.hard   || []).map(sanitizeQuiz),
     },
     updatedAt: serverTimestamp(),
-    updatedBy: "",
+    updatedBy: ch.updatedBy || "",
   };
 }
 
@@ -107,7 +107,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
       }
     );
     return unsub;
-  }, [defaultChapters, user]);
+  }, [defaultChapters, user?.uid]);
 
   // ── Seed Firestore from bundled data (admin only, once) ──────────────────
   const seedFromDefault = useCallback(async () => {
@@ -115,6 +115,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     setSaving(true);
     setCmsError("");
     try {
+      if (isE2EAuthMode) { setChapters(defaultChapters); return; }
       const batch = writeBatch(db);
       for (const ch of defaultChapters) {
         const data = sanitizeChapter({ ...ch, updatedBy: user?.email || "" });
@@ -133,6 +134,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     setSaving(true); setCmsError("");
     try {
       const data = sanitizeChapter({ ...ch, updatedBy: user?.email || "" });
+      if (isE2EAuthMode) { setChapters(prev => [...prev.filter(c => c.id !== ch.id), {...ch, ...data}].sort((a,b)=>a.id-b.id)); return; }
       await setDoc(chapterRef(ch.id), data);
     } catch (e) { setCmsError(e.message); throw e; }
     finally { setSaving(false); }
@@ -142,7 +144,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
   const deleteChapter = useCallback(async (chapterId) => {
     if (userProfile?.role !== "admin") throw new Error("Admin only.");
     setSaving(true); setCmsError("");
-    try { await deleteDoc(chapterRef(chapterId)); }
+    try { if (isE2EAuthMode) { setChapters(prev=>prev.filter(c=>c.id!==chapterId)); return; } await deleteDoc(chapterRef(chapterId)); }
     catch (e) { setCmsError(e.message); throw e; }
     finally { setSaving(false); }
   }, [userProfile]);
@@ -152,6 +154,7 @@ export function CMSProvider({ children, defaultChapters = [] }) {
     if (!canWrite) throw new Error("Not authorised.");
     setSaving(true); setCmsError("");
     try {
+      if (isE2EAuthMode) { setChapters(prev=>prev.map(c=>c.id===chapterId?{...c,...patch}:c)); return; }
       await updateDoc(chapterRef(chapterId), {
         ...patch,
         updatedAt: serverTimestamp(),
